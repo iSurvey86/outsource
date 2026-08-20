@@ -90,7 +90,12 @@ export default function AppLayout({ children }) {
     try {
       const res = await loginLocal(username, password);
       if (!res.ok) {
-        setLoginError(res.error);
+        let msg = res.error || "Đăng nhập thất bại.";
+        if (/invalid api key/i.test(msg)) {
+          msg =
+            "Supabase API key sai. Vào Dashboard → Settings → API, copy lại anon (public) key vào .env.local (và Vercel env), rồi restart/redeploy.";
+        }
+        setLoginError(msg);
         setBusy(false);
         return;
       }
@@ -107,7 +112,12 @@ export default function AppLayout({ children }) {
       setBusy(false);
       router.replace(POST_LOGIN_ROUTE);
     } catch (err) {
-      setLoginError(err.message || "Lỗi đăng nhập / kết nối DB.");
+      let msg = err.message || "Lỗi đăng nhập / kết nối DB.";
+      if (/invalid api key/i.test(msg)) {
+        msg =
+          "Supabase API key sai. Copy lại anon (public) key từ Supabase → Settings → API.";
+      }
+      setLoginError(msg);
       setBusy(false);
     }
   }

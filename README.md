@@ -53,3 +53,8 @@ npx vercel --prod
 
 ## Style
 Teal / blue / emerald. Không dùng xám/ghi trên UI.
+
+## Phiên làm việc (handoff)
+- Đọc: [`docs/phien-lam-viec/HANDOFF.md`](docs/phien-lam-viec/HANDOFF.md)
+- Cuối phiên: chat *「làm cuối phiên đầy đủ」* (= HANDOFF + bump + workflow + HDSD + changelog → commit + push)
+- Rule: `.cursor/rules/session-handoff.mdc`

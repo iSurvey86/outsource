@@ -1,0 +1,68 @@
+---
+description: Đọc/cập nhật HANDOFF phiên làm việc khi đổi máy hoặc cuối phiên có quyết định
+alwaysApply: true
+---
+
+# Handoff phiên làm việc (đa máy)
+
+## Đầu phiên — khi user tiếp tục dự án / nói «đọc handoff» / «máy khác» / «tiếp tục phiên trước»
+
+1. Đọc [docs/phien-lam-viec/HANDOFF.md](docs/phien-lam-viec/HANDOFF.md) — **block mới nhất** (ngay dưới dòng `---` đầu tiên sau phần hướng dẫn).
+2. Nếu block trỏ file ngày (`YYYY-MM-DD-*.md`), đọc thêm khi cần chi tiết.
+3. Không hỏi lại các quyết định đã ghi trong HANDOFF trừ khi user muốn đổi.
+
+## Cuối phiên — lệnh ngắn
+
+| User gõ | Agent làm |
+|---------|-----------|
+| **「làm cuối phiên đầy đủ」** | (1) HANDOFF (+ file ngày nếu cần) → (2) **bump version + workflow + HDSD** → (3) commit + **push** |
+| **「cập nhật HANDOFF」** | Chỉ (1); commit/push **chỉ khi** user yêu cầu thêm |
+| **「cập nhật HANDOFF → commit + push」** | (1) + commit + push; **không** bắt buộc bump / workflow / HDSD |
+
+### Chi tiết bước (1) — HANDOFF
+
+Cập nhật `docs/phien-lam-viec/HANDOFF.md`:
+
+- **Prepend** block mới lên đầu (sau phần hướng dẫn cố định), format:
+  - `## YYYY-MM-DD — Tiêu đề ngắn`
+  - Đã chốt / đã làm (bullet)
+  - File chính (bảng hoặc list)
+  - Việc tiếp (checkbox `- [ ]`)
+  - Câu mở phiên sau (fenced quote)
+  - Link file ngày nếu tạo
+
+Nếu phiên dài hoặc nhiều quyết định: tạo thêm `docs/phien-lam-viec/YYYY-MM-DD-mo-ta-ngan.md` (copy nội dung block) và link từ HANDOFF.
+
+### Chi tiết bước (2) — bump version + workflow + HDSD
+
+**Bắt buộc** trong 「làm cuối phiên đầy đủ」 khi phiên **đổi nghiệp vụ hoặc UX ổn định** (không phải mỗi lần sửa typo). Nếu phiên chỉ typo / không đổi nghiệp vụ: ghi rõ trong HANDOFF «không bump / không sửa workflow·HDSD» rồi bỏ qua bước này.
+
+Thứ tự trong bước (2):
+
+1. **Workflow:** cập nhật `workflows/*.md` liên quan phiên (logic, sơ đồ). Không đụng file không liên quan.
+2. **HDSD:** cập nhật `docs/hdsd/*.md` hướng dẫn user tương ứng; đồng bộ mô tả mục trong `src/lib/hdsdMeta.js` (`HDSD_SECTIONS`) nếu đổi phạm vi bài.
+3. **Bump version:**
+   - **Luôn** khi đã sửa HDSD: đặt `HDSD_VERSION` trong `src/lib/hdsdMeta.js` = ngày phiên (`YYYY-MM-DD`). Đây là ngày cập nhật tài liệu hướng dẫn, **không** phải phiên bản phần mềm.
+   - **Khi** người dùng thấy thay đổi rõ trên phần mềm (tính năng / UX ổn định): tăng `version` trong `package.json` (semver patch hoặc minor tùy mức) — `APP_VERSION` đọc từ đó qua `src/lib/brand.js`. Không bump `package.json` nếu chỉ sửa chữ HDSD/workflow/HANDOFF.
+   - **Khi đã bump `package.json`:** prepend mục tương ứng vào `src/lib/appChangelog.js` và `docs/changelog/CHANGELOG.md` (nhóm Mới / Cải thiện / Sửa lỗi, tiếng Việt nghiệp vụ). Chi tiết: `docs/changelog/README.md`.
+
+### Chi tiết bước (3) — git
+
+- `git status` / diff → commit message rõ (why) → `git push` (khi lệnh đầy đủ hoặc user yêu cầu push).
+- Commit phải gồm cả thay đổi bước (1)+(2) nếu có (HANDOFF, workflow, HDSD, `hdsdMeta.js`, `package.json`).
+- **Không** commit `.env.local`, secret, key API.
+
+## Phân vai với tài liệu khác
+
+| Nội dung | Nơi ghi |
+|----------|---------|
+| Trao đổi / TODO phiên / quyết định tạm | `HANDOFF.md` |
+| Workflow nghiệp vụ ổn định | `workflows/*.md` |
+| Hướng dẫn user | `docs/hdsd/*.md` |
+| Nhật ký phiên bản (Có gì mới) | `src/lib/appChangelog.js` + `docs/changelog/CHANGELOG.md` |
+
+## Không ghi vào HANDOFF
+
+- Nội dung chat dài nguyên văn
+- Secret (`.env`, key)
+- File build (`.next`, `node_modules`)
