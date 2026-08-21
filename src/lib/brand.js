@@ -3,7 +3,7 @@ import packageJson from "../../package.json";
 export const APP_NAME = "OUTSRC";
 export const APP_FULL_TITLE = "OUTSRC";
 export const APP_DESCRIPTION =
-  "Hệ thống quản lý dự án da đen: tiến độ, hồ sơ, tài chính A↔B, tài chính nội bộ B";
+  "Hệ thống quản lý công việc, tiến độ dự án.";
 export const APP_SYSTEM_LABEL = "HỆ THỐNG";
 export const APP_VERSION = packageJson.version;
 export const APP_VERSION_LABEL = `Phiên bản ${APP_VERSION}`;
