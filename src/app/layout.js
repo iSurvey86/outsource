@@ -1,3 +1,4 @@
+import "@fontsource/inter";
 import { AppDialogProvider } from "../components/AppDialog";
 import AppLayout from "../components/AppLayout";
 import { APP_DESCRIPTION, APP_FULL_TITLE } from "../lib/brand";
@@ -10,8 +11,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="vi">
-      <body className="antialiased">
+    <html lang="vi" suppressHydrationWarning>
+      <body className="bg-sky-50 text-slate-900 antialiased" suppressHydrationWarning>
         <AppDialogProvider>
           <AppLayout>{children}</AppLayout>
         </AppDialogProvider>

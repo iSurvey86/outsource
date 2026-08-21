@@ -1,5 +1,5 @@
 /** Ngày cập nhật HDSD — đặt = ngày phiên khi sửa docs/hdsd/ */
-export const HDSD_VERSION = "2026-08-20";
+export const HDSD_VERSION = "2026-08-21";
 
 export const HDSD_STATUS = {
   published: {
@@ -33,9 +33,18 @@ export const HDSD_SECTIONS = [
     slug: "du-an",
     title: "Dự án & workspace",
     shortTitle: "Dự án",
-    description: "Danh mục, thông tin chung, KS, hồ sơ",
+    description: "Danh mục, header, KS, hồ sơ folder",
     file: "01-du-an.md",
     order: 1,
+    status: "published",
+  },
+  {
+    slug: "hop-dong",
+    title: "Sổ hợp đồng",
+    shortTitle: "Hợp đồng",
+    description: "Nhập HĐ, quét AI, phụ lục, số liệu",
+    file: "04-hop-dong.md",
+    order: 2,
     status: "published",
   },
   {
@@ -44,7 +53,7 @@ export const HDSD_SECTIONS = [
     shortTitle: "Tài chính",
     description: "Sổ A↔B và tài chính nội bộ B",
     file: "02-tai-chinh.md",
-    order: 2,
+    order: 3,
     status: "published",
   },
   {
@@ -53,7 +62,7 @@ export const HDSD_SECTIONS = [
     shortTitle: "QLHT",
     description: "Tài khoản và nhật ký",
     file: "03-quan-ly-he-thong.md",
-    order: 3,
+    order: 4,
     status: "published",
   },
 ];

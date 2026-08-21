@@ -5,6 +5,42 @@
 
 ---
 
+## 2026-08-21 — Hồ sơ folder tùy chọn + Sổ hợp đồng
+
+**Máy / ngữ cảnh:** Cursor — workspace OUTSRC; port sổ HĐ từ ksnpsc; SQL Supabase đã chạy tới `018`.
+
+### Đã chốt / đã làm
+
+- Hồ sơ KS|TK: folder chuẩn + tùy chọn (Bên B tạo/đổi tên/xóa); View 3 kiểu; màu KS amber / TK violet.
+- Workspace: bỏ khối tài chính A↔B & nội bộ (dùng menu riêng); header «Giá trị tư vấn:» không nền + vạch ngăn TMĐT.
+- **Sổ hợp đồng** mở từ header / `?action=hop_dong` (Supabase bắt buộc); SQL `007`–`018` (đã verify `HOP_DONG_NHAN_SU`, TNCTTT, RLS).
+- Ma trận phân quyền đã chốt trong `docs/Phan_quyen_OUTSRC.md` — **chưa** enforce đủ trên code.
+
+### File chính
+
+| Khu vực | File |
+|---------|------|
+| Hồ sơ / workspace | `hoSoFolders.js`, `HoSoKhoPanel.js`, `du-an/[ma]/DuAnWorkspaceClient.js` |
+| Hợp đồng | `lib/hopDong*.js`, `UpdateHopDongModal.js`, `api/parse-hop-dong` |
+| SQL | `scripts/sql/007` … `018_missing_hop_dong_bundle.sql` |
+| Chi tiết | [2026-08-21-hoso-folder-so-hop-dong.md](./2026-08-21-hoso-folder-so-hop-dong.md) |
+
+### Việc tiếp
+
+- [ ] Siết phân quyền trên code (lọc DA Bên A; A↔B chỉ admin sửa; PM không CRUD DA metadata).
+- [ ] Form KS thật thay stub.
+- [ ] Storage binary hồ sơ / PDF HĐ.
+
+### Câu mở phiên sau
+
+```text
+Đọc docs/phien-lam-viec/HANDOFF.md (block 2026-08-21). App 0.3.0 — folder hồ sơ + sổ HĐ. Tiếp: siết phân quyền; form KS; Storage.
+```
+
+**Lưu trữ ngày:** [2026-08-21-hoso-folder-so-hop-dong.md](./2026-08-21-hoso-folder-so-hop-dong.md)
+
+---
+
 ## 2026-08-20 — MVP OUTSRC + Supabase/Vercel + handoff
 
 **Máy / ngữ cảnh:** Cursor — scaffold MVP quản lý da đen tại `D:\AIPoject\outsource`; deploy GitHub + Vercel; gắn Supabase.

@@ -1,12 +1,22 @@
 # Tài chính
 
 ## Sổ A↔B
-Menu **Tài chính**: lịch sử tạm ứng / thanh toán giữa Bên A và Bên B. Cả hai bên đều xem được.
+Menu **Tài chính**: bảng theo dõi theo từng công trình (kiểu bảng tính).
 
-**Công thức mặc định**
-- Phần Bên B = 25% giá trị tư vấn (hợp đồng hoặc PAĐT tạm tính)
-- Tạm ứng khi triển khai = 30% phần Bên B
-- Thanh toán phần còn lại khi **giao tuyến**
+| Cột | Ý nghĩa |
+|-----|---------|
+| TMĐT | Tổng mức đầu tư |
+| PADT | Giá trị tư vấn theo phương án đầu tư (tạm tính) |
+| Hợp đồng | Giá trị tư vấn theo hợp đồng (ưu tiên khi đã có) |
+| Tạm ứng lần 1 (30%) | 30% × phần B (phần B = 25% × GT hiệu lực) |
+| Lần 2 / Lần 3 / Thanh toán | Các đợt sau |
+| Ghi chú | Ghi chú tài chính công trình |
+
+**Công thức tạm ứng / thanh toán**
+1. Căn cứ GTV = **Hợp đồng** nếu &gt; 0; không thì **PAĐT**.
+2. Phần B = 25% × căn cứ · **Lần 1** = 30% × phần B (tự tính) → bấm **Nhận tạm ứng** để khóa.
+3. **Lần 2 / Lần 3 / Thanh toán**: nhập số vào ô → popup xác nhận (ngày + bill) → khóa.
+4. Sau khi khóa: giữ nguyên số đã ghi; mở lại bill nếu có.
 
 Ứng dụng **không** xuất hóa đơn.
 

@@ -1,35 +1,42 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { Check, Loader2, Pencil, Plus, Search, Trash2, X } from "lucide-react";
 import { loadAuthSession } from "../../lib/authSession";
-import { canSuaDuAn } from "../../lib/menuAccess";
+import { canSuaDuAn, canXoaDuAn } from "../../lib/menuAccess";
+import { normalizeChuDauTu } from "../../lib/chuDauTuAlias";
 import {
-  DEFAULT_TY_LE_BEN_B,
-  DEFAULT_TY_LE_TAM_UNG,
-  formatVnd,
-  giaTriBenB,
-} from "../../lib/finance";
-import { fetchDb, logActivity, createDuAnBundle, uid } from "../../lib/store";
-import { PipelineChip } from "../../components/StatusChip";
+  GIAI_DOAN_OPTIONS,
+  formatGiaoAShort,
+  formatHopDongShort,
+  giaiDoanBadgeClass,
+} from "../../lib/duAnMeta";
+import { formatGiaoAShort as formatGiaoAShortRaw, normalizeVietnameseGiaoADate } from "../../lib/formatGiaoA";
+import { deleteDuAnCascade, fetchDb, logActivity, updateRow } from "../../lib/store";
+import { useAppDialog } from "../../components/AppDialog";
+
+const GIAI_DOAN_EDIT_OPTIONS = [
+  { value: "BCNCKT", label: "BCNCKT (Nghiên cứu khả thi / FS)" },
+  { value: "BCKTKT", label: "Báo cáo Kinh tế kỹ thuật" },
+  { value: "TKBVTC", label: "Thiết kế Bản vẽ thi công" },
+];
 
 export default function DuAnListPage() {
+  const { showAlert, showConfirm } = useAppDialog();
   const [db, setDb] = useState(null);
   const [user, setUser] = useState(null);
   const [perms, setPerms] = useState(null);
   const [q, setQ] = useState("");
-  const [showForm, setShowForm] = useState(false);
-  const [form, setForm] = useState({
-    ma_du_an: "",
-    ten: "",
-    ben_a_user_id: "",
-    chu_dau_tu: "",
-    quy_mo: "",
-    dia_diem: "",
-    giai_doan: "BCNCKT",
-    gia_tri_tu_van: "",
-    nguon_gia_tri: "padt_tam_tinh",
-  });
+  const [filterGiaiDoan, setFilterGiaiDoan] = useState("");
+  const [filterChuDauTu, setFilterChuDauTu] = useState("");
+  const [filterNam, setFilterNam] = useState("");
+  const [filterDiaDiem, setFilterDiaDiem] = useState("");
+  const [filterQd, setFilterQd] = useState("");
+  const [sortBy, setSortBy] = useState("ngay_giao_a");
+  const [showEditModal, setShowEditModal] = useState(false);
+  const [editData, setEditData] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   async function reload() {
     setDb(await fetchDb());
@@ -42,215 +49,590 @@ export default function DuAnListPage() {
     reload().catch(console.error);
   }, []);
 
-  if (!db) return <p className="text-sm font-bold text-teal-800">Đang tải…</p>;
+  const listChuDauTu = useMemo(() => {
+    if (!db) return [];
+    return [...new Set(db.duAn.map((d) => d.chu_dau_tu).filter(Boolean))].sort();
+  }, [db]);
 
-  const filtered = db.duAn.filter((d) => {
-    const s = q.trim().toLowerCase();
-    if (!s) return true;
-    return (
-      d.ma_du_an.toLowerCase().includes(s) ||
-      d.ten.toLowerCase().includes(s) ||
-      (d.chu_dau_tu || "").toLowerCase().includes(s)
+  const listNam = useMemo(() => {
+    if (!db) return [];
+    return [...new Set(db.duAn.map((d) => String(d.nam_giao_a || "")).filter(Boolean))].sort(
+      (a, b) => Number(b) - Number(a)
     );
-  });
+  }, [db]);
 
-  async function handleCreate(e) {
-    e.preventDefault();
-    if (!canSuaDuAn(perms)) return;
-    const id = uid("da");
-    const duAn = {
-      id,
-      ma_du_an: form.ma_du_an.trim(),
-      ten: form.ten.trim(),
-      ben_a_user_id: form.ben_a_user_id || null,
-      phu_trach_id: user.id,
-      chu_dau_tu: form.chu_dau_tu.trim(),
-      quy_mo: form.quy_mo.trim(),
-      dia_diem: form.dia_diem.trim(),
-      giai_doan: form.giai_doan,
-      trang_thai: "moi",
-      nguon_gia_tri: form.nguon_gia_tri,
-      gia_tri_tu_van: Number(form.gia_tri_tu_van) || 0,
-      ty_le_ben_b: DEFAULT_TY_LE_BEN_B,
-      ty_le_tam_ung: DEFAULT_TY_LE_TAM_UNG,
-      mo_ta: "",
-      ngay_bat_dau: new Date().toISOString().slice(0, 10),
-      ngay_ket_thuc_dk: null,
-    };
-    const mocList = [
-      {
-        id: uid("m"),
-        du_an_id: id,
-        ma: "trien_khai",
-        ten: "Triển khai",
-        thu_tu: 1,
-        trang_thai: "chua_lam",
-        han: null,
-      },
-      {
-        id: uid("m"),
-        du_an_id: id,
-        ma: "giao_tuyen",
-        ten: "Giao tuyến",
-        thu_tu: 2,
-        trang_thai: "chua_lam",
-        han: null,
-      },
-    ];
-    const ksList = ["nvks", "paktks", "bcks", "nghiem_thu", "nhat_ky"].map((loai) => ({
-      id: uid("ks"),
-      du_an_id: id,
-      loai,
-      trang_thai: "chua_lam",
-    }));
+  const stats = useMemo(() => {
+    if (!db) return { total: 0, BCNCKT: 0, BCKTKT: 0, TKBVTC: 0 };
+    const s = { total: db.duAn.length, BCNCKT: 0, BCKTKT: 0, TKBVTC: 0 };
+    for (const d of db.duAn) {
+      if (s[d.giai_doan] != null) s[d.giai_doan] += 1;
+    }
+    return s;
+  }, [db]);
+
+  const filtered = useMemo(() => {
+    if (!db) return [];
+    let rows = [...db.duAn];
+    const s = q.trim().toLowerCase();
+    if (s) {
+      rows = rows.filter(
+        (d) =>
+          d.ten?.toLowerCase().includes(s) ||
+          d.ma_du_an?.toLowerCase().includes(s) ||
+          (d.chu_dau_tu || "").toLowerCase().includes(s) ||
+          (d.qd_giao_a || "").toLowerCase().includes(s) ||
+          (d.hop_dong || "").toLowerCase().includes(s)
+      );
+    }
+    if (filterGiaiDoan) rows = rows.filter((d) => d.giai_doan === filterGiaiDoan);
+    if (filterChuDauTu) rows = rows.filter((d) => d.chu_dau_tu === filterChuDauTu);
+    if (filterNam) rows = rows.filter((d) => String(d.nam_giao_a || "") === filterNam);
+    if (filterDiaDiem.trim()) {
+      const dd = filterDiaDiem.trim().toLowerCase();
+      rows = rows.filter((d) => (d.dia_diem || "").toLowerCase().includes(dd));
+    }
+    if (filterQd.trim()) {
+      const qd = filterQd.trim().toLowerCase();
+      rows = rows.filter(
+        (d) =>
+          (d.qd_giao_a || "").toLowerCase().includes(qd) ||
+          (d.qd_giao_a_day_du || "").toLowerCase().includes(qd)
+      );
+    }
+
+    rows.sort((a, b) => {
+      if (sortBy === "ten_cong_trinh") {
+        return String(a.ten || "").localeCompare(String(b.ten || ""), "vi");
+      }
+      if (sortBy === "ngay_hop_dong") {
+        return String(b.hop_dong_day_du || b.hop_dong || "").localeCompare(
+          String(a.hop_dong_day_du || a.hop_dong || ""),
+          "vi"
+        );
+      }
+      const ta = a.ngay_giao_a || "";
+      const tb = b.ngay_giao_a || "";
+      if (ta === tb) return String(a.ten || "").localeCompare(String(b.ten || ""), "vi");
+      return tb.localeCompare(ta);
+    });
+    return rows;
+  }, [db, q, filterGiaiDoan, filterChuDauTu, filterNam, filterDiaDiem, filterQd, sortBy]);
+
+  async function handleDelete(d) {
+    if (!canXoaDuAn(perms)) return;
+    const ok = await showConfirm(`Xóa dự án «${d.ten}»? Không hoàn tác được.`);
+    if (!ok) return;
     try {
-      await createDuAnBundle({ duAn, mocList, ksList });
+      await deleteDuAnCascade(d.id);
       await logActivity({
         username: user.username,
         ho_ten: user.ho_ten,
         phan_he: "du_an",
-        hanh_dong: "TAO",
-        chi_tiet: form.ma_du_an,
+        hanh_dong: "XOA",
+        chi_tiet: d.ma_du_an,
       });
-      setShowForm(false);
       await reload();
     } catch (err) {
-      alert(err.message || "Lỗi tạo dự án");
+      showAlert(err.message || "Lỗi xóa dự án");
     }
   }
 
+  async function handleOpenEditModal(project) {
+    if (!canSuaDuAn(perms)) {
+      await showAlert("Tài khoản của Anh/Chị không có quyền sửa dự án.");
+      return;
+    }
+    setEditData({
+      id: project.id,
+      ma_du_an_goc: project.ma_du_an,
+      ma_du_an: project.ma_du_an || "",
+      ten_du_an: project.ten || "",
+      giai_doan: project.giai_doan === "FS" ? "BCNCKT" : project.giai_doan || "BCNCKT",
+      chu_dau_tu: project.chu_dau_tu || "",
+      qd_giao_a: project.qd_giao_a || project.qd_giao_a_day_du || "",
+      qd_giao_a_day_du: project.qd_giao_a_day_du || "",
+      nam_giao_a: project.nam_giao_a || "",
+      dia_diem_ks: project.dia_diem || "",
+      hop_dong: project.hop_dong || "",
+      hop_dong_day_du: project.hop_dong_day_du || "",
+    });
+    setShowEditModal(true);
+  }
+
+  function handleCloseEditModal() {
+    setShowEditModal(false);
+    setEditData(null);
+    setIsEditing(false);
+  }
+
+  async function handleSaveEdit() {
+    if (!canSuaDuAn(perms)) {
+      await showAlert("Tài khoản của Anh/Chị không có quyền sửa dự án.");
+      return;
+    }
+    if (!editData?.ten_du_an?.trim() || !editData?.ma_du_an?.trim()) {
+      await showAlert("Tên dự án và Mã dự án không được để trống!");
+      return;
+    }
+    const newMa = editData.ma_du_an.trim();
+    const oldMa = String(editData.ma_du_an_goc || "").trim();
+    if (
+      newMa !== oldMa &&
+      db.duAn.some(
+        (d) => d.id !== editData.id && String(d.ma_du_an).toUpperCase() === newMa.toUpperCase()
+      )
+    ) {
+      await showAlert(`Mã dự án «${newMa}» đã tồn tại.`);
+      return;
+    }
+
+    setIsEditing(true);
+    try {
+      const qdRaw = String(editData.qd_giao_a || "").trim();
+      const qdNorm = formatGiaoAShortRaw(qdRaw, editData.qd_giao_a_day_du);
+      const qdShort =
+        qdNorm && qdNorm !== "-"
+          ? qdNorm.replace(/\n/g, " ").trim()
+          : normalizeVietnameseGiaoADate(qdRaw);
+      const patch = {
+        ten: editData.ten_du_an.trim(),
+        ma_du_an: newMa,
+        giai_doan: editData.giai_doan || "BCNCKT",
+        chu_dau_tu: normalizeChuDauTu(editData.chu_dau_tu),
+        dia_diem: String(editData.dia_diem_ks || "").trim(),
+        qd_giao_a: qdShort,
+        qd_giao_a_day_du: normalizeVietnameseGiaoADate(
+          editData.qd_giao_a_day_du?.trim() || qdRaw
+        ),
+        nam_giao_a: String(editData.nam_giao_a || "").trim(),
+        hop_dong: String(editData.hop_dong || "").trim(),
+        hop_dong_day_du: String(editData.hop_dong_day_du || "").trim() || null,
+      };
+      await updateRow("du_an", editData.id, patch);
+      await logActivity({
+        username: user.username,
+        ho_ten: user.ho_ten,
+        phan_he: "du_an",
+        hanh_dong: "SUA",
+        chi_tiet: `${oldMa}${oldMa !== newMa ? ` → ${newMa}` : ""}`,
+      });
+      await showAlert("🎉 Đã cập nhật thông tin dự án.");
+      handleCloseEditModal();
+      await reload();
+    } catch (err) {
+      await showAlert("Lỗi khi lưu: " + (err.message || err));
+    } finally {
+      setIsEditing(false);
+    }
+  }
+
+  if (!db) return <p className="text-sm font-bold text-teal-800">Đang tải…</p>;
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-5">
       <header className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-black text-blue-950">Quản lý dự án</h1>
-          <p className="mt-1 text-sm font-medium text-teal-800">
-            Danh mục dự án ngoài — mở workspace theo mã
-          </p>
+          <h1 className="text-2xl font-black uppercase tracking-wide text-blue-950">
+            Quản lý dự án
+          </h1>
+          <p className="mt-1 text-sm font-medium text-teal-800">Danh mục dự án toàn hệ thống</p>
         </div>
-        <div className="flex gap-2">
+        {canSuaDuAn(perms) ? (
+          <Link
+            href="/nhap-du-an"
+            className="inline-flex items-center gap-2 rounded-xl border-2 border-teal-500 bg-white px-4 py-2.5 text-sm font-black text-teal-800 shadow-sm transition hover:bg-teal-50"
+          >
+            <Plus className="h-4 w-4" />
+            Nhập Dự án
+          </Link>
+        ) : null}
+      </header>
+
+      <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <KpiCard
+          label="Tổng dự án"
+          value={stats.total}
+          hint="Số công trình"
+          active={!filterGiaiDoan}
+          tone="blue"
+          onClick={() => setFilterGiaiDoan("")}
+        />
+        {GIAI_DOAN_OPTIONS.map((gd) => (
+          <KpiCard
+            key={gd}
+            label={gd}
+            value={stats[gd]}
+            hint="Theo giai đoạn"
+            active={filterGiaiDoan === gd}
+            tone={gd === "BCNCKT" ? "sky" : gd === "BCKTKT" ? "amber" : "violet"}
+            onClick={() => setFilterGiaiDoan((v) => (v === gd ? "" : gd))}
+          />
+        ))}
+      </div>
+
+      <div className="grid grid-cols-[minmax(12rem,2.2fr)_minmax(7rem,1fr)_minmax(7rem,1fr)_minmax(6rem,0.85fr)_minmax(5.5rem,0.7fr)_minmax(4.25rem,0.55fr)_minmax(9rem,1.15fr)] gap-2 rounded-2xl border border-sky-200 bg-white p-2.5 shadow-sm">
+        <div className="relative min-w-0">
+          <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-sky-500" />
           <input
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            placeholder="Tìm mã / tên / CĐT…"
-            className="rounded-xl border border-sky-300 bg-white px-3 py-2 text-sm font-medium text-blue-950"
+            placeholder="Tìm tên…"
+            className="w-full rounded-xl border border-sky-300 bg-sky-50 py-2 pl-8 pr-2 text-sm font-medium text-blue-950 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
           />
-          {canSuaDuAn(perms) ? (
-            <button
-              type="button"
-              onClick={() => setShowForm((v) => !v)}
-              className="rounded-xl bg-gradient-to-r from-blue-600 to-teal-600 px-4 py-2 text-sm font-black text-white"
-            >
-              {showForm ? "Đóng" : "Thêm DA"}
-            </button>
-          ) : null}
         </div>
-      </header>
-
-      {showForm ? (
-        <form
-          onSubmit={handleCreate}
-          className="grid gap-3 rounded-2xl border border-teal-200 bg-white p-5 sm:grid-cols-2"
+        <input
+          value={filterQd}
+          onChange={(e) => setFilterQd(e.target.value)}
+          placeholder="Số QĐ Giao A…"
+          className="min-w-0 w-full rounded-xl border border-amber-200 bg-amber-50/80 px-2.5 py-2 text-sm font-medium text-blue-950"
+        />
+        <input
+          value={filterDiaDiem}
+          onChange={(e) => setFilterDiaDiem(e.target.value)}
+          placeholder="Địa điểm KS…"
+          className="min-w-0 w-full rounded-xl border border-amber-200 bg-amber-50/80 px-2.5 py-2 text-sm font-medium text-blue-950"
+        />
+        <select
+          value={filterChuDauTu}
+          onChange={(e) => setFilterChuDauTu(e.target.value)}
+          className="min-w-0 w-full rounded-xl border border-amber-200 bg-amber-50/80 px-2.5 py-2 text-sm font-medium text-blue-950"
         >
-          <Field label="Mã DA" required value={form.ma_du_an} onChange={(v) => setForm({ ...form, ma_du_an: v })} />
-          <Field label="Tên DA" required value={form.ten} onChange={(v) => setForm({ ...form, ten: v })} />
-          <label className="text-xs font-bold text-blue-900">
-            Bên A (user)
-            <select
-              className="mt-1 w-full rounded-xl border border-sky-300 bg-sky-50 px-3 py-2 text-sm font-medium text-blue-950"
-              value={form.ben_a_user_id}
-              onChange={(e) => setForm({ ...form, ben_a_user_id: e.target.value })}
-            >
-              <option value="">— Chọn —</option>
-              {db.users
-                .filter((u) => u.phe === "ben_a" && u.trang_thai === "active")
-                .map((u) => (
-                  <option key={u.id} value={u.id}>
-                    {u.ho_ten} ({u.username})
-                  </option>
-                ))}
-            </select>
-          </label>
-          <Field label="Chủ đầu tư" value={form.chu_dau_tu} onChange={(v) => setForm({ ...form, chu_dau_tu: v })} />
-          <Field label="Quy mô" value={form.quy_mo} onChange={(v) => setForm({ ...form, quy_mo: v })} />
-          <Field label="Địa điểm" value={form.dia_diem} onChange={(v) => setForm({ ...form, dia_diem: v })} />
-          <Field
-            label="GT tư vấn (₫)"
-            value={form.gia_tri_tu_van}
-            onChange={(v) => setForm({ ...form, gia_tri_tu_van: v })}
-          />
-          <label className="text-xs font-bold text-blue-900">
-            Nguồn GT
-            <select
-              className="mt-1 w-full rounded-xl border border-sky-300 bg-sky-50 px-3 py-2 text-sm font-medium text-blue-950"
-              value={form.nguon_gia_tri}
-              onChange={(e) => setForm({ ...form, nguon_gia_tri: e.target.value })}
-            >
-              <option value="padt_tam_tinh">Tạm tính PAĐT</option>
-              <option value="hop_dong">Hợp đồng tư vấn</option>
-            </select>
-          </label>
-          <div className="sm:col-span-2">
-            <button
-              type="submit"
-              className="rounded-xl bg-gradient-to-r from-blue-600 to-teal-600 px-5 py-2.5 text-sm font-black text-white"
-            >
-              Lưu dự án
-            </button>
-          </div>
-        </form>
-      ) : null}
-
-      <div className="overflow-hidden rounded-2xl border border-sky-200 bg-white">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-sky-100 text-xs font-black uppercase text-blue-900">
-            <tr>
-              <th className="px-4 py-3">Mã</th>
-              <th className="px-4 py-3">Tên / CĐT</th>
-              <th className="px-4 py-3">Phần B</th>
-              <th className="px-4 py-3">TT</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filtered.map((d) => (
-              <tr key={d.id} className="border-t border-sky-100 hover:bg-sky-50/80">
-                <td className="px-4 py-3">
-                  <Link
-                    href={`/du-an/${encodeURIComponent(d.ma_du_an)}`}
-                    className="font-black text-blue-700 hover:text-teal-700"
-                  >
-                    {d.ma_du_an}
-                  </Link>
-                </td>
-                <td className="px-4 py-3">
-                  <p className="font-bold text-blue-950">{d.ten}</p>
-                  <p className="text-xs font-medium text-teal-800">{d.chu_dau_tu || "—"}</p>
-                </td>
-                <td className="px-4 py-3 font-bold tabular-nums text-teal-900">
-                  {formatVnd(giaTriBenB(d))}
-                </td>
-                <td className="px-4 py-3">
-                  <PipelineChip status={d.trang_thai} />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          <option value="">Chủ đầu tư</option>
+          {listChuDauTu.map((c) => (
+            <option key={c} value={c}>
+              {c}
+            </option>
+          ))}
+        </select>
+        <select
+          value={filterGiaiDoan}
+          onChange={(e) => setFilterGiaiDoan(e.target.value)}
+          className="min-w-0 w-full rounded-xl border border-amber-200 bg-amber-50/80 px-2.5 py-2 text-sm font-medium text-blue-950"
+        >
+          <option value="">Giai đoạn</option>
+          {GIAI_DOAN_OPTIONS.map((gd) => (
+            <option key={gd} value={gd}>
+              {gd}
+            </option>
+          ))}
+        </select>
+        <select
+          value={filterNam}
+          onChange={(e) => setFilterNam(e.target.value)}
+          className="min-w-0 w-full rounded-xl border border-amber-200 bg-amber-50/80 px-2.5 py-2 text-sm font-medium text-blue-950"
+        >
+          <option value="">Năm</option>
+          {listNam.map((n) => (
+            <option key={n} value={n}>
+              {n}
+            </option>
+          ))}
+        </select>
+        <select
+          value={sortBy}
+          onChange={(e) => setSortBy(e.target.value)}
+          className="min-w-0 w-full rounded-xl border border-amber-200 bg-amber-50/80 px-2.5 py-2 text-sm font-medium text-blue-950"
+        >
+          <option value="ngay_giao_a">Sắp xếp: Ngày Giao A</option>
+          <option value="ten_cong_trinh">Sắp xếp: Tên công trình</option>
+          <option value="ngay_hop_dong">Sắp xếp: Hợp đồng</option>
+        </select>
       </div>
+
+      <div className="overflow-hidden rounded-2xl border border-sky-200 bg-white shadow-sm">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[860px] border-collapse text-sm">
+            <thead className="bg-[#1e40af] text-xs font-black uppercase tracking-wide text-white">
+              <tr>
+                <th className="w-12 border-r border-[#1e3a8a] px-3 py-3 text-center">STT</th>
+                <th className="border-r border-[#1e3a8a] px-3 py-3 text-center">Tên công trình</th>
+                <th className="w-28 border-r border-[#1e3a8a] px-3 py-3 text-center">Giai đoạn</th>
+                <th className="w-56 border-r border-[#1e3a8a] px-3 py-3 text-center">Giao A</th>
+                <th className="w-64 border-r border-[#1e3a8a] px-3 py-3 text-center">Hợp đồng</th>
+                <th className="w-24 px-3 py-3 text-center">Thao tác</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filtered.map((d, idx) => {
+                const giaoAHienThi = formatGiaoAShort(d, { wrapDate: true });
+                const hopDongHienThi = formatHopDongShort(d);
+                return (
+                <tr
+                  key={d.id}
+                  className="border-t border-sky-100 odd:bg-white even:bg-sky-50/70 hover:bg-teal-50/70"
+                >
+                  <td className="px-3 py-3 text-center font-bold tabular-nums text-blue-900">
+                    {idx + 1}
+                  </td>
+                  <td className="px-3 py-3 text-left">
+                    <Link
+                      href={`/du-an/${encodeURIComponent(d.ma_du_an)}`}
+                      className="font-bold text-blue-700 hover:text-teal-700"
+                    >
+                      {d.ten}
+                    </Link>
+                    <p className="mt-0.5 text-xs font-semibold text-slate-500">{d.ma_du_an}</p>
+                  </td>
+                  <td className="px-3 py-3 text-center">
+                    <span
+                      className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-black ring-1 ${giaiDoanBadgeClass(
+                        d.giai_doan
+                      )}`}
+                    >
+                      {d.giai_doan || "—"}
+                    </span>
+                  </td>
+                  <td
+                    className="px-3 py-3 text-center text-xs font-semibold leading-snug whitespace-pre-line text-blue-950"
+                    title={d.qd_giao_a_day_du || d.qd_giao_a || ""}
+                  >
+                    {giaoAHienThi}
+                  </td>
+                  <td
+                    className="px-3 py-3 text-center text-xs font-medium leading-snug text-blue-900"
+                    title={d.hop_dong_day_du || d.hop_dong || ""}
+                  >
+                    {hopDongHienThi}
+                  </td>
+                  <td className="px-3 py-3">
+                    <div className="flex items-center justify-center gap-1">
+                      {canSuaDuAn(perms) ? (
+                        <button
+                          type="button"
+                          onClick={() => handleOpenEditModal(d)}
+                          className="rounded-lg p-1.5 text-blue-700 hover:bg-blue-50"
+                          title="Sửa thông tin dự án"
+                        >
+                          <Pencil className="h-4 w-4" />
+                        </button>
+                      ) : null}
+                      {canXoaDuAn(perms) ? (
+                        <button
+                          type="button"
+                          onClick={() => handleDelete(d)}
+                          className="rounded-lg p-1.5 text-rose-600 hover:bg-rose-50"
+                          title="Xóa"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </button>
+                      ) : null}
+                    </div>
+                  </td>
+                </tr>
+                );
+              })}
+              {!filtered.length ? (
+                <tr>
+                  <td colSpan={6} className="px-4 py-8 text-center text-sm font-medium text-teal-700">
+                    Không có dự án khớp bộ lọc.
+                  </td>
+                </tr>
+              ) : null}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {showEditModal && editData ? (
+        <div className="fixed inset-0 z-[60] overflow-y-auto overscroll-contain bg-black/60 p-3 sm:p-4">
+          <div className="flex min-h-full items-start justify-center py-2 sm:items-center sm:py-4">
+            <div className="my-auto flex max-h-[calc(100dvh-1.5rem)] w-full max-w-3xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl">
+              <div className="relative flex shrink-0 items-center justify-center bg-blue-600 p-4 text-white">
+                <h3 className="flex items-center gap-2 text-center text-lg font-bold uppercase tracking-wide">
+                  <Pencil className="h-5 w-5 shrink-0" />
+                  Chỉnh sửa thông tin dự án
+                </h3>
+                <button
+                  type="button"
+                  onClick={handleCloseEditModal}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-md p-1.5 transition hover:bg-blue-700"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+
+              <div className="min-h-0 flex-1 space-y-4 overflow-y-auto p-4 sm:p-6">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                  <div className="col-span-2">
+                    <label className="mb-1 block text-xs font-bold uppercase text-gray-700">
+                      Tên Dự án <span className="text-red-500">*</span>
+                    </label>
+                    <textarea
+                      rows={2}
+                      className="w-full rounded-lg border border-gray-300 p-2.5 text-sm font-semibold text-gray-800 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                      value={editData.ten_du_an || ""}
+                      onChange={(e) => setEditData({ ...editData, ten_du_an: e.target.value })}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="mb-1 block text-xs font-bold uppercase text-gray-700">
+                      Mã Dự án <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full rounded-lg border border-gray-300 p-2 font-mono text-sm font-bold text-blue-700 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                      value={editData.ma_du_an || ""}
+                      onChange={(e) =>
+                        setEditData({
+                          ...editData,
+                          ma_du_an: e.target.value.replace(/\s/g, "").toUpperCase(),
+                        })
+                      }
+                    />
+                  </div>
+
+                  <div>
+                    <label className="mb-1 block text-xs font-bold uppercase text-gray-700">
+                      Giai đoạn
+                    </label>
+                    <select
+                      className="w-full cursor-pointer rounded-lg border border-gray-300 bg-white p-2 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                      value={editData.giai_doan || ""}
+                      onChange={(e) => setEditData({ ...editData, giai_doan: e.target.value })}
+                    >
+                      {GIAI_DOAN_EDIT_OPTIONS.map((o) => (
+                        <option key={o.value} value={o.value}>
+                          {o.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="col-span-2">
+                    <label className="mb-1 block text-xs font-bold uppercase text-gray-700">
+                      Chủ đầu tư
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full rounded-lg border border-gray-300 p-2 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                      value={editData.chu_dau_tu || ""}
+                      onChange={(e) => setEditData({ ...editData, chu_dau_tu: e.target.value })}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="mb-1 block text-xs font-bold uppercase text-gray-700">
+                      Số QĐ Giao A
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Vd: 406/QĐ-EVNNPC ngày 24/7/2026"
+                      className="w-full rounded-lg border border-gray-300 p-2 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                      value={editData.qd_giao_a || ""}
+                      onChange={(e) => setEditData({ ...editData, qd_giao_a: e.target.value })}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="mb-1 block text-xs font-bold uppercase text-gray-700">
+                      Năm Giao A
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full rounded-lg border border-gray-300 p-2 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                      value={editData.nam_giao_a || ""}
+                      onChange={(e) => setEditData({ ...editData, nam_giao_a: e.target.value })}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="mb-1 block text-xs font-bold uppercase text-gray-700">
+                      Địa điểm Khảo sát
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full rounded-lg border border-gray-300 p-2 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                      value={editData.dia_diem_ks || ""}
+                      onChange={(e) => setEditData({ ...editData, dia_diem_ks: e.target.value })}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="mb-1 block text-xs font-bold uppercase text-gray-700">
+                      Hợp đồng (viết tắt)
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Vd: 308/2020/HĐTV-... ngày 07/12/2020"
+                      className="w-full rounded-lg border border-gray-300 p-2 text-sm font-semibold text-green-700 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                      value={editData.hop_dong || ""}
+                      onChange={(e) => setEditData({ ...editData, hop_dong: e.target.value })}
+                    />
+                  </div>
+
+                  <div className="col-span-2">
+                    <label className="mb-1 block text-xs font-bold uppercase text-gray-700">
+                      Hợp đồng (đầy đủ)
+                    </label>
+                    <textarea
+                      rows={2}
+                      placeholder='Hợp đồng số … ngày … gói thầu: … dự án “…” giữa … và …'
+                      className="w-full rounded-lg border border-gray-300 p-2 text-sm outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500"
+                      value={editData.hop_dong_day_du || ""}
+                      onChange={(e) =>
+                        setEditData({ ...editData, hop_dong_day_du: e.target.value })
+                      }
+                    />
+                    <p className="mt-1 text-[11px] text-gray-500">
+                      PDF hợp đồng: cập nhật trong trang công trình (Workspace).
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex shrink-0 flex-col-reverse gap-2 rounded-b-xl border-t border-gray-200 bg-gray-50 p-4 sm:flex-row sm:justify-end sm:gap-3">
+                <button
+                  type="button"
+                  onClick={handleCloseEditModal}
+                  className="w-full rounded-lg border border-gray-300 px-5 py-2 font-bold text-gray-600 transition hover:bg-gray-100 sm:w-auto"
+                >
+                  Hủy
+                </button>
+                <button
+                  type="button"
+                  onClick={handleSaveEdit}
+                  disabled={isEditing || !editData.ten_du_an?.trim() || !editData.ma_du_an?.trim()}
+                  className={`flex w-full items-center justify-center gap-2 rounded-lg px-6 py-2 font-bold text-white shadow-md transition sm:w-auto ${
+                    isEditing || !editData.ten_du_an?.trim() || !editData.ma_du_an?.trim()
+                      ? "cursor-not-allowed bg-blue-400"
+                      : "bg-blue-600 hover:bg-blue-700"
+                  }`}
+                >
+                  {isEditing ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Check className="h-4 w-4" />
+                  )}
+                  {isEditing ? "Đang lưu..." : "Lưu thay đổi"}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
 
-function Field({ label, value, onChange, required }) {
+function KpiCard({ label, value, hint, active, tone, onClick }) {
+  const tones = {
+    blue: "from-blue-50 to-blue-100/80 border-blue-200 ring-blue-400",
+    sky: "from-sky-50 to-cyan-100/70 border-sky-200 ring-sky-400",
+    amber: "from-amber-50 to-orange-100/70 border-amber-200 ring-amber-400",
+    violet: "from-violet-50 to-purple-100/70 border-violet-200 ring-violet-400",
+  };
   return (
-    <label className="text-xs font-bold text-blue-900">
-      {label}
-      <input
-        required={required}
-        className="mt-1 w-full rounded-xl border border-sky-300 bg-sky-50 px-3 py-2 text-sm font-medium text-blue-950"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-      />
-    </label>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`rounded-2xl border bg-gradient-to-br p-4 text-left shadow-sm transition ${
+        tones[tone]
+      } ${active ? "ring-2" : "hover:brightness-[0.99]"}`}
+    >
+      <p className="text-[11px] font-black uppercase tracking-widest text-blue-800/80">{label}</p>
+      <p className="mt-1 text-3xl font-black tabular-nums text-blue-950">{value}</p>
+      <p className="mt-1 text-xs font-medium text-teal-800">{hint}</p>
+    </button>
   );
 }

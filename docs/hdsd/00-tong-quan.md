@@ -12,16 +12,16 @@ Nếu báo lỗi API key: quản trị viên cần cấu hình lại khóa Supab
 ## Ai thấy gì
 | Nội dung | Bên A | Bên B |
 |----------|-------|-------|
-| Dashboard, danh mục DA, workspace | Có | Có |
-| Tài chính A↔B | Có | Có |
-| Hồ sơ khảo sát / thiết kế | Có | Có |
-| Lập / xuất bản khảo sát | Không (chỉ xem status) | Có (nếu được cấp quyền) |
+| Danh mục DA, workspace | Có (theo gắn Bên A) | Có |
+| Sổ hợp đồng | Xem / theo quyền sửa DA | Xem / sửa nếu có quyền |
+| Hồ sơ khảo sát / thiết kế | Xem | Xem + upload + folder tùy chọn |
+| Lập / xuất bản khảo sát | Không | Có (nếu được cấp quyền) |
+| Tài chính A↔B (menu) | Có | Có |
 | Tài chính nội bộ | Không | Có (nếu được cấp quyền) |
 | Quản lý hệ thống | Theo quyền | Theo quyền |
 
 ## Menu chính
-- **Tổng quan** — dashboard
-- **Dự án** — danh sách và workspace từng DA
+- **Dự án** — danh sách và workspace từng DA (login thường vào đây)
 - **Tài chính** — sổ chung A↔B
 - **Tài chính nội bộ** — chỉ Bên B
 - **Quản lý hệ thống** — tài khoản + nhật ký (admin)

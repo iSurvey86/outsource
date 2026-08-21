@@ -4,9 +4,8 @@
 Vào **Dự án** để xem danh sách. Tạo mới nếu bạn có quyền sửa dự án.
 
 ## Trong một dự án
-1. **Thông tin chung** — chủ đầu tư, quy mô, giá trị tư vấn, phần Bên B…
-2. **Khảo sát** — Bên B cập nhật / xuất bản các mục KS; Bên A chỉ thấy trạng thái.
-3. **Hồ sơ khảo sát** — tài liệu đã XB và file upload (mặt cắt, mặt bằng…).
-4. **Hồ sơ thiết kế** — upload / xem file thiết kế.
-5. **Tài chính A↔B** — tạm ứng, thanh toán, còn lại theo thỏa thuận 25% / 30% / giao tuyến.
-6. **Tài chính nội bộ** — chỉ hiện với tài khoản Bên B.
+1. **Thông tin chung (header)** — chủ đầu tư, địa điểm, hợp đồng, Giao A / quy mô, TMĐT, **Giá trị tư vấn**.
+2. **Hợp đồng** — bấm số HĐ hoặc «Nhấn để mở sổ hợp đồng» để mở **Sổ hợp đồng** (nhập / quét PDF / phụ lục / thầu phụ). Cần kết nối Supabase.
+3. **Khảo sát** — chỉ Bên B: cập nhật / xuất bản các bước KS (stub). Bên A không thấy khối này.
+4. **Hồ sơ khảo sát / thiết kế** — xem theo thư mục; Bên B có thể **+** thêm thư mục tùy chọn, đổi tên / xóa thư mục tùy chọn, tải file vào trong thư mục. Đổi kiểu xem (Lưới / Danh sách / Chi tiết) bằng nút **View**.
+5. **Tài chính** — không ghi trên trang dự án; vào menu **Tài chính** (A↔B) hoặc **Tài chính nội bộ** (Bên B).

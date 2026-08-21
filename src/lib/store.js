@@ -147,14 +147,26 @@ export async function loginLocal(username, password) {
   };
 }
 
-export async function logActivity({ username, email, ho_ten, phan_he, hanh_dong, chi_tiet }) {
+export async function logActivity({
+  username,
+  email,
+  ho_ten,
+  phan_he,
+  hanh_dong,
+  chi_tiet,
+  trang_thai = "Thành công",
+  du_lieu_dong = null,
+}) {
   const row = {
     id: uid("ls"),
     username: username || email || "",
+    email: email || username || "",
     ho_ten: ho_ten || "",
     phan_he,
     hanh_dong,
     chi_tiet: chi_tiet || "",
+    trang_thai: trang_thai || "Thành công",
+    du_lieu_dong: du_lieu_dong && typeof du_lieu_dong === "object" ? du_lieu_dong : null,
     thoi_gian: new Date().toISOString(),
   };
 
@@ -167,7 +179,24 @@ export async function logActivity({ username, email, ho_ten, phan_he, hanh_dong,
   }
 
   const { error } = await supabase.from("lich_su_hoat_dong").insert(row);
-  if (error) console.error("logActivity", error.message);
+  if (error) {
+    // Cột mới (email/trang_thai/du_lieu_dong) chưa migrate → ghi tối thiểu
+    if (/column|schema cache/i.test(error.message || "")) {
+      const minimal = {
+        id: row.id,
+        username: row.username,
+        ho_ten: row.ho_ten,
+        phan_he: row.phan_he,
+        hanh_dong: row.hanh_dong,
+        chi_tiet: row.chi_tiet,
+        thoi_gian: row.thoi_gian,
+      };
+      const retry = await supabase.from("lich_su_hoat_dong").insert(minimal);
+      if (retry.error) console.error("logActivity", retry.error.message);
+      return;
+    }
+    console.error("logActivity", error.message);
+  }
 }
 
 export async function insertRow(table, row) {
@@ -281,6 +310,21 @@ export async function createDuAnBundle({ duAn, mocList, ksList }) {
     const { error } = await supabase.from("ks_module").insert(ksList);
     if (error) throw new Error(error.message);
   }
+}
+
+/** Xóa dự án và dữ liệu phụ thuộc */
+export async function deleteDuAnCascade(duAnId) {
+  const tables = [
+    "moc_tien_do",
+    "ks_module",
+    "giao_dich",
+    "chia_noi_bo",
+    "tai_lieu",
+  ];
+  for (const table of tables) {
+    await deleteWhere(table, "du_an_id", duAnId);
+  }
+  await deleteWhere("du_an", "id", duAnId);
 }
 
 export async function resetDb() {

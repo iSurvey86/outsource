@@ -16,6 +16,25 @@
 /** @type {ChangelogRelease[]} — mới nhất ở đầu */
 export const APP_CHANGELOG = [
   {
+    version: "0.3.0",
+    date: "2026-08-21",
+    title: "Hồ sơ folder tùy chọn + Sổ hợp đồng",
+    sections: {
+      added: [
+        "Sổ hợp đồng trên workspace (HĐ chính, phụ lục, thầu phụ, ký lại; quét AI; số liệu)",
+        "Thư mục hồ sơ tùy chọn trên khảo sát / thiết kế (thêm, đổi tên, xóa)",
+        "Hướng dẫn Sổ hợp đồng trong tài liệu người dùng",
+      ],
+      improved: [
+        "Workspace gọn hơn: bỏ khối tài chính trên trang DA (dùng menu Tài chính)",
+        "Hiển thị Giá trị tư vấn rõ hơn trên header; màu hồ sơ KS / TK phân biệt",
+      ],
+      fixed: [
+        "Script SQL sổ hợp đồng dùng bảng du_an (không còn DANH_MUC_DA của hệ thống cũ)",
+      ],
+    },
+  },
+  {
     version: "0.2.0",
     date: "2026-08-20",
     title: "MVP OUTSRC — A↔B, Supabase, Vercel",

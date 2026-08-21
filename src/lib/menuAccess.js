@@ -33,5 +33,8 @@ export function checkPathAccess(pathname, user, perms) {
   if (pathname.startsWith("/quan-ly-he-thong") && !canSeeQlht(user, perms)) {
     return "/";
   }
+  if (pathname.startsWith("/nhap-du-an") && !canSuaDuAn(perms)) {
+    return "/du-an";
+  }
   return null;
 }
