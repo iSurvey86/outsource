@@ -2,6 +2,7 @@
 
 import React from "react";
 import { formatHopDongShort, formatHopDongTitleLabel } from "../../lib/formatHopDong";
+import { formatNgayVi } from "../../lib/formatNgay";
 import {
   formatGiaiDoanBadge,
   formatGiaiDoanFullName,
@@ -2383,7 +2384,7 @@ function HopDongCard({
           {h.ky_lai_tu_id ? (
             <p className="mt-1 text-xs font-semibold text-sky-800">
               HĐ ký lại · {lyDoKyLaiLabel(h.ly_do_ky_lai)}
-              {h.ngay_ky ? ` · ngày ${new Date(`${h.ngay_ky}T00:00:00`).toLocaleDateString("vi-VN")}` : ""}
+              {h.ngay_ky ? ` · ngày ${formatNgayVi(h.ngay_ky)}` : ""}
             </p>
           ) : null}
           {h.loai === HOP_DONG_LOAI.THAU_PHU && (

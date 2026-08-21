@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { loadAuthSession } from "../lib/authSession";
-import { canSeeChiaNoiBo } from "../lib/menuAccess";
+import { canSeeChiaNoiBo, filterDuAnForUser } from "../lib/menuAccess";
 import { conLai, formatVnd, giaTriBenB, tongThu } from "../lib/finance";
+import { formatNgayVi } from "../lib/formatNgay";
 import { fetchDb, hasSupabase } from "../lib/store";
 import { PipelineChip } from "../components/StatusChip";
 
@@ -36,16 +37,19 @@ export default function DashboardPage() {
     return <p className="text-sm font-bold text-teal-800">Đang tải…</p>;
   }
 
-  const dangLam = data.duAn.filter((d) =>
+  const visibleDuAn = filterDuAnForUser(data.duAn, user);
+  const dangLam = visibleDuAn.filter((d) =>
     ["moi", "da_tam_ung", "dang_lam", "da_giao_tuyen"].includes(d.trang_thai)
   );
   let tongConLai = 0;
-  for (const d of data.duAn) {
+  for (const d of visibleDuAn) {
     const gd = data.giaoDich.filter((g) => g.du_an_id === d.id);
     tongConLai += conLai(d, gd);
   }
 
-  const mocSapToi = data.moc.filter((m) => m.trang_thai !== "hoan_thanh").slice(0, 5);
+  const mocSapToi = data.moc
+    .filter((m) => m.trang_thai !== "hoan_thanh" && visibleDuAn.some((d) => d.id === m.du_an_id))
+    .slice(0, 5);
 
   const myShares = canSeeChiaNoiBo(user, perms)
     ? data.chiaNoiBo.filter((c) => c.nguoi_dung_id === user.id)
@@ -125,7 +129,9 @@ export default function DashboardPage() {
                 <span className="font-semibold text-teal-950">
                   {da?.ma_du_an} · {m.ten}
                 </span>
-                <span className="font-bold text-blue-800">Hạn {m.han || "—"}</span>
+                <span className="font-bold text-blue-800">
+                  Hạn {m.han ? formatNgayVi(m.han) || m.han : "—"}
+                </span>
               </li>
             );
           })}

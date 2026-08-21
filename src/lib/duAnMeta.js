@@ -4,6 +4,7 @@ import { DEFAULT_TY_LE_BEN_B, DEFAULT_TY_LE_TAM_UNG, KS_MODULE_DEFS } from "./fi
 import { uid } from "./storeLocal";
 import { formatGiaoAShort as formatGiaoAShortRaw } from "./formatGiaoA";
 import { formatHopDongShort as formatHopDongShortRaw } from "./formatHopDong";
+import { benAAssignPatch, getBenAUserIds } from "./benAUsers";
 
 export const GIAI_DOAN_OPTIONS = ["BCNCKT", "BCKTKT", "TKBVTC"];
 
@@ -67,6 +68,7 @@ export function emptyDuAnForm(overrides = {}) {
     ma_du_an: "",
     ten: "",
     ben_a_user_id: "",
+    ben_a_user_ids: [],
     chu_dau_tu: "",
     quy_mo: "",
     dia_diem: "",
@@ -90,11 +92,14 @@ export function emptyDuAnForm(overrides = {}) {
 }
 
 export function buildDuAnRecord(form, { id, userId }) {
+  const benA = benAAssignPatch(
+    form.ben_a_user_ids?.length ? form.ben_a_user_ids : getBenAUserIds(form)
+  );
   return {
     id,
     ma_du_an: String(form.ma_du_an || "").trim(),
     ten: String(form.ten || "").trim(),
-    ben_a_user_id: form.ben_a_user_id || null,
+    ...benA,
     phu_trach_id: userId || null,
     chu_dau_tu: String(form.chu_dau_tu || "").trim(),
     quy_mo: String(form.quy_mo || "").trim(),

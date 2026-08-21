@@ -109,6 +109,31 @@ export async function loginLocal(username, password) {
     .replace(/\s+/g, "");
   const pwd = String(password || "").trim();
 
+  // Ưu tiên API server (đọc env phía server — tránh stale/wrong key trên browser).
+  if (typeof window !== "undefined") {
+    try {
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: uname, password: pwd }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (data?.ok && data.user) {
+        return { ok: true, user: data.user, perms: data.perms };
+      }
+      if (data?.error) {
+        return { ok: false, error: data.error };
+      }
+      if (!res.ok) {
+        return { ok: false, error: "Đăng nhập thất bại. Vui lòng thử lại." };
+      }
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error("[loginLocal/api]", err);
+      // Fall through to direct path below
+    }
+  }
+
   if (!hasSupabase) {
     const db = ensureLocalDemo(getLocalDb());
     const user = db.users.find(
@@ -121,7 +146,7 @@ export async function loginLocal(username, password) {
       seedLocalDb();
       return loginLocal(uname, pwd);
     }
-    if (!user) return { ok: false, error: "User hoặc mật khẩu không đúng." };
+    if (!user) return { ok: false, error: "Tài khoản hoặc mật khẩu không đúng." };
     return {
       ok: true,
       user: stripPassword(user),
@@ -138,7 +163,7 @@ export async function loginLocal(username, password) {
     .maybeSingle();
 
   if (error) return { ok: false, error: error.message };
-  if (!user) return { ok: false, error: "User hoặc mật khẩu không đúng." };
+  if (!user) return { ok: false, error: "Tài khoản hoặc mật khẩu không đúng." };
 
   return {
     ok: true,

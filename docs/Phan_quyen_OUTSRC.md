@@ -1,7 +1,7 @@
 # OUTSRC - Ma tran phan quyen (thong nhat)
 
 **Ngay:** 21/08/2026  
-**Trang thai:** Da thong nhat nghiep vu (truoc trien khai code)
+**Trang thai:** Da thong nhat nghiep vu + da enforce tren code UI (2026-08-21). Chay SQL `019_phan_quyen_ma_tran.sql` tren Supabase.
 
 **Ky hieu:** `Co` = duoc phep | `Khong` = khong duoc phep  
 (Tranh ky tu dac biet de khong loi font Word)
@@ -9,7 +9,7 @@
 **Vai tro:** Admin (Ben B) | PM (Ben B) | Member (Ben B, du phong) | Ben A (viewer, gan theo du an)
 
 **Cot loi:**
-- Ben A: moi DA co `ben_a_user_id` - A1 chi thay DA cua A1, A2 chi thay DA cua A2.
+- Ben A: moi DA co `ben_a_user_ids` (mang nhieu user) - moi nguoi trong mang deu thay DA. Cot cu `ben_a_user_id` = phan tu dau.
 - **Member = PM**, khac dung 1 diem: **Khong** xem tai chinh noi bo.
 
 File Word: [Phan_quyen_OUTSRC_v2.docx](./Phan_quyen_OUTSRC_v2.docx) (ban Co/Khong, font Arial)

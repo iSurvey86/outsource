@@ -3,6 +3,17 @@
  * Dạng: KHN-YYYY-SLUG[ ngày dd/mm/yyyy] — ngày = ngày ký HĐ khi đã có.
  */
 
+export {
+  toNgayIso as normalizeNgayKyIso,
+  formatNgayVi as formatNgayKyViSlash,
+  formatNgayViLong as formatNgayKyViLong,
+} from "./formatNgay.js";
+
+import {
+  toNgayIso as normalizeNgayKyIso,
+  formatNgayVi as formatNgayKyViSlash,
+  formatNgayViLong as formatNgayKyViLong,
+} from "./formatNgay.js";
 import { isKhachHangNgoai } from "./chuDauTuAlias.js";
 
 function removeVietnameseTones(str) {
@@ -12,36 +23,6 @@ function removeVietnameseTones(str) {
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/đ/g, "d")
     .replace(/Đ/g, "D");
-}
-
-/** yyyy-mm-dd từ ISO / Date / dd/mm/yyyy */
-export function normalizeNgayKyIso(raw) {
-  if (!raw) return "";
-  if (raw instanceof Date && !Number.isNaN(raw.getTime())) {
-    return raw.toISOString().slice(0, 10);
-  }
-  const s = String(raw).trim();
-  const iso = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
-  if (iso) return `${iso[1]}-${iso[2]}-${iso[3]}`;
-  const vi = s.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{4})$/);
-  if (vi) {
-    return `${vi[3]}-${vi[2].padStart(2, "0")}-${vi[1].padStart(2, "0")}`;
-  }
-  return "";
-}
-
-export function formatNgayKyViSlash(iso) {
-  const d = normalizeNgayKyIso(iso);
-  if (!d) return "";
-  const [y, m, day] = d.split("-");
-  return `${day}/${m}/${y}`;
-}
-
-export function formatNgayKyViLong(iso) {
-  const d = normalizeNgayKyIso(iso);
-  if (!d) return "";
-  const [y, m, day] = d.split("-");
-  return `${Number(day)} tháng ${Number(m)} năm ${y}`;
 }
 
 /** Slug ổn định từ tên dự án, tối đa 10 ký tự A–Z/0–9. */

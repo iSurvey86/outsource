@@ -75,7 +75,7 @@ export const DOT_META = {
     title: "Nhận tạm ứng lần 1",
     btn: "Nhận tạm ứng",
     loai: "tam_ung",
-    amountFixed: true,
+    amountFixed: false,
   },
   lan2: {
     key: "lan2",
@@ -106,6 +106,25 @@ export function tongThu(giaoDichList = []) {
     .reduce((s, g) => s + (Number(g.so_tien) || 0), 0);
 }
 
+/** Tổng tạm ứng đã nhận từ A (mọi đợt L1/L2/L3). */
+export function tongTamUngTuA(giaoDichList = []) {
+  return giaoDichList
+    .filter((g) => g.loai === "tam_ung")
+    .reduce((s, g) => s + (Number(g.so_tien) || 0), 0);
+}
+
+/** Tổng thanh toán đã nhận từ A. */
+export function tongThanhToanTuA(giaoDichList = []) {
+  return giaoDichList
+    .filter((g) => g.loai === "thanh_toan")
+    .reduce((s, g) => s + (Number(g.so_tien) || 0), 0);
+}
+
+/** Gộp cả dự án: tổng tiền thật đã nhận từ A (căn chia nội bộ 1 lần). */
+export function tongNhanTuA(giaoDichList = []) {
+  return tongThu(giaoDichList);
+}
+
 export function tongChi(giaoDichList = []) {
   return giaoDichList
     .filter((g) => g.loai === "chi_phi")
@@ -117,15 +136,15 @@ export function conLai(duAn, giaoDichList) {
 }
 
 /**
- * Hiển thị cột Tạm ứng lần 1 (30%):
- * - Đã khóa (`tam_ung_lan1_khoa`) → giữ số đã ghi sổ
- * - Chưa khóa → luôn theo công thức HĐ > PADT
+ * Hiển thị cột Tạm ứng lần 1:
+ * - Chỉ khóa khi Admin đã bấm Nhận (`tam_ung_lan1_khoa = 1`)
+ * - Chưa khóa → gợi ý 30%×phần B nếu đã có GTV (placeholder / nút Nhận)
  */
-/** Lần 2/3/TT: đã có giao dịch xác nhận → khóa; kèm gd để hiện ngày/bill */
 export function tamUngLan1HienThi(duAn, giaoDichList = []) {
   const daChi = tongTheoDot(giaoDichList, "lan1");
   const gd = findGiaoDichByDot(giaoDichList, "lan1");
-  if (duAn?.tam_ung_lan1_khoa && daChi > 0) {
+  const locked = Number(duAn?.tam_ung_lan1_khoa) === 1 && daChi > 0;
+  if (locked) {
     return {
       soTien: daChi,
       locked: true,
@@ -134,13 +153,13 @@ export function tamUngLan1HienThi(duAn, giaoDichList = []) {
       gd,
     };
   }
+  const goiY = Math.round(tamUngLan1KyVong(duAn));
   const hd = giaTriHopDongTv(duAn);
-  const soTien = tamUngLan1KyVong(duAn);
   return {
-    soTien,
+    soTien: goiY,
     locked: false,
-    label: hd > 0 ? "theo HĐ" : "theo PADT",
-    nguon: hd > 0 ? "hop_dong" : "padt",
+    label: goiY > 0 ? (hd > 0 ? "gợi ý 30% HĐ" : "gợi ý 30% PAĐT") : "nhập tay",
+    nguon: goiY > 0 ? (hd > 0 ? "hop_dong" : "padt") : "manual",
     gd: null,
   };
 }
@@ -197,6 +216,39 @@ export function parseVndInput(raw) {
     .replace(/,/g, "");
   const n = Number(s);
   return Number.isFinite(n) ? n : 0;
+}
+
+/** Format tiền khi đang gõ: 50000000 → 50.000.000 (dấu chấm ngay). */
+export function formatVndLive(raw) {
+  const digits = String(raw || "").replace(/\D/g, "");
+  if (!digits) return "";
+  const n = Number(digits);
+  if (!Number.isFinite(n)) return "";
+  return new Intl.NumberFormat("vi-VN").format(n);
+}
+
+/**
+ * Gõ tiền có format live + giữ vị trí con trỏ theo số chữ số.
+ * @returns {{ text: string, caret: number }}
+ */
+export function applyVndLiveInput(raw, caret = null) {
+  const value = String(raw || "");
+  const pos = caret == null ? value.length : caret;
+  const digitsBefore = value.slice(0, pos).replace(/\D/g, "").length;
+  const text = formatVndLive(value);
+  if (!text) return { text: "", caret: 0 };
+  let seen = 0;
+  let newCaret = text.length;
+  for (let i = 0; i < text.length; i++) {
+    if (/\d/.test(text[i])) {
+      seen += 1;
+      if (seen >= digitsBefore) {
+        newCaret = i + 1;
+        break;
+      }
+    }
+  }
+  return { text, caret: newCaret };
 }
 
 export function formatPct(ratio) {

@@ -3,8 +3,8 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { Check, Loader2, Pencil, Plus, Search, Trash2, X } from "lucide-react";
-import { loadAuthSession } from "../../lib/authSession";
-import { canSuaDuAn, canXoaDuAn } from "../../lib/menuAccess";
+import { loadAuthSession, isBenA } from "../../lib/authSession";
+import { canSuaDuAn, canXoaDuAn, filterDuAnForUser } from "../../lib/menuAccess";
 import { normalizeChuDauTu } from "../../lib/chuDauTuAlias";
 import {
   GIAI_DOAN_OPTIONS,
@@ -15,6 +15,12 @@ import {
 import { formatGiaoAShort as formatGiaoAShortRaw, normalizeVietnameseGiaoADate } from "../../lib/formatGiaoA";
 import { deleteDuAnCascade, fetchDb, logActivity, updateRow } from "../../lib/store";
 import { useAppDialog } from "../../components/AppDialog";
+import BenAUserSelect from "../../components/duAn/BenAUserSelect";
+import {
+  benAAssignPatch,
+  getBenAUserIds,
+  labelBenAGroup,
+} from "../../lib/benAUsers";
 
 const GIAI_DOAN_EDIT_OPTIONS = [
   { value: "BCNCKT", label: "BCNCKT (Nghiên cứu khả thi / FS)" },
@@ -43,36 +49,45 @@ export default function DuAnListPage() {
   }
 
   useEffect(() => {
-    const { user: u, perms: p } = loadAuthSession();
-    setUser(u);
-    setPerms(p);
+    function syncAuth() {
+      const { user: u, perms: p } = loadAuthSession();
+      setUser(u);
+      setPerms(p);
+    }
+    syncAuth();
     reload().catch(console.error);
+    window.addEventListener("outsrc-auth-session-changed", syncAuth);
+    return () => window.removeEventListener("outsrc-auth-session-changed", syncAuth);
   }, []);
+
+  const showBenACol = Boolean(perms?.q_admin);
+  const showActionsCol = canSuaDuAn(perms) || canXoaDuAn(perms);
 
   const listChuDauTu = useMemo(() => {
     if (!db) return [];
-    return [...new Set(db.duAn.map((d) => d.chu_dau_tu).filter(Boolean))].sort();
-  }, [db]);
+    return [...new Set(filterDuAnForUser(db.duAn, user).map((d) => d.chu_dau_tu).filter(Boolean))].sort();
+  }, [db, user]);
 
   const listNam = useMemo(() => {
     if (!db) return [];
-    return [...new Set(db.duAn.map((d) => String(d.nam_giao_a || "")).filter(Boolean))].sort(
+    return [...new Set(filterDuAnForUser(db.duAn, user).map((d) => String(d.nam_giao_a || "")).filter(Boolean))].sort(
       (a, b) => Number(b) - Number(a)
     );
-  }, [db]);
+  }, [db, user]);
 
   const stats = useMemo(() => {
     if (!db) return { total: 0, BCNCKT: 0, BCKTKT: 0, TKBVTC: 0 };
-    const s = { total: db.duAn.length, BCNCKT: 0, BCKTKT: 0, TKBVTC: 0 };
-    for (const d of db.duAn) {
+    const visible = filterDuAnForUser(db.duAn, user);
+    const s = { total: visible.length, BCNCKT: 0, BCKTKT: 0, TKBVTC: 0 };
+    for (const d of visible) {
       if (s[d.giai_doan] != null) s[d.giai_doan] += 1;
     }
     return s;
-  }, [db]);
+  }, [db, user]);
 
   const filtered = useMemo(() => {
     if (!db) return [];
-    let rows = [...db.duAn];
+    let rows = filterDuAnForUser(db.duAn, user);
     const s = q.trim().toLowerCase();
     if (s) {
       rows = rows.filter(
@@ -116,7 +131,7 @@ export default function DuAnListPage() {
       return tb.localeCompare(ta);
     });
     return rows;
-  }, [db, q, filterGiaiDoan, filterChuDauTu, filterNam, filterDiaDiem, filterQd, sortBy]);
+  }, [db, user, q, filterGiaiDoan, filterChuDauTu, filterNam, filterDiaDiem, filterQd, sortBy]);
 
   async function handleDelete(d) {
     if (!canXoaDuAn(perms)) return;
@@ -155,6 +170,7 @@ export default function DuAnListPage() {
       dia_diem_ks: project.dia_diem || "",
       hop_dong: project.hop_dong || "",
       hop_dong_day_du: project.hop_dong_day_du || "",
+      ben_a_user_ids: getBenAUserIds(project),
     });
     setShowEditModal(true);
   }
@@ -172,6 +188,12 @@ export default function DuAnListPage() {
     }
     if (!editData?.ten_du_an?.trim() || !editData?.ma_du_an?.trim()) {
       await showAlert("Tên dự án và Mã dự án không được để trống!");
+      return;
+    }
+    if (!getBenAUserIds({ ben_a_user_ids: editData.ben_a_user_ids }).length) {
+      await showAlert(
+        "Vui lòng chọn ít nhất một Tài khoản Bên A.\nCó thể chọn nhiều người (nhóm) — mỗi người đều thấy dự án."
+      );
       return;
     }
     const newMa = editData.ma_du_an.trim();
@@ -207,6 +229,7 @@ export default function DuAnListPage() {
         nam_giao_a: String(editData.nam_giao_a || "").trim(),
         hop_dong: String(editData.hop_dong || "").trim(),
         hop_dong_day_du: String(editData.hop_dong_day_du || "").trim() || null,
+        ...benAAssignPatch(editData.ben_a_user_ids),
       };
       await updateRow("du_an", editData.id, patch);
       await logActivity({
@@ -235,7 +258,9 @@ export default function DuAnListPage() {
           <h1 className="text-2xl font-black uppercase tracking-wide text-blue-950">
             Quản lý dự án
           </h1>
-          <p className="mt-1 text-sm font-medium text-teal-800">Danh mục dự án toàn hệ thống</p>
+          <p className="mt-1 text-sm font-medium text-teal-800">
+            {isBenA(user) ? "Dự án gắn tài khoản Bên A của Anh/Chị" : "Danh mục dự án toàn hệ thống"}
+          </p>
         </div>
         {canSuaDuAn(perms) ? (
           <Link
@@ -346,16 +371,22 @@ export default function DuAnListPage() {
               <tr>
                 <th className="w-12 border-r border-[#1e3a8a] px-3 py-3 text-center">STT</th>
                 <th className="border-r border-[#1e3a8a] px-3 py-3 text-center">Tên công trình</th>
+                {showBenACol ? (
+                  <th className="w-40 border-r border-[#1e3a8a] px-3 py-3 text-center">Bên A</th>
+                ) : null}
                 <th className="w-28 border-r border-[#1e3a8a] px-3 py-3 text-center">Giai đoạn</th>
                 <th className="w-56 border-r border-[#1e3a8a] px-3 py-3 text-center">Giao A</th>
                 <th className="w-64 border-r border-[#1e3a8a] px-3 py-3 text-center">Hợp đồng</th>
-                <th className="w-24 px-3 py-3 text-center">Thao tác</th>
+                {showActionsCol ? (
+                  <th className="w-24 px-3 py-3 text-center">Thao tác</th>
+                ) : null}
               </tr>
             </thead>
             <tbody>
               {filtered.map((d, idx) => {
                 const giaoAHienThi = formatGiaoAShort(d, { wrapDate: true });
                 const hopDongHienThi = formatHopDongShort(d);
+                const benALabel = labelBenAGroup(db.users, d);
                 return (
                 <tr
                   key={d.id}
@@ -373,6 +404,15 @@ export default function DuAnListPage() {
                     </Link>
                     <p className="mt-0.5 text-xs font-semibold text-slate-500">{d.ma_du_an}</p>
                   </td>
+                  {showBenACol ? (
+                    <td className="px-3 py-3 text-center text-xs font-semibold text-blue-950">
+                      {benALabel ? (
+                        <span title={benALabel}>{benALabel}</span>
+                      ) : (
+                        <span className="font-bold text-amber-700">Chưa gán</span>
+                      )}
+                    </td>
+                  ) : null}
                   <td className="px-3 py-3 text-center">
                     <span
                       className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-black ring-1 ${giaiDoanBadgeClass(
@@ -394,37 +434,44 @@ export default function DuAnListPage() {
                   >
                     {hopDongHienThi}
                   </td>
-                  <td className="px-3 py-3">
-                    <div className="flex items-center justify-center gap-1">
-                      {canSuaDuAn(perms) ? (
-                        <button
-                          type="button"
-                          onClick={() => handleOpenEditModal(d)}
-                          className="rounded-lg p-1.5 text-blue-700 hover:bg-blue-50"
-                          title="Sửa thông tin dự án"
-                        >
-                          <Pencil className="h-4 w-4" />
-                        </button>
-                      ) : null}
-                      {canXoaDuAn(perms) ? (
-                        <button
-                          type="button"
-                          onClick={() => handleDelete(d)}
-                          className="rounded-lg p-1.5 text-rose-600 hover:bg-rose-50"
-                          title="Xóa"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </button>
-                      ) : null}
-                    </div>
-                  </td>
+                  {showActionsCol ? (
+                    <td className="px-3 py-3">
+                      <div className="flex items-center justify-center gap-1">
+                        {canSuaDuAn(perms) ? (
+                          <button
+                            type="button"
+                            onClick={() => handleOpenEditModal(d)}
+                            className="rounded-lg p-1.5 text-blue-700 hover:bg-blue-50"
+                            title="Sửa thông tin dự án"
+                          >
+                            <Pencil className="h-4 w-4" />
+                          </button>
+                        ) : null}
+                        {canXoaDuAn(perms) ? (
+                          <button
+                            type="button"
+                            onClick={() => handleDelete(d)}
+                            className="rounded-lg p-1.5 text-rose-600 hover:bg-rose-50"
+                            title="Xóa"
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </button>
+                        ) : null}
+                      </div>
+                    </td>
+                  ) : null}
                 </tr>
                 );
               })}
               {!filtered.length ? (
                 <tr>
-                  <td colSpan={6} className="px-4 py-8 text-center text-sm font-medium text-teal-700">
-                    Không có dự án khớp bộ lọc.
+                  <td
+                    colSpan={4 + (showBenACol ? 1 : 0) + (showActionsCol ? 1 : 0)}
+                    className="px-4 py-8 text-center text-sm font-medium text-teal-700"
+                  >
+                    {isBenA(user)
+                      ? "Chưa có dự án gắn tài khoản Bên A của Anh/Chị."
+                      : "Không có dự án khớp bộ lọc."}
                   </td>
                 </tr>
               ) : null}
@@ -497,6 +544,17 @@ export default function DuAnListPage() {
                         </option>
                       ))}
                     </select>
+                  </div>
+
+                  <div className="col-span-2">
+                    <BenAUserSelect
+                      id="edit-ben-a"
+                      users={db?.users || []}
+                      value={editData.ben_a_user_ids || []}
+                      required
+                      disabled={isEditing}
+                      onChange={(ids) => setEditData({ ...editData, ben_a_user_ids: ids })}
+                    />
                   </div>
 
                   <div className="col-span-2">

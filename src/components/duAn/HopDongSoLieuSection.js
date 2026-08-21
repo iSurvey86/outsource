@@ -4,6 +4,7 @@ import React from "react";
 import { bgdGroupKeyForProject } from "../../lib/giaoViecInbox";
 import { formatGiaiDoanBadge } from "../../lib/giaiDoanOrder";
 import { formatGiaTriHopDong } from "../../lib/hopDong";
+import { formatNgayVi } from "../../lib/formatNgay";
 import {
   DEFAULT_IMPORT_TEMPLATE_PATH,
   formatImportSummaryText,
@@ -1063,7 +1064,7 @@ export function ImportHopDongXntvDialog({ open, onClose, supabase, project, onDo
                 <div key={g.key} className="rounded-xl border border-teal-100 bg-teal-50/30 p-3 space-y-2">
                   <p className="text-xs font-bold text-teal-900">
                     {g.so_hop_dong || "(chưa có số HĐ)"}
-                    {g.ngay_ky ? ` · ngày ${g.ngay_ky}` : ""}
+                    {g.ngay_ky ? ` · ngày ${formatNgayVi(g.ngay_ky) || g.ngay_ky}` : ""}
                     {g.cong_trinh ? (
                       <span className="font-semibold text-slate-700"> · {g.cong_trinh}</span>
                     ) : null}

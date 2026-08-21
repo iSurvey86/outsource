@@ -1,24 +1,28 @@
 # Tài chính
 
 ## Sổ A↔B
-Menu **Tài chính**: bảng theo dõi theo từng công trình (kiểu bảng tính).
+Menu **Tài chính**: bảng theo dõi theo từng công trình.
 
 | Cột | Ý nghĩa |
 |-----|---------|
 | TMĐT | Tổng mức đầu tư |
-| PADT | Giá trị tư vấn theo phương án đầu tư (tạm tính) |
-| Hợp đồng | Giá trị tư vấn theo hợp đồng (ưu tiên khi đã có) |
-| Tạm ứng lần 1 (30%) | 30% × phần B (phần B = 25% × GT hiệu lực) |
-| Lần 2 / Lần 3 / Thanh toán | Các đợt sau |
+| PAĐT / Hợp đồng | **Giá trị Tư vấn (Gtv)** — PAĐT tạm tính; HĐ ưu tiên khi đã có |
+| Tổng phần B | **(25%Gtv)** |
+| Tạm ứng lần 1…3 / Thanh toán | Nhập số → **Nhận** → popup **ngày + bill** (không nhập lại số; không quét AI) |
 | Ghi chú | Ghi chú tài chính công trình |
 
-**Công thức tạm ứng / thanh toán**
-1. Căn cứ GTV = **Hợp đồng** nếu &gt; 0; không thì **PAĐT**.
-2. Phần B = 25% × căn cứ · **Lần 1** = 30% × phần B (tự tính) → bấm **Nhận tạm ứng** để khóa.
-3. **Lần 2 / Lần 3 / Thanh toán**: nhập số vào ô → popup xác nhận (ngày + bill) → khóa.
-4. Sau khi khóa: giữ nguyên số đã ghi; mở lại bill nếu có.
+**Luồng nhận tiền**
+1. Nhập số tiền trên ô → bấm **Nhận** → chọn **ngày nhận** + đính kèm bill → lưu (khóa).
+2. Sau khi khóa: số tiền có **link bill** (bấm mở xem); bấm **ngày** để sửa số / ngày / bill.
+3. Có thể nhận L1 trước khi có GTV; sau điền PAĐT/HĐ, phần B = 25% Gtv, các đợt **cấn trừ dần**.
+4. Có GTV: ô L1 gợi ý 30% phần B (vẫn sửa trước khi Nhận).
 
-Ứng dụng **không** xuất hóa đơn.
+Ngày tháng trên màn hình: **dd/mm/yyyy**. Ứng dụng **không** xuất hóa đơn.
 
 ## Tài chính nội bộ
-Menu **Tài chính nội bộ** (chỉ Bên B): phân chia % / số tiền trong nhóm. Bên A không thấy mục này.
+Menu **Tài chính nội bộ** (chỉ Admin/PM Bên B):
+
+1. **Danh sách dự án** — đã nhận từ A, trạng thái chia.
+2. Bấm vào DA → chia **một lần** trên **tổng đã nhận từ A** (đọc sổ A↔B): theo **tỷ lệ %** hoặc **số cứng**.
+
+Chưa có: ứng nội bộ B↔B; chia theo từng đợt nhận. Bên A không thấy mục này.

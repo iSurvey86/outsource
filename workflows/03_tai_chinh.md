@@ -1,32 +1,30 @@
 # Tài chính A↔B và nội bộ B
 
 ## Công thức A → B
-1. **Căn cứ GT tư vấn** = cột Hợp đồng nếu &gt; 0; không thì PADT (PAĐT tạm tính).
+1. **Căn cứ GTV** = cột Hợp đồng nếu > 0; không thì PAĐT (có thể điền **sau** khi đã tạm ứng).
 2. Phần B = **25%** × căn cứ.
-3. **Tạm ứng lần 1** = **30%** × phần B — **tự ghi sổ** khi nhập/sửa PADT hoặc HĐ.
-4. Khi `tam_ung_lan1_khoa` → **khóa** số đã chi (không đổi dù cập nhật HĐ).
-5. Thanh toán nốt khi **giao tuyến** = phần B − đã thu.
+3. **Tạm ứng L1:** nhập tay được ngay cả khi chưa có GTV; đã có GTV → **gợi ý 30%** phần B (vẫn sửa). Nhập xong → popup nhận (ngày + bill).
+4. L2 / L3 / thanh toán: nhập tay; TT gợi ý = phần B − đã thu (**cấn trừ dần** cho đủ 25%).
+5. Khi `tam_ung_lan1_khoa` → khóa số L1 đã chi; PAĐT/HĐ vẫn sửa được để cập nhật GTV muộn.
 
 ## Sổ chung `/tai-chinh`
-- Bảng: STT · Tên DA · TMĐT · PADT · HĐ · TU lần 1/2/3 · Thanh toán · Ghi chú.
-- A và B đều xem; sửa PADT/HĐ cần quyền sửa dự án.
+- Bảng: STT · Tên DA · TMĐT · PAĐT · HĐ · phần B · TU L1/2/3 · Thanh toán · Ghi chú.
+- A và B đều xem; sửa sổ / nhận TU chỉ Admin (`q_admin`).
 - Không xuất hóa đơn.
 
 ## Tài chính nội bộ `/tai-chinh-noi-bo`
-- Chỉ Bên B: % / số tiền chia trong team.
-- Menu ẩn với `phe=ben_a`.
+- Chỉ Bên B. Menu ẩn với `phe=ben_a`.
+- **Hai tầng:** list DA → bấm vào `/tai-chinh-noi-bo/[ma]` để chia.
+- **Chốt hiện tại:** gộp cả dự án → **chia 1 lần** trên **tổng đã nhận từ A** (đọc sổ A↔B).
+- Hai chế độ: **tỷ lệ %** hoặc **số cứng** (tổng = tổng nhận A).
+- Phần B theo GTV chỉ để đối chiếu.
+- Chưa làm: ứng nội bộ B↔B; chia theo từng đợt nhận.
 
 ```mermaid
 flowchart LR
-  PADT[PADT] --> Pick{Có HĐ?}
-  HD[Hợp đồng] --> Pick
-  Pick -->|Có HĐ| Base[Căn cứ = HĐ]
-  Pick -->|Chưa HĐ| Base2[Căn cứ = PADT]
-  Base --> P25["Phần B 25%"]
-  Base2 --> P25
-  P25 --> TU["TU lần 1 = 30%"]
-  TU --> Lock{Đã ghi TU?}
-  Lock -->|Có| Keep[Giữ số đã chi]
-  Lock -->|Chưa| Recalc[Tính lại khi đổi HĐ/PADT]
-  P25 --> GT_line[Giao tuyến → TT nốt]
+  List[List DA] --> ChiTiet["/tai-chinh-noi-bo/ma"]
+  AB[Sổ A↔B] --> Tong[Tổng nhận A]
+  Tong --> ChiTiet
+  ChiTiet --> TyLe[Tỷ lệ %]
+  ChiTiet --> SoCung[Số cứng]
 ```

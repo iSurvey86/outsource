@@ -5,7 +5,8 @@ import Link from "next/link";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { ClipboardList } from "lucide-react";
 import { loadAuthSession, isBenB } from "../../../lib/authSession";
-import { canLapKs, canSuaDuAn } from "../../../lib/menuAccess";
+import { canLapKs, canSuaDuAn, canAccessDuAn, canUploadHoSo as canUploadHoSoFn, filterDuAnForUser } from "../../../lib/menuAccess";
+import { findBenAUsers } from "../../../lib/benAUsers";
 import {
   HOP_DONG_ACTION,
   SURVEY_WORKFLOW,
@@ -69,15 +70,20 @@ export default function DuAnWorkspaceClient() {
     fetchDb()
       .then((db) => {
         if (cancelled) return;
+        const { user: u } = loadAuthSession();
         const duAn = db.duAn.find((d) => d.ma_du_an === ma);
         if (!duAn) {
           setBundle(null);
           return;
         }
+        if (u && !canAccessDuAn(duAn, u)) {
+          setBundle({ forbidden: true, ma });
+          return;
+        }
         setBundle({
           db,
           duAn,
-          benAUser: db.users.find((u) => u.id === duAn.ben_a_user_id),
+          benAUsers: findBenAUsers(db.users, duAn),
           ks: db.ksModules.filter((k) => k.du_an_id === duAn.id),
           tl: db.taiLieu.filter((t) => t.du_an_id === duAn.id),
         });
@@ -111,7 +117,7 @@ export default function DuAnWorkspaceClient() {
     (editId = null, opts = {}) => {
       if (!canSuaDuAn(perms)) {
         showAlert(
-          "Tài khoản không được phép cập nhật hợp đồng.\nChỉ Admin / người có quyền sửa dự án."
+          "Tài khoản không được phép cập nhật hợp đồng.\nChỉ Admin mới sửa sổ hợp đồng."
         );
         return;
       }
@@ -155,6 +161,18 @@ export default function DuAnWorkspaceClient() {
   if (!user || bundle === undefined) {
     return <p className="text-sm font-bold text-teal-800">Đang tải…</p>;
   }
+  if (bundle?.forbidden) {
+    return (
+      <div>
+        <p className="font-bold text-rose-700">
+          Bạn không được xem dự án {bundle.ma || ma} (không gắn tài khoản Bên A của bạn).
+        </p>
+        <Link href="/du-an" className="mt-2 inline-block text-sm font-bold text-blue-700">
+          ← Danh mục
+        </Link>
+      </div>
+    );
+  }
   if (!bundle) {
     return (
       <div>
@@ -166,14 +184,14 @@ export default function DuAnWorkspaceClient() {
     );
   }
 
-  const { duAn, benAUser, ks, tl, db } = bundle;
+  const { duAn, benAUsers, ks, tl, db } = bundle;
   const hopDongProject = asHopDongProject(duAn);
-  const allProjects = (db.duAn || []).map(asHopDongProject);
+  const allProjects = filterDuAnForUser(db.duAn || [], user).map(asHopDongProject);
   const benBUser = isBenB(user);
   const canWorkKs = canLapKs(user, perms);
   const canEditHopDong = canSuaDuAn(perms);
   const canImportHopDongExcel = Boolean(perms?.q_admin);
-  const canUploadHoSo = benBUser;
+  const canUploadHoSo = canUploadHoSoFn(user);
   const statusMap = getKsStatusMap(ks);
   const tlKs = tl.filter((t) => t.loai_kho === "khao_sat");
   const tlTk = tl.filter((t) => t.loai_kho === "thiet_ke");
@@ -427,7 +445,7 @@ export default function DuAnWorkspaceClient() {
     <div className="space-y-6">
       <DuAnWorkspaceHeader
         project={duAn}
-        benAUser={benAUser}
+        benAUsers={benAUsers}
         canAttachPdf={canSuaDuAn(perms)}
         onUpdateHopDong={openHopDongSo}
         onAlert={(msg) => showAlert(msg)}

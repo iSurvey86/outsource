@@ -1,183 +1,171 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { loadAuthSession } from "../../lib/authSession";
-import { canSuaChiaNoiBo, canSeeChiaNoiBo } from "../../lib/menuAccess";
-import { formatPct, formatVnd, giaTriBenB } from "../../lib/finance";
-import { fetchDb, logActivity, replaceChiaNoiBo, uid } from "../../lib/store";
+import { useEffect, useMemo, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { Search } from "lucide-react";
+import { loadAuthSession } from "../../lib/authSession";
+import { canSeeChiaNoiBo, filterDuAnForUser } from "../../lib/menuAccess";
+import {
+  formatPct,
+  formatVndShort,
+  giaTriBenB,
+  tongNhanTuA,
+} from "../../lib/finance";
+import { fetchDb } from "../../lib/store";
+import { giaiDoanBadgeClass } from "../../lib/duAnMeta";
 
-export default function TaiChinhNoiBoPage() {
+function trangThaiChia(chiaRows) {
+  const sum = (chiaRows || []).reduce((s, r) => s + (Number(r.ty_le) || 0), 0);
+  if (!chiaRows?.length || sum <= 0) {
+    return { label: "Chưa chia", tone: "amber" };
+  }
+  if (Math.abs(sum - 1) < 0.001) {
+    return { label: "Đã chia", tone: "emerald" };
+  }
+  return { label: `Đang nhập (${formatPct(sum)})`, tone: "sky" };
+}
+
+export default function TaiChinhNoiBoListPage() {
   const router = useRouter();
   const [db, setDb] = useState(null);
   const [user, setUser] = useState(null);
-  const [perms, setPerms] = useState(null);
-  const [duAnId, setDuAnId] = useState("");
-  const [drafts, setDrafts] = useState([]);
+  const [q, setQ] = useState("");
 
   useEffect(() => {
     const { user: u, perms: p } = loadAuthSession();
     setUser(u);
-    setPerms(p);
     if (!canSeeChiaNoiBo(u, p)) {
       router.replace("/");
       return;
     }
-    fetchDb().then((data) => {
-      setDb(data);
-      if (data.duAn[0]) setDuAnId(data.duAn[0].id);
-    });
+    fetchDb().then(setDb).catch(() => setDb({ duAn: [], giaoDich: [], chiaNoiBo: [] }));
   }, [router]);
 
-  useEffect(() => {
-    if (!db || !duAnId) return;
-    const rows = db.chiaNoiBo.filter((c) => c.du_an_id === duAnId);
-    const benBUsers = db.users.filter((u) => u.phe === "ben_b" && u.trang_thai === "active");
-    setDrafts(
-      benBUsers.map((u) => {
-        const existing = rows.find((r) => r.nguoi_dung_id === u.id);
-        return {
-          nguoi_dung_id: u.id,
-          ho_ten: u.ho_ten,
-          ty_le: existing ? existing.ty_le : 0,
-          ghi_chu: existing?.ghi_chu || "",
-        };
+  const rows = useMemo(() => {
+    if (!db || !user) return [];
+    const list = filterDuAnForUser(db.duAn || [], user);
+    const needle = q.trim().toLowerCase();
+    return list
+      .filter((d) => {
+        if (!needle) return true;
+        return (
+          String(d.ten || "")
+            .toLowerCase()
+            .includes(needle) ||
+          String(d.ma_du_an || "")
+            .toLowerCase()
+            .includes(needle)
+        );
       })
-    );
-  }, [db, duAnId]);
-
-  if (!db || !user) return <p className="text-sm font-bold text-teal-800">Đang tải…</p>;
-
-  const duAn = db.duAn.find((d) => d.id === duAnId);
-  const sum = drafts.reduce((s, d) => s + Number(d.ty_le || 0), 0);
-  const canEdit = canSuaChiaNoiBo(user, perms);
-
-  async function save() {
-    if (!canEdit) return;
-    if (Math.abs(sum - 1) > 0.001) {
-      alert("Tổng tỷ lệ phải = 100%.");
-      return;
-    }
-    const rows = drafts
-      .filter((d) => Number(d.ty_le) > 0)
-      .map((d) => ({
-        id: uid("cn"),
-        du_an_id: duAnId,
-        nguoi_dung_id: d.nguoi_dung_id,
-        ty_le: Number(d.ty_le),
-        ghi_chu: d.ghi_chu || "",
-      }));
-    try {
-      await replaceChiaNoiBo(duAnId, rows);
-      await logActivity({
-        username: user.username,
-        ho_ten: user.ho_ten,
-        phan_he: "chia_noi_bo",
-        hanh_dong: "LUU",
-        chi_tiet: duAn?.ma_du_an || duAnId,
+      .map((d) => {
+        const gd = (db.giaoDich || []).filter((g) => g.du_an_id === d.id);
+        const chia = (db.chiaNoiBo || []).filter((c) => c.du_an_id === d.id);
+        return {
+          duAn: d,
+          tongNhan: tongNhanTuA(gd),
+          phanB: giaTriBenB(d),
+          status: trangThaiChia(chia),
+        };
       });
-      setDb(await fetchDb());
-      alert("Đã lưu bảng tài chính nội bộ.");
-    } catch (err) {
-      alert(err.message || "Lỗi lưu");
-    }
+  }, [db, user, q]);
+
+  if (!db || !user) {
+    return <p className="text-sm font-bold text-teal-800">Đang tải…</p>;
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       <header>
         <h1 className="text-2xl font-black text-indigo-950">Tài chính nội bộ</h1>
-        <p className="mt-1 text-sm font-medium text-teal-800">
-          Chỉ thành viên Bên B xem / chỉnh — tách khỏi sổ A↔B
-        </p>
       </header>
 
-      <label className="block text-xs font-bold text-blue-900">
-        Dự án
-        <select
-          className="mt-1 w-full max-w-md rounded-xl border border-indigo-300 bg-indigo-50 px-3 py-2 text-sm font-medium text-indigo-950"
-          value={duAnId}
-          onChange={(e) => setDuAnId(e.target.value)}
-        >
-          {db.duAn.map((d) => (
-            <option key={d.id} value={d.id}>
-              {d.ma_du_an} — {d.ten}
-            </option>
-          ))}
-        </select>
-      </label>
-
-      {duAn ? (
-        <p className="text-sm font-bold text-blue-900">
-          Phần B: {formatVnd(giaTriBenB(duAn))} · Tổng % đang nhập:{" "}
-          <span className={Math.abs(sum - 1) < 0.001 ? "text-emerald-700" : "text-rose-700"}>
-            {formatPct(sum)}
-          </span>
-        </p>
-      ) : null}
-
-      <div className="overflow-hidden rounded-2xl border border-indigo-200 bg-white">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-indigo-100 text-xs font-black uppercase text-indigo-950">
-            <tr>
-              <th className="px-4 py-3">Thành viên</th>
-              <th className="px-4 py-3">Tỷ lệ (0–1)</th>
-              <th className="px-4 py-3">Hưởng</th>
-              <th className="px-4 py-3">Ghi chú</th>
-            </tr>
-          </thead>
-          <tbody>
-            {drafts.map((d, idx) => (
-              <tr key={d.nguoi_dung_id} className="border-t border-indigo-100">
-                <td className="px-4 py-3 font-bold text-indigo-950">{d.ho_ten}</td>
-                <td className="px-4 py-3">
-                  <input
-                    type="number"
-                    step="0.01"
-                    min="0"
-                    max="1"
-                    disabled={!canEdit}
-                    className="w-24 rounded-lg border border-indigo-300 bg-indigo-50 px-2 py-1 font-bold text-indigo-950 disabled:opacity-60"
-                    value={d.ty_le}
-                    onChange={(e) => {
-                      const next = [...drafts];
-                      next[idx] = { ...d, ty_le: e.target.value };
-                      setDrafts(next);
-                    }}
-                  />
-                </td>
-                <td className="px-4 py-3 font-black tabular-nums text-blue-900">
-                  {formatVnd(giaTriBenB(duAn || {}) * Number(d.ty_le || 0))}
-                </td>
-                <td className="px-4 py-3">
-                  <input
-                    disabled={!canEdit}
-                    className="w-full rounded-lg border border-indigo-300 bg-indigo-50 px-2 py-1 font-medium text-indigo-950 disabled:opacity-60"
-                    value={d.ghi_chu}
-                    onChange={(e) => {
-                      const next = [...drafts];
-                      next[idx] = { ...d, ghi_chu: e.target.value };
-                      setDrafts(next);
-                    }}
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="relative max-w-md">
+        <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-indigo-500" />
+        <input
+          value={q}
+          onChange={(e) => setQ(e.target.value)}
+          placeholder="Tìm mã / tên dự án…"
+          className="w-full rounded-xl border border-indigo-300 bg-indigo-50 py-2 pl-8 pr-3 text-sm font-medium text-indigo-950 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
+        />
       </div>
 
-      {canEdit ? (
-        <button
-          type="button"
-          onClick={save}
-          className="rounded-xl bg-gradient-to-r from-indigo-600 to-teal-600 px-5 py-2.5 text-sm font-black text-white"
-        >
-          Lưu bảng tài chính nội bộ
-        </button>
-      ) : (
-        <p className="text-sm font-medium text-teal-800">Bạn chỉ có quyền xem.</p>
-      )}
+      <div className="overflow-hidden rounded-2xl border border-indigo-200 bg-white shadow-sm">
+        <div className="overflow-x-auto">
+          <table className="w-full min-w-[720px] border-collapse text-sm">
+            <thead className="bg-indigo-800 text-xs font-black uppercase tracking-wide text-white">
+              <tr>
+                <th className="w-12 px-3 py-3 text-center">STT</th>
+                <th className="px-3 py-3 text-left">Dự án</th>
+                <th className="w-28 px-3 py-3 text-center">Giai đoạn</th>
+                <th className="w-36 px-3 py-3 text-right">Đã nhận A</th>
+                <th className="w-36 px-3 py-3 text-right">Phần B GTV</th>
+                <th className="w-36 px-3 py-3 text-center">Chia nội bộ</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row, idx) => {
+                const d = row.duAn;
+                const href = `/tai-chinh-noi-bo/${encodeURIComponent(d.ma_du_an)}`;
+                return (
+                  <tr
+                    key={d.id}
+                    className="border-t border-indigo-100 odd:bg-white even:bg-indigo-50/50 hover:bg-teal-50/80"
+                  >
+                    <td className="px-3 py-3 text-center font-bold tabular-nums text-indigo-900">
+                      {idx + 1}
+                    </td>
+                    <td className="px-3 py-3">
+                      <Link href={href} className="font-bold text-blue-700 hover:text-teal-700">
+                        {d.ten}
+                      </Link>
+                      <p className="mt-0.5 text-xs font-semibold text-indigo-600/80">{d.ma_du_an}</p>
+                    </td>
+                    <td className="px-3 py-3 text-center">
+                      <span
+                        className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-black ring-1 ${giaiDoanBadgeClass(
+                          d.giai_doan
+                        )}`}
+                      >
+                        {d.giai_doan || "—"}
+                      </span>
+                    </td>
+                    <td className="px-3 py-3 text-right font-bold tabular-nums text-indigo-950">
+                      <Link href={href} className="hover:text-teal-700">
+                        {row.tongNhan > 0 ? formatVndShort(row.tongNhan) : "—"}
+                      </Link>
+                    </td>
+                    <td className="px-3 py-3 text-right font-semibold tabular-nums text-indigo-800">
+                      {row.phanB > 0 ? formatVndShort(row.phanB) : "—"}
+                    </td>
+                    <td className="px-3 py-3 text-center">
+                      <Link
+                        href={href}
+                        className={`inline-flex rounded-full px-2.5 py-0.5 text-[11px] font-bold ring-1 ${
+                          row.status.tone === "emerald"
+                            ? "bg-emerald-50 text-emerald-800 ring-emerald-200"
+                            : row.status.tone === "sky"
+                              ? "bg-sky-50 text-sky-800 ring-sky-200"
+                              : "bg-amber-50 text-amber-900 ring-amber-200"
+                        }`}
+                      >
+                        {row.status.label}
+                      </Link>
+                    </td>
+                  </tr>
+                );
+              })}
+              {!rows.length ? (
+                <tr>
+                  <td colSpan={6} className="px-4 py-8 text-center text-sm font-medium text-teal-700">
+                    Không có dự án khớp.
+                  </td>
+                </tr>
+              ) : null}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

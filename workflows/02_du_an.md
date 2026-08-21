@@ -1,13 +1,23 @@
 # Dự án — danh mục & workspace
 
 ## Danh mục `/du-an`
-- Liệt kê DA; tạo mới (Bên B / quyền sửa).
+- Liệt kê DA; tạo mới (Admin); cột **Bên A** chỉ Admin thấy (`ben_a_user_ids`).
 - Click → `/du-an/[ma]`.
+- Sửa DA: **bắt buộc** ≥1 tài khoản Bên A (nhiều người = nhóm).
+- Bên A: chỉ DA gắn mình; ẩn cột Bên A / thao tác sửa-xóa.
+
+## Gán Bên A (thống nhất)
+- **ID:** danh sách `nguoi_dung.id` (`phe=ben_a`) → `du_an.ben_a_user_ids` (jsonb mảng).
+- **1 người hoặc nhóm:** chọn nhiều checkbox; mỗi người trong list đều thấy DA.
+- Cột legacy `ben_a_user_id` = phần tử đầu (đồng bộ khi lưu). SQL: `021_ben_a_user_ids.sql`.
+- **Tạo DA** (`/nhap-du-an`) / **Sửa DA**: bắt buộc ≥1 tài khoản Bên A.
+- **Lọc:** `filterDuAnForUser` — user A thấy DA nếu id của họ nằm trong mảng.
+- Không nhầm với chữ «Bên A» trên HĐ (tên pháp lý).
 
 ## Workspace `/du-an/[ma]`
 Các khối chính:
 
-1. **Header thông tin chung** — CĐT, địa điểm, Hợp đồng (mở sổ), Giao A / quy mô, TMĐT, Giá trị tư vấn.
+1. **Header thông tin chung** — CĐT, địa điểm, Hợp đồng (mở sổ), Giao A / quy mô, TMĐT, Giá trị tư vấn; hiện tên Bên A nếu đã gán.
 2. **Sổ hợp đồng** (overlay) — `?action=hop_dong` hoặc bấm mục Hợp đồng; cần Supabase + SQL `008`–`018`.
 3. **Khảo sát** — chỉ Bên B: module stub NVKS→…→NT. Bên A: ẩn khối này.
 4. **Hồ sơ khảo sát / thiết kế** — folder chuẩn + folder tùy chọn (Bên B: `+` / đổi tên / xóa); View lưới·danh sách·chi tiết; upload trong folder.
@@ -19,6 +29,9 @@ Nháp → Triển khai → Giao tuyến → Hoàn thành / Tạm dừng.
 ```mermaid
 flowchart TD
   Catalog["/du-an"] --> WS["/du-an/ma"]
+  Catalog --> GanA[Gán ben_a_user_ids]
+  Nhap["/nhap-du-an"] --> GanA
+  GanA --> Filter[A chỉ thấy DA có mình trong mảng]
   WS --> Info[Header thông tin]
   Info --> SoHD[Sổ hợp đồng]
   WS --> KS[Khảo sát - chỉ B]

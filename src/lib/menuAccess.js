@@ -1,4 +1,5 @@
-import { isBenB } from "./authSession";
+import { isBenA, isBenB } from "./authSession";
+import { duAnVisibleToBenA } from "./benAUsers";
 
 export function canSeeChiaNoiBo(user, perms) {
   return isBenB(user) && !!perms?.q_chia_noi_bo;
@@ -16,12 +17,45 @@ export function canSeeQlht(user, perms) {
   return !!perms?.q_admin || !!perms?.q_system_log;
 }
 
+/** Tạo / sửa metadata DA / gắn Bên A / PDF Giao A / sổ HĐ — chỉ Admin (ma trận). */
 export function canSuaDuAn(perms) {
   return !!perms?.q_sua_du_an;
 }
 
 export function canXoaDuAn(perms) {
   return !!perms?.q_xoa_du_an;
+}
+
+/** Sổ A↔B: sửa số liệu / nhận tạm ứng — chỉ Admin. */
+export function canSuaTaiChinhAb(perms) {
+  return !!perms?.q_admin;
+}
+
+/** Upload hồ sơ KS|TK + folder tùy chọn — Bên B (Admin/PM/Member). */
+export function canUploadHoSo(user) {
+  return isBenB(user);
+}
+
+/**
+ * Bên A chỉ thấy DA có mình trong `ben_a_user_ids` (hoặc legacy ben_a_user_id).
+ * Bên B (mọi role MVP): mọi DA.
+ */
+export function filterDuAnForUser(duAnList, user) {
+  const list = Array.isArray(duAnList) ? duAnList : [];
+  if (!user) return [];
+  if (isBenA(user)) {
+    const uid = String(user.id || "");
+    return list.filter((d) => duAnVisibleToBenA(d, uid));
+  }
+  return list;
+}
+
+export function canAccessDuAn(duAn, user) {
+  if (!user || !duAn) return false;
+  if (isBenA(user)) {
+    return duAnVisibleToBenA(duAn, user.id);
+  }
+  return true;
 }
 
 /** Path guard — trả về route redirect nếu không được vào */

@@ -28,3 +28,9 @@ export function isBenB(user) {
 export function isBenA(user) {
   return user?.phe === "ben_a";
 }
+
+/** Lần đầu / admin đặt lại MK — bắt buộc đổi trước khi dùng app. */
+export function userMustChangePassword(user) {
+  if (!user || user.is_view_as_persona) return false;
+  return Number(user.bat_doi_mk) === 1;
+}

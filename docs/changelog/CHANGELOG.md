@@ -1,5 +1,21 @@
 # Changelog OUTSRC
 
+## 0.4.0 — 2026-08-21
+
+**Tài chính gọn + nội bộ 2 tầng + gán nhóm Bên A**
+
+### Mới
+- Gán nhiều tài khoản Bên A trên một DA (nhóm); SQL `021_ben_a_user_ids.sql`
+- Tài chính nội bộ: list DA → chi tiết; chia 1 lần trên tổng đã nhận từ A (% hoặc số cứng)
+- Đổi mật khẩu / bắt đổi lần đầu; ma trận phân quyền enforce trên UI
+
+### Cải thiện
+- Nhận tạm ứng A↔B: ngoài nhập số → trong chỉ ngày + bill; số tiền gắn link bill
+- Ngày hiển thị dd/mm/yyyy; ẩn cột Bên A với viewer A; đồng bộ khi «Xem quyền»
+
+### Sửa lỗi
+- Xem quyền Bên A không còn giữ filter Admin (không lộ DA chưa gán)
+
 ## 0.3.0 — 2026-08-21
 
 **Hồ sơ folder tùy chọn + Sổ hợp đồng**
@@ -30,4 +46,4 @@
 - Thương hiệu HỆ THỐNG / OUTSRC; giao diện teal–blue–emerald; khối tài khoản trên sidebar
 
 ### Sửa lỗi
-- Chuẩn hóa API key khi copy nhầm; thông báo rõ khi khóa Supabase không hợp lệ
+- Chuẩn hóa khóa API khi copy nhầm; thông báo rõ khi khóa Supabase không hợp lệ

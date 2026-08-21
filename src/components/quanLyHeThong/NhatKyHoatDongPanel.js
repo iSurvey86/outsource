@@ -597,7 +597,7 @@ export default function NhatKyHoatDongPanel({ currentUser }) {
                         <span
                           className={`inline-block text-xs font-bold ${getPhanHeClass(log.phan_he)}`}
                         >
-                          {log.phan_he}
+                          {String(log.phan_he || "").toUpperCase()}
                         </span>
                       </td>
                       <td className="px-3 py-3.5 text-center align-middle">

@@ -2,15 +2,17 @@
  * LocalStorage fallback (dev không có Supabase).
  */
 
-const DB_KEY = "outsrc_db_v6";
+const DB_KEY = "outsrc_db_v7";
 const LEGACY_KEYS = [
   "outsrc_db_v1",
   "outsrc_db_v2",
   "outsrc_db_v3",
   "outsrc_db_v4",
   "outsrc_db_v5",
+  "outsrc_db_v6",
 ];
 
+/** Đồng bộ ma trận docs/Phan_quyen_OUTSRC.md — PM/Member không CRUD metadata DA. */
 export const SEED_ROLES = {
   admin: {
     phan_quyen: "admin",
@@ -26,7 +28,7 @@ export const SEED_ROLES = {
   pm: {
     phan_quyen: "pm",
     q_admin: 0,
-    q_sua_du_an: 1,
+    q_sua_du_an: 0,
     q_xoa_du_an: 0,
     q_lap_ks: 1,
     q_xuat_ban: 1,
@@ -37,7 +39,7 @@ export const SEED_ROLES = {
   member: {
     phan_quyen: "member",
     q_admin: 0,
-    q_sua_du_an: 1,
+    q_sua_du_an: 0,
     q_xoa_du_an: 0,
     q_lap_ks: 1,
     q_xuat_ban: 1,
@@ -67,6 +69,7 @@ export const DEMO_USERS = [
     phe: "ben_b",
     phan_quyen: "admin",
     trang_thai: "active",
+    bat_doi_mk: 1,
   },
   {
     id: "u-pm",
@@ -76,6 +79,7 @@ export const DEMO_USERS = [
     phe: "ben_b",
     phan_quyen: "pm",
     trang_thai: "active",
+    bat_doi_mk: 1,
   },
   {
     id: "u-mem",
@@ -85,6 +89,7 @@ export const DEMO_USERS = [
     phe: "ben_b",
     phan_quyen: "member",
     trang_thai: "active",
+    bat_doi_mk: 1,
   },
   {
     id: "u-a1",
@@ -94,6 +99,7 @@ export const DEMO_USERS = [
     phe: "ben_a",
     phan_quyen: "ben_a_viewer",
     trang_thai: "active",
+    bat_doi_mk: 1,
   },
 ];
 
@@ -122,6 +128,7 @@ export function seedLocalDb() {
         ma_du_an: "QN-2026-BCNCKT-DEMO01",
         ten: "Xây dựng đường dây 110kV từ TBA 110kV Vân Đồn 2 đến vị trí 63",
         ben_a_user_id: "u-a1",
+        ben_a_user_ids: ["u-a1"],
         phu_trach_id: "u-pm",
         chu_dau_tu: "Công ty Điện lực Quảng Ninh",
         quy_mo: "Xây mới ĐZ 110kV ~16,48 km; cáp ngầm 22kV đoạn đấu nối.",
@@ -154,6 +161,7 @@ export function seedLocalDb() {
         ma_du_an: "HP-2026-TKBVTC-DEMO02",
         ten: "Cải tạo TBA 110kV Demo Hải Phòng",
         ben_a_user_id: "u-a1",
+        ben_a_user_ids: ["u-a1"],
         phu_trach_id: "u-pm",
         chu_dau_tu: "Công ty Điện lực Hải Phòng",
         quy_mo: "Cải tạo máy biến áp + ngăn lộ 110kV.",
@@ -279,7 +287,7 @@ export function seedLocalDb() {
 
 export function ensureLocalDemo(db) {
   if (!db) return seedLocalDb();
-  if (!db.roles) db.roles = SEED_ROLES;
+  db.roles = { ...SEED_ROLES };
   if (!Array.isArray(db.users)) db.users = [];
   for (const demo of DEMO_USERS) {
     const idx = db.users.findIndex(

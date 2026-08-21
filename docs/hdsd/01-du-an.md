@@ -1,11 +1,15 @@
 # Dự án & workspace
 
 ## Danh mục dự án
-Vào **Dự án** để xem danh sách. Tạo mới nếu bạn có quyền sửa dự án.
+Vào **Dự án** để xem danh sách.
+
+- **Admin:** cột **Bên A** (ai được gắn xem DA); tạo/sửa/xóa; **Nhập dự án**.
+- **Bên A:** chỉ thấy DA gắn tài khoản mình (có thể nhiều người cùng một DA); **không** thấy cột Bên A, không sửa/xóa.
+- Sửa / nhập DA: **bắt buộc** chọn ≥1 tài khoản Bên A (checkbox — 1 người hoặc nhóm).
 
 ## Trong một dự án
-1. **Thông tin chung (header)** — chủ đầu tư, địa điểm, hợp đồng, Giao A / quy mô, TMĐT, **Giá trị tư vấn**.
-2. **Hợp đồng** — bấm số HĐ hoặc «Nhấn để mở sổ hợp đồng» để mở **Sổ hợp đồng** (nhập / quét PDF / phụ lục / thầu phụ). Cần kết nối Supabase.
+1. **Thông tin chung (header)** — chủ đầu tư, địa điểm, hợp đồng, Giao A / quy mô, TMĐT, **Giá trị tư vấn**; tên Bên A đã gán (nếu có).
+2. **Hợp đồng** — bấm số HĐ hoặc «Nhấn để mở sổ hợp đồng» để mở **Sổ hợp đồng**. Cần Supabase.
 3. **Khảo sát** — chỉ Bên B: cập nhật / xuất bản các bước KS (stub). Bên A không thấy khối này.
-4. **Hồ sơ khảo sát / thiết kế** — xem theo thư mục; Bên B có thể **+** thêm thư mục tùy chọn, đổi tên / xóa thư mục tùy chọn, tải file vào trong thư mục. Đổi kiểu xem (Lưới / Danh sách / Chi tiết) bằng nút **View**.
-5. **Tài chính** — không ghi trên trang dự án; vào menu **Tài chính** (A↔B) hoặc **Tài chính nội bộ** (Bên B).
+4. **Hồ sơ khảo sát / thiết kế** — thư mục chuẩn + tùy chọn; View Lưới / Danh sách / Chi tiết.
+5. **Tài chính** — vào menu **Tài chính** (A↔B) hoặc **Tài chính nội bộ** (Bên B).

@@ -93,6 +93,7 @@ export function WorkspaceSectionTitle({ icon, children }) {
 export default function DuAnWorkspaceHeader({
   project,
   benAUser,
+  benAUsers,
   canAttachPdf = false,
   onPdfAttached,
   onAlert,
@@ -102,6 +103,13 @@ export default function DuAnWorkspaceHeader({
   const [uploading, setUploading] = useState(false);
 
   if (!project) return null;
+
+  const benAList =
+    Array.isArray(benAUsers) && benAUsers.length
+      ? benAUsers
+      : benAUser
+        ? [benAUser]
+        : [];
 
   const giaoADayDu = (project.qd_giao_a_day_du || "").trim();
   const pdfGiaoAGoc = (project.link_pdf_giao_a_goc || "").trim();
@@ -192,7 +200,7 @@ export default function DuAnWorkspaceHeader({
               <span className="font-semibold text-slate-800">Giai đoạn:</span>{" "}
               <span className="font-bold text-teal-700">{giaiDoanBadge}</span>
             </span>
-            {benAUser ? (
+            {benAList.length ? (
               <>
                 <span className={metaSepClass} aria-hidden>
                   |
@@ -200,8 +208,11 @@ export default function DuAnWorkspaceHeader({
                 <span>
                   <span className="font-semibold text-slate-800">Bên A:</span>{" "}
                   <span className="font-semibold text-slate-700">
-                    {benAUser.ho_ten}
-                    {benAUser.username ? ` (${benAUser.username})` : ""}
+                    {benAList
+                      .map((u) =>
+                        u.username ? `${u.ho_ten} (${u.username})` : u.ho_ten
+                      )
+                      .join(", ")}
                   </span>
                 </span>
               </>

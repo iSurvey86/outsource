@@ -20,6 +20,7 @@ import {
   uid,
   updateRow,
 } from "./store";
+import { benAAssignPatch } from "./benAUsers";
 
 function mapGiaiDoan(gd) {
   const chuan = normalizeGiaiDoanChuan(gd) || String(gd || "").trim().toUpperCase();
@@ -131,7 +132,12 @@ export async function saveNhapDuAnPayload({
         tmdt: tmdtVnd,
         gia_tri_tu_van: 0,
         nguon_gia_tri: "padt_tam_tinh",
-        ben_a_user_id: "",
+        ben_a_user_id: row.ben_a_user_id || "",
+        ben_a_user_ids: Array.isArray(row.ben_a_user_ids)
+          ? row.ben_a_user_ids
+          : row.ben_a_user_id
+            ? [row.ben_a_user_id]
+            : [],
       };
 
       const existing = byMa.get(ma.toUpperCase());
@@ -151,6 +157,14 @@ export async function saveNhapDuAnPayload({
         };
         if (form.link_pdf_giao_a_goc) {
           patch.link_pdf_giao_a_goc = form.link_pdf_giao_a_goc;
+        }
+        const ids = form.ben_a_user_ids?.length
+          ? form.ben_a_user_ids
+          : form.ben_a_user_id
+            ? [form.ben_a_user_id]
+            : [];
+        if (ids.length) {
+          Object.assign(patch, benAAssignPatch(ids));
         }
         await updateRow("du_an", existing.id, patch);
         if (pdfFileName) {

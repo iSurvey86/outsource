@@ -3,19 +3,31 @@
 ## Đăng nhập
 - Form User / Mật khẩu trên `/login` (hoặc redirect khi chưa session).
 - Seed: `phuongdm`/`admin123` (B admin), `tinhtv`/`pm123`, `hienth`/`mem123`, `chulm`/`a123` (A).
-- Session: `localStorage` keys `outsrc_user`, `outsrc_perms`.
-- Sau login → `POST_LOGIN_ROUTE` = `/`.
+- Session: `sessionStorage` keys `outsrc_user`, `outsrc_perms`.
+- Cột `bat_doi_mk` (SQL `020`): =1 → sau login ép `/tai-khoan` đổi MK; sau đổi =0 và đăng nhập lại.
+- Tạo user / Admin đặt lại MK → `bat_doi_mk=1`.
+- API: `POST /api/auth/login`, `POST /api/auth/change-password`.
+- Sau login → `/tai-khoan` nếu bắt đổi MK, không thì `POST_LOGIN_ROUTE`.
 
-## Phe & quyền
-| Trường | Ý nghĩa |
-|--------|---------|
-| `phe` | `ben_a` \| `ben_b` |
-| `role` | `admin` \| `pm` \| `member` |
-| `perms` | cờ `q_*` (sửa/xóa DA, lập KS, chia nội bộ, admin…) |
+## Phe & quyền (ma trận đã enforce UI)
+Nguồn: `docs/Phan_quyen_OUTSRC.md` · seed `SEED_ROLES` / SQL `019_phan_quyen_ma_tran.sql`.
 
-## Guard
-- `/tai-chinh-noi-bo`, `/chia-noi-bo`: chỉ Bên B + `q_chia_noi_bo`
+| Hạng mục | Admin | PM | Member | Bên A |
+|----------|:-----:|:--:|:------:|:-----:|
+| QLHT / CRUD user | Có | Không | Không | Không |
+| Tạo/sửa/xóa DA metadata | Có | Không | Không | Không |
+| Xem danh sách DA | Mọi DA | Mọi DA | Mọi DA | **Chỉ DA gắn `ben_a_user_id`** |
+| Lập/XB KS | Có | Có | Có (=PM) | Ẩn khối KS |
+| Upload hồ sơ | Có | Có | Có | Chỉ xem |
+| Sửa sổ A↔B / nhận TU | Có | Chỉ xem | Chỉ xem | Chỉ xem (DA mình) |
+| Tài chính nội bộ | Có | Có | **Không** | Ẩn |
+
+Helper: `menuAccess.js` — `filterDuAnForUser`, `canAccessDuAn`, `canSuaTaiChinhAb`, `canSuaDuAn`, …
+
+## Guard path
+- `/tai-chinh-noi-bo`, `/chia-noi-bo`: Bên B + `q_chia_noi_bo`
 - `/quan-ly-he-thong`: `q_admin` hoặc `q_system_log`
+- `/nhap-du-an`: `q_sua_du_an` (Admin)
 
 ## Lỗi kết nối Supabase
 - Key sai / thiếu → thông báo hướng dẫn copy lại **anon public** JWT (`eyJ…`) vào env, restart/redeploy.

@@ -18,6 +18,7 @@ import {
   listFoldersForKho,
   itemsInFolder,
 } from "../../lib/hoSoFolders";
+import { formatNgayVi } from "../../lib/formatNgay";
 
 /** 3 kiểu xem — mặc định lưới 3 cột */
 export const HOSO_VIEW_MODES = [
@@ -359,7 +360,8 @@ export default function HoSoKhoPanel({
                     </span>
                   </span>
                   <span className="text-[11px] font-medium text-teal-800">
-                    {u?.ho_ten || "—"} · {t.thoi_gian?.slice(0, 10)}
+                    {u?.ho_ten || "—"} ·{" "}
+                    {t.thoi_gian ? formatNgayVi(t.thoi_gian) || t.thoi_gian.slice(0, 10) : "—"}
                   </span>
                 </li>
               );

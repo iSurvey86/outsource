@@ -16,6 +16,25 @@
 /** @type {ChangelogRelease[]} — mới nhất ở đầu */
 export const APP_CHANGELOG = [
   {
+    version: "0.4.0",
+    date: "2026-08-21",
+    title: "Tài chính gọn + nội bộ 2 tầng + gán nhóm Bên A",
+    sections: {
+      added: [
+        "Gán nhiều tài khoản Bên A trên một DA (nhóm); SQL 021 ben_a_user_ids",
+        "Tài chính nội bộ: list DA → trang chi tiết; chia 1 lần trên tổng đã nhận từ A (tỷ lệ hoặc số cứng)",
+        "Đổi mật khẩu / bắt đổi lần đầu; ma trận phân quyền enforce trên UI",
+      ],
+      improved: [
+        "Nhận tạm ứng A↔B: ngoài nhập số → trong chỉ ngày + bill; số tiền gắn link bill",
+        "Ngày hiển thị dd/mm/yyyy; danh mục DA ẩn cột Bên A với viewer A; đồng bộ khi «Xem quyền»",
+      ],
+      fixed: [
+        "Xem quyền Bên A không còn giữ filter Admin (không lộ DA chưa gán)",
+      ],
+    },
+  },
+  {
     version: "0.3.0",
     date: "2026-08-21",
     title: "Hồ sơ folder tùy chọn + Sổ hợp đồng",

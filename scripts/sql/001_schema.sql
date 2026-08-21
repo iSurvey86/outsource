@@ -21,7 +21,8 @@ create table if not exists nguoi_dung (
   ho_ten text not null,
   phe text not null check (phe in ('ben_a', 'ben_b')),
   phan_quyen text references phan_quyen(phan_quyen),
-  trang_thai text not null default 'active'
+  trang_thai text not null default 'active',
+  bat_doi_mk int not null default 1
 );
 
 create table if not exists du_an (
@@ -29,6 +30,7 @@ create table if not exists du_an (
   ma_du_an text unique not null,
   ten text not null,
   ben_a_user_id text references nguoi_dung(id),
+  ben_a_user_ids jsonb not null default '[]'::jsonb,
   phu_trach_id text references nguoi_dung(id),
   chu_dau_tu text,
   quy_mo text,
@@ -153,8 +155,8 @@ end $$;
 -- ========== SEED ==========
 insert into phan_quyen (phan_quyen, q_admin, q_sua_du_an, q_xoa_du_an, q_lap_ks, q_xuat_ban, q_chia_noi_bo, q_sua_chia_noi_bo, q_system_log) values
   ('admin', 1, 1, 1, 1, 1, 1, 1, 1),
-  ('pm', 0, 1, 0, 1, 1, 1, 1, 0),
-  ('member', 0, 0, 0, 1, 0, 1, 0, 0),
+  ('pm', 0, 0, 0, 1, 1, 1, 1, 0),
+  ('member', 0, 0, 0, 1, 1, 0, 0, 0),
   ('ben_a_viewer', 0, 0, 0, 0, 0, 0, 0, 0)
 on conflict (phan_quyen) do update set
   q_admin = excluded.q_admin,
@@ -166,18 +168,19 @@ on conflict (phan_quyen) do update set
   q_sua_chia_noi_bo = excluded.q_sua_chia_noi_bo,
   q_system_log = excluded.q_system_log;
 
-insert into nguoi_dung (id, username, mat_khau, ho_ten, phe, phan_quyen, trang_thai) values
-  ('u-admin', 'phuongdm', 'admin123', 'Phương DM', 'ben_b', 'admin', 'active'),
-  ('u-pm', 'tinhtv', 'pm123', 'Tình TV', 'ben_b', 'pm', 'active'),
-  ('u-mem', 'hienth', 'mem123', 'Hiền TH', 'ben_b', 'member', 'active'),
-  ('u-a1', 'chulm', 'a123', 'Chu LM (Bên A)', 'ben_a', 'ben_a_viewer', 'active')
+insert into nguoi_dung (id, username, mat_khau, ho_ten, phe, phan_quyen, trang_thai, bat_doi_mk) values
+  ('u-admin', 'phuongdm', 'admin123', 'Phương DM', 'ben_b', 'admin', 'active', 1),
+  ('u-pm', 'tinhtv', 'pm123', 'Tình TV', 'ben_b', 'pm', 'active', 1),
+  ('u-mem', 'hienth', 'mem123', 'Hiền TH', 'ben_b', 'member', 'active', 1),
+  ('u-a1', 'chulm', 'a123', 'Chu LM (Bên A)', 'ben_a', 'ben_a_viewer', 'active', 1)
 on conflict (id) do update set
   username = excluded.username,
   mat_khau = excluded.mat_khau,
   ho_ten = excluded.ho_ten,
   phe = excluded.phe,
   phan_quyen = excluded.phan_quyen,
-  trang_thai = excluded.trang_thai;
+  trang_thai = excluded.trang_thai,
+  bat_doi_mk = excluded.bat_doi_mk;
 
 insert into du_an (
   id, ma_du_an, ten, ben_a_user_id, phu_trach_id, chu_dau_tu, quy_mo, dia_diem, giai_doan,

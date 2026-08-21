@@ -89,6 +89,7 @@ export default function QuanLyHeThongPage() {
         phe: form.phe,
         phan_quyen: form.phe === "ben_a" ? "ben_a_viewer" : form.phan_quyen,
         trang_thai: "active",
+        bat_doi_mk: 1,
       });
       await logActivity({
         username: user.username,
@@ -134,6 +135,7 @@ export default function QuanLyHeThongPage() {
       };
       if (editForm.mat_khau.trim()) {
         patch.mat_khau = editForm.mat_khau.trim();
+        patch.bat_doi_mk = 1;
       }
       await updateRow("nguoi_dung", editUser.id, patch);
       await logActivity({
@@ -372,7 +374,7 @@ export default function QuanLyHeThongPage() {
                 />
               </div>
               <div>
-                <label className="text-[10px] font-bold uppercase text-gray-400">Mật khẩu</label>
+                <label className="text-[10px] font-bold uppercase text-teal-700">Mật khẩu tạm</label>
                 <input
                   required
                   type="password"
@@ -380,7 +382,11 @@ export default function QuanLyHeThongPage() {
                   className="mt-1 w-full rounded-xl border border-sky-300 bg-sky-50 px-3 py-2 text-sm font-medium text-blue-950"
                   value={form.mat_khau}
                   onChange={(e) => setForm({ ...form, mat_khau: e.target.value })}
+                  placeholder="User phải đổi khi đăng nhập lần đầu"
                 />
+                <p className="mt-1 text-[10px] font-medium text-teal-700">
+                  Đăng nhập lần đầu sẽ bắt buộc đổi mật khẩu.
+                </p>
               </div>
               <div>
                 <label className="text-[10px] font-bold uppercase text-gray-400">Họ tên</label>
@@ -484,7 +490,7 @@ export default function QuanLyHeThongPage() {
                 />
               </div>
               <div>
-                <label className="text-[10px] font-bold uppercase text-gray-400">
+                <label className="text-[10px] font-bold uppercase text-teal-700">
                   Mật khẩu mới (để trống = giữ nguyên)
                 </label>
                 <input
@@ -494,6 +500,9 @@ export default function QuanLyHeThongPage() {
                   value={editForm.mat_khau}
                   onChange={(e) => setEditForm({ ...editForm, mat_khau: e.target.value })}
                 />
+                <p className="mt-1 text-[10px] font-medium text-teal-700">
+                  Nếu đặt lại: user phải đổi mật khẩu ở lần đăng nhập kế tiếp.
+                </p>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>

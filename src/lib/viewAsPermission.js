@@ -142,6 +142,7 @@ export function buildViewAsUserFromPreset(preset) {
     phe: preset.phe,
     phan_quyen: preset.phan_quyen,
     trang_thai: "active",
+    bat_doi_mk: 0,
     is_view_as_persona: true,
   };
 }

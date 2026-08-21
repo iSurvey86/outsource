@@ -12,6 +12,7 @@ import {
   LogOut,
   Eye,
   EyeOff,
+  KeyRound,
 } from "lucide-react";
 import {
   APP_NAME,
@@ -20,7 +21,7 @@ import {
   POST_LOGIN_ROUTE,
   SHOW_DASHBOARD,
 } from "../lib/brand";
-import { loadAuthSession, setAuthSession } from "../lib/authSession";
+import { loadAuthSession, setAuthSession, userMustChangePassword } from "../lib/authSession";
 import { canSeeChiaNoiBo, canSeeQlht, checkPathAccess } from "../lib/menuAccess";
 import { loginLocal, logActivity, fetchDb, hasSupabase } from "../lib/store";
 import { startOnlinePresence } from "../lib/onlinePresence";
@@ -38,6 +39,7 @@ import {
   stopViewAsPermission,
 } from "../lib/viewAsPermission";
 import { ViewAsPermissionBanner } from "./ViewAsPermissionModal";
+import { loginUserFacingError } from "../lib/publicErrors";
 
 const navItemClass = (active) =>
   `flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition ${
@@ -67,6 +69,7 @@ export default function AppLayout({ children }) {
   const [password, setPassword] = useState("");
   const [showPw, setShowPw] = useState(false);
   const [loginError, setLoginError] = useState("");
+  const [loginNotice, setLoginNotice] = useState("");
   const [busy, setBusy] = useState(false);
   const [viewAsMenuOpen, setViewAsMenuOpen] = useState(false);
   const [viewAsActive, setViewAsActive] = useState(false);
@@ -82,6 +85,18 @@ export default function AppLayout({ children }) {
     setLoading(false);
     if (typeof window !== "undefined" && !u && !hasSupabase) {
       fetchDb().catch(() => {});
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      const notice = sessionStorage.getItem("outsrc_login_notice");
+      if (notice) {
+        sessionStorage.removeItem("outsrc_login_notice");
+        setLoginNotice(notice);
+      }
+    } catch {
+      /* ignore */
     }
   }, []);
 
@@ -109,7 +124,15 @@ export default function AppLayout({ children }) {
       return;
     }
     if (user && pathname === "/login") {
-      router.replace(POST_LOGIN_ROUTE);
+      if (userMustChangePassword(user)) {
+        router.replace("/tai-khoan");
+      } else {
+        router.replace(POST_LOGIN_ROUTE);
+      }
+      return;
+    }
+    if (user && userMustChangePassword(user) && pathname !== "/tai-khoan") {
+      router.replace("/tai-khoan");
       return;
     }
     if (user && !SHOW_DASHBOARD && (pathname === "/" || pathname === "")) {
@@ -134,12 +157,7 @@ export default function AppLayout({ children }) {
     try {
       const res = await loginLocal(username, password);
       if (!res.ok) {
-        let msg = res.error || "Đăng nhập thất bại.";
-        if (/invalid api key/i.test(msg)) {
-          msg =
-            "Supabase API key sai. Vào Dashboard → Settings → API, copy lại anon (public) key vào .env.local (và Vercel env), rồi restart/redeploy.";
-        }
-        setLoginError(msg);
+        setLoginError(loginUserFacingError(res.error || "Đăng nhập thất bại."));
         setBusy(false);
         return;
       }
@@ -155,14 +173,9 @@ export default function AppLayout({ children }) {
         chi_tiet: `Phe ${res.user.phe}`,
       });
       setBusy(false);
-      router.replace(POST_LOGIN_ROUTE);
+      router.replace(userMustChangePassword(res.user) ? "/tai-khoan" : POST_LOGIN_ROUTE);
     } catch (err) {
-      let msg = err.message || "Lỗi đăng nhập / kết nối DB.";
-      if (/invalid api key/i.test(msg)) {
-        msg =
-          "Supabase API key sai. Copy lại anon (public) key từ Supabase → Settings → API.";
-      }
-      setLoginError(msg);
+      setLoginError(loginUserFacingError(err));
       setBusy(false);
     }
   }
@@ -275,6 +288,11 @@ export default function AppLayout({ children }) {
             </p>
             <h1 className="mt-1 text-3xl font-black leading-none text-blue-900">{APP_NAME}</h1>
           </div>
+          {loginNotice ? (
+            <p className="mb-4 rounded-lg bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-800 ring-1 ring-emerald-200">
+              {loginNotice}
+            </p>
+          ) : null}
           <label className="mb-1.5 block text-xs font-bold text-blue-900">Tài khoản</label>
           <input
             className="mb-5 w-full rounded-xl border border-sky-300 bg-sky-50 px-3 py-2.5 text-sm font-medium text-blue-950 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
@@ -324,6 +342,7 @@ export default function AppLayout({ children }) {
   const showQlht = canSeeQlht(user, perms);
   const showViewAsEntry = canUseViewAsPermission();
   const viewAsMeta = viewAsActive ? getViewAsMeta() : null;
+  const mustChangePw = userMustChangePassword(user);
 
   return (
     <div className="flex h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-teal-50/80 to-emerald-50">
@@ -335,6 +354,13 @@ export default function AppLayout({ children }) {
           <p className="text-lg font-black tracking-tight">{APP_NAME}</p>
         </div>
         <nav className="flex flex-1 flex-col gap-1 overflow-y-auto p-3">
+          {mustChangePw ? (
+            <Link href="/tai-khoan" className={navItemClass(pathname.startsWith("/tai-khoan"))}>
+              <KeyRound className="h-4 w-4 shrink-0" />
+              Đặt mật khẩu mới
+            </Link>
+          ) : (
+            <>
           {SHOW_DASHBOARD ? (
             <Link href="/" className={navItemClass(pathname === "/")}>
               <LayoutDashboard className="h-4 w-4 shrink-0" />
@@ -441,6 +467,8 @@ export default function AppLayout({ children }) {
               ) : null}
             </div>
           ) : null}
+            </>
+          )}
         </nav>
         <div className="shrink-0 border-t border-white/15">
           <div className="flex items-center gap-2.5 px-3 py-3">
@@ -458,7 +486,16 @@ export default function AppLayout({ children }) {
               </p>
             </div>
           </div>
-          <div className="px-3 pb-3">
+          <div className="space-y-1.5 px-3 pb-3">
+            {!mustChangePw ? (
+              <Link
+                href="/tai-khoan"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-white/10 px-3 py-2 text-xs font-bold text-sky-50 ring-1 ring-white/20 transition hover:bg-white/20"
+              >
+                <KeyRound className="h-3.5 w-3.5" />
+                Đổi mật khẩu
+              </Link>
+            ) : null}
             <button
               type="button"
               onClick={handleLogout}

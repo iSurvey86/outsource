@@ -18,6 +18,7 @@ import { normalizeGiaiDoanChuan } from '../../lib/giaiDoanOrder';
 import { formatGiaoAShort, normalizeVietnameseGiaoADate } from '../../lib/formatGiaoA';
 import { Trash2, Plus, Loader2, ArrowLeft, FileText, CheckCircle, FileSearch, ExternalLink, PenLine, Files, Eye, AlertTriangle, ChevronLeft, ChevronRight, RotateCcw } from 'lucide-react';
 import { useAppDialog } from '../../components/AppDialog';
+import BenAUserSelect from '../../components/duAn/BenAUserSelect';
 import { loadAuthSession } from '../../lib/authSession';
 import { canSuaDuAn } from '../../lib/menuAccess';
 import { fetchDb, logActivity } from '../../lib/store';
@@ -316,6 +317,8 @@ function buildScanResultFromApiData(data, existingProjects) {
         cap_dien_ap: capDienApAPI,
         cap_dien_ap_conf: data.cap_dien_ap?.confidence || 100,
         cap_dien_ap_warn: data.cap_dien_ap?.warning || '',
+        ben_a_user_id: '',
+        ben_a_user_ids: [],
     };
 
     const newProjectsList = [];
@@ -547,13 +550,16 @@ export default function NhapDuAnMoi() {
     
     // TỐI ƯU: Lưu trữ toàn bộ thông tin dự án cũ để nhận diện trùng lặp
     const [existingProjects, setExistingProjects] = useState([]);
+    const [benAUsersDb, setBenAUsersDb] = useState([]);
     
     const [masterInfo, setMasterInfo] = useState({ 
         qd_giao_a: '', qd_giao_a_conf: 100, qd_giao_a_warn: '',
         qd_giao_a_day_du: '', qd_giao_a_day_du_conf: 100, qd_giao_a_day_du_warn: '',
         nam_giao_a: '', nam_giao_a_conf: 100, nam_giao_a_warn: '',
         chu_dau_tu: '', chu_dau_tu_conf: 100, chu_dau_tu_warn: '',
-        cap_dien_ap: '110kV', cap_dien_ap_conf: 100, cap_dien_ap_warn: ''
+        cap_dien_ap: '110kV', cap_dien_ap_conf: 100, cap_dien_ap_warn: '',
+        ben_a_user_id: '',
+        ben_a_user_ids: [],
     });
     const [projects, setProjects] = useState([]);
     const [entryMode, setEntryMode] = useState('scan'); // 'scan' | 'manual'
@@ -576,6 +582,7 @@ export default function NhapDuAnMoi() {
             try {
                 const db = await fetchDb();
                 setExistingProjects(mapExistingProjectsForDupCheck(db.duAn || []));
+                setBenAUsersDb(db.users || []);
             } catch (e) {
                 console.warn('Không tải được danh mục DA:', e?.message || e);
             }
@@ -773,6 +780,8 @@ export default function NhapDuAnMoi() {
             nam_giao_a: '', nam_giao_a_conf: 100, nam_giao_a_warn: '',
             chu_dau_tu: '', chu_dau_tu_conf: 100, chu_dau_tu_warn: '',
             cap_dien_ap: '110kV', cap_dien_ap_conf: 100, cap_dien_ap_warn: '',
+            ben_a_user_id: '',
+            ben_a_user_ids: [],
         });
         const input = document.getElementById('pdf-upload-input');
         if (input) input.value = '';
@@ -832,6 +841,8 @@ export default function NhapDuAnMoi() {
             nam_giao_a: '', nam_giao_a_conf: 100, nam_giao_a_warn: '',
             chu_dau_tu: '', chu_dau_tu_conf: 100, chu_dau_tu_warn: '',
             cap_dien_ap: '110kV', cap_dien_ap_conf: 100, cap_dien_ap_warn: '',
+            ben_a_user_id: '',
+            ben_a_user_ids: [],
         });
     };
 
@@ -1203,6 +1214,12 @@ export default function NhapDuAnMoi() {
             await showAlert("Dự án khách hàng ngoài: vui lòng chọn Chủ đầu tư = Khách hàng ngoài (hoặc gõ KHN).");
             return;
         }
+        if (!(masterInfo.ben_a_user_ids || []).length) {
+            await showAlert(
+                "Vui lòng chọn ít nhất một Tài khoản Bên A trước khi lưu.\nCó thể chọn nhiều người (nhóm)."
+            );
+            return;
+        }
         const namGiaoA =
             extractNamGiaoA(masterInfo.qd_giao_a, masterInfo.qd_giao_a_day_du) ||
             String(masterInfo.nam_giao_a || "").trim() ||
@@ -1365,6 +1382,8 @@ export default function NhapDuAnMoi() {
                         nam_giao_a: namGiaoA,
                         chu_dau_tu: cdtNormalized,
                         cap_dien_ap: masterInfo.cap_dien_ap,
+                        ben_a_user_ids: masterInfo.ben_a_user_ids || [],
+                        ben_a_user_id: (masterInfo.ben_a_user_ids || [])[0] || "",
                         ...(fileUrl && { link_pdf_giao_a_goc: fileUrl }),
                     };
                 })
@@ -1898,6 +1917,22 @@ export default function NhapDuAnMoi() {
                                 Đã nhận diện <strong>Khách hàng ngoài</strong> — workspace sẽ hiện «Căn cứ hợp đồng» thay vì Giao A.
                             </p>
                         ) : null}
+                    </div>
+
+                    <div className="flex-[2] min-w-[220px]">
+                        <BenAUserSelect
+                            id="nhap-ben-a"
+                            users={benAUsersDb}
+                            value={masterInfo.ben_a_user_ids || []}
+                            required
+                            onChange={(ids) =>
+                                applyMasterInfoChange((prev) => ({
+                                    ...prev,
+                                    ben_a_user_ids: ids,
+                                    ben_a_user_id: ids[0] || "",
+                                }))
+                            }
+                        />
                     </div>
 
                     {isKhnMaster ? (
