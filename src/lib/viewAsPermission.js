@@ -215,9 +215,16 @@ export function roleLabel(phanQuyen) {
   return ROLE_LABELS[phanQuyen] || phanQuyen || "-";
 }
 
+import { SEED_ROLES } from "./storeLocal";
+import { hasSupabase, supabase } from "./supabase";
+import { resolveRolePerms } from "./rolePerms";
+
 export async function fetchPermsForRole(phanQuyen) {
   const role = String(phanQuyen || "").trim();
   if (!role) throw new Error("Thieu ma nhom quyen.");
+
+  // Ma trận trong code là nguồn sự thật (Member = PM − nội bộ).
+  if (SEED_ROLES[role]) return resolveRolePerms(role);
 
   if (hasSupabase && supabase) {
     const { data, error } = await supabase
@@ -225,10 +232,8 @@ export async function fetchPermsForRole(phanQuyen) {
       .select("*")
       .eq("phan_quyen", role)
       .maybeSingle();
-    if (!error && data) return data;
+    if (!error && data) return resolveRolePerms(role, data);
   }
 
-  const seed = SEED_ROLES[role];
-  if (seed) return { ...seed };
   throw new Error(`Nhom quyen «${role}» chua co trong phan_quyen.`);
 }

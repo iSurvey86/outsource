@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { DEMO_USERS, SEED_ROLES } from "../../../../lib/storeLocal";
+import { DEMO_USERS } from "../../../../lib/storeLocal";
+import { resolveRolePerms } from "../../../../lib/rolePerms";
 import { loginUserFacingError } from "../../../../lib/publicErrors";
 
 function normalizeAnonKey(raw) {
@@ -53,7 +54,7 @@ export async function POST(req) {
           { status: 401 }
         );
       }
-      const perms = SEED_ROLES[demo.phan_quyen] || SEED_ROLES.member;
+      const perms = resolveRolePerms(demo.phan_quyen);
       return NextResponse.json({ ok: true, user: stripPassword(demo), perms });
     }
 
@@ -80,19 +81,7 @@ export async function POST(req) {
       );
     }
 
-    const { data: permsRow, error: permsErr } = await sb
-      .from("phan_quyen")
-      .select("*")
-      .eq("phan_quyen", user.phan_quyen)
-      .maybeSingle();
-
-    if (permsErr) {
-      // eslint-disable-next-line no-console
-      console.error("[login/perms]", permsErr.message);
-    }
-
-    const perms =
-      permsRow || SEED_ROLES[user.phan_quyen] || SEED_ROLES.member;
+    const perms = resolveRolePerms(user.phan_quyen);
 
     return NextResponse.json({
       ok: true,

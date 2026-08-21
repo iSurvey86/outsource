@@ -10,13 +10,14 @@
 - Sau login → `/tai-khoan` nếu bắt đổi MK, không thì `POST_LOGIN_ROUTE`.
 
 ## Phe & quyền (ma trận đã enforce UI)
-Nguồn: `docs/Phan_quyen_OUTSRC.md` · seed `SEED_ROLES` / SQL `019_phan_quyen_ma_tran.sql`.
+Nguồn: `docs/Phan_quyen_OUTSRC.md` · `SEED_ROLES` / `resolveRolePerms` (`rolePerms.js`) · SQL `019`.
+Login và «Xem quyền» **ưu tiên ma trận trong code** (tránh DB lệch).
 
 | Hạng mục | Admin | PM | Member | Bên A |
 |----------|:-----:|:--:|:------:|:-----:|
 | QLHT / CRUD user | Có | Không | Không | Không |
 | Tạo/sửa/xóa DA metadata | Có | Không | Không | Không |
-| Xem danh sách DA | Mọi DA | Mọi DA | Mọi DA | **Chỉ DA gắn `ben_a_user_id`** |
+| Xem danh sách DA | Mọi DA | Mọi DA | Mọi DA | **Chỉ DA trong `ben_a_user_ids`** |
 | Lập/XB KS | Có | Có | Có (=PM) | Ẩn khối KS |
 | Upload hồ sơ | Có | Có | Có | Chỉ xem |
 | Sửa sổ A↔B / nhận TU | Có | Chỉ xem | Chỉ xem | Chỉ xem (DA mình) |

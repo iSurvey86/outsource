@@ -16,6 +16,20 @@
 /** @type {ChangelogRelease[]} — mới nhất ở đầu */
 export const APP_CHANGELOG = [
   {
+    version: "0.4.1",
+    date: "2026-08-21",
+    title: "Ma trận Member + slogan",
+    sections: {
+      improved: [
+        "Quyền login/xem quyền lấy từ ma trận code (Member = PM − nội bộ); đồng bộ phan_quyen trên Supabase",
+        "Slogan: Hệ thống quản lý công việc, tiến độ dự án",
+      ],
+      fixed: [
+        "Member mới (vd. binhnv) nhận đúng quyền — không còn phụ thuộc bản phan_quyen cũ trên DB",
+      ],
+    },
+  },
+  {
     version: "0.4.0",
     date: "2026-08-21",
     title: "Tài chính gọn + nội bộ 2 tầng + gán nhóm Bên A",

@@ -87,11 +87,13 @@ export async function fetchDb() {
   };
 }
 
+import { resolveRolePerms } from "./rolePerms";
+
 export async function getPermsForUser(user) {
-  if (!user) return SEED_ROLES.member;
+  if (!user) return resolveRolePerms("member");
   if (!hasSupabase) {
     const db = ensureLocalDemo(getLocalDb());
-    return db.roles[user.phan_quyen] || SEED_ROLES[user.phan_quyen] || SEED_ROLES.member;
+    return resolveRolePerms(user.phan_quyen, db.roles[user.phan_quyen]);
   }
   const { data, error } = await supabase
     .from("phan_quyen")
@@ -99,7 +101,7 @@ export async function getPermsForUser(user) {
     .eq("phan_quyen", user.phan_quyen)
     .maybeSingle();
   if (error) throw new Error(error.message);
-  return data || SEED_ROLES[user.phan_quyen] || SEED_ROLES.member;
+  return resolveRolePerms(user.phan_quyen, data);
 }
 
 export async function loginLocal(username, password) {

@@ -1,5 +1,16 @@
 # Changelog OUTSRC
 
+## 0.4.1 — 2026-08-21
+
+**Ma trận Member + slogan**
+
+### Cải thiện
+- Quyền login/xem quyền lấy từ ma trận code (Member = PM − nội bộ); đồng bộ `phan_quyen` trên Supabase
+- Slogan: Hệ thống quản lý công việc, tiến độ dự án
+
+### Sửa lỗi
+- Member mới nhận đúng quyền — không phụ thuộc bản `phan_quyen` cũ trên DB
+
 ## 0.4.0 — 2026-08-21
 
 **Tài chính gọn + nội bộ 2 tầng + gán nhóm Bên A**

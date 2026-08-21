@@ -5,6 +5,39 @@
 
 ---
 
+## 2026-08-21 — Ma trận Member + slogan (0.4.1)
+
+**Máy / ngữ cảnh:** Cursor — sau 0.4.0; App **0.4.1**.
+
+### Đã chốt / đã làm
+
+- **Member** (`binhnv` …): quyền đúng ma trận — giống PM, **không** nội bộ; upsert `phan_quyen` trên Supabase.
+- Login / xem quyền: `resolveRolePerms` ưu tiên `SEED_ROLES` (code = nguồn sự thật).
+- Slogan: «Hệ thống quản lý công việc, tiến độ dự án.»
+
+### File chính
+
+| Khu vực | File |
+|---------|------|
+| Quyền | `rolePerms.js`, `login/route.js`, `store.js`, `viewAsPermission.js` |
+| Brand | `brand.js` |
+| Docs | `workflows/01_auth.md`, HANDOFF, changelog |
+
+### Việc tiếp
+
+- [ ] Form KS thật thay stub.
+- [ ] Ứng nội bộ B↔B; Storage binary hồ sơ / PDF HĐ.
+- [ ] Siết RLS Supabase.
+- [ ] Xác nhận SQL 020–021 đã chạy trên mọi môi trường.
+
+### Câu mở phiên sau
+
+```text
+Đọc docs/phien-lam-viec/HANDOFF.md (block 0.4.1). App 0.4.1 — Member ma trận + slogan. Tiếp: form KS; ứng nội bộ B.
+```
+
+---
+
 ## 2026-08-21 — Tài chính gọn + nội bộ 2 tầng + gán nhóm Bên A
 
 **Máy / ngữ cảnh:** Cursor — OUTSRC; tiếp phiên sau folder hồ sơ + sổ HĐ; App **0.4.0**.
