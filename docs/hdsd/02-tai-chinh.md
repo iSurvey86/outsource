@@ -20,9 +20,12 @@ Menu **Tài chính** (ẩn với **Member Bên B**; Admin, PM và Bên A vẫn x
 Ngày tháng trên màn hình: **dd/mm/yyyy**. Ứng dụng **không** xuất hóa đơn.
 
 ## Tài chính nội bộ
-Menu **Tài chính nội bộ** (chỉ Admin/PM Bên B):
+Menu **Tài chính nội bộ** (chỉ **Admin + PM** Bên B; Member không vào):
 
-1. **Danh sách dự án** — đã nhận từ A, trạng thái chia.
-2. Bấm vào DA → chia **một lần** trên **tổng đã nhận từ A** (đọc sổ A↔B): theo **tỷ lệ %** hoặc **số cứng**.
+1. **Danh sách dự án** — đã nhận từ A, góp nội bộ, trạng thái chia.
+2. Bấm vào DA → trang **2 cột**:
+   - **Trái — Góp vốn B↔B:** chọn người góp / người giữ quỹ → nhập số → **Ghi nhận** → popup **ngày + bill** (giống sổ A↔B). Số tiền có link bill; bấm ngày để sửa (Admin).
+   - **Phải — Chia trên tiền nhận từ A:** một lần trên **tổng đã nhận** (đọc sổ A↔B): **tỷ lệ %** hoặc **số cứng**; bảng chỉ hiện Admin + PM (Member ẩn trên UI — PM đại diện nhóm).
+3. **Admin** sửa góp vốn và lưu bảng chia; **PM chỉ xem** (không form nhập, không nút Lưu).
 
-Chưa có: ứng nội bộ B↔B; chia theo từng đợt nhận. Bên A không thấy mục này.
+Chạy SQL `025`–`027` trên Supabase trước khi dùng góp vốn + bill. Bên A không thấy mục này.

@@ -5,11 +5,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import { loadAuthSession } from "../../lib/authSession";
-import { canSeeChiaNoiBo, filterDuAnForUser } from "../../lib/menuAccess";
+import { canSeeChiaNoiBo, filterDuAnForUser, filterBenBNoiBoUi } from "../../lib/menuAccess";
 import {
   formatPct,
   formatVndShort,
   giaTriBenB,
+  tongGopVonNoiBo,
   tongNhanTuA,
 } from "../../lib/finance";
 import { fetchDb } from "../../lib/store";
@@ -39,7 +40,7 @@ export default function TaiChinhNoiBoListPage() {
       router.replace("/");
       return;
     }
-    fetchDb().then(setDb).catch(() => setDb({ duAn: [], giaoDich: [], chiaNoiBo: [] }));
+    fetchDb().then(setDb).catch(() => setDb({ duAn: [], giaoDich: [], chiaNoiBo: [], gopVonNoiBo: [] }));
   }, [router]);
 
   const rows = useMemo(() => {
@@ -60,10 +61,15 @@ export default function TaiChinhNoiBoListPage() {
       })
       .map((d) => {
         const gd = (db.giaoDich || []).filter((g) => g.du_an_id === d.id);
-        const chia = (db.chiaNoiBo || []).filter((c) => c.du_an_id === d.id);
+        const uiIds = new Set(filterBenBNoiBoUi(db.users).map((u) => u.id));
+        const chia = (db.chiaNoiBo || []).filter(
+          (c) => c.du_an_id === d.id && uiIds.has(c.nguoi_dung_id)
+        );
+        const tongGop = tongGopVonNoiBo(db.gopVonNoiBo || [], d.id);
         return {
           duAn: d,
           tongNhan: tongNhanTuA(gd),
+          tongGop,
           phanB: giaTriBenB(d),
           status: trangThaiChia(chia),
         };
@@ -99,6 +105,7 @@ export default function TaiChinhNoiBoListPage() {
                 <th className="px-3 py-3 text-left">Dự án</th>
                 <th className="w-28 px-3 py-3 text-center">Giai đoạn</th>
                 <th className="w-36 px-3 py-3 text-right">Đã nhận A</th>
+                <th className="w-32 px-3 py-3 text-right">Góp nội bộ</th>
                 <th className="w-36 px-3 py-3 text-right">Phần B GTV</th>
                 <th className="w-36 px-3 py-3 text-center">Chia nội bộ</th>
               </tr>
@@ -135,6 +142,11 @@ export default function TaiChinhNoiBoListPage() {
                         {row.tongNhan > 0 ? formatVndShort(row.tongNhan) : "—"}
                       </Link>
                     </td>
+                    <td className="px-3 py-3 text-right font-bold tabular-nums text-violet-900">
+                      <Link href={href} className="hover:text-violet-700">
+                        {row.tongGop > 0 ? formatVndShort(row.tongGop) : "—"}
+                      </Link>
+                    </td>
                     <td className="px-3 py-3 text-right font-semibold tabular-nums text-indigo-800">
                       {row.phanB > 0 ? formatVndShort(row.phanB) : "—"}
                     </td>
@@ -157,7 +169,7 @@ export default function TaiChinhNoiBoListPage() {
               })}
               {!rows.length ? (
                 <tr>
-                  <td colSpan={6} className="px-4 py-8 text-center text-sm font-medium text-teal-700">
+                  <td colSpan={7} className="px-4 py-8 text-center text-sm font-medium text-teal-700">
                     Không có dự án khớp.
                   </td>
                 </tr>

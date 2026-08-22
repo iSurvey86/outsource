@@ -5,6 +5,7 @@ Vào **Dự án** để xem danh sách.
 
 - **Admin:** cột **Bên A** (ai được gắn xem DA); tạo/sửa/xóa; **Nhập dự án**.
 - **Bên A:** chỉ thấy DA gắn tài khoản mình (có thể nhiều người cùng một DA); **không** thấy cột Bên A, không sửa/xóa.
+- **Tìm & lọc:** ô **Tìm tên** (mã/tên) và khối **Bộ lọc** (giai đoạn, trạng thái, sắp xếp…) tách riêng trên một hàng (màn rộng).
 - Sửa / nhập DA: **bắt buộc** chọn ≥1 tài khoản Bên A (checkbox — 1 người hoặc nhóm).
 
 ## Trong một dự án

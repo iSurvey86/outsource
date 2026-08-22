@@ -1,5 +1,17 @@
 # Changelog OUTSRC
 
+## 0.4.3 — 2026-08-22
+
+**Góp vốn nội bộ + UX login/DA**
+
+### Mới
+- Góp vốn B↔B: ghi nhận + bill chuyển khoản (giống sổ A↔B); cột Góp nội bộ trên list DA
+- Màn đăng nhập mới (nền ảnh, card giữa)
+
+### Cải thiện
+- Tài chính nội bộ: layout 2 cột; PM chỉ xem, Admin sửa; Member ẩn trên bảng chia (PM đại diện nhóm)
+- Danh mục DA: tách ô Tìm tên và Bộ lọc; header workspace — Bên A chỉ hiện tên
+
 ## 0.4.2 — 2026-08-22
 
 **Upload hồ sơ + quyền Member / xóa file**

@@ -8,6 +8,7 @@ import { formatHopDongTitleLabel } from "../../lib/formatHopDong";
 import { formatGiaiDoanBadge } from "../../lib/giaiDoanOrder";
 import { formatVnd, giaTriTuVanHieuLuc } from "../../lib/finance";
 import { openPdfGiaoA, uploadPdfGiaoAGoc } from "../../lib/pdfGiaoAStorage";
+import { displayBenAName } from "../../lib/benAUsers";
 
 function Field({ label, value, labelClass = "text-gray-400", valueClassName = "font-semibold text-slate-800" }) {
   return (
@@ -208,11 +209,7 @@ export default function DuAnWorkspaceHeader({
                 <span>
                   <span className="font-semibold text-slate-800">Bên A:</span>{" "}
                   <span className="font-semibold text-slate-700">
-                    {benAList
-                      .map((u) =>
-                        u.username ? `${u.ho_ten} (${u.username})` : u.ho_ten
-                      )
-                      .join(", ")}
+                    {benAList.map(displayBenAName).filter(Boolean).join("; ")}
                   </span>
                 </span>
               </>

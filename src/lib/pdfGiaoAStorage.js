@@ -127,6 +127,31 @@ export async function uploadTamUngBill(file, maDuAn = "", dot = "lan1") {
   return key;
 }
 
+/** Bill chuyển khoản góp vốn nội bộ B↔B */
+export async function uploadGopVonBill(file, maDuAn = "", tag = "gop") {
+  if (!file) return null;
+  const safeMa = cleanForFileName(maDuAn) || "DA";
+  const safeTag = cleanForFileName(tag) || "gop";
+  const fileExt = (file.name.split(".").pop() || "pdf").toLowerCase();
+  const stamp = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+  const fileName = `${safeMa}_${safeTag}_${stamp}.${fileExt}`;
+
+  if (hasSupabase && supabase) {
+    const { error: uploadError } = await supabase.storage
+      .from("pdfs_giao_a")
+      .upload(`noi-bo/${fileName}`, file, { cacheControl: "3600", upsert: true });
+    if (uploadError) {
+      throw new Error("Lỗi tải bill nội bộ: " + uploadError.message);
+    }
+    const { data } = supabase.storage.from("pdfs_giao_a").getPublicUrl(`noi-bo/${fileName}`);
+    return data?.publicUrl || null;
+  }
+
+  const key = `${LOCAL_PREFIX}noi-bo/${fileName}`;
+  await idbPut(key, file);
+  return key;
+}
+
 export async function openStoredFile(link) {
   const url = await resolvePdfOpenUrl(link);
   if (!url) throw new Error("Không tìm thấy file đính kèm.");

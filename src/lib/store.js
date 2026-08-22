@@ -33,6 +33,7 @@ export async function fetchDb() {
     ksRes,
     gdRes,
     chiaRes,
+    gopRes,
     tlRes,
     lsRes,
   ] = await Promise.all([
@@ -43,6 +44,7 @@ export async function fetchDb() {
     supabase.from("ks_module").select("*"),
     supabase.from("giao_dich").select("*").order("ngay", { ascending: false }),
     supabase.from("chia_noi_bo").select("*"),
+    supabase.from("gop_von_noi_bo").select("*").order("ngay", { ascending: false }),
     supabase.from("tai_lieu").select("*").order("thoi_gian", { ascending: false }),
     supabase
       .from("lich_su_hoat_dong")
@@ -59,6 +61,7 @@ export async function fetchDb() {
     ksRes.error ||
     gdRes.error ||
     chiaRes.error ||
+    gopRes.error ||
     tlRes.error ||
     lsRes.error;
   if (err) throw new Error(err.message);
@@ -81,6 +84,10 @@ export async function fetchDb() {
     chiaNoiBo: (chiaRes.data || []).map((c) => ({
       ...c,
       ty_le: Number(c.ty_le),
+    })),
+    gopVonNoiBo: (gopRes.data || []).map((g) => ({
+      ...g,
+      so_tien: Number(g.so_tien),
     })),
     taiLieu: tlRes.data || [],
     lichSu: lsRes.data || [],
@@ -296,6 +303,7 @@ export async function replaceChiaNoiBo(duAnId, rows) {
 }
 
 function tableMap(db) {
+  if (!Array.isArray(db.gopVonNoiBo)) db.gopVonNoiBo = [];
   return {
     nguoi_dung: db.users,
     du_an: db.duAn,
@@ -303,6 +311,7 @@ function tableMap(db) {
     ks_module: db.ksModules,
     giao_dich: db.giaoDich,
     chia_noi_bo: db.chiaNoiBo,
+    gop_von_noi_bo: db.gopVonNoiBo || [],
     tai_lieu: db.taiLieu,
     lich_su_hoat_dong: db.lichSu,
   };
@@ -316,6 +325,7 @@ function invertTableMap(map) {
     ksModules: map.ks_module,
     giaoDich: map.giao_dich,
     chiaNoiBo: map.chia_noi_bo,
+    gopVonNoiBo: map.gop_von_noi_bo,
     taiLieu: map.tai_lieu,
     lichSu: map.lich_su_hoat_dong,
   };
@@ -350,6 +360,7 @@ export async function deleteDuAnCascade(duAnId) {
     "ks_module",
     "giao_dich",
     "chia_noi_bo",
+    "gop_von_noi_bo",
     "tai_lieu",
   ];
   for (const table of tables) {

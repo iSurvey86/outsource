@@ -14,7 +14,7 @@ Nếu báo lỗi kết nối: liên hệ quản trị viên (không tự xử l�
 | Vai trò | Được làm |
 |---------|----------|
 | **Admin (B)** | Toàn quyền: QLHT, tạo/sửa/xóa DA, sổ HĐ, sửa sổ A↔B, nội bộ, KS, hồ sơ |
-| **PM (B)** | Lập/XB KS, upload/xóa file mình up, xem A↔B, có nội bộ — **không** tạo/sửa/xóa DA, **không** sửa sổ A↔B |
+| **PM (B)** | Lập/XB KS, upload/xóa file mình up, xem A↔B, **xem** nội bộ (không sửa) — **không** tạo/sửa/xóa DA, **không** sửa sổ A↔B |
 | **Member (B)** | Giống PM (KS, hồ sơ); **không** menu Tài chính A↔B; **không** nội bộ; **không** tạo/sửa/xóa DA |
 | **Bên A** | Chỉ DA gắn tài khoản mình (có thể nhiều người / nhóm trên một DA); xem TT + HĐ + hồ sơ + A↔B; ẩn KS; không sửa; không thấy cột gán Bên A |
 

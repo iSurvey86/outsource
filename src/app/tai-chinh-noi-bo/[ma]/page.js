@@ -10,6 +10,8 @@ import {
   canSeeChiaNoiBo,
   canAccessDuAn,
   filterDuAnForUser,
+  filterBenBActive,
+  filterBenBNoiBoUi,
 } from "../../../lib/menuAccess";
 import {
   formatPct,
@@ -24,6 +26,7 @@ import {
 } from "../../../lib/finance";
 import { fetchDb, logActivity, replaceChiaNoiBo, uid } from "../../../lib/store";
 import { useAppDialog } from "../../../components/AppDialog";
+import GopVonNoiBoSection from "../../../components/taiChinh/GopVonNoiBoSection";
 
 /** Chi tiết: gộp dự án → chia 1 lần trên tổng đã nhận từ A. */
 export default function TaiChinhNoiBoDetailPage() {
@@ -76,15 +79,13 @@ export default function TaiChinhNoiBoDetailPage() {
   useEffect(() => {
     if (!db || !duAnId) return;
     const rows = db.chiaNoiBo.filter((c) => c.du_an_id === duAnId);
-    const benBUsers = (db.users || []).filter(
-      (u) => u.phe === "ben_b" && u.trang_thai === "active"
-    );
+    const benBUi = filterBenBNoiBoUi(db.users || []);
     const base = tongNhanTuA(
       (db.giaoDich || []).filter((g) => g.du_an_id === duAnId)
     );
 
     setDrafts(
-      benBUsers.map((u) => {
+      benBUi.map((u) => {
         const existing = rows.find((r) => r.nguoi_dung_id === u.id);
         const tyLe = existing ? Number(existing.ty_le) || 0 : 0;
         const soTien = base > 0 && tyLe > 0 ? Math.round(base * tyLe) : 0;
@@ -106,6 +107,15 @@ export default function TaiChinhNoiBoDetailPage() {
     0
   );
   const canEdit = canSuaChiaNoiBo(user, perms);
+
+  const allBenBUsers = useMemo(() => filterBenBActive(db?.users), [db]);
+
+  const benBUiUsers = useMemo(() => filterBenBNoiBoUi(db?.users), [db]);
+
+  const gopRows = useMemo(
+    () => (db?.gopVonNoiBo || []).filter((g) => g.du_an_id === duAnId),
+    [db, duAnId]
+  );
 
   function patchDraft(idx, patch) {
     setDrafts((prev) => {
@@ -238,132 +248,159 @@ export default function TaiChinhNoiBoDetailPage() {
         <SummaryCard label="Phần B theo GTV (đối chiếu)" value={formatVnd(phanB)} muted />
       </div>
 
-      {tongNhan <= 0 ? (
-        <p className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-950">
-          Chưa ghi nhận tiền từ A trên sổ A↔B. Có thể nhập sẵn tỷ lệ; số cứng chỉ dùng khi đã có tổng
-          nhận.
-        </p>
-      ) : null}
+      <div className="grid items-start gap-5 xl:grid-cols-2">
+        <GopVonNoiBoSection
+          duAnId={duAnId}
+          maDuAn={duAn.ma_du_an}
+          rows={gopRows}
+          benBUiUsers={benBUiUsers}
+          allBenBUsers={allBenBUsers}
+          canEdit={canEdit}
+          user={user}
+          onSaved={setDb}
+        />
 
-      <div className="flex flex-wrap gap-2">
-        <ModeBtn active={cheDo === "ty_le"} onClick={() => setCheDo("ty_le")} disabled={!canEdit}>
-          Theo tỷ lệ
-        </ModeBtn>
-        <ModeBtn
-          active={cheDo === "so_cung"}
-          onClick={() => setCheDo("so_cung")}
-          disabled={!canEdit || tongNhan <= 0}
-        >
-          Số cứng
-        </ModeBtn>
-        <span className="self-center text-xs font-semibold text-indigo-800">
-          {cheDo === "ty_le" ? (
-            <>
-              Tổng %:{" "}
-              <span className={Math.abs(sumTyLe - 1) < 0.001 ? "text-emerald-700" : "text-rose-700"}>
-                {formatPct(sumTyLe)}
-              </span>
-            </>
-          ) : (
-            <>
-              Tổng nhập:{" "}
-              <span
-                className={
-                  Math.abs(sumSoCung - tongNhan) <= 1 ? "text-emerald-700" : "text-rose-700"
-                }
-              >
-                {formatVnd(sumSoCung)}
-              </span>
-              {" / "}
-              {formatVnd(tongNhan)}
-            </>
-          )}
-        </span>
+        <section className="space-y-3 rounded-2xl border border-indigo-200 bg-indigo-50/40 p-4">
+          <div>
+            <h2 className="text-sm font-black uppercase tracking-wide text-indigo-950">
+              Chia trên tiền nhận từ A
+            </h2>
+          </div>
+
+          {tongNhan <= 0 ? (
+            <p className="rounded-xl border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-medium text-amber-950">
+              Chưa ghi nhận tiền từ A trên sổ A↔B. Có thể nhập sẵn tỷ lệ; số cứng chỉ dùng khi đã có
+              tổng nhận.
+            </p>
+          ) : null}
+
+          <div className="flex flex-wrap gap-2">
+            <ModeBtn active={cheDo === "ty_le"} onClick={() => setCheDo("ty_le")} disabled={!canEdit}>
+              Theo tỷ lệ
+            </ModeBtn>
+            <ModeBtn
+              active={cheDo === "so_cung"}
+              onClick={() => setCheDo("so_cung")}
+              disabled={!canEdit || tongNhan <= 0}
+            >
+              Số cứng
+            </ModeBtn>
+            <span className="self-center text-xs font-semibold text-indigo-800">
+              {cheDo === "ty_le" ? (
+                <>
+                  Tổng %:{" "}
+                  <span
+                    className={Math.abs(sumTyLe - 1) < 0.001 ? "text-emerald-700" : "text-rose-700"}
+                  >
+                    {formatPct(sumTyLe)}
+                  </span>
+                </>
+              ) : (
+                <>
+                  Tổng nhập:{" "}
+                  <span
+                    className={
+                      Math.abs(sumSoCung - tongNhan) <= 1 ? "text-emerald-700" : "text-rose-700"
+                    }
+                  >
+                    {formatVnd(sumSoCung)}
+                  </span>
+                  {" / "}
+                  {formatVnd(tongNhan)}
+                </>
+              )}
+            </span>
+          </div>
+
+          <div className="overflow-hidden rounded-xl border border-indigo-200 bg-white">
+            <div className="max-h-[28rem] overflow-auto">
+              <table className="w-full table-fixed text-left text-sm">
+                <thead className="sticky top-0 bg-indigo-100 text-xs font-black uppercase text-indigo-950">
+                  <tr>
+                    <th className="w-9 px-2 py-2">STT</th>
+                    <th className="w-[9.5rem] px-2 py-2">Thành viên</th>
+                    <th className="w-[5.5rem] px-2 py-2">
+                      {cheDo === "ty_le" ? "Tỷ lệ (%)" : "Số cứng"}
+                    </th>
+                    <th className="w-[6.5rem] px-2 py-2">Được chia</th>
+                    <th className="w-[7rem] px-2 py-2">Ghi chú</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {drafts.map((d, idx) => {
+                    const soHien =
+                      cheDo === "so_cung"
+                        ? Math.round(parseVndInput(d.soTienText))
+                        : tongNhan > 0
+                          ? Math.round(tongNhan * Number(d.ty_le || 0))
+                          : 0;
+                    return (
+                      <tr key={d.nguoi_dung_id} className="border-t border-indigo-100">
+                        <td className="px-2 py-2 tabular-nums text-indigo-700">{idx + 1}</td>
+                        <td className="whitespace-nowrap px-2 py-2 text-xs font-bold text-indigo-950">
+                          {d.ho_ten}
+                        </td>
+                        <td className="px-2 py-2">
+                          {cheDo === "ty_le" ? (
+                            <input
+                              type="number"
+                              step="1"
+                              min="0"
+                              max="100"
+                              disabled={!canEdit}
+                              className="w-full max-w-[4.5rem] rounded-lg border border-indigo-300 bg-indigo-50 px-2 py-1 text-xs font-bold tabular-nums text-indigo-950 disabled:opacity-60"
+                              value={
+                                Number(d.ty_le) ? Math.round(Number(d.ty_le) * 1000) / 10 : ""
+                              }
+                              placeholder="0"
+                              onChange={(e) => {
+                                const pct = Number(e.target.value);
+                                onChangeTyLe(idx, Number.isFinite(pct) ? pct / 100 : 0);
+                              }}
+                            />
+                          ) : (
+                            <input
+                              type="text"
+                              inputMode="numeric"
+                              disabled={!canEdit}
+                              className="w-full max-w-[5.5rem] rounded-lg border border-indigo-300 bg-indigo-50 px-2 py-1 text-xs font-bold tabular-nums text-indigo-950 disabled:opacity-60"
+                              value={d.soTienText}
+                              placeholder="0"
+                              onChange={(e) => onChangeSoCung(idx, e.target)}
+                            />
+                          )}
+                        </td>
+                        <td className="px-2 py-2 text-xs font-black tabular-nums text-blue-900">
+                          {soHien > 0 ? formatVndShort(soHien) : "—"}
+                        </td>
+                        <td className="px-2 py-2">
+                          <input
+                            disabled={!canEdit}
+                            className="w-full max-w-[6.5rem] rounded-lg border border-indigo-300 bg-indigo-50 px-2 py-1 text-xs font-medium text-indigo-950 disabled:opacity-60"
+                            value={d.ghi_chu}
+                            onChange={(e) => patchDraft(idx, { ghi_chu: e.target.value })}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {canEdit ? (
+            <button
+              type="button"
+              disabled={saving}
+              onClick={save}
+              className="rounded-xl bg-gradient-to-r from-indigo-600 to-teal-600 px-5 py-2.5 text-sm font-black text-white disabled:opacity-60"
+            >
+              {saving ? "Đang lưu…" : "Lưu bảng chia nội bộ"}
+            </button>
+          ) : null}
+        </section>
       </div>
-
-      <div className="overflow-hidden rounded-2xl border border-indigo-200 bg-white">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-indigo-100 text-xs font-black uppercase text-indigo-950">
-            <tr>
-              <th className="w-12 px-3 py-3">STT</th>
-              <th className="px-4 py-3">Thành viên</th>
-              <th className="px-4 py-3">{cheDo === "ty_le" ? "Tỷ lệ (%)" : "Số cứng"}</th>
-              <th className="px-4 py-3">Được chia</th>
-              <th className="px-4 py-3">Ghi chú</th>
-            </tr>
-          </thead>
-          <tbody>
-            {drafts.map((d, idx) => {
-              const soHien =
-                cheDo === "so_cung"
-                  ? Math.round(parseVndInput(d.soTienText))
-                  : tongNhan > 0
-                    ? Math.round(tongNhan * Number(d.ty_le || 0))
-                    : 0;
-              return (
-                <tr key={d.nguoi_dung_id} className="border-t border-indigo-100">
-                  <td className="px-3 py-3 tabular-nums text-indigo-700">{idx + 1}</td>
-                  <td className="px-4 py-3 font-bold text-indigo-950">{d.ho_ten}</td>
-                  <td className="px-4 py-3">
-                    {cheDo === "ty_le" ? (
-                      <input
-                        type="number"
-                        step="1"
-                        min="0"
-                        max="100"
-                        disabled={!canEdit}
-                        className="w-24 rounded-lg border border-indigo-300 bg-indigo-50 px-2 py-1 font-bold tabular-nums text-indigo-950 disabled:opacity-60"
-                        value={
-                          Number(d.ty_le) ? Math.round(Number(d.ty_le) * 1000) / 10 : ""
-                        }
-                        placeholder="0"
-                        onChange={(e) => {
-                          const pct = Number(e.target.value);
-                          onChangeTyLe(idx, Number.isFinite(pct) ? pct / 100 : 0);
-                        }}
-                      />
-                    ) : (
-                      <input
-                        type="text"
-                        inputMode="numeric"
-                        disabled={!canEdit}
-                        className="w-36 rounded-lg border border-indigo-300 bg-indigo-50 px-2 py-1 font-bold tabular-nums text-indigo-950 disabled:opacity-60"
-                        value={d.soTienText}
-                        placeholder="0"
-                        onChange={(e) => onChangeSoCung(idx, e.target)}
-                      />
-                    )}
-                  </td>
-                  <td className="px-4 py-3 font-black tabular-nums text-blue-900">
-                    {soHien > 0 ? formatVnd(soHien) : "—"}
-                  </td>
-                  <td className="px-4 py-3">
-                    <input
-                      disabled={!canEdit}
-                      className="w-full rounded-lg border border-indigo-300 bg-indigo-50 px-2 py-1 font-medium text-indigo-950 disabled:opacity-60"
-                      value={d.ghi_chu}
-                      onChange={(e) => patchDraft(idx, { ghi_chu: e.target.value })}
-                    />
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-
-      {canEdit ? (
-        <button
-          type="button"
-          disabled={saving}
-          onClick={save}
-          className="rounded-xl bg-gradient-to-r from-indigo-600 to-teal-600 px-5 py-2.5 text-sm font-black text-white disabled:opacity-60"
-        >
-          {saving ? "Đang lưu…" : "Lưu bảng chia nội bộ"}
-        </button>
-      ) : (
-        <p className="text-sm font-medium text-teal-800">Bạn chỉ có quyền xem.</p>
-      )}
     </div>
   );
 }

@@ -22,13 +22,13 @@ Login và «Xem quyền» **ưu tiên ma trận trong code** (tránh DB lệch).
 | Upload hồ sơ | Có | Có | Có | Chỉ xem |
 | Xóa file upload | Mọi file | Chỉ file mình up | Chỉ file mình up | Không |
 | Sửa sổ A↔B / nhận TU | Có | Chỉ xem | **Không xem** | Chỉ xem (DA mình) |
-| Tài chính nội bộ | Có | Có | **Không** | Ẩn |
+| Tài chính nội bộ | Sửa | **Chỉ xem** | **Không** | Ẩn |
 
 Helper: `menuAccess.js` — `filterDuAnForUser`, `canSeeTaiChinhAb`, `canXoaHoSoFile`, `canSuaTaiChinhAb`, …
 
 ## Guard path
 - `/tai-chinh` (không `/tai-chinh-noi-bo`): `canSeeTaiChinhAb` (Member B ẩn)
-- `/tai-chinh-noi-bo`, `/chia-noi-bo`: Bên B + `q_chia_noi_bo`
+- `/tai-chinh-noi-bo`, `/chia-noi-bo`: Admin + PM (`canSeeChiaNoiBo`); sửa chỉ Admin (`canSuaChiaNoiBo`)
 - `/quan-ly-he-thong`: `q_admin` hoặc `q_system_log`
 - `/nhap-du-an`: `q_sua_du_an` (Admin)
 

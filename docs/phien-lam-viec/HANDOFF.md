@@ -5,6 +5,43 @@
 
 ---
 
+## 2026-08-22 — Tài chính nội bộ + UX login/DA (0.4.3)
+
+**Máy / ngữ cảnh:** Cursor — tiếp 0.4.2; App **0.4.3**.
+
+### Đã chốt / đã làm
+
+- **Login:** màn hình mới (`LoginScreen.js`), nền `login-bg.png`, card trắng giữa.
+- **Danh mục DA:** tách Tìm tên / Bộ lọc — 2 ô một hàng (lg+).
+- **Header:** Bên A chỉ tên (`;`), bỏ username thừa.
+- **Góp vốn B↔B:** SQL `025`–`026`; bill flow giống A↔B; trang chi tiết **2 cột**.
+- **Quyền nội bộ:** Admin + PM vào; **PM chỉ xem**; SQL `027`.
+- **UI:** ẩn Member trên bảng chia/chọn góp (`filterBenBNoiBoUi`); lịch sử góp vẫn hiện tên.
+
+### File chính
+
+| Khu vực | File |
+|---------|------|
+| Login / DA | `LoginScreen.js`, `du-an/page.js`, `brand.js` |
+| Nội bộ | `GopVonNoiBoSection.js`, `tai-chinh-noi-bo/*`, `menuAccess.js`, `finance.js` |
+| SQL | `025`–`027` |
+| Docs | workflows, HDSD, `Phan_quyen_OUTSRC.md` |
+
+### Việc tiếp
+
+- [ ] SQL **025**–**027** trên Supabase.
+- [ ] Form KS thật; RLS.
+
+### Câu mở phiên sau
+
+```text
+Đọc HANDOFF (0.4.3). Góp vốn B↔B + PM xem nội bộ. SQL 025–027 nếu thiếu; tiếp form KS.
+```
+
+**Lưu trữ ngày:** [2026-08-22-tai-chinh-noi-bo-ux.md](./2026-08-22-tai-chinh-noi-bo-ux.md)
+
+---
+
 ## 2026-08-22 — Upload hồ sơ + siết quyền Member / xóa file (0.4.2)
 
 **Máy / ngữ cảnh:** Cursor — tiếp 0.4.1; App **0.4.2**.

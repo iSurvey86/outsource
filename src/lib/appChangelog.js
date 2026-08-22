@@ -16,6 +16,21 @@
 /** @type {ChangelogRelease[]} — mới nhất ở đầu */
 export const APP_CHANGELOG = [
   {
+    version: "0.4.3",
+    date: "2026-08-22",
+    title: "Góp vốn nội bộ + UX login/DA",
+    sections: {
+      added: [
+        "Góp vốn B↔B: ghi nhận + bill chuyển khoản (giống sổ A↔B); cột Góp nội bộ trên list DA",
+        "Màn đăng nhập mới (nền ảnh, card giữa)",
+      ],
+      improved: [
+        "Tài chính nội bộ: layout 2 cột; PM chỉ xem, Admin sửa; Member ẩn trên bảng chia (PM đại diện nhóm)",
+        "Danh mục DA: tách ô Tìm tên và Bộ lọc; header workspace — Bên A chỉ hiện tên",
+      ],
+    },
+  },
+  {
     version: "0.4.2",
     date: "2026-08-22",
     title: "Upload hồ sơ + quyền Member / xóa file",

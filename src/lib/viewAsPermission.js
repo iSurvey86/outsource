@@ -30,7 +30,7 @@ export const VIEW_AS_ROLE_PRESETS = [
     ho_ten: "Test_PM",
     phe: "ben_b",
     phan_quyen: "pm",
-    mo_ta: "Quản lý dự án — lập KS, upload HS, xem A↔B, có nội bộ",
+    mo_ta: "Quản lý dự án — lập KS, upload HS, xem A↔B, xem nội bộ (không sửa)",
   },
   {
     id: "member",

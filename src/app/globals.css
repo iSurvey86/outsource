@@ -34,3 +34,17 @@ select option {
   background-color: #ffffff;
   color: #0c4a6e;
 }
+
+/* Login — ảnh nền full-res */
+.login-bg-photo {
+  transform: translateZ(0) scale(1.025);
+  filter: contrast(1.07) saturate(1.12) brightness(1.03);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@media (min-width: 1024px) {
+  .login-bg-photo {
+    transform: translateZ(0) scale(1.04);
+  }
+}

@@ -295,16 +295,21 @@ export default function DuAnListPage() {
         ))}
       </div>
 
-      <div className="grid grid-cols-[minmax(12rem,2.2fr)_minmax(7rem,1fr)_minmax(7rem,1fr)_minmax(6rem,0.85fr)_minmax(5.5rem,0.7fr)_minmax(4.25rem,0.55fr)_minmax(9rem,1.15fr)] gap-2 rounded-2xl border border-sky-200 bg-white p-2.5 shadow-sm">
-        <div className="relative min-w-0">
-          <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-sky-500" />
-          <input
-            value={q}
-            onChange={(e) => setQ(e.target.value)}
-            placeholder="Tìm tên…"
-            className="w-full rounded-xl border border-sky-300 bg-sky-50 py-2 pl-8 pr-2 text-sm font-medium text-blue-950 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
-          />
+      <div className="flex flex-col gap-2 lg:flex-row lg:items-stretch">
+        <div className="shrink-0 rounded-2xl border border-sky-200 bg-white p-2.5 shadow-sm lg:min-w-[12rem] lg:max-w-[22rem] lg:flex-[2.2]">
+          <div className="relative min-w-0">
+            <Search className="pointer-events-none absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-sky-500" />
+            <input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="Tìm tên…"
+              className="w-full rounded-xl border border-sky-300 bg-sky-50 py-2 pl-8 pr-2 text-sm font-medium text-blue-950 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
+            />
+          </div>
         </div>
+
+        <div className="min-w-0 flex-1 rounded-2xl border border-amber-200 bg-white p-2.5 shadow-sm">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 xl:grid-cols-[minmax(7rem,1fr)_minmax(7rem,1fr)_minmax(6rem,0.85fr)_minmax(5.5rem,0.7fr)_minmax(4.25rem,0.55fr)_minmax(9rem,1.15fr)]">
         <input
           value={filterQd}
           onChange={(e) => setFilterQd(e.target.value)}
@@ -362,6 +367,8 @@ export default function DuAnListPage() {
           <option value="ten_cong_trinh">Sắp xếp: Tên công trình</option>
           <option value="ngay_hop_dong">Sắp xếp: Hợp đồng</option>
         </select>
+          </div>
+        </div>
       </div>
 
       <div className="overflow-hidden rounded-2xl border border-sky-200 bg-white shadow-sm">

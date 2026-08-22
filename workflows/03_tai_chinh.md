@@ -13,12 +13,15 @@
 - Không xuất hóa đơn.
 
 ## Tài chính nội bộ `/tai-chinh-noi-bo`
-- Chỉ Bên B. Menu ẩn với `phe=ben_a`.
+- Chỉ **Admin + PM** Bên B (Member không vào menu). PM **chỉ xem**; Admin sửa góp vốn + bảng chia.
+- Menu ẩn với `phe=ben_a`.
 - **Hai tầng:** list DA → bấm vào `/tai-chinh-noi-bo/[ma]` để chia.
 - **Chốt hiện tại:** gộp cả dự án → **chia 1 lần** trên **tổng đã nhận từ A** (đọc sổ A↔B).
-- Hai chế độ: **tỷ lệ %** hoặc **số cứng** (tổng = tổng nhận A).
+- **Góp vốn B↔B:** nhập số → **Ghi nhận** → popup ngày + bill (giống sổ A↔B); số gắn link bill; sửa qua ngày/số.
+- Bảng chia + chọn góp-vốn: chỉ **Admin + PM** (Member ẩn trên UI; PM đại diện nhóm). Lịch sử góp vốn vẫn hiện tên Member nếu có.
+- Hai chế độ chia: **tỷ lệ %** hoặc **số cứng** (tổng = tổng nhận A).
 - Phần B theo GTV chỉ để đối chiếu.
-- Chưa làm: ứng nội bộ B↔B; chia theo từng đợt nhận.
+- Chưa làm: chia theo từng đợt nhận.
 
 ```mermaid
 flowchart LR

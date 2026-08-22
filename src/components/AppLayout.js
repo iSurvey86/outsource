@@ -11,13 +11,11 @@ import {
   Settings,
   LogOut,
   Eye,
-  EyeOff,
   KeyRound,
 } from "lucide-react";
 import {
   APP_NAME,
   APP_SYSTEM_LABEL,
-  APP_VERSION_LABEL,
   POST_LOGIN_ROUTE,
   SHOW_DASHBOARD,
 } from "../lib/brand";
@@ -44,6 +42,7 @@ import {
   stopViewAsPermission,
 } from "../lib/viewAsPermission";
 import { ViewAsPermissionBanner } from "./ViewAsPermissionModal";
+import LoginScreen from "./LoginScreen";
 import { loginUserFacingError } from "../lib/publicErrors";
 
 const navItemClass = (active) =>
@@ -282,64 +281,18 @@ export default function AppLayout({ children }) {
 
   if (!user) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-sky-100 via-teal-50 to-blue-100 px-4 py-10">
-        <form
-          onSubmit={handleLogin}
-          className="flex w-full max-w-[20rem] flex-col rounded-2xl border border-sky-200 bg-white px-6 py-10 shadow-xl shadow-sky-200/60"
-        >
-          <div className="mb-8 text-center">
-            <p className="text-sm font-black tracking-[0.18em] text-teal-600">
-              {APP_SYSTEM_LABEL}
-            </p>
-            <h1 className="mt-1 text-3xl font-black leading-none text-blue-900">{APP_NAME}</h1>
-          </div>
-          {loginNotice ? (
-            <p className="mb-4 rounded-lg bg-emerald-50 px-3 py-2 text-xs font-semibold text-emerald-800 ring-1 ring-emerald-200">
-              {loginNotice}
-            </p>
-          ) : null}
-          <label className="mb-1.5 block text-xs font-bold text-blue-900">Tài khoản</label>
-          <input
-            className="mb-5 w-full rounded-xl border border-sky-300 bg-sky-50 px-3 py-2.5 text-sm font-medium text-blue-950 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
-            value={username}
-            onChange={(e) => setUsername(e.target.value.replace(/\s/g, "").toLowerCase())}
-            autoComplete="username"
-          />
-          <label className="mb-1.5 block text-xs font-bold text-blue-900">Mật khẩu</label>
-          <div className="relative mb-6">
-            <input
-              type={showPw ? "text" : "password"}
-              className="w-full rounded-xl border border-sky-300 bg-sky-50 px-3 py-2.5 pr-10 text-sm font-medium text-blue-950 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-200"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              autoComplete="current-password"
-            />
-            <button
-              type="button"
-              className="absolute right-2 top-1/2 -translate-y-1/2 rounded p-1 text-teal-700 hover:bg-teal-50"
-              onClick={() => setShowPw((v) => !v)}
-              tabIndex={-1}
-            >
-              {showPw ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-            </button>
-          </div>
-          {loginError ? (
-            <p className="mb-4 rounded-lg bg-rose-50 px-3 py-2 text-xs font-semibold text-rose-700 ring-1 ring-rose-200">
-              {loginError}
-            </p>
-          ) : null}
-          <button
-            type="submit"
-            disabled={busy}
-            className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-teal-600 py-2.5 text-sm font-black text-white shadow-md shadow-teal-300/50 transition hover:from-blue-700 hover:to-teal-700 disabled:opacity-60"
-          >
-            {busy ? "Đang đăng nhập…" : "Đăng nhập"}
-          </button>
-          <p className="mt-6 text-center text-[11px] font-medium text-blue-700">
-            {APP_VERSION_LABEL}
-          </p>
-        </form>
-      </div>
+      <LoginScreen
+        username={username}
+        setUsername={setUsername}
+        password={password}
+        setPassword={setPassword}
+        showPw={showPw}
+        setShowPw={setShowPw}
+        loginError={loginError}
+        loginNotice={loginNotice}
+        busy={busy}
+        onSubmit={handleLogin}
+      />
     );
   }
 

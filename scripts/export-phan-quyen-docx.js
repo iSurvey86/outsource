@@ -170,7 +170,7 @@ const doc = new Document({
           ["Hang muc", ...roles],
           [
             ["So A-B (PADT, HD, lan tam ung...)", "Sua / nhan TU", "Chi xem", "Chi xem", "Chi xem (DA minh)"],
-            ["Tai chinh noi bo", "Co", "Co", "Khong (khac PM)", "An"],
+            ["Tai chinh noi bo", "Co (sua)", "Chi xem", "Khong (khac PM)", "An"],
           ],
           w5
         ),
@@ -195,7 +195,7 @@ const doc = new Document({
           bold: true,
         }),
         p(
-          "PM: Khong QLHT; khong tao/sua/xoa DA; lap/luu/xuat KS; upload ho so; xem so A-B; duoc tai chinh noi bo."
+          "PM: Khong QLHT; khong tao/sua/xoa DA; lap/luu/xuat KS; upload ho so; xem so A-B; xem tai chinh noi bo (khong sua)."
         ),
         p(
           "Member: Giong PM; khac dung 1 diem - khong xem tai chinh noi bo. (Du phong; hien Ben B chu yeu Admin + PM.)"

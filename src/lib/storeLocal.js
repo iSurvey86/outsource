@@ -41,7 +41,7 @@ export const SEED_ROLES = {
     q_xuat_ban: 1,
     q_xem_tai_chinh_ab: 1,
     q_chia_noi_bo: 1,
-    q_sua_chia_noi_bo: 1,
+    q_sua_chia_noi_bo: 0,
     q_system_log: 0,
   },
   member: {
@@ -224,6 +224,7 @@ export function seedLocalDb() {
       { id: "cn-2", du_an_id: "da-1", nguoi_dung_id: "u-pm", ty_le: 0.35, ghi_chu: "Lead phụ" },
       { id: "cn-3", du_an_id: "da-1", nguoi_dung_id: "u-admin", ty_le: 0.25, ghi_chu: "Hỗ trợ" },
     ],
+    gopVonNoiBo: [],
     taiLieu: [
       {
         id: "tl-1",
@@ -256,6 +257,7 @@ export function ensureLocalDemo(db) {
   if (!db) return seedLocalDb();
   db.roles = { ...SEED_ROLES };
   if (!Array.isArray(db.users)) db.users = [];
+  if (!Array.isArray(db.gopVonNoiBo)) db.gopVonNoiBo = [];
   for (const demo of DEMO_USERS) {
     const idx = db.users.findIndex(
       (u) => u.id === demo.id || String(u.username || "").toLowerCase() === demo.username

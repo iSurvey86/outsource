@@ -277,3 +277,37 @@ export const KS_STATUS_LABELS = {
   dang_lam: "Đang làm",
   da_xuat_ban: "Đã xuất bản",
 };
+
+/** Góp vốn nội bộ B↔B — lọc theo dự án */
+export function listGopVonNoiBo(rows = [], duAnId) {
+  return (rows || []).filter((r) => r.du_an_id === duAnId);
+}
+
+export function tongGopVonNoiBo(rows = [], duAnId) {
+  return listGopVonNoiBo(rows, duAnId).reduce((s, r) => s + (Number(r.so_tien) || 0), 0);
+}
+
+/** Tổng từng người đã góp */
+export function tongGopTheoNguoi(rows = [], duAnId, userId) {
+  return listGopVonNoiBo(rows, duAnId)
+    .filter((r) => r.nguoi_gop_id === userId)
+    .reduce((s, r) => s + (Number(r.so_tien) || 0), 0);
+}
+
+/** Quỹ đang giữ theo người nhận chuyển */
+export function quyGiuTheoNguoi(rows = [], duAnId, users = []) {
+  const map = new Map();
+  for (const r of listGopVonNoiBo(rows, duAnId)) {
+    const id = r.nguoi_giu_id;
+    if (!id) continue;
+    map.set(id, (map.get(id) || 0) + (Number(r.so_tien) || 0));
+  }
+  return [...map.entries()]
+    .map(([id, so]) => ({
+      nguoi_dung_id: id,
+      ho_ten: users.find((u) => u.id === id)?.ho_ten || id,
+      so_tien: so,
+    }))
+    .filter((x) => x.so_tien > 0)
+    .sort((a, b) => b.so_tien - a.so_tien);
+}

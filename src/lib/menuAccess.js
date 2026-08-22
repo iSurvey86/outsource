@@ -1,12 +1,38 @@
 import { isBenA, isBenB } from "./authSession";
 import { duAnVisibleToBenA } from "./benAUsers";
 
+/** Tài chính nội bộ — chỉ Admin + PM (Member B không vào). */
 export function canSeeChiaNoiBo(user, perms) {
-  return isBenB(user) && !!perms?.q_chia_noi_bo;
+  if (!isBenB(user)) return false;
+  const role = String(user?.phan_quyen || "");
+  if (role !== "admin" && role !== "pm") return false;
+  return !!perms?.q_chia_noi_bo;
 }
 
+/** Sửa góp vốn / bảng chia nội bộ — chỉ Admin. PM chỉ xem. */
 export function canSuaChiaNoiBo(user, perms) {
-  return isBenB(user) && !!perms?.q_sua_chia_noi_bo;
+  if (!isBenB(user)) return false;
+  if (String(user?.phan_quyen || "") !== "admin") return false;
+  return !!perms?.q_sua_chia_noi_bo;
+}
+
+const NOI_BO_UI_ROLES = new Set(["admin", "pm"]);
+
+/** Bên B đang hoạt động (mọi role) — tra cứu tên lịch sử góp vốn. */
+export function filterBenBActive(users) {
+  return (users || []).filter(
+    (u) => u.phe === "ben_b" && String(u.trang_thai || "active") === "active"
+  );
+}
+
+/**
+ * Thành viên hiện trên UI chia / chọn góp-vốn (ẩn Member; PM đại diện nhóm).
+ * Không xóa user — sau này có thể mở thêm Member góp quỹ qua cờ riêng.
+ */
+export function filterBenBNoiBoUi(users) {
+  return filterBenBActive(users).filter((u) =>
+    NOI_BO_UI_ROLES.has(String(u.phan_quyen || ""))
+  );
 }
 
 export function canLapKs(user, perms) {

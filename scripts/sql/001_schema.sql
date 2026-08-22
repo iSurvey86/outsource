@@ -113,6 +113,19 @@ create table if not exists chia_noi_bo (
   unique (du_an_id, nguoi_dung_id)
 );
 
+create table if not exists gop_von_noi_bo (
+  id text primary key,
+  du_an_id text references du_an(id) on delete cascade,
+  nguoi_gop_id text references nguoi_dung(id),
+  nguoi_giu_id text references nguoi_dung(id),
+  so_tien numeric not null default 0,
+  ngay date,
+  ghi_chu text,
+  link_bill text,
+  nguoi_tao_id text references nguoi_dung(id),
+  created_at timestamptz default now()
+);
+
 create table if not exists lich_su_hoat_dong (
   id text primary key,
   username text,
@@ -135,6 +148,7 @@ alter table ks_module enable row level security;
 alter table giao_dich enable row level security;
 alter table tai_lieu enable row level security;
 alter table chia_noi_bo enable row level security;
+alter table gop_von_noi_bo enable row level security;
 alter table lich_su_hoat_dong enable row level security;
 
 do $$
@@ -142,7 +156,7 @@ declare t text;
 begin
   foreach t in array array[
     'phan_quyen','nguoi_dung','du_an','moc_tien_do','ks_module',
-    'giao_dich','tai_lieu','chia_noi_bo','lich_su_hoat_dong'
+    'giao_dich','tai_lieu','chia_noi_bo','gop_von_noi_bo','lich_su_hoat_dong'
   ]
   loop
     execute format('drop policy if exists outsrc_all on %I', t);
@@ -156,7 +170,7 @@ end $$;
 -- ========== SEED ==========
 insert into phan_quyen (phan_quyen, q_admin, q_sua_du_an, q_xoa_du_an, q_lap_ks, q_xuat_ban, q_xem_tai_chinh_ab, q_chia_noi_bo, q_sua_chia_noi_bo, q_system_log) values
   ('admin', 1, 1, 1, 1, 1, 1, 1, 1, 1),
-  ('pm', 0, 0, 0, 1, 1, 1, 1, 1, 0),
+  ('pm', 0, 0, 0, 1, 1, 1, 1, 0, 0),
   ('member', 0, 0, 0, 1, 1, 0, 0, 0, 0),
   ('ben_a_viewer', 0, 0, 0, 0, 0, 1, 0, 0, 0)
 on conflict (phan_quyen) do update set

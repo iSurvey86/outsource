@@ -16,6 +16,15 @@ export function labelBenAUser(u) {
   return un ? `${name} (${un})` : name;
 }
 
+/** Tên hiển thị gọn trên workspace / danh mục — không kèm username hay hậu tố phe. */
+export function displayBenAName(u) {
+  if (!u) return "";
+  let name = String(u.ho_ten || "").trim();
+  name = name.replace(/\s*\(Bên A\)\s*$/i, "").trim();
+  if (!name) name = String(u.username || "").trim();
+  return name;
+}
+
 /** Chuẩn hoá danh sách id Bên A từ record DA (hỗ trợ cột cũ). */
 export function getBenAUserIds(duAn) {
   if (!duAn) return [];
@@ -60,8 +69,7 @@ export function findBenAUser(users, idOrDuAn) {
 export function labelBenAGroup(users, duAnOrIds) {
   const list = findBenAUsers(users, duAnOrIds);
   if (!list.length) return "";
-  if (list.length === 1) return labelBenAUser(list[0]);
-  return list.map((u) => u.ho_ten || u.username).join(", ");
+  return list.map(displayBenAName).filter(Boolean).join("; ");
 }
 
 /** Patch đồng bộ mảng + cột legacy (phần tử đầu). */

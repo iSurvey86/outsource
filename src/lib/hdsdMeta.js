@@ -51,7 +51,7 @@ export const HDSD_SECTIONS = [
     slug: "tai-chinh",
     title: "Tài chính",
     shortTitle: "Tài chính",
-    description: "Sổ A↔B; Member không xem; nội bộ list → chia 1 lần",
+    description: "Sổ A↔B; nội bộ góp vốn + chia (PM xem); Member ẩn",
     file: "02-tai-chinh.md",
     order: 3,
     status: "published",
