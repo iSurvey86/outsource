@@ -24,7 +24,7 @@ Menu **Tài chính nội bộ** (chỉ **Admin + PM** Bên B; Member không vào
 
 1. **Danh sách dự án** — đã nhận từ A, góp nội bộ, trạng thái chia.
 2. Bấm vào DA → trang **2 cột**:
-   - **Trái — Góp vốn B↔B:** chọn người góp / người giữ quỹ → nhập số → **Ghi nhận** → popup **ngày + bill** (giống sổ A↔B). Số tiền có link bill; bấm ngày để sửa (Admin).
+   - **Trái — Góp vốn B↔B:** chọn người góp / người giữ quỹ → nhập số → **Ghi nhận** → popup **ngày + bill** (giống sổ A↔B). Số tiền link bill; bấm ngày để sửa (Admin). Bảng cột **STT**; thẻ tổng: nhãn trái, số phải.
    - **Phải — Chia trên tiền nhận từ A:** một lần trên **tổng đã nhận** (đọc sổ A↔B): **tỷ lệ %** hoặc **số cứng**; bảng chỉ hiện Admin + PM (Member ẩn trên UI — PM đại diện nhóm).
 3. **Admin** sửa góp vốn và lưu bảng chia; **PM chỉ xem** (không form nhập, không nút Lưu).
 

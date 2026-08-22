@@ -5,6 +5,38 @@
 
 ---
 
+## 2026-08-22 — Sidebar mobile + tinh chỉnh góp vốn (0.4.4)
+
+**Máy / ngữ cảnh:** Cursor — tiếp 0.4.3; App **0.4.4**.
+
+### Đã chốt / đã làm
+
+- **Sidebar mobile:** drawer auto-hide; ☰ mở menu; full width nội dung khi đóng.
+- **Desktop:** ghim góc phải header; bỏ ghim → thu icon (`useAppSidebar`).
+- **Góp vốn:** nhãn trái / số phải; cột STT.
+
+### File chính
+
+| Khu vực | File |
+|---------|------|
+| Sidebar | `hooks/useAppSidebar.js`, `AppLayout.js` |
+| Nội bộ | `GopVonNoiBoSection.js` |
+
+### Việc tiếp
+
+- [ ] SQL **025**–**027** trên Supabase.
+- [ ] Form KS thật; RLS.
+
+### Câu mở phiên sau
+
+```text
+Đọc HANDOFF (0.4.4). Sidebar mobile + ghim desktop. SQL 025–027 nếu thiếu; tiếp form KS.
+```
+
+**Lưu trữ ngày:** [2026-08-22-sidebar-mobile-ux.md](./2026-08-22-sidebar-mobile-ux.md)
+
+---
+
 ## 2026-08-22 — Tài chính nội bộ + UX login/DA (0.4.3)
 
 **Máy / ngữ cảnh:** Cursor — tiếp 0.4.2; App **0.4.3**.

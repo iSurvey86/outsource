@@ -32,6 +32,10 @@ Helper: `menuAccess.js` — `filterDuAnForUser`, `canSeeTaiChinhAb`, `canXoaHoSo
 - `/quan-ly-he-thong`: `q_admin` hoặc `q_system_log`
 - `/nhap-du-an`: `q_sua_du_an` (Admin)
 
+## Sidebar (`AppLayout` + `useAppSidebar`)
+- **&lt; lg (1024px):** drawer cố định, ẩn mặc định; header ☰ mở; backdrop / đổi route → đóng.
+- **≥ lg:** ghim góc phải header — ghim = `w-56`; bỏ ghim = rail icon `4.5rem`; `localStorage` key `outsrc_sidebar_pinned`.
+
 ## Lỗi kết nối Supabase
 - Key sai / thiếu → thông báo hướng dẫn copy lại **anon public** JWT (`eyJ…`) vào env, restart/redeploy.
 - Client chuẩn hóa key: bỏ prefix copy nhầm trước `eyJ`.

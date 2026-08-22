@@ -8,6 +8,10 @@ OUTSRC quản lý dự án ngoài (da đen) giữa **Bên A** (giao việc) và 
 3. Đổi mật khẩu sau này: sidebar → **Đổi mật khẩu**.
 4. Góc dưới sidebar: tài khoản và **Đăng xuất**.
 
+## Sidebar (menu trái)
+- **Điện thoại / màn hẹp:** sidebar **ẩn** mặc định; bấm **☰** góc trên để mở; chọn menu hoặc chạm ngoài để đóng — nội dung full width.
+- **Màn rộng:** bấm **ghim** (góc phải header sidebar) để luôn mở rộng; **bỏ ghim** → thu còn icon. Trạng thái ghim được nhớ trên trình duyệt.
+
 Nếu báo lỗi kết nối: liên hệ quản trị viên (không tự xử lý cấu hình kỹ thuật).
 
 ## Vai trò (tóm tắt)

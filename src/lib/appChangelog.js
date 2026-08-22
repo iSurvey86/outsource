@@ -16,6 +16,17 @@
 /** @type {ChangelogRelease[]} — mới nhất ở đầu */
 export const APP_CHANGELOG = [
   {
+    version: "0.4.4",
+    date: "2026-08-22",
+    title: "Sidebar mobile + tinh chỉnh góp vốn",
+    sections: {
+      improved: [
+        "Sidebar: mobile drawer auto-hide (☰); desktop ghim/thu gọn icon; nhớ trạng thái ghim",
+        "Góp vốn nội bộ: nhãn trái / số phải; cột STT",
+      ],
+    },
+  },
+  {
     version: "0.4.3",
     date: "2026-08-22",
     title: "Góp vốn nội bộ + UX login/DA",

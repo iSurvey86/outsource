@@ -207,7 +207,7 @@ export default function GopVonNoiBoSection({
       <div className="grid gap-2 sm:grid-cols-2">
         <div className="rounded-xl border border-violet-200 bg-white px-3 py-2">
           <p className="text-[10px] font-bold uppercase text-violet-800">Tổng đã góp</p>
-          <p className="mt-0.5 font-black tabular-nums text-violet-950">
+          <p className="mt-0.5 text-right font-black tabular-nums text-violet-950">
             {tongGop > 0 ? formatVnd(tongGop) : "—"}
           </p>
         </div>
@@ -216,7 +216,7 @@ export default function GopVonNoiBoSection({
             <p className="text-[10px] font-bold uppercase text-violet-800">
               Quỹ {q.ho_ten} giữ
             </p>
-            <p className="mt-0.5 font-black tabular-nums text-violet-950">{formatVnd(q.so_tien)}</p>
+            <p className="mt-0.5 text-right font-black tabular-nums text-violet-950">{formatVnd(q.so_tien)}</p>
           </div>
         ))}
         {quyGiu.length > 1 ? (
@@ -299,7 +299,7 @@ export default function GopVonNoiBoSection({
           <table className="w-full text-left text-sm">
             <thead className="sticky top-0 bg-violet-100 text-xs font-black uppercase text-violet-950">
               <tr>
-                <th className="w-8 px-2 py-2">#</th>
+                <th className="w-10 px-2 py-2">STT</th>
                 <th className="px-2 py-2">Người góp</th>
                 <th className="px-2 py-2">Giữ quỹ</th>
                 <th className="px-2 py-2 text-center">Số tiền / bill</th>

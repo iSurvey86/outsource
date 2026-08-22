@@ -1,5 +1,13 @@
 # Changelog OUTSRC
 
+## 0.4.4 — 2026-08-22
+
+**Sidebar mobile + tinh chỉnh góp vốn**
+
+### Cải thiện
+- Sidebar: mobile drawer auto-hide (☰); desktop ghim/thu gọn icon; nhớ trạng thái ghim
+- Góp vốn nội bộ: nhãn trái / số phải; cột STT
+
 ## 0.4.3 — 2026-08-22
 
 **Góp vốn nội bộ + UX login/DA**
