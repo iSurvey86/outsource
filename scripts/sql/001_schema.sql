@@ -11,6 +11,7 @@ create table if not exists phan_quyen (
   q_xuat_ban int default 0,
   q_chia_noi_bo int default 0,
   q_sua_chia_noi_bo int default 0,
+  q_xem_tai_chinh_ab int default 0,
   q_system_log int default 0
 );
 
@@ -153,17 +154,18 @@ begin
 end $$;
 
 -- ========== SEED ==========
-insert into phan_quyen (phan_quyen, q_admin, q_sua_du_an, q_xoa_du_an, q_lap_ks, q_xuat_ban, q_chia_noi_bo, q_sua_chia_noi_bo, q_system_log) values
-  ('admin', 1, 1, 1, 1, 1, 1, 1, 1),
-  ('pm', 0, 0, 0, 1, 1, 1, 1, 0),
-  ('member', 0, 0, 0, 1, 1, 0, 0, 0),
-  ('ben_a_viewer', 0, 0, 0, 0, 0, 0, 0, 0)
+insert into phan_quyen (phan_quyen, q_admin, q_sua_du_an, q_xoa_du_an, q_lap_ks, q_xuat_ban, q_xem_tai_chinh_ab, q_chia_noi_bo, q_sua_chia_noi_bo, q_system_log) values
+  ('admin', 1, 1, 1, 1, 1, 1, 1, 1, 1),
+  ('pm', 0, 0, 0, 1, 1, 1, 1, 1, 0),
+  ('member', 0, 0, 0, 1, 1, 0, 0, 0, 0),
+  ('ben_a_viewer', 0, 0, 0, 0, 0, 1, 0, 0, 0)
 on conflict (phan_quyen) do update set
   q_admin = excluded.q_admin,
   q_sua_du_an = excluded.q_sua_du_an,
   q_xoa_du_an = excluded.q_xoa_du_an,
   q_lap_ks = excluded.q_lap_ks,
   q_xuat_ban = excluded.q_xuat_ban,
+  q_xem_tai_chinh_ab = excluded.q_xem_tai_chinh_ab,
   q_chia_noi_bo = excluded.q_chia_noi_bo,
   q_sua_chia_noi_bo = excluded.q_sua_chia_noi_bo,
   q_system_log = excluded.q_system_log;
@@ -171,7 +173,7 @@ on conflict (phan_quyen) do update set
 insert into nguoi_dung (id, username, mat_khau, ho_ten, phe, phan_quyen, trang_thai, bat_doi_mk) values
   ('u-admin', 'phuongdm', 'admin123', 'Phương DM', 'ben_b', 'admin', 'active', 1),
   ('u-pm', 'tinhtv', 'pm123', 'Tình TV', 'ben_b', 'pm', 'active', 1),
-  ('u-mem', 'hienth', 'mem123', 'Hiền TH', 'ben_b', 'member', 'active', 1),
+  ('u-mem', 'hienth', 'a123', 'Hiền TH', 'ben_a', 'ben_a_viewer', 'active', 1),
   ('u-a1', 'chulm', 'a123', 'Chu LM (Bên A)', 'ben_a', 'ben_a_viewer', 'active', 1)
 on conflict (id) do update set
   username = excluded.username,
@@ -218,7 +220,7 @@ on conflict (id) do nothing;
 
 insert into chia_noi_bo (id, du_an_id, nguoi_dung_id, ty_le, ghi_chu) values
   ('cn-1', 'da-1', 'u-pm', 0.40, 'Lead'),
-  ('cn-2', 'da-1', 'u-mem', 0.35, ''),
+  ('cn-2', 'da-1', 'u-pm', 0.35, 'Lead phụ'),
   ('cn-3', 'da-1', 'u-admin', 0.25, 'Hỗ trợ')
 on conflict (id) do nothing;
 

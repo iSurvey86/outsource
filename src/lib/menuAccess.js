@@ -26,6 +26,16 @@ export function canXoaDuAn(perms) {
   return !!perms?.q_xoa_du_an;
 }
 
+/** Sổ A↔B: xem — Admin/PM/Bên A; Member Bên B không xem. */
+export function canSeeTaiChinhAb(user, perms) {
+  if (isBenA(user)) return true;
+  if (isBenB(user) && user?.phan_quyen === "member") return false;
+  if (perms && "q_xem_tai_chinh_ab" in perms) {
+    return !!perms.q_xem_tai_chinh_ab;
+  }
+  return isBenB(user);
+}
+
 /** Sổ A↔B: sửa số liệu / nhận tạm ứng — chỉ Admin. */
 export function canSuaTaiChinhAb(perms) {
   return !!perms?.q_admin;
@@ -61,6 +71,13 @@ export function canAccessDuAn(duAn, user) {
 /** Path guard — trả về route redirect nếu không được vào */
 export function checkPathAccess(pathname, user, perms) {
   if (!user) return "/login";
+  if (
+    pathname.startsWith("/tai-chinh") &&
+    !pathname.startsWith("/tai-chinh-noi-bo") &&
+    !canSeeTaiChinhAb(user, perms)
+  ) {
+    return "/";
+  }
   if (pathname.startsWith("/chia-noi-bo") || pathname.startsWith("/tai-chinh-noi-bo")) {
     if (!canSeeChiaNoiBo(user, perms)) return "/";
   }

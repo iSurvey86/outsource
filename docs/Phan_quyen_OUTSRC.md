@@ -47,7 +47,7 @@ File Word: [Phan_quyen_OUTSRC_v2.docx](./Phan_quyen_OUTSRC_v2.docx) (ban Co/Khon
 
 | Hang muc | Admin | PM | Member | Ben A |
 |---|:---:|:---:|:---:|:---:|
-| So A-B | **Sua / nhan TU** | Chi xem | Chi xem | Chi xem (DA minh) |
+| So A-B | **Sua / nhan TU** | Chi xem | **Khong** | Chi xem (DA minh) |
 | Tai chinh noi bo | Co | Co | **Khong** | An |
 
 ## 5. HDSD / Co gi moi
@@ -60,5 +60,5 @@ File Word: [Phan_quyen_OUTSRC_v2.docx](./Phan_quyen_OUTSRC_v2.docx) (ban Co/Khon
 
 - **Admin:** Toan quyen (QLHT, DA, gan A, sua so A-B, noi bo, KS, ho so).
 - **PM:** Khong QLHT; khong tao/sua/xoa DA; lap/luu/xuat KS; upload ho so; xem A-B; duoc noi bo.
-- **Member:** Giong PM; **Khong** tai chinh noi bo.
+- **Member:** Giong PM; **Khong** sổ A↔B; **Khong** tai chinh noi bo.
 - **Ben A:** Chi DA cua minh; xem TT co ban + Giao A + HD + GTV + Ho so; an KS; xem A-B (DA minh); khong noi bo; khong sua.

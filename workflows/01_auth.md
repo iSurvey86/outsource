@@ -2,7 +2,7 @@
 
 ## Đăng nhập
 - Form User / Mật khẩu trên `/login` (hoặc redirect khi chưa session).
-- Seed: `phuongdm`/`admin123` (B admin), `tinhtv`/`pm123`, `hienth`/`mem123`, `chulm`/`a123` (A).
+- Seed (`src/lib/seedUsers.js`): `phuongdm`/`admin123` (B admin), `tinhtv`/`pm123` (PM), `hienth`/`a123` (A, id `u-mem`), `chulm`/`a123` (A demo). Member thật tạo trên QLHT.
 - Session: `sessionStorage` keys `outsrc_user`, `outsrc_perms`.
 - Cột `bat_doi_mk` (SQL `020`): =1 → sau login ép `/tai-khoan` đổi MK; sau đổi =0 và đăng nhập lại.
 - Tạo user / Admin đặt lại MK → `bat_doi_mk=1`.
@@ -20,7 +20,7 @@ Login và «Xem quyền» **ưu tiên ma trận trong code** (tránh DB lệch).
 | Xem danh sách DA | Mọi DA | Mọi DA | Mọi DA | **Chỉ DA trong `ben_a_user_ids`** |
 | Lập/XB KS | Có | Có | Có (=PM) | Ẩn khối KS |
 | Upload hồ sơ | Có | Có | Có | Chỉ xem |
-| Sửa sổ A↔B / nhận TU | Có | Chỉ xem | Chỉ xem | Chỉ xem (DA mình) |
+| Sửa sổ A↔B / nhận TU | Có | Chỉ xem | **Không xem** | Chỉ xem (DA mình) |
 | Tài chính nội bộ | Có | Có | **Không** | Ẩn |
 
 Helper: `menuAccess.js` — `filterDuAnForUser`, `canAccessDuAn`, `canSuaTaiChinhAb`, `canSuaDuAn`, …

@@ -1,6 +1,6 @@
 /**
  * Quyền theo ma trận — nguồn sự thật: SEED_ROLES (docs/Phan_quyen_OUTSRC.md).
- * Member = PM trừ tài chính nội bộ (q_chia_noi_bo / q_sua_chia_noi_bo = 0).
+ * Member = PM trừ sổ A↔B và tài chính nội bộ.
  */
 
 import { SEED_ROLES } from "./storeLocal";

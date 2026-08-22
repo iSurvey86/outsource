@@ -26,13 +26,15 @@ npm run dev
 
 Không có env → app chạy **localStorage** (dev). Có env → dùng **Supabase**.
 
-### Tài khoản seed
-| User | MK | Vai |
-|------|-----|-----|
+### Tài khoản seed (đồng bộ `src/lib/seedUsers.js`)
+| User | MK (local dev) | Vai |
+|------|----------------|-----|
 | phuongdm | admin123 | Bên B admin |
-| tinhtv | pm123 | Bên B pm |
-| hienth | mem123 | Bên B member |
-| chulm | a123 | Bên A |
+| tinhtv | pm123 | Bên B PM |
+| hienth | a123 | Bên A |
+| chulm | a123 | Bên A (demo DA) |
+
+Member B thật (vd. `binhlv`) tạo qua Quản trị HT — không nằm trong seed.
 
 ## 3. Deploy Vercel
 1. Push repo lên GitHub / GitLab / Bitbucket

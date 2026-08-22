@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { loadAuthSession } from "../lib/authSession";
-import { canSeeChiaNoiBo, filterDuAnForUser } from "../lib/menuAccess";
+import { canSeeChiaNoiBo, canSeeTaiChinhAb, filterDuAnForUser } from "../lib/menuAccess";
 import { conLai, formatVnd, giaTriBenB, tongThu } from "../lib/finance";
 import { formatNgayVi } from "../lib/formatNgay";
 import { fetchDb, hasSupabase } from "../lib/store";
@@ -54,13 +54,15 @@ export default function DashboardPage() {
   const myShares = canSeeChiaNoiBo(user, perms)
     ? data.chiaNoiBo.filter((c) => c.nguoi_dung_id === user.id)
     : [];
+  const showTaiChinhAb = canSeeTaiChinhAb(user, perms);
 
   return (
     <div className="space-y-6">
       <header>
         <h1 className="text-2xl font-black text-blue-950">Dashboard</h1>
         <p className="mt-1 text-sm font-medium text-teal-800">
-          Xin chào {user.ho_ten} — theo dõi tiến độ &amp; công nợ A↔B
+          Xin chào {user.ho_ten}
+          {showTaiChinhAb ? " — theo dõi tiến độ & công nợ A↔B" : " — theo dõi tiến độ dự án"}
           {hasSupabase ? (
             <span className="ml-2 rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-black text-emerald-800">
               Supabase
@@ -73,14 +75,18 @@ export default function DashboardPage() {
         </p>
       </header>
 
-      <div className="grid gap-4 sm:grid-cols-3">
+      <div className={`grid gap-4 ${showTaiChinhAb ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
         <StatCard label="DA đang theo dõi" value={String(dangLam.length)} tone="blue" />
-        <StatCard label="Tổng còn thu (phần B)" value={formatVnd(tongConLai)} tone="teal" />
-        <StatCard
-          label="User Bên A"
-          value={String(data.users.filter((u) => u.phe === "ben_a").length)}
-          tone="emerald"
-        />
+        {showTaiChinhAb ? (
+          <StatCard label="Tổng còn thu (phần B)" value={formatVnd(tongConLai)} tone="teal" />
+        ) : null}
+        {showTaiChinhAb ? (
+          <StatCard
+            label="User Bên A"
+            value={String(data.users.filter((u) => u.phe === "ben_a").length)}
+            tone="emerald"
+          />
+        ) : null}
       </div>
 
       <section className="rounded-2xl border border-sky-200 bg-white p-5 shadow-sm shadow-sky-100">

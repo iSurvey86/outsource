@@ -8,6 +8,7 @@ import {
   loadAuthSession,
   setAuthSession,
 } from "./authSession";
+import { resolveRolePerms } from "./rolePerms";
 import { SEED_ROLES } from "./storeLocal";
 import { hasSupabase, supabase } from "./supabase";
 
@@ -38,7 +39,7 @@ export const VIEW_AS_ROLE_PRESETS = [
     ho_ten: "Test_Member",
     phe: "ben_b",
     phan_quyen: "member",
-    mo_ta: "Giống PM; không tài chính nội bộ",
+    mo_ta: "Giống PM; không sổ A↔B, không tài chính nội bộ",
   },
   {
     id: "ben_a",
@@ -214,10 +215,6 @@ export function clearAuthSessionIncludingViewAs() {
 export function roleLabel(phanQuyen) {
   return ROLE_LABELS[phanQuyen] || phanQuyen || "-";
 }
-
-import { SEED_ROLES } from "./storeLocal";
-import { hasSupabase, supabase } from "./supabase";
-import { resolveRolePerms } from "./rolePerms";
 
 export async function fetchPermsForRole(phanQuyen) {
   const role = String(phanQuyen || "").trim();

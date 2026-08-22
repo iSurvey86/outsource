@@ -3,7 +3,11 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { loadAuthSession } from "../../lib/authSession";
-import { canSuaTaiChinhAb, filterDuAnForUser } from "../../lib/menuAccess";
+import {
+  canSeeTaiChinhAb,
+  canSuaTaiChinhAb,
+  filterDuAnForUser,
+} from "../../lib/menuAccess";
 import { formatTmdtTrieuSo } from "../../lib/duAnMeta";
 import {
   DOT_META,
@@ -59,7 +63,16 @@ export default function TaiChinhPage() {
     );
   }, [db, user]);
 
+  const canView = canSeeTaiChinhAb(user, perms);
   const canEdit = canSuaTaiChinhAb(perms);
+
+  if (user && perms && !canView) {
+    return (
+      <p className="rounded-xl bg-amber-50 px-4 py-3 text-sm font-bold text-amber-900 ring-1 ring-amber-200">
+        Tài khoản của bạn không được xem sổ tài chính A↔B.
+      </p>
+    );
+  }
 
   async function patchDuAn(duAn, patch) {
     if (!canSuaTaiChinhAb(perms)) {

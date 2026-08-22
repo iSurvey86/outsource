@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { DEMO_USERS } from "../../../../lib/storeLocal";
+import { DEMO_USERS } from "../../../../lib/seedUsers";
 import { resolveRolePerms } from "../../../../lib/rolePerms";
 import { loginUserFacingError } from "../../../../lib/publicErrors";
 

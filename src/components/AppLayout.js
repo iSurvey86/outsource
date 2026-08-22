@@ -22,7 +22,12 @@ import {
   SHOW_DASHBOARD,
 } from "../lib/brand";
 import { loadAuthSession, setAuthSession, userMustChangePassword } from "../lib/authSession";
-import { canSeeChiaNoiBo, canSeeQlht, checkPathAccess } from "../lib/menuAccess";
+import {
+  canSeeChiaNoiBo,
+  canSeeQlht,
+  canSeeTaiChinhAb,
+  checkPathAccess,
+} from "../lib/menuAccess";
 import { loginLocal, logActivity, fetchDb, hasSupabase } from "../lib/store";
 import { startOnlinePresence } from "../lib/onlinePresence";
 import {
@@ -338,6 +343,7 @@ export default function AppLayout({ children }) {
     );
   }
 
+  const showTaiChinhAb = canSeeTaiChinhAb(user, perms);
   const showChia = canSeeChiaNoiBo(user, perms);
   const showQlht = canSeeQlht(user, perms);
   const showViewAsEntry = canUseViewAsPermission();
@@ -376,15 +382,17 @@ export default function AppLayout({ children }) {
             <FolderKanban className="h-4 w-4 shrink-0" />
             Dự án
           </Link>
-          <Link
-            href="/tai-chinh"
-            className={navItemClass(
-              pathname.startsWith("/tai-chinh") && !pathname.startsWith("/tai-chinh-noi-bo")
-            )}
-          >
-            <Wallet className="h-4 w-4 shrink-0" />
-            Tài chính A↔B
-          </Link>
+          {showTaiChinhAb ? (
+            <Link
+              href="/tai-chinh"
+              className={navItemClass(
+                pathname.startsWith("/tai-chinh") && !pathname.startsWith("/tai-chinh-noi-bo")
+              )}
+            >
+              <Wallet className="h-4 w-4 shrink-0" />
+              Tài chính A↔B
+            </Link>
+          ) : null}
           {showChia ? (
             <Link
               href="/tai-chinh-noi-bo"

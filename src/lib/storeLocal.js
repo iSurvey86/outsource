@@ -2,7 +2,11 @@
  * LocalStorage fallback (dev không có Supabase).
  */
 
-const DB_KEY = "outsrc_db_v7";
+import { DEMO_USERS } from "./seedUsers";
+
+export { DEMO_USERS, SEED_USERS } from "./seedUsers";
+
+const DB_KEY = "outsrc_db_v9";
 const LEGACY_KEYS = [
   "outsrc_db_v1",
   "outsrc_db_v2",
@@ -10,6 +14,8 @@ const LEGACY_KEYS = [
   "outsrc_db_v4",
   "outsrc_db_v5",
   "outsrc_db_v6",
+  "outsrc_db_v7",
+  "outsrc_db_v8",
 ];
 
 /** Đồng bộ ma trận docs/Phan_quyen_OUTSRC.md — PM/Member không CRUD metadata DA. */
@@ -21,6 +27,7 @@ export const SEED_ROLES = {
     q_xoa_du_an: 1,
     q_lap_ks: 1,
     q_xuat_ban: 1,
+    q_xem_tai_chinh_ab: 1,
     q_chia_noi_bo: 1,
     q_sua_chia_noi_bo: 1,
     q_system_log: 1,
@@ -32,6 +39,7 @@ export const SEED_ROLES = {
     q_xoa_du_an: 0,
     q_lap_ks: 1,
     q_xuat_ban: 1,
+    q_xem_tai_chinh_ab: 1,
     q_chia_noi_bo: 1,
     q_sua_chia_noi_bo: 1,
     q_system_log: 0,
@@ -43,6 +51,7 @@ export const SEED_ROLES = {
     q_xoa_du_an: 0,
     q_lap_ks: 1,
     q_xuat_ban: 1,
+    q_xem_tai_chinh_ab: 0,
     q_chia_noi_bo: 0,
     q_sua_chia_noi_bo: 0,
     q_system_log: 0,
@@ -54,54 +63,12 @@ export const SEED_ROLES = {
     q_xoa_du_an: 0,
     q_lap_ks: 0,
     q_xuat_ban: 0,
+    q_xem_tai_chinh_ab: 1,
     q_chia_noi_bo: 0,
     q_sua_chia_noi_bo: 0,
     q_system_log: 0,
   },
 };
-
-export const DEMO_USERS = [
-  {
-    id: "u-admin",
-    username: "phuongdm",
-    mat_khau: "admin123",
-    ho_ten: "Phương DM",
-    phe: "ben_b",
-    phan_quyen: "admin",
-    trang_thai: "active",
-    bat_doi_mk: 1,
-  },
-  {
-    id: "u-pm",
-    username: "tinhtv",
-    mat_khau: "pm123",
-    ho_ten: "Tình TV",
-    phe: "ben_b",
-    phan_quyen: "pm",
-    trang_thai: "active",
-    bat_doi_mk: 1,
-  },
-  {
-    id: "u-mem",
-    username: "hienth",
-    mat_khau: "mem123",
-    ho_ten: "Hiền TH",
-    phe: "ben_b",
-    phan_quyen: "member",
-    trang_thai: "active",
-    bat_doi_mk: 1,
-  },
-  {
-    id: "u-a1",
-    username: "chulm",
-    mat_khau: "a123",
-    ho_ten: "Chu LM (Bên A)",
-    phe: "ben_a",
-    phan_quyen: "ben_a_viewer",
-    trang_thai: "active",
-    bat_doi_mk: 1,
-  },
-];
 
 export function uid(prefix) {
   return `${prefix}-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
@@ -128,7 +95,7 @@ export function seedLocalDb() {
         ma_du_an: "QN-2026-BCNCKT-DEMO01",
         ten: "Xây dựng đường dây 110kV từ TBA 110kV Vân Đồn 2 đến vị trí 63",
         ben_a_user_id: "u-a1",
-        ben_a_user_ids: ["u-a1"],
+        ben_a_user_ids: ["u-a1", "u-mem"],
         phu_trach_id: "u-pm",
         chu_dau_tu: "Công ty Điện lực Quảng Ninh",
         quy_mo: "Xây mới ĐZ 110kV ~16,48 km; cáp ngầm 22kV đoạn đấu nối.",
@@ -161,7 +128,7 @@ export function seedLocalDb() {
         ma_du_an: "HP-2026-TKBVTC-DEMO02",
         ten: "Cải tạo TBA 110kV Demo Hải Phòng",
         ben_a_user_id: "u-a1",
-        ben_a_user_ids: ["u-a1"],
+        ben_a_user_ids: ["u-a1", "u-mem"],
         phu_trach_id: "u-pm",
         chu_dau_tu: "Công ty Điện lực Hải Phòng",
         quy_mo: "Cải tạo máy biến áp + ngăn lộ 110kV.",
@@ -254,7 +221,7 @@ export function seedLocalDb() {
     ],
     chiaNoiBo: [
       { id: "cn-1", du_an_id: "da-1", nguoi_dung_id: "u-pm", ty_le: 0.4, ghi_chu: "Lead" },
-      { id: "cn-2", du_an_id: "da-1", nguoi_dung_id: "u-mem", ty_le: 0.35, ghi_chu: "" },
+      { id: "cn-2", du_an_id: "da-1", nguoi_dung_id: "u-pm", ty_le: 0.35, ghi_chu: "Lead phụ" },
       { id: "cn-3", du_an_id: "da-1", nguoi_dung_id: "u-admin", ty_le: 0.25, ghi_chu: "Hỗ trợ" },
     ],
     taiLieu: [
