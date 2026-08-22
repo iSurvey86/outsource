@@ -97,7 +97,7 @@ export default function TaiChinhNoiBoListPage() {
       </div>
 
       <div className="overflow-hidden rounded-2xl border border-indigo-200 bg-white shadow-sm">
-        <div className="overflow-x-auto">
+        <div className="-mx-3 overflow-x-auto px-3 sm:mx-0 sm:px-0">
           <table className="w-full min-w-[720px] border-collapse text-sm">
             <thead className="bg-indigo-800 text-xs font-black uppercase tracking-wide text-white">
               <tr>

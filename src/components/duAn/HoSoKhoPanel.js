@@ -219,7 +219,7 @@ export default function HoSoKhoPanel({
   const theme = themeFor(loaiKho);
 
   const folderShell =
-    viewMode === "grid" ? "grid grid-cols-3 gap-2" : "flex flex-col gap-1";
+    viewMode === "grid" ? "grid grid-cols-2 gap-2 sm:grid-cols-3" : "flex flex-col gap-1";
 
   return (
     <section

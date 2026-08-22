@@ -24,7 +24,7 @@ export const HDSD_SECTIONS = [
     slug: "tong-quan",
     title: "Tổng quan",
     shortTitle: "Tổng quan",
-    description: "Đăng nhập, menu, sidebar mobile/ghim, ma trận quyền",
+    description: "Đăng nhập, menu, sidebar mobile, thẻ/cuộn bảng trên điện thoại",
     file: "00-tong-quan.md",
     order: 0,
     status: "published",

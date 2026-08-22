@@ -372,7 +372,7 @@ export default function DuAnListPage() {
       </div>
 
       <div className="overflow-hidden rounded-2xl border border-sky-200 bg-white shadow-sm">
-        <div className="overflow-x-auto">
+        <div className="-mx-3 overflow-x-auto px-3 sm:mx-0 sm:px-0">
           <table className="w-full min-w-[860px] border-collapse text-sm">
             <thead className="bg-[#1e40af] text-xs font-black uppercase tracking-wide text-white">
               <tr>

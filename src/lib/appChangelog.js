@@ -16,6 +16,18 @@
 /** @type {ChangelogRelease[]} — mới nhất ở đầu */
 export const APP_CHANGELOG = [
   {
+    version: "0.4.5",
+    date: "2026-08-22",
+    title: "Tối ưu mobile toàn app",
+    sections: {
+      improved: [
+        "Nhật ký hoạt động: thẻ trên mobile; bảng desktop; bộ lọc responsive",
+        "QLHT tài khoản, góp vốn/chia nội bộ: thẻ mobile; bảng rộng cuộn ngang (DA, A↔B, sổ HĐ)",
+        "Hồ sơ KS/TK: lưới thư mục 2 cột trên điện thoại",
+      ],
+    },
+  },
+  {
     version: "0.4.4",
     date: "2026-08-22",
     title: "Sidebar mobile + tinh chỉnh góp vốn",

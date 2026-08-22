@@ -36,6 +36,11 @@ Helper: `menuAccess.js` — `filterDuAnForUser`, `canSeeTaiChinhAb`, `canXoaHoSo
 - **&lt; lg (1024px):** drawer cố định, ẩn mặc định; header ☰ mở; backdrop / đổi route → đóng.
 - **≥ lg:** ghim góc phải header — ghim = `w-56`; bỏ ghim = rail icon `4.5rem`; `localStorage` key `outsrc_sidebar_pinned`.
 
+## Responsive mobile
+- Nhật ký QLHT (`NhatKyHoatDongPanel`): thẻ &lt; `md`, bảng + resize cột ≥ `md`; `fitContainer` chỉ desktop.
+- Bảng rộng: bọc `MobileTableScroll` hoặc `-mx-3 overflow-x-auto` trên list DA / A↔B / sổ HĐ.
+- Tài chính nội bộ chi tiết: góp vốn + chia = thẻ mobile; component `GopVonNoiBoSection`.
+
 ## Lỗi kết nối Supabase
 - Key sai / thiếu → thông báo hướng dẫn copy lại **anon public** JWT (`eyJ…`) vào env, restart/redeploy.
 - Client chuẩn hóa key: bỏ prefix copy nhầm trước `eyJ`.

@@ -5,6 +5,37 @@
 
 ---
 
+## 2026-08-22 — Tối ưu mobile toàn app (0.4.5)
+
+**Máy / ngữ cảnh:** Cursor — tiếp 0.4.4; App **0.4.5**.
+
+### Đã chốt / đã làm
+
+- **Nhật ký hoạt động:** thẻ mobile; bảng desktop; lọc responsive.
+- **QLHT, nội bộ, hồ sơ, sổ HĐ:** thẻ hoặc cuộn ngang trên mobile.
+- `useMediaQuery`, `MobileTableScroll`.
+
+### File chính
+
+| Khu vực | File |
+|---------|------|
+| Core | `NhatKyHoatDongPanel.js`, `MobileTableScroll.js`, `useMediaQuery.js` |
+| Trang | `quan-ly-he-thong`, `tai-chinh*`, `du-an`, `GopVonNoiBoSection` |
+
+### Việc tiếp
+
+- [ ] SQL **025**–**027**; form KS; RLS.
+
+### Câu mở phiên sau
+
+```text
+Đọc HANDOFF (0.4.5). Mobile UX ổn; tiếp form KS / SQL nếu thiếu.
+```
+
+**Lưu trữ ngày:** [2026-08-22-mobile-responsive.md](./2026-08-22-mobile-responsive.md)
+
+---
+
 ## 2026-08-22 — Sidebar mobile + tinh chỉnh góp vốn (0.4.4)
 
 **Máy / ngữ cảnh:** Cursor — tiếp 0.4.3; App **0.4.4**.

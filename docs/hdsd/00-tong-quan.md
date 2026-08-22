@@ -12,6 +12,11 @@ OUTSRC quản lý dự án ngoài (da đen) giữa **Bên A** (giao việc) và 
 - **Điện thoại / màn hẹp:** sidebar **ẩn** mặc định; bấm **☰** góc trên để mở; chọn menu hoặc chạm ngoài để đóng — nội dung full width.
 - **Màn rộng:** bấm **ghim** (góc phải header sidebar) để luôn mở rộng; **bỏ ghim** → thu còn icon. Trạng thái ghim được nhớ trên trình duyệt.
 
+### Bảng & thẻ trên điện thoại
+- **Nhật ký hoạt động, tài khoản QLHT, góp vốn/chia nội bộ:** hiển thị **dạng thẻ** (dễ đọc).
+- **Danh mục dự án, sổ A↔B, bảng rộng khác:** **vuốt ngang** trong khung (không bị bóp cột).
+- **Hồ sơ KS/TK:** thư mục dạng lưới 2 cột trên mobile.
+
 Nếu báo lỗi kết nối: liên hệ quản trị viên (không tự xử lý cấu hình kỹ thuật).
 
 ## Vai trò (tóm tắt)

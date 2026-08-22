@@ -27,6 +27,7 @@ import {
 import { fetchDb, logActivity, replaceChiaNoiBo, uid } from "../../../lib/store";
 import { useAppDialog } from "../../../components/AppDialog";
 import GopVonNoiBoSection from "../../../components/taiChinh/GopVonNoiBoSection";
+import MobileTableScroll from "../../../components/layout/MobileTableScroll";
 
 /** Chi tiết: gộp dự án → chia 1 lần trên tổng đã nhận từ A. */
 export default function TaiChinhNoiBoDetailPage() {
@@ -312,9 +313,84 @@ export default function TaiChinhNoiBoDetailPage() {
             </span>
           </div>
 
-          <div className="overflow-hidden rounded-xl border border-indigo-200 bg-white">
-            <div className="max-h-[28rem] overflow-auto">
-              <table className="w-full table-fixed text-left text-sm">
+          <div className="space-y-3 md:hidden">
+            {drafts.map((d, idx) => {
+              const soHien =
+                cheDo === "so_cung"
+                  ? Math.round(parseVndInput(d.soTienText))
+                  : tongNhan > 0
+                    ? Math.round(tongNhan * Number(d.ty_le || 0))
+                    : 0;
+              return (
+                <article
+                  key={d.nguoi_dung_id}
+                  className="rounded-xl border border-indigo-200 bg-white p-3"
+                >
+                  <p className="text-[11px] font-bold tabular-nums text-indigo-600">STT {idx + 1}</p>
+                  <p className="mt-1 text-sm font-bold text-indigo-950">{d.ho_ten}</p>
+                  <div className="mt-3 grid grid-cols-2 gap-2">
+                    <label className="block">
+                      <span className="mb-1 block text-[10px] font-bold uppercase text-indigo-800">
+                        {cheDo === "ty_le" ? "Tỷ lệ (%)" : "Số cứng"}
+                      </span>
+                      {cheDo === "ty_le" ? (
+                        <input
+                          type="number"
+                          step="1"
+                          min="0"
+                          max="100"
+                          disabled={!canEdit}
+                          className="w-full rounded-lg border border-indigo-300 bg-indigo-50 px-2 py-1.5 text-sm font-bold tabular-nums text-indigo-950 disabled:opacity-60"
+                          value={
+                            Number(d.ty_le) ? Math.round(Number(d.ty_le) * 1000) / 10 : ""
+                          }
+                          placeholder="0"
+                          onChange={(e) => {
+                            const pct = Number(e.target.value);
+                            onChangeTyLe(idx, Number.isFinite(pct) ? pct / 100 : 0);
+                          }}
+                        />
+                      ) : (
+                        <input
+                          type="text"
+                          inputMode="numeric"
+                          disabled={!canEdit}
+                          className="w-full rounded-lg border border-indigo-300 bg-indigo-50 px-2 py-1.5 text-sm font-bold tabular-nums text-indigo-950 disabled:opacity-60"
+                          value={d.soTienText}
+                          placeholder="0"
+                          onChange={(e) => onChangeSoCung(idx, e.target)}
+                        />
+                      )}
+                    </label>
+                    <div>
+                      <span className="mb-1 block text-[10px] font-bold uppercase text-indigo-800">
+                        Được chia
+                      </span>
+                      <p className="rounded-lg border border-indigo-100 bg-indigo-50/50 px-2 py-1.5 text-right text-sm font-black tabular-nums text-blue-900">
+                        {soHien > 0 ? formatVndShort(soHien) : "—"}
+                      </p>
+                    </div>
+                  </div>
+                  <label className="mt-2 block">
+                    <span className="mb-1 block text-[10px] font-bold uppercase text-indigo-800">
+                      Ghi chú
+                    </span>
+                    <input
+                      disabled={!canEdit}
+                      className="w-full rounded-lg border border-indigo-300 bg-indigo-50 px-2 py-1.5 text-sm font-medium text-indigo-950 disabled:opacity-60"
+                      value={d.ghi_chu}
+                      onChange={(e) => patchDraft(idx, { ghi_chu: e.target.value })}
+                    />
+                  </label>
+                </article>
+              );
+            })}
+          </div>
+
+          <div className="hidden overflow-hidden rounded-xl border border-indigo-200 bg-white md:block">
+            <div className="-mx-1 max-h-[28rem] overflow-auto px-1 sm:mx-0 sm:px-0">
+              <MobileTableScroll minWidth={480} bleed={false}>
+              <table className="w-full text-left text-sm">
                 <thead className="sticky top-0 bg-indigo-100 text-xs font-black uppercase text-indigo-950">
                   <tr>
                     <th className="w-9 px-2 py-2">STT</th>
@@ -386,6 +462,7 @@ export default function TaiChinhNoiBoDetailPage() {
                   })}
                 </tbody>
               </table>
+              </MobileTableScroll>
             </div>
           </div>
 
@@ -418,7 +495,7 @@ function SummaryCard({ label, value, emphasize = false, muted = false }) {
     >
       <p className="text-[10px] font-bold uppercase tracking-wide text-teal-800">{label}</p>
       <p
-        className={`mt-0.5 font-black tabular-nums ${
+        className={`mt-0.5 text-right font-black tabular-nums ${
           emphasize ? "text-teal-900" : muted ? "text-indigo-700" : "text-indigo-950"
         }`}
       >

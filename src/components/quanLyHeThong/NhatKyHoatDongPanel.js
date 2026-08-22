@@ -3,11 +3,13 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useAppDialog } from "../AppDialog";
 import { useResizableTableColumns } from "../../hooks/useResizableTableColumns";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import ResizableTh from "../table/ResizableTh";
 import { fetchDb, hasSupabase, logActivity } from "../../lib/store";
 import { supabase } from "../../lib/supabase";
 
 const LOGS_COL_WIDTHS = [52, 220, 115, 158, 300, 155];
+const LOGS_TABLE_MIN = LOGS_COL_WIDTHS.reduce((s, w) => s + w, 0);
 
 /** Màu chữ HÀNH ĐỘNG — mỗi loại một màu */
 function getActionBadgeClass(hanhDong) {
@@ -164,6 +166,62 @@ function actorId(log) {
     .toLowerCase();
 }
 
+function LogStatusBadge({ trangThai }) {
+  const status = trangThai || "Thành công";
+  if (status === "Thành công") {
+    return (
+      <span className="inline-flex shrink-0 items-center gap-1.5 text-[12px] font-bold text-green-700">
+        <span className="h-2 w-2 shrink-0 rounded-full bg-green-500" />
+        Thành công
+      </span>
+    );
+  }
+  if (status === "Cảnh báo") {
+    return (
+      <span className="inline-flex shrink-0 items-center gap-1.5 text-[12px] font-bold text-amber-700">
+        <span className="h-2 w-2 shrink-0 rounded-full bg-amber-500" />
+        Cảnh báo
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex shrink-0 items-center gap-1.5 text-[12px] font-bold text-red-700">
+      <span className="h-2 w-2 shrink-0 rounded-full bg-red-500" />
+      {status}
+    </span>
+  );
+}
+
+function LogMobileCard({ log, stt }) {
+  return (
+    <article className="rounded-xl border border-gray-200 bg-white p-3 shadow-sm">
+      <div className="flex items-start justify-between gap-2">
+        <div className="min-w-0">
+          <p className="text-[11px] font-bold tabular-nums text-gray-400">#{stt}</p>
+          <p className="font-bold text-gray-900">{log.ho_ten || "—"}</p>
+          <p className="text-xs text-gray-500">{log.username || log.email || "—"}</p>
+        </div>
+        <LogStatusBadge trangThai={log.trang_thai} />
+      </div>
+      <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
+        <span className={`font-bold ${getPhanHeClass(log.phan_he)}`}>
+          {String(log.phan_he || "").toUpperCase() || "—"}
+        </span>
+        <span className={`font-bold ${getActionBadgeClass(log.hanh_dong)}`}>{log.hanh_dong}</span>
+        <span className="text-gray-500">{formatLogTime(log.thoi_gian)}</span>
+      </div>
+      <p className="mt-2 break-words text-sm leading-snug text-gray-800">{chiTietLog(log)}</p>
+      {log.du_lieu_dong &&
+      typeof log.du_lieu_dong === "object" &&
+      Object.keys(log.du_lieu_dong).length > 0 ? (
+        <pre className="mt-2 max-h-24 overflow-auto break-all rounded-lg bg-gray-50 p-2 font-mono text-[10px] leading-relaxed text-gray-600">
+          {JSON.stringify(log.du_lieu_dong, null, 2)}
+        </pre>
+      ) : null}
+    </article>
+  );
+}
+
 function buildLogsCsv(rows) {
   const headers = [
     "STT",
@@ -212,6 +270,7 @@ function downloadCsvFile(content, filename) {
  */
 export default function NhatKyHoatDongPanel({ currentUser }) {
   const { showAlert } = useAppDialog();
+  const isMdUp = useMediaQuery("(min-width: 768px)");
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -237,7 +296,9 @@ export default function NhatKyHoatDongPanel({ currentUser }) {
     totalWidth: logsTableWidth,
     containerRef: logsContainerRef,
     fitContainer: logsFit,
-  } = useResizableTableColumns("admin-logs", LOGS_COL_WIDTHS, { fitContainer: true });
+  } = useResizableTableColumns("admin-logs", LOGS_COL_WIDTHS, {
+    fitContainer: isMdUp,
+  });
 
   const resolveAdminIds = useCallback(async () => {
     if (adminIds.size > 0) return adminIds;
@@ -417,9 +478,9 @@ export default function NhatKyHoatDongPanel({ currentUser }) {
   };
 
   return (
-    <div className="flex min-h-[28rem] flex-col overflow-hidden rounded-2xl border border-gray-200 bg-slate-50 shadow-sm">
-      <div className="flex shrink-0 flex-wrap items-center gap-3 border-b border-gray-200 bg-white px-4 py-3 sm:px-6">
-        <div className="relative min-w-[200px] max-w-md flex-1">
+    <div className="flex min-h-[28rem] min-w-0 flex-col overflow-hidden rounded-2xl border border-gray-200 bg-slate-50 shadow-sm">
+      <div className="flex shrink-0 flex-col gap-3 border-b border-gray-200 bg-white px-3 py-3 sm:flex-row sm:flex-wrap sm:items-center sm:px-6">
+        <div className="relative min-w-0 w-full flex-1 sm:max-w-md">
           <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
             <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
@@ -449,7 +510,7 @@ export default function NhatKyHoatDongPanel({ currentUser }) {
         <select
           value={filterPhanHe}
           onChange={(e) => setFilterPhanHe(e.target.value)}
-          className="min-w-[190px] cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 outline-none focus:ring-2 focus:ring-indigo-500 sm:min-w-[190px] sm:w-auto"
         >
           {PHAN_HE_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -461,7 +522,7 @@ export default function NhatKyHoatDongPanel({ currentUser }) {
         <select
           value={filterHanhDong}
           onChange={(e) => setFilterHanhDong(e.target.value)}
-          className="min-w-[210px] cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full cursor-pointer rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-medium text-gray-700 outline-none focus:ring-2 focus:ring-indigo-500 sm:min-w-[210px] sm:w-auto"
         >
           {HANH_DONG_OPTIONS.map((opt) => (
             <option key={opt.value} value={opt.value}>
@@ -473,7 +534,7 @@ export default function NhatKyHoatDongPanel({ currentUser }) {
         <button
           type="button"
           onClick={() => setExportModalOpen(true)}
-          className="inline-flex shrink-0 items-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-bold text-emerald-700 transition hover:bg-emerald-100"
+          className="inline-flex w-full shrink-0 items-center justify-center gap-2 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-2 text-sm font-bold text-emerald-700 transition hover:bg-emerald-100 sm:w-auto"
           title="Xuất nhật ký ra CSV (mở được bằng Excel)"
         >
           <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -488,7 +549,7 @@ export default function NhatKyHoatDongPanel({ currentUser }) {
         </button>
 
         <label
-          className="inline-flex shrink-0 cursor-pointer select-none items-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50"
+          className="inline-flex w-full shrink-0 cursor-pointer select-none items-center justify-center gap-2 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-50 sm:w-auto"
           title="Ẩn hoạt động của tài khoản Admin — chỉ xem non-admin"
         >
           <input
@@ -501,15 +562,35 @@ export default function NhatKyHoatDongPanel({ currentUser }) {
         </label>
       </div>
 
-      <div className="flex flex-1 flex-col overflow-hidden p-4 sm:p-6">
-        <div className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
-          <div ref={logsContainerRef} className="w-full flex-1 overflow-x-auto">
+      <div className="flex min-w-0 flex-1 flex-col overflow-hidden p-3 sm:p-6">
+        <div className="flex h-full min-w-0 flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm">
+          {/* Mobile — thẻ */}
+          <div className="flex-1 overflow-y-auto p-3 md:hidden">
+            {loading ? (
+              <p className="py-8 text-center text-sm text-gray-500">Đang tải dữ liệu...</p>
+            ) : currentData.length === 0 ? (
+              <p className="py-8 text-center text-sm text-gray-500">Không có dữ liệu</p>
+            ) : (
+              <div className="space-y-3">
+                {currentData.map((log, index) => (
+                  <LogMobileCard
+                    key={log.id}
+                    log={log}
+                    stt={(currentPage - 1) * itemsPerPage + index + 1}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Desktop — bảng */}
+          <div ref={logsContainerRef} className="hidden w-full flex-1 overflow-x-auto md:block">
             <table
               className="w-full table-fixed border-collapse text-left"
               style={
                 logsFit
                   ? { width: "100%", minWidth: 0 }
-                  : { width: logsTableWidth, minWidth: "100%" }
+                  : { width: logsTableWidth, minWidth: LOGS_TABLE_MIN }
               }
             >
               <colgroup>
@@ -631,22 +712,7 @@ export default function NhatKyHoatDongPanel({ currentUser }) {
                           )}
                       </td>
                       <td className="px-3 py-3.5 text-center align-middle">
-                        {(log.trang_thai || "Thành công") === "Thành công" ? (
-                          <span className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap text-[13px] font-bold text-green-700">
-                            <span className="h-2 w-2 shrink-0 rounded-full bg-green-500" />
-                            Thành công
-                          </span>
-                        ) : log.trang_thai === "Cảnh báo" ? (
-                          <span className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap text-[13px] font-bold text-amber-700">
-                            <span className="h-2 w-2 shrink-0 rounded-full bg-amber-500" />
-                            Cảnh báo
-                          </span>
-                        ) : (
-                          <span className="inline-flex items-center justify-center gap-1.5 whitespace-nowrap text-[13px] font-bold text-red-700">
-                            <span className="h-2 w-2 shrink-0 rounded-full bg-red-500" />
-                            {log.trang_thai || "Thất bại"}
-                          </span>
-                        )}
+                        <LogStatusBadge trangThai={log.trang_thai} />
                       </td>
                     </tr>
                   ))
@@ -656,7 +722,7 @@ export default function NhatKyHoatDongPanel({ currentUser }) {
           </div>
 
           {totalPages > 1 && (
-            <div className="flex shrink-0 items-center justify-between border-t border-gray-200 bg-gray-50 px-4 py-3">
+            <div className="flex shrink-0 flex-col gap-2 border-t border-gray-200 bg-gray-50 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-4">
               <span className="text-xs font-semibold text-gray-500">
                 Trang {currentPage} / {totalPages}
               </span>

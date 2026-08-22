@@ -1,5 +1,14 @@
 # Changelog OUTSRC
 
+## 0.4.5 — 2026-08-22
+
+**Tối ưu mobile toàn app**
+
+### Cải thiện
+- Nhật ký hoạt động: thẻ trên mobile; bảng desktop; bộ lọc responsive
+- QLHT tài khoản, góp vốn/chia nội bộ: thẻ mobile; bảng rộng cuộn ngang (DA, A↔B, sổ HĐ)
+- Hồ sơ KS/TK: lưới thư mục 2 cột trên điện thoại
+
 ## 0.4.4 — 2026-08-22
 
 **Sidebar mobile + tinh chỉnh góp vốn**

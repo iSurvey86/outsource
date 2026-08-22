@@ -15,6 +15,7 @@ import { formatNgayVi } from "../../lib/formatNgay";
 import { openStoredFile, uploadGopVonBill } from "../../lib/pdfGiaoAStorage";
 import { deleteRow, fetchDb, insertRow, logActivity, uid, updateRow } from "../../lib/store";
 import { useAppDialog } from "../AppDialog";
+import MobileTableScroll from "../layout/MobileTableScroll";
 
 /**
  * Góp vốn B↔B — nhập số → popup ngày + bill (giống sổ A↔B).
@@ -295,7 +296,82 @@ export default function GopVonNoiBoSection({
       ) : null}
 
       <div className="min-h-0 flex-1 overflow-hidden rounded-xl border border-violet-200 bg-white">
-        <div className="max-h-[28rem] overflow-auto">
+        {/* Mobile — thẻ */}
+        <div className="max-h-[28rem] space-y-2 overflow-y-auto p-3 md:hidden">
+          {!list.length ? (
+            <p className="py-6 text-center text-xs font-medium text-violet-800">
+              Chưa ghi nhận góp vốn nội bộ.
+            </p>
+          ) : (
+            list.map((r, idx) => (
+              <article
+                key={r.id}
+                className="rounded-xl border border-violet-100 bg-violet-50/50 p-3"
+              >
+                <div className="flex items-start justify-between gap-2">
+                  <p className="text-[11px] font-bold tabular-nums text-violet-600">STT {idx + 1}</p>
+                  {canEdit ? (
+                    <button
+                      type="button"
+                      title="Xóa"
+                      disabled={saving}
+                      onClick={() => removeRow(r)}
+                      className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-rose-200 text-rose-700 hover:bg-rose-50 disabled:opacity-50"
+                    >
+                      <Trash2 className="h-3.5 w-3.5" />
+                    </button>
+                  ) : null}
+                </div>
+                <p className="mt-1 text-xs text-violet-900">
+                  <span className="font-bold">{labelUser(r.nguoi_gop_id)}</span>
+                  {" → "}
+                  <span className="font-semibold">{labelUser(r.nguoi_giu_id)}</span>
+                </p>
+                <div className="mt-2 flex items-center justify-between gap-2">
+                  {r.link_bill ? (
+                    <button
+                      type="button"
+                      className="font-black text-blue-700 underline-offset-2 hover:underline"
+                      onClick={() => openBill(r.link_bill)}
+                    >
+                      {formatVndShort(r.so_tien)}
+                    </button>
+                  ) : canEdit ? (
+                    <button
+                      type="button"
+                      className="font-black text-amber-950"
+                      onClick={() => openEditModal(r)}
+                    >
+                      {formatVndShort(r.so_tien)}
+                    </button>
+                  ) : (
+                    <span className="font-black">{formatVndShort(r.so_tien)}</span>
+                  )}
+                  {r.ngay ? (
+                    canEdit ? (
+                      <button
+                        type="button"
+                        className="text-[11px] text-slate-500 hover:text-teal-700"
+                        onClick={() => openEditModal(r)}
+                      >
+                        {formatNgayVi(r.ngay)}
+                      </button>
+                    ) : (
+                      <span className="text-[11px] text-slate-500">{formatNgayVi(r.ngay)}</span>
+                    )
+                  ) : null}
+                </div>
+                {r.ghi_chu ? (
+                  <p className="mt-2 text-[11px] text-violet-800">{r.ghi_chu}</p>
+                ) : null}
+              </article>
+            ))
+          )}
+        </div>
+
+        {/* Desktop — bảng */}
+        <div className="hidden max-h-[28rem] overflow-auto md:block">
+          <MobileTableScroll minWidth={520} bleed={false}>
           <table className="w-full text-left text-sm">
             <thead className="sticky top-0 bg-violet-100 text-xs font-black uppercase text-violet-950">
               <tr>
@@ -384,6 +460,7 @@ export default function GopVonNoiBoSection({
               ) : null}
             </tbody>
           </table>
+          </MobileTableScroll>
         </div>
       </div>
 

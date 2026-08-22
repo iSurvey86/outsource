@@ -226,7 +226,7 @@ export default function TaiChinhPage() {
         <h1 className="text-2xl font-black text-slate-900">Tài chính A↔B</h1>
       </header>
 
-      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm">
+      <div className="-mx-3 overflow-x-auto px-3 sm:mx-0 sm:px-0 rounded-xl border border-slate-200 bg-white shadow-sm">
         <table className="w-full min-w-[1080px] table-fixed border-collapse text-sm">
           <colgroup>
             <col className="w-10" />

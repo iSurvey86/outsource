@@ -271,8 +271,8 @@ export function HopDongSoLieuCard({
         </p>
       ) : (
         <div className="w-full min-w-0">
-          <div className="w-full overflow-hidden rounded-xl border border-teal-100 bg-white shadow-sm shadow-slate-900/5">
-          <table className="w-full border-collapse table-fixed">
+          <div className="w-full min-w-0 overflow-x-auto rounded-xl border border-teal-100 bg-white shadow-sm shadow-slate-900/5">
+          <table className="w-full min-w-[640px] border-collapse table-fixed">
             <thead>
               <tr>
                 <th className={thCls} style={{ width: "18%" }}>
