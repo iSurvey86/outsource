@@ -1,5 +1,16 @@
 # Changelog OUTSRC
 
+## 0.4.2 — 2026-08-22
+
+**Upload hồ sơ + quyền Member / xóa file**
+
+### Mới
+- Tải file thật vào hồ sơ KS|TK (kéo-thả, nhiều file); bucket `ho_so`; mở/xóa file trên workspace
+
+### Cải thiện
+- Member Bên B không xem menu Tài chính A↔B; seed user đồng bộ (`hienth` = Bên A)
+- Xóa file upload: Admin mọi file; PM/Member chỉ file do mình tải lên
+
 ## 0.4.1 — 2026-08-21
 
 **Ma trận Member + slogan**

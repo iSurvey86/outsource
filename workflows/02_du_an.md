@@ -20,7 +20,10 @@ Các khối chính:
 1. **Header thông tin chung** — CĐT, địa điểm, Hợp đồng (mở sổ), Giao A / quy mô, TMĐT, Giá trị tư vấn; hiện tên Bên A nếu đã gán.
 2. **Sổ hợp đồng** (overlay) — `?action=hop_dong` hoặc bấm mục Hợp đồng; cần Supabase + SQL `008`–`018`.
 3. **Khảo sát** — chỉ Bên B: module stub NVKS→…→NT. Bên A: ẩn khối này.
-4. **Hồ sơ khảo sát / thiết kế** — folder chuẩn + folder tùy chọn (Bên B: `+` / đổi tên / xóa); View lưới·danh sách·chi tiết; upload trong folder.
+4. **Hồ sơ khảo sát / thiết kế** — folder chuẩn + tùy chọn (Bên B: `+` / đổi tên / xóa); View lưới·danh sách·chi tiết.
+   - **Upload:** kéo-thả hoặc chọn nhiều file → Supabase bucket `ho_so` (SQL `024`); dev không env → IndexedDB.
+   - **Mở file:** bấm tên file (gạch chân).
+   - **Xóa:** Admin mọi file upload; PM/Member chỉ file **do mình** tải (`canXoaHoSoFile`); không xóa xuất bản.
 5. **Tài chính** — không còn trên workspace; dùng menu **Tài chính** / **Tài chính nội bộ**.
 
 ## Trạng thái DA (gợi ý)

@@ -1,7 +1,7 @@
 # Tài chính
 
 ## Sổ A↔B
-Menu **Tài chính**: bảng theo dõi theo từng công trình.
+Menu **Tài chính** (ẩn với **Member Bên B**; Admin, PM và Bên A vẫn xem được):
 
 | Cột | Ý nghĩa |
 |-----|---------|

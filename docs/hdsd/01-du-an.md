@@ -12,4 +12,7 @@ Vào **Dự án** để xem danh sách.
 2. **Hợp đồng** — bấm số HĐ hoặc «Nhấn để mở sổ hợp đồng» để mở **Sổ hợp đồng**. Cần Supabase.
 3. **Khảo sát** — chỉ Bên B: cập nhật / xuất bản các bước KS (stub). Bên A không thấy khối này.
 4. **Hồ sơ khảo sát / thiết kế** — thư mục chuẩn + tùy chọn; View Lưới / Danh sách / Chi tiết.
-5. **Tài chính** — vào menu **Tài chính** (A↔B) hoặc **Tài chính nội bộ** (Bên B).
+   - Mở thư mục → **kéo thả** hoặc **chọn nhiều file** (pdf, doc, xls, dwg, zip, ảnh…).
+   - Bấm **tên file** (gạch chân) để mở.
+   - **Xóa** (nút thùng rác): Admin xóa mọi file upload; PM/Member chỉ xóa file **do mình** tải lên.
+5. **Tài chính** — menu **Tài chính** (A↔B, trừ Member B) hoặc **Tài chính nội bộ** (Admin/PM B).

@@ -14,14 +14,14 @@ Nếu báo lỗi kết nối: liên hệ quản trị viên (không tự xử l�
 | Vai trò | Được làm |
 |---------|----------|
 | **Admin (B)** | Toàn quyền: QLHT, tạo/sửa/xóa DA, sổ HĐ, sửa sổ A↔B, nội bộ, KS, hồ sơ |
-| **PM (B)** | Lập/XB KS, upload hồ sơ, xem A↔B, có nội bộ — **không** tạo/sửa/xóa DA, **không** sửa sổ A↔B |
-| **Member (B)** | Giống PM (KS, hồ sơ, xem A↔B); **không** tài chính nội bộ; **không** tạo/sửa/xóa DA |
+| **PM (B)** | Lập/XB KS, upload/xóa file mình up, xem A↔B, có nội bộ — **không** tạo/sửa/xóa DA, **không** sửa sổ A↔B |
+| **Member (B)** | Giống PM (KS, hồ sơ); **không** menu Tài chính A↔B; **không** nội bộ; **không** tạo/sửa/xóa DA |
 | **Bên A** | Chỉ DA gắn tài khoản mình (có thể nhiều người / nhóm trên một DA); xem TT + HĐ + hồ sơ + A↔B; ẩn KS; không sửa; không thấy cột gán Bên A |
 
 Chi tiết: `docs/Phan_quyen_OUTSRC.md`.
 
 ## Menu chính
 - **Dự án** — danh sách và workspace từng DA
-- **Tài chính** — sổ chung A↔B
+- **Tài chính** — sổ chung A↔B (Admin, PM, Bên A; **Member B không thấy**)
 - **Tài chính nội bộ** — chỉ Admin/PM Bên B
 - **Quản lý hệ thống** — tài khoản + nhật ký (admin)

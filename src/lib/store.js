@@ -272,6 +272,10 @@ export async function deleteWhere(table, column, value) {
   if (error) throw new Error(error.message);
 }
 
+export async function deleteRow(table, id) {
+  return deleteWhere(table, "id", id);
+}
+
 export async function replaceChiaNoiBo(duAnId, rows) {
   if (!hasSupabase) {
     const db = getLocalDb();

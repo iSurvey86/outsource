@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import {
   FolderOpen,
-  Upload,
   FileText,
   LayoutGrid,
   List,
@@ -19,6 +18,7 @@ import {
   itemsInFolder,
 } from "../../lib/hoSoFolders";
 import { formatNgayVi } from "../../lib/formatNgay";
+import { openHoSoFile } from "../../lib/hoSoStorage";
 
 /** 3 kiểu xem — mặc định lưới 3 cột */
 export const HOSO_VIEW_MODES = [
@@ -123,6 +123,8 @@ export default function HoSoKhoPanel({
   customFolders = [],
   canUpload,
   onUpload,
+  onDeleteFile,
+  canDeleteFile,
   onAddFolder,
   onRenameFolder,
   onDeleteFolder,
@@ -134,22 +136,41 @@ export default function HoSoKhoPanel({
 
   const [viewMode, setViewMode] = useState(DEFAULT_HOSO_VIEW);
   const [openKey, setOpenKey] = useState(null);
-  const [nameByFolder, setNameByFolder] = useState({});
+  const [dragOver, setDragOver] = useState(false);
+  const fileInputRef = useRef(null);
   const [adding, setAdding] = useState(false);
   const [newLabel, setNewLabel] = useState("");
   const [renaming, setRenaming] = useState(false);
   const [renameLabel, setRenameLabel] = useState("");
 
-  async function submitUpload(folderKey, e) {
-    e?.preventDefault?.();
-    const name = (nameByFolder[folderKey] || "").trim();
-    if (!name || !onUpload) return;
+  async function uploadFiles(folderKey, fileList) {
+    const files = [...(fileList || [])].filter(Boolean);
+    if (!files.length || !onUpload) return;
     await onUpload({
       loaiKho,
       moduleLoai: folderKey === "chua_phan_loai" ? null : folderKey,
-      tenFile: name,
+      files,
     });
-    setNameByFolder((prev) => ({ ...prev, [folderKey]: "" }));
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  }
+
+  function onPickFiles(folderKey, e) {
+    uploadFiles(folderKey, e.target.files);
+  }
+
+  function onDropFiles(folderKey, e) {
+    e.preventDefault();
+    setDragOver(false);
+    uploadFiles(folderKey, e.dataTransfer?.files);
+  }
+
+  async function handleOpenFile(item) {
+    if (!item?.storage_path) return;
+    try {
+      await openHoSoFile(item.storage_path);
+    } catch (err) {
+      alert(err?.message || "Không mở được file.");
+    }
   }
 
   async function submitNewFolder(e) {
@@ -186,6 +207,7 @@ export default function HoSoKhoPanel({
   function toggleFolder(key) {
     setOpenKey((prev) => (prev === key ? null : key));
     setRenaming(false);
+    setDragOver(false);
   }
 
   const openFolder = folders.find((f) => f.key === openKey);
@@ -350,18 +372,43 @@ export default function HoSoKhoPanel({
                   key={t.id}
                   className="flex flex-wrap items-start justify-between gap-2 py-2 text-sm"
                 >
-                  <span className="flex min-w-0 items-start gap-1.5 font-bold text-blue-950">
+                  <span className="flex min-w-0 flex-1 items-start gap-1.5 font-bold text-blue-950">
                     <FileText className="mt-0.5 h-3.5 w-3.5 shrink-0 text-sky-600" />
                     <span className="break-all">
-                      {t.ten_file}{" "}
+                      {t.storage_path ? (
+                        <button
+                          type="button"
+                          onClick={() => handleOpenFile(t)}
+                          className="text-left font-bold text-blue-800 underline decoration-blue-300 underline-offset-2 hover:text-blue-950"
+                          title="Mở file"
+                        >
+                          {t.ten_file}
+                        </button>
+                      ) : (
+                        t.ten_file
+                      )}{" "}
                       <span className="text-xs font-semibold text-teal-700">
-                        ({t.nguon === "xuat_ban" ? "xuất bản" : "upload"})
+                        ({t.nguon === "xuat_ban" ? "xuất bản" : "upload"}
+                        {!t.storage_path ? " · chưa có file" : ""})
                       </span>
                     </span>
                   </span>
-                  <span className="text-[11px] font-medium text-teal-800">
-                    {u?.ho_ten || "—"} ·{" "}
-                    {t.thoi_gian ? formatNgayVi(t.thoi_gian) || t.thoi_gian.slice(0, 10) : "—"}
+                  <span className="flex shrink-0 items-center gap-2">
+                    <span className="text-[11px] font-medium text-teal-800">
+                      {u?.ho_ten || "—"} ·{" "}
+                      {t.thoi_gian ? formatNgayVi(t.thoi_gian) || t.thoi_gian.slice(0, 10) : "—"}
+                    </span>
+                    {canDeleteFile?.(t) ? (
+                      <button
+                        type="button"
+                        title="Xóa file"
+                        disabled={uploading}
+                        onClick={() => onDeleteFile({ item: t, loaiKho })}
+                        className="inline-flex h-7 w-7 items-center justify-center rounded-md border border-rose-200 bg-white text-rose-700 hover:bg-rose-50 disabled:opacity-50"
+                      >
+                        <Trash2 className="h-3.5 w-3.5" />
+                      </button>
+                    ) : null}
                   </span>
                 </li>
               );
@@ -374,35 +421,41 @@ export default function HoSoKhoPanel({
           </ul>
 
           {canUpload && !openIsMisc ? (
-            <form
-              onSubmit={(e) => submitUpload(openKey, e)}
-              className="mt-3 flex flex-col gap-2 rounded-lg border border-dashed border-teal-300 bg-teal-50/50 p-2.5"
+            <div
+              onDragOver={(e) => {
+                e.preventDefault();
+                setDragOver(true);
+              }}
+              onDragLeave={(e) => {
+                e.preventDefault();
+                setDragOver(false);
+              }}
+              onDrop={(e) => onDropFiles(openKey, e)}
+              className={`mt-3 flex flex-col gap-2 rounded-lg border border-dashed p-3 transition ${
+                dragOver
+                  ? "border-blue-500 bg-blue-50/90 ring-2 ring-blue-200"
+                  : "border-teal-300 bg-teal-50/50"
+              }`}
             >
-              <label className="text-[10px] font-bold uppercase tracking-wide text-teal-900">
+              <p className="text-[10px] font-bold uppercase tracking-wide text-teal-900">
                 Tải lên hồ sơ — {openFolder.label}
-              </label>
-              <div className="flex flex-wrap gap-2">
-                <input
-                  className="min-w-0 flex-1 rounded-lg border border-teal-300 bg-white px-2.5 py-1.5 text-sm font-medium text-blue-950"
-                  placeholder="Tên file (vd: NVKS-....pdf)"
-                  value={nameByFolder[openKey] || ""}
-                  onChange={(e) =>
-                    setNameByFolder((prev) => ({
-                      ...prev,
-                      [openKey]: e.target.value,
-                    }))
-                  }
-                />
-                <button
-                  type="submit"
-                  disabled={uploading || !(nameByFolder[openKey] || "").trim()}
-                  className="inline-flex items-center gap-1.5 rounded-lg bg-gradient-to-r from-blue-600 to-teal-600 px-3 py-1.5 text-xs font-black text-white disabled:opacity-50"
-                >
-                  <Upload className="h-3.5 w-3.5" />
-                  Tải lên
-                </button>
-              </div>
-            </form>
+              </p>
+              <p className="text-xs font-medium text-teal-800">
+                Kéo thả nhiều file vào đây, hoặc bấm chọn file (pdf, doc/x, xls/x, dwg, zip, ảnh…)
+              </p>
+              <input
+                ref={fileInputRef}
+                type="file"
+                multiple
+                accept=".pdf,.doc,.docx,.xls,.xlsx,.dwg,.dxf,.zip,.rar,.7z,.jpg,.jpeg,.png"
+                disabled={uploading}
+                className="block w-full text-xs font-medium text-slate-700 file:mr-2 file:rounded-md file:border-0 file:bg-white file:px-2 file:py-1 file:text-xs file:font-bold file:text-blue-900 disabled:opacity-50"
+                onChange={(e) => onPickFiles(openKey, e)}
+              />
+              {uploading ? (
+                <p className="text-xs font-bold text-blue-800">Đang tải lên…</p>
+              ) : null}
+            </div>
           ) : null}
         </div>
       ) : null}

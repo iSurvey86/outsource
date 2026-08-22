@@ -47,6 +47,19 @@ export function canUploadHoSo(user) {
 }
 
 /**
+ * Xóa file hồ sơ upload: Admin mọi file; PM/Member chỉ file do mình tải lên.
+ * Không xóa file xuất bản; Bên A không xóa.
+ */
+export function canXoaHoSoFile(user, perms, item) {
+  if (!user || !item || item.nguon !== "upload") return false;
+  if (!isBenB(user)) return false;
+  if (perms?.q_admin) return true;
+  const ownerId = String(item.nguoi_up_id || "");
+  const uid = String(user.id || "");
+  return Boolean(ownerId && uid && ownerId === uid);
+}
+
+/**
  * Bên A chỉ thấy DA có mình trong `ben_a_user_ids` (hoặc legacy ben_a_user_id).
  * Bên B (mọi role MVP): mọi DA.
  */

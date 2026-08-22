@@ -1,5 +1,5 @@
 /** Ngày cập nhật HDSD — đặt = ngày phiên khi sửa docs/hdsd/ */
-export const HDSD_VERSION = "2026-08-21";
+export const HDSD_VERSION = "2026-08-22";
 
 export const HDSD_STATUS = {
   published: {
@@ -33,7 +33,7 @@ export const HDSD_SECTIONS = [
     slug: "du-an",
     title: "Dự án & workspace",
     shortTitle: "Dự án",
-    description: "Danh mục, gán Bên A (nhóm), header, KS, hồ sơ",
+    description: "Danh mục, gán Bên A, header, KS, hồ sơ upload/xóa",
     file: "01-du-an.md",
     order: 1,
     status: "published",
@@ -51,7 +51,7 @@ export const HDSD_SECTIONS = [
     slug: "tai-chinh",
     title: "Tài chính",
     shortTitle: "Tài chính",
-    description: "Sổ A↔B (ngày+bill); nội bộ list → chia 1 lần",
+    description: "Sổ A↔B; Member không xem; nội bộ list → chia 1 lần",
     file: "02-tai-chinh.md",
     order: 3,
     status: "published",

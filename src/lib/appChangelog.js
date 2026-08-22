@@ -16,6 +16,20 @@
 /** @type {ChangelogRelease[]} — mới nhất ở đầu */
 export const APP_CHANGELOG = [
   {
+    version: "0.4.2",
+    date: "2026-08-22",
+    title: "Upload hồ sơ + quyền Member / xóa file",
+    sections: {
+      added: [
+        "Tải file thật vào hồ sơ KS|TK (kéo-thả, nhiều file); bucket ho_so; mở/xóa file trên workspace",
+      ],
+      improved: [
+        "Member Bên B không xem menu Tài chính A↔B; seed user đồng bộ (hienth = Bên A)",
+        "Xóa file upload: Admin mọi file; PM/Member chỉ file do mình tải lên",
+      ],
+    },
+  },
+  {
     version: "0.4.1",
     date: "2026-08-21",
     title: "Ma trận Member + slogan",

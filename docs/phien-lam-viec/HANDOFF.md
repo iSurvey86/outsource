@@ -5,6 +5,45 @@
 
 ---
 
+## 2026-08-22 — Upload hồ sơ + siết quyền Member / xóa file (0.4.2)
+
+**Máy / ngữ cảnh:** Cursor — tiếp 0.4.1; App **0.4.2**.
+
+### Đã chốt / đã làm
+
+- **Member B** không xem menu / sổ **Tài chính A↔B** (`q_xem_tai_chinh_ab`; SQL `022`).
+- **Seed user** gom `src/lib/seedUsers.js`: `hienth` = Bên A (`u-mem`); bỏ `binhnv` thừa (SQL `023`).
+- **Upload hồ sơ KS|TK:** bucket `ho_so` (SQL `024`); kéo-thả / nhiều file; mở file từ danh sách; local = IndexedDB.
+- **Xóa file upload:** Admin mọi file; PM/Member **chỉ file mình up** (`canXoaHoSoFile`); không xóa xuất bản.
+- Sửa build `viewAsPermission.js` (import trùng).
+
+### File chính
+
+| Khu vực | File |
+|---------|------|
+| Upload | `hoSoStorage.js`, `HoSoKhoPanel.js`, `DuAnWorkspaceClient.js` |
+| Quyền | `menuAccess.js`, `storeLocal.js`, `seedUsers.js` |
+| SQL | `022`–`024` |
+| Docs | workflows `01_auth`, `02_du_an`; HDSD `00`, `01`, `02` |
+| Chi tiết | [2026-08-22-ho-so-upload-phan-quyen.md](./2026-08-22-ho-so-upload-phan-quyen.md) |
+
+### Việc tiếp
+
+- [ ] Chạy SQL **022**, **023**, **024** trên Supabase (nếu chưa).
+- [ ] Form KS thật thay stub.
+- [ ] Ứng nội bộ B↔B; Storage PDF HĐ.
+- [ ] Siết RLS Supabase.
+
+### Câu mở phiên sau
+
+```text
+Đọc docs/phien-lam-viec/HANDOFF.md (block 0.4.2). Upload hồ sơ + quyền Member/xóa file. Tiếp: form KS; SQL 022–024 nếu thiếu.
+```
+
+**Lưu trữ ngày:** [2026-08-22-ho-so-upload-phan-quyen.md](./2026-08-22-ho-so-upload-phan-quyen.md)
+
+---
+
 ## 2026-08-21 — Ma trận Member + slogan (0.4.1)
 
 **Máy / ngữ cảnh:** Cursor — sau 0.4.0; App **0.4.1**.

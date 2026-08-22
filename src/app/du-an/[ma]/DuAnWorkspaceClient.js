@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { ClipboardList } from "lucide-react";
 import { loadAuthSession, isBenB } from "../../../lib/authSession";
-import { canLapKs, canSuaDuAn, canAccessDuAn, canUploadHoSo as canUploadHoSoFn, filterDuAnForUser } from "../../../lib/menuAccess";
+import { canLapKs, canSuaDuAn, canAccessDuAn, canUploadHoSo as canUploadHoSoFn, canXoaHoSoFile, filterDuAnForUser } from "../../../lib/menuAccess";
 import { findBenAUsers } from "../../../lib/benAUsers";
 import {
   HOP_DONG_ACTION,
@@ -15,7 +15,7 @@ import {
   isModuleUnlocked,
   workflowButtonLabel,
 } from "../../../lib/duAnWorkspace";
-import { fetchDb, insertRow, logActivity, uid, updateRow } from "../../../lib/store";
+import { fetchDb, deleteRow, insertRow, logActivity, uid, updateRow } from "../../../lib/store";
 import { hasSupabase, supabase } from "../../../lib/supabase";
 import { KsStatusChip } from "../../../components/StatusChip";
 import { useAppDialog } from "../../../components/AppDialog";
@@ -28,6 +28,7 @@ import {
   validateCustomFolderLabel,
   itemsInFolder,
 } from "../../../lib/hoSoFolders";
+import { uploadHoSoFile, deleteHoSoFile } from "../../../lib/hoSoStorage";
 
 function asHopDongProject(p) {
   if (!p) return p;
@@ -253,33 +254,81 @@ export default function DuAnWorkspaceClient() {
     showAlert(`${mod.shortLabel} đã xuất bản. Form / tra cứu hồ sơ sẽ bổ sung sau.`);
   }
 
-  async function handleFolderUpload({ loaiKho, moduleLoai, tenFile }) {
-    if (!canUploadHoSo || !tenFile?.trim()) return;
+  async function handleFolderUpload({ loaiKho, moduleLoai, files }) {
+    const list = Array.isArray(files) ? files.filter(Boolean) : files ? [files] : [];
+    if (!canUploadHoSo || !list.length) return;
+    setUploading(true);
+    const errors = [];
+    let ok = 0;
+    try {
+      for (const file of list) {
+        try {
+          const storagePath = await uploadHoSoFile(file, {
+            maDuAn: duAn.ma_du_an,
+            loaiKho,
+            moduleLoai,
+          });
+          const displayName = (file.name || "").trim() || "file";
+          await insertRow("tai_lieu", {
+            id: uid("tl"),
+            du_an_id: duAn.id,
+            loai_kho: loaiKho,
+            nguon: "upload",
+            ten_file: displayName,
+            ghi_chu: "",
+            nguoi_up_id: user.id,
+            thoi_gian: new Date().toISOString(),
+            module_loai: moduleLoai,
+            storage_path: storagePath,
+          });
+          ok += 1;
+        } catch (err) {
+          errors.push(`${file.name}: ${err.message || "lỗi"}`);
+        }
+      }
+      if (ok) {
+        await logActivity({
+          username: user.username,
+          ho_ten: user.ho_ten,
+          phan_he: "ho_so",
+          hanh_dong: "UPLOAD",
+          chi_tiet: `${loaiKho}/${moduleLoai || "khac"}: ${ok} file`,
+        });
+        refresh();
+      }
+      if (errors.length && ok) {
+        showAlert(`Đã tải ${ok}/${list.length} file.\n\nLỗi:\n${errors.join("\n")}`);
+      } else if (errors.length) {
+        showAlert(`Không tải được file:\n${errors.join("\n")}`);
+      } else {
+        showAlert(ok > 1 ? `Đã tải ${ok} file.` : "Đã tải hồ sơ lên.");
+      }
+    } finally {
+      setUploading(false);
+    }
+  }
+
+  async function handleDeleteHoSoFile({ item, loaiKho }) {
+    if (!item?.id || !canXoaHoSoFile(user, perms, item)) return;
+    const ok = await showConfirm(`Xóa file「${item.ten_file}」?`);
+    if (!ok) return;
     setUploading(true);
     try {
-      await insertRow("tai_lieu", {
-        id: uid("tl"),
-        du_an_id: duAn.id,
-        loai_kho: loaiKho,
-        nguon: "upload",
-        ten_file: tenFile.trim(),
-        ghi_chu: "Upload thủ công (metadata)",
-        nguoi_up_id: user.id,
-        thoi_gian: new Date().toISOString(),
-        module_loai: moduleLoai,
-        storage_path: null,
-      });
+      if (item.storage_path) {
+        await deleteHoSoFile(item.storage_path);
+      }
+      await deleteRow("tai_lieu", item.id);
       await logActivity({
         username: user.username,
         ho_ten: user.ho_ten,
         phan_he: "ho_so",
-        hanh_dong: "UPLOAD",
-        chi_tiet: `${loaiKho}/${moduleLoai || "khac"}: ${tenFile}`,
+        hanh_dong: "XOA_FILE",
+        chi_tiet: `${loaiKho}: ${item.ten_file}`,
       });
       refresh();
-      showAlert("Đã ghi nhận tài liệu.");
+      showAlert("Đã xóa file.");
     } catch (err) {
-      showAlert(err.message || "Lỗi upload");
+      showAlert(err.message || "Không xóa được file");
     } finally {
       setUploading(false);
     }
@@ -552,6 +601,8 @@ export default function DuAnWorkspaceClient() {
           uploading={uploading}
           addingFolder={addingFolder}
           onUpload={handleFolderUpload}
+          onDeleteFile={handleDeleteHoSoFile}
+          canDeleteFile={(item) => canXoaHoSoFile(user, perms, item)}
           onAddFolder={handleAddFolder}
           onRenameFolder={handleRenameFolder}
           onDeleteFolder={handleDeleteFolder}
@@ -566,6 +617,8 @@ export default function DuAnWorkspaceClient() {
           uploading={uploading}
           addingFolder={addingFolder}
           onUpload={handleFolderUpload}
+          onDeleteFile={handleDeleteHoSoFile}
+          canDeleteFile={(item) => canXoaHoSoFile(user, perms, item)}
           onAddFolder={handleAddFolder}
           onRenameFolder={handleRenameFolder}
           onDeleteFolder={handleDeleteFolder}

@@ -20,12 +20,14 @@ Login và «Xem quyền» **ưu tiên ma trận trong code** (tránh DB lệch).
 | Xem danh sách DA | Mọi DA | Mọi DA | Mọi DA | **Chỉ DA trong `ben_a_user_ids`** |
 | Lập/XB KS | Có | Có | Có (=PM) | Ẩn khối KS |
 | Upload hồ sơ | Có | Có | Có | Chỉ xem |
+| Xóa file upload | Mọi file | Chỉ file mình up | Chỉ file mình up | Không |
 | Sửa sổ A↔B / nhận TU | Có | Chỉ xem | **Không xem** | Chỉ xem (DA mình) |
 | Tài chính nội bộ | Có | Có | **Không** | Ẩn |
 
-Helper: `menuAccess.js` — `filterDuAnForUser`, `canAccessDuAn`, `canSuaTaiChinhAb`, `canSuaDuAn`, …
+Helper: `menuAccess.js` — `filterDuAnForUser`, `canSeeTaiChinhAb`, `canXoaHoSoFile`, `canSuaTaiChinhAb`, …
 
 ## Guard path
+- `/tai-chinh` (không `/tai-chinh-noi-bo`): `canSeeTaiChinhAb` (Member B ẩn)
 - `/tai-chinh-noi-bo`, `/chia-noi-bo`: Bên B + `q_chia_noi_bo`
 - `/quan-ly-he-thong`: `q_admin` hoặc `q_system_log`
 - `/nhap-du-an`: `q_sua_du_an` (Admin)

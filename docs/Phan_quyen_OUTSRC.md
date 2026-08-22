@@ -42,6 +42,7 @@ File Word: [Phan_quyen_OUTSRC_v2.docx](./Phan_quyen_OUTSRC_v2.docx) (ban Co/Khon
 | Khoi Khao sat (NVKS...) | Co | Lap/luu/xuat | Lap/luu/xuat (=PM) | An |
 | Ho so chung | Co | Co + upload | Co + upload (=PM) | Chi xem |
 | Upload ho so | Co | Co | Co (=PM) | Khong |
+| Xoa file upload | Co (moi file) | Chi file minh up | Chi file minh up | Khong |
 
 ## 4. Tai chinh
 
