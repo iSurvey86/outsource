@@ -279,7 +279,7 @@ export default function NhatKyHoatDongPanel({ currentUser }) {
   const [filterPhanHe, setFilterPhanHe] = useState("ALL");
   const [filterHanhDong, setFilterHanhDong] = useState("ALL");
   const [filterSearch, setFilterSearch] = useState("");
-  const [hideAdmin, setHideAdmin] = useState(false);
+  const [hideAdmin, setHideAdmin] = useState(true);
   const [adminIds, setAdminIds] = useState(() => new Set());
 
   const [exportModalOpen, setExportModalOpen] = useState(false);

@@ -73,7 +73,7 @@ export function emptyDuAnForm(overrides = {}) {
     quy_mo: "",
     dia_diem: "",
     giai_doan: "BCNCKT",
-    cap_dien_ap: "110kV",
+    cap_dien_ap: "",
     qd_giao_a: "",
     qd_giao_a_day_du: "",
     nam_giao_a: String(new Date().getFullYear()),

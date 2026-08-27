@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { ClipboardList } from "lucide-react";
-import { loadAuthSession, isBenB } from "../../../lib/authSession";
+import { loadAuthSession, isBenA, isBenB } from "../../../lib/authSession";
 import { canLapKs, canSuaDuAn, canAccessDuAn, canUploadHoSo as canUploadHoSoFn, canXoaHoSoFile, filterDuAnForUser } from "../../../lib/menuAccess";
 import { findBenAUsers } from "../../../lib/benAUsers";
 import {
@@ -13,6 +13,7 @@ import {
   getKsStatusMap,
   getWorkflowAccent,
   isModuleUnlocked,
+  workflowButtonEnabled,
   workflowButtonLabel,
 } from "../../../lib/duAnWorkspace";
 import { fetchDb, deleteRow, insertRow, logActivity, uid, updateRow } from "../../../lib/store";
@@ -189,7 +190,9 @@ export default function DuAnWorkspaceClient() {
   const hopDongProject = asHopDongProject(duAn);
   const allProjects = filterDuAnForUser(db.duAn || [], user).map(asHopDongProject);
   const benBUser = isBenB(user);
+  const benAUser = isBenA(user);
   const canWorkKs = canLapKs(user, perms);
+  const showKsWorkflow = benBUser || benAUser;
   const canEditHopDong = canSuaDuAn(perms);
   const canImportHopDongExcel = Boolean(perms?.q_admin);
   const canUploadHoSo = canUploadHoSoFn(user);
@@ -233,15 +236,21 @@ export default function DuAnWorkspaceClient() {
 
   async function handleModuleClick(mod) {
     const unlocked = isModuleUnlocked(mod, statusMap);
+    const row = statusMap[mod.key];
     if (!unlocked) {
-      showAlert(workflowButtonLabel(mod, statusMap[mod.key], false, canWorkKs));
+      showAlert(workflowButtonLabel(mod, row, false, canWorkKs));
       return;
     }
     if (!canWorkKs) {
-      showAlert("Bạn chỉ xem trạng thái — Bên B mới lập KS.");
+      if (row?.trang_thai === "da_xuat_ban" || row?.trang_thai === "dang_lam") {
+        showAlert(
+          `${mod.shortLabel}: ${row.trang_thai === "da_xuat_ban" ? "đã xuất bản" : "đang làm"}.\nBên A chỉ xem — form chi tiết sẽ bổ sung sau.`
+        );
+        return;
+      }
+      showAlert("Bước này chưa có hồ sơ — Bên A chỉ xem, không lập mới.");
       return;
     }
-    const row = statusMap[mod.key];
     if (!row || row.trang_thai === "chua_lam") {
       await setKsStatus(mod.key, "dang_lam");
       showAlert(`Đã mở bước ${mod.shortLabel}. Form chi tiết sẽ bổ sung ở bước sau.`);
@@ -528,20 +537,25 @@ export default function DuAnWorkspaceClient() {
         }}
       />
 
-      {benBUser ? (
+      {showKsWorkflow ? (
         <section className="rounded-2xl border border-amber-200 bg-gradient-to-br from-amber-50/80 via-white to-orange-50/40 p-5">
-          <div className="mb-4 flex items-center gap-2">
+          <div className="mb-4 flex flex-wrap items-center gap-2">
             <ClipboardList className="h-5 w-5 text-amber-700" />
             <h2 className="text-sm font-black uppercase tracking-wide text-amber-950">
               Khảo sát & nghiệm thu
             </h2>
+            {benAUser && !canWorkKs ? (
+              <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-slate-600">
+                Chỉ xem
+              </span>
+            ) : null}
           </div>
           <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
             {SURVEY_WORKFLOW.map((mod) => {
               const accent = getWorkflowAccent(mod.color);
               const row = statusMap[mod.key];
               const unlocked = isModuleUnlocked(mod, statusMap);
-              const disabled = !unlocked;
+              const enabled = workflowButtonEnabled(row, unlocked, canWorkKs);
               const label = workflowButtonLabel(mod, row, unlocked, canWorkKs);
               return (
                 <div key={mod.key}>
@@ -566,12 +580,14 @@ export default function DuAnWorkspaceClient() {
                       <div className="mt-auto pt-3">
                         <button
                           type="button"
-                          disabled={disabled && canWorkKs}
+                          disabled={!enabled}
                           onClick={() => handleModuleClick(mod)}
                           className={`rounded-lg px-3 py-1.5 text-xs font-bold text-white shadow-sm transition ${
-                            disabled || !canWorkKs
+                            !enabled
                               ? "cursor-not-allowed bg-slate-300 text-slate-600"
-                              : accent.btn
+                              : canWorkKs
+                                ? accent.btn
+                                : "bg-slate-600 hover:bg-slate-700"
                           }`}
                         >
                           {label}
@@ -584,8 +600,9 @@ export default function DuAnWorkspaceClient() {
             })}
           </div>
           <p className="mt-3 text-xs font-medium text-amber-900/80">
-            Form NVKS / PAKTKS / NKKS / BCKS / NT chi tiết sẽ làm ở các bước tiếp theo. Hiện cập nhật
-            trạng thái stub (Lập → Đang làm → Xuất bản).
+            {benAUser && !canWorkKs
+              ? "Bên A chỉ xem trạng thái / hồ sơ đã có — không lập mới hay xuất bản."
+              : "Form NVKS / PAKTKS / NKKS / BCKS / NT chi tiết sẽ làm ở các bước tiếp theo. Hiện cập nhật trạng thái stub (Lập → Đang làm → Xuất bản)."}
           </p>
         </section>
       ) : null}

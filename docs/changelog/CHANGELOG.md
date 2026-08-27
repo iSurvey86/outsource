@@ -1,5 +1,15 @@
 # Changelog OUTSRC
 
+## 0.4.6 — 2026-08-27
+
+**Nhập DA UX + Bên A chỉ xem KS**
+
+### Cải thiện
+- Gán Bên A: dropdown đa chọn có tìm kiếm
+- Nhập DA: ô master đồng bộ; cấp điện áp bắt buộc (220→110→Trung→Hạ→Trung Hạ)
+- Workspace: Bên A xem khối KS (chỉ xem, không lập/XB)
+- Nhật ký hệ thống: Hide Admin mặc định bật
+
 ## 0.4.5 — 2026-08-22
 
 **Tối ưu mobile toàn app**

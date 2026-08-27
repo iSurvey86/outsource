@@ -299,7 +299,15 @@ function buildScanResultFromApiData(data, existingProjects) {
     const cdtAPI = normalizeChuDauTu(
         data.chu_dau_tu?.value || data.chuDauTu?.value || data.chu_dau_tu || data.chuDauTu || ''
     );
-    const capDienApAPI = data.cap_dien_ap?.value || data.capDienAp?.value || data.cap_dien_ap || data.capDienAp || '110kV';
+    const capRaw = data.cap_dien_ap?.value || data.capDienAp?.value || data.cap_dien_ap || data.capDienAp || '';
+    const capNorm = String(capRaw || '').trim();
+    const capDienApAPI =
+      /220\s*k?v/i.test(capNorm) ? '220kV'
+      : /110\s*k?v/i.test(capNorm) ? '110kV'
+      : /trung\s*h[aạ]\s*[aá]p|0\.4\s*k?v\s*[-–]\s*35|THA/i.test(capNorm) ? 'Trung Hạ áp (0.4kV-35kV)'
+      : /trung\s*[aá]p|22\s*k?v\s*[-–]\s*35/i.test(capNorm) ? 'Trung áp (22kV-35kV)'
+      : /h[aạ]\s*[aá]p|0\.4\s*k?v/i.test(capNorm) ? 'Hạ áp (0.4kV)'
+      : '';
 
     const masterInfo = {
         qd_giao_a: qdAPI,
@@ -557,7 +565,7 @@ export default function NhapDuAnMoi() {
         qd_giao_a_day_du: '', qd_giao_a_day_du_conf: 100, qd_giao_a_day_du_warn: '',
         nam_giao_a: '', nam_giao_a_conf: 100, nam_giao_a_warn: '',
         chu_dau_tu: '', chu_dau_tu_conf: 100, chu_dau_tu_warn: '',
-        cap_dien_ap: '110kV', cap_dien_ap_conf: 100, cap_dien_ap_warn: '',
+        cap_dien_ap: '', cap_dien_ap_conf: 100, cap_dien_ap_warn: '',
         ben_a_user_id: '',
         ben_a_user_ids: [],
     });
@@ -779,7 +787,7 @@ export default function NhapDuAnMoi() {
             qd_giao_a_day_du: '', qd_giao_a_day_du_conf: 100, qd_giao_a_day_du_warn: '',
             nam_giao_a: '', nam_giao_a_conf: 100, nam_giao_a_warn: '',
             chu_dau_tu: '', chu_dau_tu_conf: 100, chu_dau_tu_warn: '',
-            cap_dien_ap: '110kV', cap_dien_ap_conf: 100, cap_dien_ap_warn: '',
+            cap_dien_ap: '', cap_dien_ap_conf: 100, cap_dien_ap_warn: '',
             ben_a_user_id: '',
             ben_a_user_ids: [],
         });
@@ -840,7 +848,7 @@ export default function NhapDuAnMoi() {
             qd_giao_a_day_du: '', qd_giao_a_day_du_conf: 100, qd_giao_a_day_du_warn: '',
             nam_giao_a: '', nam_giao_a_conf: 100, nam_giao_a_warn: '',
             chu_dau_tu: '', chu_dau_tu_conf: 100, chu_dau_tu_warn: '',
-            cap_dien_ap: '110kV', cap_dien_ap_conf: 100, cap_dien_ap_warn: '',
+            cap_dien_ap: '', cap_dien_ap_conf: 100, cap_dien_ap_warn: '',
             ben_a_user_id: '',
             ben_a_user_ids: [],
         });
@@ -1218,6 +1226,10 @@ export default function NhapDuAnMoi() {
             await showAlert(
                 "Vui lòng chọn ít nhất một Tài khoản Bên A trước khi lưu.\nCó thể chọn nhiều người (nhóm)."
             );
+            return;
+        }
+        if (!String(masterInfo.cap_dien_ap || "").trim()) {
+            await showAlert("Vui lòng chọn Cấp điện áp chung trước khi lưu.");
             return;
         }
         const namGiaoA =
@@ -1861,8 +1873,8 @@ export default function NhapDuAnMoi() {
                     </div>
                 )}
 
-                <div className="bg-white p-6 rounded-2xl border border-gray-100 flex flex-wrap gap-4 shadow-sm items-end">
-                    <div className="flex-[2] min-w-[280px]">
+                <div className="bg-white p-6 rounded-2xl border border-gray-100 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 shadow-sm items-start">
+                    <div className="min-w-0">
                         <label className="block text-[11px] font-bold text-blue-600 uppercase tracking-wider mb-2">
                             {isKhnMaster ? "Số Quyết Định (không bắt buộc — KHN)" : "Số Quyết Định"}
                         </label>
@@ -1894,7 +1906,7 @@ export default function NhapDuAnMoi() {
                         </div>
                     </div>
 
-                    <div className="flex-[3] min-w-[250px]">
+                    <div className="min-w-0">
                         <label className="block text-[11px] font-bold text-indigo-600 uppercase tracking-wider mb-2">Chủ đầu tư / Đại diện CĐT</label>
                         {renderConfidenceInput(
                             masterInfo.chu_dau_tu, 
@@ -1919,7 +1931,7 @@ export default function NhapDuAnMoi() {
                         ) : null}
                     </div>
 
-                    <div className="flex-[2] min-w-[220px]">
+                    <div className="min-w-0">
                         <BenAUserSelect
                             id="nhap-ben-a"
                             users={benAUsersDb}
@@ -1935,8 +1947,33 @@ export default function NhapDuAnMoi() {
                         />
                     </div>
 
+                    <div className="min-w-0">
+                        <label className="block text-[11px] font-bold text-teal-600 uppercase tracking-wider mb-2">
+                            Cấp điện áp chung <span className="text-rose-500">*</span>
+                        </label>
+                        <select
+                            className={`w-full border border-teal-200 bg-teal-50/50 p-2.5 rounded-xl text-sm focus:ring-2 focus:ring-teal-500/50 outline-none cursor-pointer transition-all ${
+                                masterInfo.cap_dien_ap ? "text-teal-900 font-semibold" : "text-slate-400 font-medium"
+                            }`}
+                            value={masterInfo.cap_dien_ap || ""}
+                            onChange={(e) =>
+                                applyMasterInfoChange((prev) => ({
+                                    ...prev,
+                                    cap_dien_ap: e.target.value,
+                                }))
+                            }
+                        >
+                            <option value="">Chọn cấp điện áp…</option>
+                            <option value="220kV">220kV</option>
+                            <option value="110kV">110kV</option>
+                            <option value="Trung áp (22kV-35kV)">Trung áp (22kV-35kV)</option>
+                            <option value="Hạ áp (0.4kV)">Hạ áp (0.4kV)</option>
+                            <option value="Trung Hạ áp (0.4kV-35kV)">Trung Hạ áp (0.4kV-35kV)</option>
+                        </select>
+                    </div>
+
                     {isKhnMaster ? (
-                        <div className="flex-[1] min-w-[120px] max-w-[160px]">
+                        <div className="min-w-0 sm:col-span-2 xl:col-span-1">
                             <label className="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-2">Năm (mã DA)</label>
                             <input
                                 type="text"
@@ -1952,15 +1989,6 @@ export default function NhapDuAnMoi() {
                             />
                         </div>
                     ) : null}
-
-                    <div className="flex-[1.5] min-w-[150px] max-w-[200px]">
-                        <label className="block text-[11px] font-bold text-teal-600 uppercase tracking-wider mb-2">Cấp điện áp chung</label>
-                        <select className="w-full border border-teal-200 bg-teal-50/50 p-2.5 rounded-xl text-teal-900 font-semibold text-sm focus:ring-2 focus:ring-teal-500/50 outline-none cursor-pointer transition-all appearance-none" value={masterInfo.cap_dien_ap} onChange={e => setMasterInfo({...masterInfo, cap_dien_ap: e.target.value})}>
-                            <option value="110kV">110kV</option>
-                            <option value="220kV">220kV</option>
-                            <option value="THA">Trung Hạ Áp</option>
-                        </select>
-                    </div>
                 </div>
 
                 <div className="bg-white rounded-2xl flex flex-col shadow-sm overflow-hidden">

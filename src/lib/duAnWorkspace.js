@@ -122,11 +122,17 @@ export function workflowButtonLabel(mod, row, unlocked, canWork) {
     return "Chưa mở";
   }
   if (!canWork) {
-    if (row?.trang_thai === "da_xuat_ban") return "Đã XB";
-    if (row?.trang_thai === "dang_lam") return "Đang làm";
+    if (row?.trang_thai === "da_xuat_ban" || row?.trang_thai === "dang_lam") return "Xem";
     return "Chưa làm";
   }
   if (!row || row.trang_thai === "chua_lam") return "+ Lập";
   if (row.trang_thai === "dang_lam") return "Tiếp tục";
   return "Xem / XB";
+}
+
+/** Nút workflow có bấm được không (Bên A chỉ xem khi đã có trạng thái). */
+export function workflowButtonEnabled(row, unlocked, canWork) {
+  if (!unlocked) return false;
+  if (canWork) return true;
+  return row?.trang_thai === "dang_lam" || row?.trang_thai === "da_xuat_ban";
 }

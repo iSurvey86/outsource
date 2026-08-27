@@ -16,6 +16,19 @@
 /** @type {ChangelogRelease[]} — mới nhất ở đầu */
 export const APP_CHANGELOG = [
   {
+    version: "0.4.6",
+    date: "2026-08-27",
+    title: "Nhập DA UX + Bên A chỉ xem KS",
+    sections: {
+      improved: [
+        "Gán Bên A: dropdown đa chọn có tìm kiếm",
+        "Nhập DA: ô master đồng bộ; cấp điện áp bắt buộc (220→110→Trung→Hạ→Trung Hạ)",
+        "Workspace: Bên A xem khối KS (chỉ xem, không lập/XB)",
+        "Nhật ký hệ thống: Hide Admin mặc định bật",
+      ],
+    },
+  },
+  {
     version: "0.4.5",
     date: "2026-08-22",
     title: "Tối ưu mobile toàn app",
