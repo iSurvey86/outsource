@@ -1,0 +1,1470 @@
+{
+  "source": "Bảng 4.1 - Mật độ sét đánh theo địa danh hành chính lãnh thổ Việt Nam",
+  "source_file": "Bang 4.1-Mat do set danh theo dia danh hanh chinh lanh tho VN.docx",
+  "unit": "lan_per_km2_per_year",
+  "unit_label": "số lần/km²/năm",
+  "row_count": 126,
+  "rows": [
+    {
+      "tinh": "An Giang",
+      "dia_danh": [
+        "TP. Long Xuyên",
+        "TP. Châu Đốc",
+        "TX. Tân Châu",
+        "H. An Phú",
+        "H. Châu Phú",
+        "H. Châu Thành",
+        "H. Chợ Mới",
+        "H. Tân Phú",
+        "H. Thoại Sơn",
+        "H. Tri Tôn",
+        "H. Tịnh Biên"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Bà Rịa - Vũng Tàu",
+      "dia_danh": [
+        "TP. Vũng Tàu",
+        "TP. Bà Rịa",
+        "H. Côn Đảo",
+        "H. Long Điền",
+        "H. Đất Đỏ",
+        "H. Xuyên Mộc"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Bà Rịa - Vũng Tàu",
+      "dia_danh": [
+        "H. Tân Thành",
+        "H. Châu Đức"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Bắc Kạn",
+      "dia_danh": [
+        "TP. Bắc Kạn",
+        "H. Ba Bể",
+        "H. Bạch Thông",
+        "H. Chợ Mới",
+        "H. Na Rì",
+        "H. Ngân Sơn",
+        "H. Pắc Nặm"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Bắc Kạn",
+      "dia_danh": [
+        "H. Chợ Đồn"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Bắc Giang",
+      "dia_danh": [
+        "TP. Bắc Giang",
+        "H. Hiệp Hoà",
+        "H. Lạng Giang",
+        "H. Lục Nam",
+        "H. Lục Ngạn",
+        "H. Sơn Động",
+        "H. Tân Yên",
+        "H. Việt Yên",
+        "H. Yên Dũng",
+        "H. Yên Thế"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Bắc Ninh",
+      "dia_danh": [
+        "TP. Bắc Ninh",
+        "H. Gia Bình",
+        "H. Lương Tài",
+        "H. Quế Võ",
+        "H. Yên Phong"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Bắc Ninh",
+      "dia_danh": [
+        "TP. Từ Sơn",
+        "H. Tiên Du",
+        "H. Thuận Thành"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Bạc Liêu",
+      "dia_danh": [
+        "TP. Bạc Liêu"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Bạc Liêu",
+      "dia_danh": [
+        "TX. Giá Rai",
+        "H. Đông Hải",
+        "H. Hồng Dân",
+        "H. Phước Long",
+        "H. Vĩnh Lợi",
+        "H. Hòa Bình"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Bến Tre",
+      "dia_danh": [
+        "TP. Bến Tre",
+        "H. Châu Thành",
+        "H. Chợ Lách",
+        "H. Giồng Trôm",
+        "H. Mỏ Cày Nam",
+        "H. Mỏ Cày Bắc"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Bến Tre",
+      "dia_danh": [
+        "H. Thạnh Phú",
+        "H. Ba Tri",
+        "H. Bình Đại"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": [
+        "TP.Quy Nhơn",
+        "H. Tuy Phước"
+      ],
+      "mat_do_set": 5.7
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": [
+        "H. An Lão",
+        "TX. An Nhơn",
+        "H. Hoài Ân",
+        "TX. Hoài Nhơn",
+        "H. Phù Cát",
+        "H. Phù Mỹ",
+        "H. Tây Sơn",
+        "H. Vân Canh",
+        "H. Vĩnh Thạnh"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Bình Dương",
+      "dia_danh": [
+        "TP. Thủ Dầu Một",
+        "TP. Dĩ An",
+        "TX. Tân Uyên",
+        "TP. Thuận An",
+        "H. Bắc Tân Uyên"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Bình Dương",
+      "dia_danh": [
+        "TX. Bến Cát",
+        "H. Dầu Tiếng",
+        "H. Phú Giáo",
+        "H. Bàu Bàng"
+      ],
+      "mat_do_set": 14.9
+    },
+    {
+      "tinh": "Bình Phước",
+      "dia_danh": [
+        "TP. Đồng Xoài",
+        "TX. Bình Long",
+        "H. Chơn Thành",
+        "H. Đồng Phú",
+        "H. Hớn Quản"
+      ],
+      "mat_do_set": 14.9
+    },
+    {
+      "tinh": "Bình Phước",
+      "dia_danh": [
+        "H. Bù Đốp",
+        "H. Bù Đăng",
+        "H. Lộc Ninh",
+        "TX. Phước Long",
+        "H. Bù Gia Mập"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": [
+        "TP. Phan Thiết",
+        "TX. La Gi",
+        "H. Hàm Tân",
+        "H. Hàm Thuận Bắc",
+        "H. Hàm Thuận Nam",
+        "H. Tánh Linh"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": [
+        "H. Đức Linh"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": [
+        "H. Phú Quý"
+      ],
+      "mat_do_set": 7.0
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": [
+        "H. Bắc Bình"
+      ],
+      "mat_do_set": 5.7
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": [
+        "H. Tuy Phong"
+      ],
+      "mat_do_set": 3.4
+    },
+    {
+      "tinh": "Cà Mau",
+      "dia_danh": [
+        "TP. Cà Mau",
+        "H. U Minh",
+        "H. Thới Bình",
+        "H. Trần Văn Thời",
+        "H. Cái Nước",
+        "H. Đầm Dơi",
+        "H. Phú Tân",
+        "H. Năm Căn",
+        "H. Ngọc Hiển"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": [
+        "TP. Cao Bằng",
+        "H. Bảo Lạc",
+        "H. Bảo Lâm",
+        "H. Hà Quảng",
+        "H. Hạ Lang",
+        "H. Hòa An",
+        "H. Nguyên Bình",
+        "H. Phục Hoà",
+        "H. Quảng Uyên",
+        "H. Thạch An",
+        "H. Thông Nông",
+        "H. Trà Lĩnh",
+        "H. Trùng Khánh"
+      ],
+      "mat_do_set": 9.2
+    },
+    {
+      "tinh": "Cần Thơ",
+      "dia_danh": [
+        "Q. Bình Thủy",
+        "Q. Cái Răng",
+        "Q. Ninh Kiều",
+        "Q. Ô Môn",
+        "H. Cờ Đỏ",
+        "H. Phong Điền",
+        "Q. Thốt Nốt",
+        "H. Vĩnh Thạnh",
+        "H. Thới Lai"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Đà Nẵng",
+      "dia_danh": [
+        "Q. Cẩm Lệ",
+        "Q. Hải Châu",
+        "Q. Liên Chiểu",
+        "Q. Ngũ Hành Sơn",
+        "Q. Sơn Trà",
+        "Q. Thanh Khê",
+        "H. Hòa Vang"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Đà Nẵng",
+      "dia_danh": [
+        "H. Hoàng Sa"
+      ],
+      "mat_do_set": 7.0
+    },
+    {
+      "tinh": "Đắk Lắk",
+      "dia_danh": [
+        "TP. Buôn Ma Thuột",
+        "TX. Buôn Hồ",
+        "H. Buôn Đôn",
+        "H. Ea Súp",
+        "H. Cư M'Gar",
+        "H. Ea H'Leo",
+        "H. Krông Búk",
+        "H. Krông Năng"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Đắk Lắk",
+      "dia_danh": [
+        "H. Krông Păk",
+        "H. Krông Ana",
+        "H. Lắk",
+        "H. Krông Bông",
+        "H. Ea Kar",
+        "H. Cư Kuin"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Đắk Lắk",
+      "dia_danh": [
+        "H. M'Đrắk"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Điện biên",
+      "dia_danh": [
+        "TP. Điện Biên Phủ",
+        "H. Điện Biên",
+        "H. Điện Biên Đông"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Điện biên",
+      "dia_danh": [
+        "TX. Mường Lay",
+        "H. Mường Chà",
+        "H. Mường Nhé",
+        "H. Tủa Chùa",
+        "H. Tuần Giáo",
+        "H. Mường Ảng",
+        "H. Nậm Pồ"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Đắk Nông",
+      "dia_danh": [
+        "TP. Gia Nghĩa",
+        "H. Krông Nô"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Đắk Nông",
+      "dia_danh": [
+        "H. Đắk Mil",
+        "H. Đắk R' Lấp",
+        "H. Đắk Song",
+        "H. Cư Jút",
+        "H. Tuy Đức",
+        "H. Đắk Glong"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": [
+        "TP. Biên Hòa",
+        "H. Long Thành",
+        "H. Nhơn Trạch",
+        "H. Vĩnh Cửu",
+        "H. Trảng Bom"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": [
+        "TP. Long Khánh",
+        "H. Tân Phú",
+        "H. Định Quán",
+        "H. Thống Nhất"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": [
+        "H. Xuân Lộc",
+        "H. Cẩm Mỹ"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": [
+        "TP. Cao Lãnh",
+        "H. Lấp Vò",
+        "TP. Sa Đéc",
+        "H. Tân Hồng",
+        "H. Tam Nông",
+        "H. Tháp Mười",
+        "TX. Hồng Ngự",
+        "H. Cao Lãnh",
+        "H. Thanh Bình",
+        "H. Lai Vung",
+        "H. Châu Thành",
+        "H. Hồng Ngự"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": [
+        "TX. An Khê",
+        "H. Chư Păh",
+        "H. Ia Grai",
+        "H. Mang Yang",
+        "H. Đắc Đoa",
+        "H. Đắc Pơ",
+        "H. Kông Chro"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": [
+        "TP. Pleiku",
+        "H. K’Bang",
+        "H. Ia Pa",
+        "H. Đức Cơ",
+        "H. Krông Pa"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": [
+        "H. Chư Prông",
+        "H. Chư Sê",
+        "TX. Ayun Pa",
+        "H. Chư Pưh"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": [
+        "TP. Hà Giang",
+        "H. Bắc Mê",
+        "H. Bắc Quang",
+        "H. Quản Bạ",
+        "H. Vị Xuyên"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": [
+        "H. Hoàng Su Phì",
+        "H. Mèo Vạc",
+        "H. Quang Bình",
+        "H. Xín Mần",
+        "H. Đồng Văn",
+        "H. Yên Minh"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Hà Nam",
+      "dia_danh": [
+        "TP. Phủ Lý",
+        "H. Kim Bảng",
+        "H. Thanh Liêm",
+        "TX. Duy Tiên"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Hà Nam",
+      "dia_danh": [
+        "H. Bình Lục",
+        "H. Lý Nhân"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Hà Nội",
+      "dia_danh": [
+        "Q. Ba Đình",
+        "Q. Cầu Giấy",
+        "Q. Đống Đa",
+        "Q. Hai Bà Trưng",
+        "Q. Hoàng Mai",
+        "Q. Hoàn Kiếm",
+        "Q. Long Biên",
+        "Q. Tây Hồ",
+        "Q. Thanh Xuân",
+        "Q. Bắc Từ Liêm",
+        "Q. Nam Từ Liêm",
+        "H. Gia Lâm",
+        "H. Thanh Trì",
+        "H. Đông Anh",
+        "Q. Hà Đông",
+        "TX. Sơn Tây",
+        "H. Ba Vì",
+        "H. Chương Mỹ",
+        "H. Mỹ Đức",
+        "H. Phú Xuyên",
+        "H. Thanh Oai",
+        "H. Thường Tín",
+        "H. Ứng Hòa"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Hà Nội",
+      "dia_danh": [
+        "H. Sóc Sơn",
+        "H. Phúc Thọ",
+        "H. Đan Phượng",
+        "H. Thạch Thất",
+        "H. Quốc Oai",
+        "H. Hoài Đức",
+        "H. Mê Linh"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": [
+        "TP. Hà Tĩnh",
+        "H. Cẩm Xuyên",
+        "H. Can Lộc",
+        "H. Đức Thọ",
+        "H. Hương Sơn",
+        "TX. Kỳ Anh",
+        "H. Nghi Xuân",
+        "H. Thạch Hà",
+        "H. Vũ Quang",
+        "H. Kỳ Anh",
+        "TX. Hồng Lĩnh",
+        "H. Lộc Hà"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": [
+        "H. Hương Khê"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Hậu Giang",
+      "dia_danh": [
+        "H. Châu Thành",
+        "H. Phụng Hiệp"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Hậu Giang",
+      "dia_danh": [
+        "TP. Vị Thanh",
+        "H. Vị Thuỷ",
+        "H. Long Mỹ",
+        "H. Châu Thành A",
+        "TX. Long Mỹ",
+        "TX. Ngã Bảy"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": [
+        "TP. Hải Dương",
+        "H. Bình Giang",
+        "H. Cẩm Giàng",
+        "TP. Chí Linh",
+        "H. Gia Lộc",
+        "H. Nam Sách",
+        "H. Ninh Giang",
+        "H. Thanh Miện"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": [
+        "TX. Kinh Môn",
+        "H. Kim Thành",
+        "H. Thanh Hà",
+        "H. Tứ Kỳ"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Hải Phòng",
+      "dia_danh": [
+        "Q. Hồng Bàng",
+        "Q. Kiến An",
+        "Q. Lê Chân",
+        "Q. Ngô Quyền",
+        "H. An Dương",
+        "H. An Lão",
+        "H. Bạch Long Vĩ",
+        "H. Thủy Nguyên",
+        "Q. Dương Kinh"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Hải Phòng",
+      "dia_danh": [
+        "Q. Hải An",
+        "Q. Đồ Sơn",
+        "H. Tiên Lãng",
+        "H. Vĩnh Bảo",
+        "H. Kiến Thụy",
+        "H. Cát Hải"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Hoà Bình",
+      "dia_danh": [
+        "TP. Hòa Bình",
+        "H. Đà Bắc",
+        "H. Kim Bôi",
+        "Kỳ Sơn",
+        "H. Lạc Thủy",
+        "H. Lương Sơn",
+        "H. Mai Châu"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Hoà Bình",
+      "dia_danh": [
+        "H. Cao Phong",
+        "H. Tân Lạc",
+        "H. Lạc Sơn",
+        "H. Yên Thủy"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": [
+        "TP. Hưng Yên",
+        "H. Phù Cừ",
+        "H. Tiên Lữ"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": [
+        "H. Ân Thi",
+        "H. Khoái Châu",
+        "H. Kim Động",
+        "TX. Mỹ Hào",
+        "H. Văn Giang",
+        "H. Văn Lâm",
+        "H. Yên Mỹ"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Khánh Hoà",
+      "dia_danh": [
+        "TP. Nha Trang"
+      ],
+      "mat_do_set": 3.4
+    },
+    {
+      "tinh": "Khánh Hoà",
+      "dia_danh": [
+        "TP. Cam Ranh",
+        "H. Diên Khánh",
+        "H. Vạn Ninh",
+        "TX. Ninh Hòa",
+        "H. Cam Lâm"
+      ],
+      "mat_do_set": 5.7
+    },
+    {
+      "tinh": "Khánh Hoà",
+      "dia_danh": [
+        "H. Khánh Sơn",
+        "H. Khánh Vĩnh"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Khánh Hoà",
+      "dia_danh": [
+        "H. Trường Sa"
+      ],
+      "mat_do_set": 7.0
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": [
+        "TP. Rạch Giá",
+        "TP. Hà Tiên",
+        "H. An Biên",
+        "H. An Minh",
+        "H. Châu Thành",
+        "H. Giồng Riềng",
+        "H. Gò Quao",
+        "H. Hòn Đất",
+        "H. Kiên Hải",
+        "H. Kiên Lương",
+        "H. Tân Hiệp",
+        "H. Vĩnh Thuận",
+        "H. Giang Thành",
+        "H. U Minh Thượng"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": [
+        "H. Phú Quốc"
+      ],
+      "mat_do_set": 7.0
+    },
+    {
+      "tinh": "Kon Tum",
+      "dia_danh": [
+        "TP. Kom Tum",
+        "H. Kon Plông",
+        "H. Kon Rẫy",
+        "H. Đắk Glei",
+        "H. Đắk Hà",
+        "H. Sa Thầy",
+        "H. Ia H’Drai"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Kon Tum",
+      "dia_danh": [
+        "H. Đắk Tô",
+        "H. Ngọc Hồi",
+        "H. Tu Mơ Rông"
+      ],
+      "mat_do_set": 5.7
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": [
+        "TP. Đà Lạt",
+        "H. Đam Rông",
+        "H. Đơn Dương",
+        "H. Đức Trọng",
+        "H. Lâm Hà"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": [
+        "TP. Bảo Lộc",
+        "H. Bảo Lâm",
+        "H. Cát Tiên",
+        "H. Di Linh"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": [
+        "H. Đạ Huoai",
+        "H. Đạ Tẻh"
+      ],
+      "mat_do_set": 5.7
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": [
+        "H. Lạc Dương"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": [
+        "TP. Lào Cai",
+        "TX. Sa Pa",
+        "H. Bắc Hà",
+        "H. Bát Xát",
+        "H. Mường Khương",
+        "H. Si Ma Cai"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": [
+        "H. Bảo Thắng",
+        "H. Bảo Yên",
+        "H. Văn Bàn"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": [
+        "TP. Lạng Sơn",
+        "H. Bắc Sơn",
+        "H. Bình Gia",
+        "H. Cao Lộc",
+        "H. Chi Lăng",
+        "H. Đình Lập",
+        "H. Hữu Lũng",
+        "H. Lộc Bình",
+        "H. Tràng Định",
+        "H. Văn Lãng",
+        "H. Văn Quan"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Lai Châu",
+      "dia_danh": [
+        "TP. Lai Châu",
+        "H. Mường Tè",
+        "H. Phong Thổ",
+        "H. Sìn Hồ",
+        "H. Tam Đường",
+        "H. Than Uyên",
+        "H. Nậm Nhùn",
+        "H. Tân Uyên"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": [
+        "TP. Tân An",
+        "H. Bến Lức",
+        "H. Cần Đước",
+        "H. Cần Guộc",
+        "H. Châu Thành",
+        "H. Đức Hòa",
+        "H. Tân Trụ",
+        "H. Tân Hưng",
+        "H. Tân Thạnh",
+        "H. Thủ Thừa"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": [
+        "H. Đức Huệ",
+        "H. Mộc Hóa",
+        "H. Thạnh Hóa",
+        "H. Vĩnh Hưng"
+      ],
+      "mat_do_set": 14.9
+    },
+    {
+      "tinh": "Nam Định",
+      "dia_danh": [
+        "TP. Nam Định",
+        "H. Giao Thủy",
+        "H. Hải Hậu",
+        "H. Mỹ Lộc",
+        "H. Nam Trực",
+        "H. Nghĩa Hưng",
+        "H. Trực Ninh",
+        "H. Vụ Bản",
+        "H. Xuân Trường",
+        "H. Ý Yên"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": [
+        "TP. Vinh",
+        "TX. Cửa Lò",
+        "TX. Hoàng Mai",
+        "TX. Thái Hòa",
+        "H. Hưng Nguyên",
+        "H. Nam Đàn",
+        "H. Thanh Chương",
+        "H. Đô Lương",
+        "H. Yên Thành",
+        "H. Quỳnh Lưu",
+        "H. Diễn Châu",
+        "H. Nghi Lộc"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": [
+        "H. Anh Sơn",
+        "H. Con Cuông",
+        "H. Nghĩa Đàn",
+        "H. Tân Kỳ",
+        "H. Tương Dương",
+        "H. Kỳ Sơn",
+        "H. Quế Phong"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": [
+        "H. Quỳ Châu",
+        "H. Quỳ Hợp"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": [
+        "TP. Ninh Bình",
+        "TP. Tam Điệp",
+        "H. Hoa Lư",
+        "H. Kim Sơn",
+        "H. Yên Khánh",
+        "H. Yên Mô"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": [
+        "H. Gia Viễn",
+        "H. Nho Quan"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": [
+        "TP. Phan Rang - Tháp Chàm",
+        "H. Ninh Phước",
+        "H. Thuận Nam"
+      ],
+      "mat_do_set": 1.4
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": [
+        "H. Bắc Ái",
+        "H. Ninh Sơn",
+        "H. Thuận Bắc"
+      ],
+      "mat_do_set": 5.7
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": [
+        "H. Ninh Hải"
+      ],
+      "mat_do_set": 3.4
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": [
+        "TP. Việt Trì",
+        "TX. Phú Thọ",
+        "H. Đoan Hùng",
+        "H. Hạ Hoà",
+        "H. Lâm Thao",
+        "H. Phù Ninh",
+        "H. Cẩm Khê",
+        "H. Tam Nông",
+        "H. Thanh Ba",
+        "H. Thanh Sơn",
+        "H. Thanh Thuỷ",
+        "H. Yên Lập",
+        "H. Tân Sơn"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": [
+        "TP. Tuy Hòa"
+      ],
+      "mat_do_set": 3.4
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": [
+        "H. Đông Xuân",
+        "H. Sông Hinh",
+        "H. Sơn Hòa"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": [
+        "H. Phú Hòa",
+        "TX. Sông Cầu",
+        "H. Tuy An",
+        "H. Tây Hòa",
+        "H. Đông Hòa"
+      ],
+      "mat_do_set": 5.7
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": [
+        "TP. Đồng Hới",
+        "TX. Ba Đồn",
+        "H. Bố Trạch",
+        "H. Lệ Thủy",
+        "H. Minh Hóa",
+        "H. Quảng Ninh",
+        "H. Quảng Trạch"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": [
+        "H. Tuyên Hóa"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": [
+        "TP. Tam Kỳ",
+        "TP. Hội An",
+        "H. Bắc Trà My",
+        "H. Duy Xuyên",
+        "H. Đại Lộc",
+        "TX. Điện Bàn",
+        "H. Nam Trà My",
+        "H. Phú Ninh",
+        "H. Núi Thành",
+        "H. Quế Sơn",
+        "H. Thăng Bình",
+        "H. Tiên Phước",
+        "H. Hiệp Đức"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": [
+        "H. Đông Giang",
+        "H. Nam Giang",
+        "H. Phước Sơn",
+        "H. Tây Giang",
+        "H. Nông Sơn"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": [
+        "TP. Quảng Ngãi",
+        "H. Bình Sơn",
+        "TX. Đức Phổ",
+        "H. Lý Sơn",
+        "H. Mộ Đức",
+        "H. Nghĩa Hành",
+        "H. Tư Nghĩa",
+        "H. Sơn Tịnh"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": [
+        "H. Ba Tơ",
+        "H. Minh Long",
+        "H. Sơn Hà",
+        "H. Sơn Tây",
+        "H. Trà Bồng"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": [
+        "TP. Hạ Long",
+        "TP. Uông Bí",
+        "TX. Đông Triều",
+        "TX. Quảng Uyên",
+        "H. Bình Liêu"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": [
+        "TP. Móng Cái",
+        "H. Ba Chẽ",
+        "H. Cô Tô",
+        "H. Đầm Hà",
+        "H. Hải Hà",
+        "H. Hoành Bồ",
+        "H. Tiên Yên",
+        "H. Vân Đồ",
+        "TP. Cẩm Phả"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": [
+        "TP. Đông Hà",
+        "H. Cam Lộ",
+        "H. Cồn Cỏ",
+        "H. Gio Linh",
+        "H. Hướng Hóa",
+        "H. Vĩnh Linh"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": [
+        "TX. Quảng Trị",
+        "H. Đa Krông",
+        "H. Hải Lăng",
+        "H. Triệu Phong"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Sơn La",
+      "dia_danh": [
+        "TP. Sơn La",
+        "H. Bắc Yên",
+        "H. Mai Sơn",
+        "H. Mộc Châu",
+        "H. Mường La",
+        "H. Phù Yên",
+        "H. Quỳnh Nhai",
+        "H. Sông Mã",
+        "H. Sốp Cộp",
+        "H. Thuận Châu",
+        "H. Yên Châu",
+        "H. Vân Hồ"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Sóc Trăng",
+      "dia_danh": [
+        "TP. Sóc Trăng",
+        "H. Cù Lao Dung",
+        "H. Kế Sách",
+        "H. Long Phú",
+        "H. Mỹ Xuyên",
+        "TX. Vĩnh Châu",
+        "H. Trần Đề"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Sóc Trăng",
+      "dia_danh": [
+        "H. Mỹ Tú",
+        "TX. Ngã Năm",
+        "H. Thạnh Trị",
+        "H Châu Thành"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Tây Ninh",
+      "dia_danh": [
+        "TP. Tây Ninh",
+        "H. Châu Thành",
+        "TX. Hòa Thành",
+        "H. Tân Biên",
+        "H. Tân Châu"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Tây Ninh",
+      "dia_danh": [
+        "H. Gò Dầu",
+        "TX. Trảng Bàng",
+        "H. Bến cầu",
+        "H. Dương Minh Châu"
+      ],
+      "mat_do_set": 14.9
+    },
+    {
+      "tinh": "Thái Bình",
+      "dia_danh": [
+        "TP. Thái Bình",
+        "H. Đông Hưng",
+        "H. Hưng Hà",
+        "H. Kiến Xương",
+        "H. Quỳnh Phụ",
+        "H. Thái Thụy",
+        "H. Tiền Hải",
+        "H. Vũ Thư"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": [
+        "TP. Thái Nguyên",
+        "H. Định Hóa",
+        "H. Đồng Hỷ",
+        "TX. Phổ Yên",
+        "H. Phú Bình",
+        "H. Phú Lương",
+        "H. Võ Nhai",
+        "TP. Sông Công",
+        "H. Đại Từ"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Thanh Hoá",
+      "dia_danh": [
+        "TP. Thanh Hóa",
+        "TX. Bỉm Sơn",
+        "TP. Sầm Sơn",
+        "H. Đông Sơn",
+        "H. Hà Trung",
+        "H. Hậu Lộc",
+        "H. Hoằng Hóa",
+        "H. Như Thanh",
+        "H. Như Xuân",
+        "H. Nông Cống",
+        "H. Nga Sơn",
+        "H. Thiệu Hóa",
+        "H. Thọ Xuân",
+        "H. Quảng Xương",
+        "TX. Nghi Sơn",
+        "H. Triệu Sơn",
+        "H. Vĩnh Lộc",
+        "H. Yên Định"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Thanh Hoá",
+      "dia_danh": [
+        "H. Bá Thước",
+        "H. Thạch Thành"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Thanh Hoá",
+      "dia_danh": [
+        "H. Lang Chánh",
+        "H. Mường Lát",
+        "H. Quan Hóa",
+        "H. Quan Sơn",
+        "H. Thường Xuân",
+        "H. Ngọc Lặc",
+        "H. Cẩm Thủy"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Thừa Thiên Huế",
+      "dia_danh": [
+        "TP. Huế",
+        "H. Phong Điền",
+        "H. Phú Lộc",
+        "H. Phú Vang",
+        "H. Quảng Điền"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Thừa Thiên Huế",
+      "dia_danh": [
+        "H. A Lưới",
+        "TX. Hương Trà",
+        "TX. Hương Thủy",
+        "H. Nam Đông"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Tiền Giang",
+      "dia_danh": [
+        "TP. Mỹ Tho",
+        "TX. Gò Công",
+        "H. Cái Bè",
+        "TX. Cai Lậy",
+        "H. Châu Thành",
+        "H. Tân Phước",
+        "H. Chợ Gạo",
+        "H. Gò Công Đông",
+        "H. Gò Công Tây"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "TP. Hồ Chí Minh",
+      "dia_danh": [
+        "TP. Thủ Đức",
+        "Quận 1",
+        "Quận 3",
+        "Quận 4",
+        "Quận 5",
+        "Quận 6",
+        "Quận 7",
+        "Quận 8",
+        "Quận 10",
+        "Quận 11",
+        "Quận 12",
+        "Q. Tân Phú",
+        "Q. Bình Tân",
+        "Q. Bình Thạnh",
+        "Q. Gò Vấp",
+        "Q. Phú Nhuận",
+        "Q. Tân Bình",
+        "H. Bình Chánh",
+        "H. Nhà Bè",
+        "H. Hóc Môn"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "TP. Hồ Chí Minh",
+      "dia_danh": [
+        "H. Cần Giờ"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "TP. Hồ Chí Minh",
+      "dia_danh": [
+        "H. Củ Chi"
+      ],
+      "mat_do_set": 14.9
+    },
+    {
+      "tinh": "Trà Vinh",
+      "dia_danh": [
+        "TP. Trà Vinh",
+        "H. Càng Long"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Trà Vinh",
+      "dia_danh": [
+        "TX. Duyên Hải",
+        "H. Cầu Kè",
+        "H. Cầu Ngang",
+        "H. Châu Thành",
+        "H. Duyên Hải",
+        "H. Tiểu Cần",
+        "H. Trà Cú"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": [
+        "TP. Tuyên Quang",
+        "H. Chiêm Hóa",
+        "H. Hàm Yên",
+        "H. Na Hang",
+        "H. Lâm Bình",
+        "H. Yên Sơn"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": [
+        "H. Sơn Dương"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Vĩnh Long",
+      "dia_danh": [
+        "TP. Vĩnh Long",
+        "H. Long Hồ",
+        "H. Mang Thít",
+        "H. Bình Tân"
+      ],
+      "mat_do_set": 13.7
+    },
+    {
+      "tinh": "Vĩnh Long",
+      "dia_danh": [
+        "H. Tam Bình",
+        "H. Trà Ôn",
+        "H. Vũng Liêm",
+        "TX. Bình Minh"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Vĩnh Phúc",
+      "dia_danh": [
+        "TP. Vĩnh Yên",
+        "TP. Phúc Yên",
+        "H. Bình Xuyên",
+        "H. Lập Thạch",
+        "H. Tam Dương",
+        "H. Vĩnh Tường",
+        "H. Yên Lạc",
+        "H. Sông Lô"
+      ],
+      "mat_do_set": 10.9
+    },
+    {
+      "tinh": "Vĩnh Phúc",
+      "dia_danh": [
+        "H. Tam Đảo"
+      ],
+      "mat_do_set": 8.2
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": [
+        "TP. Yên Bái",
+        "TX. Nghĩa Lộ",
+        "H. Lục Yên",
+        "H. Mù Cang Chải",
+        "H. Trạm Tấu",
+        "H. Trấn Yên",
+        "H. Văn Chấn",
+        "H. Văn Yên",
+        "H. Yên Bình"
+      ],
+      "mat_do_set": 10.9
+    }
+  ]
+}

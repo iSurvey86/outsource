@@ -1,0 +1,2685 @@
+{
+  "source": "Bảng 5.1 - Phân vùng áp lực gió, vận tốc gió theo địa danh hành chính",
+  "source_file": "Bảng 5.1 - Phân vùng áp lực gió, vận tốc gió theo địa danh hành chính.docx",
+  "columns": {
+    "vung": "Vùng gió",
+    "w0_dan_m2": "W0 (daN/m²), 3 s, 20 năm",
+    "v3s_50_ms": "V3s,50 (m/s), 3 s, 50 năm",
+    "v10m_50_ms": "V10m,50 (m/s), 10 phút, 50 năm"
+  },
+  "row_count": 334,
+  "rows": [
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Tất cả các quận, thị xã, huyện (không bao gồm các huyện Mỹ Đức, Phú Xuyên, Thường Tín và Ứng Hòa)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Mỹ Đức (xã Đại Hưng, xã Hùng Tiến, xã Hương Sơn, xã Vạn Kim)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Mỹ Đức (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Phú Xuyên (xã Phú Túc, xã Hồng Minh, xã Tri Trung)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Phú Xuyên (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Thường Tín (xã Minh Cường, xã Thống Nhất, xã Tô Hiệu, xã Vạn Điểm, xã Văn Tự)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Thường Tín (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Ứng Hoà (thị trấn Vân Đình, xã Quảng Phú Cầu, xã Liên Bạt, xã Đồng Tiến, xã Sơn Công, xã Hoa Sơn, xã Trường Thịnh, xã Viên Nội, xã Viên An, xã Cao Thành, xã Hoà Xá)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Ứng Hoà (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Tất cả các thành phố, quận, huyện (bao gồm cả thành phố Thủ Đức, không bao gồm huyện Củ Chi)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Huyện Củ Chi",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Tất cả các quận, huyện (không bao gồm các huyện Bạch Long Vĩ và Thủy Nguyên)",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 55,
+      "v10m_50_ms": 39
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Huyện Bạch Long Vĩ",
+      "vung": "V",
+      "w0_dan_m2": 185,
+      "v3s_50_ms": 61,
+      "v10m_50_ms": 43
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Huyện Thuỷ Nguyên",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thành phố Đà Nẵng",
+      "dia_danh": "Tất cả các quận, huyện (không bao gồm các huyện Hòa Vang và Hoàng Sa)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thành phố Đà Nẵng",
+      "dia_danh": "Huyện Hòa Vang (xã Hòa Ninh, xã Hòa Phú, xã Hòa Khương)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thành phố Đà Nẵng",
+      "dia_danh": "Huyện Hòa Vang (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thành phố Đà Nẵng",
+      "dia_danh": "Huyện Hoàng Sa (tất cả các đảo thuộc quần đảo Hoàng Sa)",
+      "vung": "V",
+      "w0_dan_m2": 185,
+      "v3s_50_ms": 61,
+      "v10m_50_ms": 43
+    },
+    {
+      "tinh": "Thành phố Cần Thơ",
+      "dia_danh": "Tất cả các quận, huyện",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm các huyện Thoại Sơn, Tri Tôn)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Huyện Thoại Sơn (thị trấn Phú Hòa, xã Định Mỹ, xã Định Thành, xã Phú Thuận, xã Tây Phú, xã Vĩnh Chánh, xã Vĩnh Phú, xã Vĩnh Trạch)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Huyện Thoại Sơn (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Huyện Tri Tôn (thị trấn Ba Chúc, thị trấn Tri Tôn, xã Châu Lăng, xã Lạc Quới, xã Lê Trì, xã Núi Tô, xã Tà Đảnh)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Huyện Tri Tôn (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bà Rịa - Vũng Tàu",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm huyện Côn Đảo)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bà Rịa - Vũng Tàu",
+      "dia_danh": "Huyện Côn Đảo",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Bạc Liêu",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bắc Giang",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm huyện Sơn Động)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bắc Giang",
+      "dia_danh": "Huyện Sơn Động (thị trấn Tây Yên Tử, xã Dương Hưu, xã Long Sơn, xã Thanh Luận)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Bắc Giang",
+      "dia_danh": "Huyện Sơn Động (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bắc Kạn",
+      "dia_danh": "Tất cả các huyện (không bao gồm thành phố Bắc Kạn và huyện Ngân Sơn)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Bắc Kạn",
+      "dia_danh": "Thành phố Bắc Kạn",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bắc Kạn",
+      "dia_danh": "Huyện Ngân Sơn",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bắc Ninh",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm huyện Lương Tài)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bắc Ninh",
+      "dia_danh": "Huyện Lương Tài (xã Lai Hạ, xã Minh Tân, xã Trung Chính, xã Trung Kênh, xã Trừng Xá)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Bắc Ninh",
+      "dia_danh": "Huyện Lương Tài (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bến Tre",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bình Dương",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm các huyện An Lão, Hoài Ân, Tây Sơn, Vân Canh và Vĩnh Thạnh)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện An Lão (xã An Toàn, xã An Vinh, xã An Nghĩa)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện An Lão (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Hoài Ân (xã Dak Mang, xã Bok Tới, xã Ân Nghĩa, xã Ân Sơn)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Hoài Ân (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Tây Sơn (xã Bình Thuận, xã Tây An, xã Tây Vinh)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Tây Sơn (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Vân Canh (thị trấn Vân Canh, xã Canh Liên, xã Canh Thuận, xã Canh Hòa)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Vân Canh (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Vĩnh Thạnh",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bình Phước",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Thành phố Phan Thiết",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Bắc Bình (xã Bình An, xã Bình Tân, xã Hải Ninh, xã Phan Điền, xã Phan Lâm, xã Phan Sơn, xã Phan Thanh, xã Phan Tiến, xã Sông Bình, xã Sông Lũy)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Bắc Bình (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Đức Linh",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Hàm Tân",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Hàm Thuận Bắc (thị trấn Phú Long, xã Hồng Sơn, xã Hàm Liêm, xã Hàm Đức, xã Hàm Hiệp, xã Hàm Thắng)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Hàm Thuận Bắc (các địa danh hành chính còn lại)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Hàm Thuận Nam (xã Hàm Cần, xã Hàm Thạnh, xã Mương Mán, xã Mỹ Thạnh)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Hàm Thuận Nam (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Phú Quý",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Tánh Linh",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Tuy Phong",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Thị xã La Gi",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Cà Mau",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Đắk Lắk",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm huyện M'Đrắk)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Đắk Lắk",
+      "dia_danh": "Huyện M'Đrắk (thị trấn M'Đrắk, xã Cư M'ta, xã Ea Pil, xã Krông Á, xã Krông Jing)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Đắk Lắk",
+      "dia_danh": "Huyện M'Đrắk (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Đắk Nông",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Điện Biên",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Thành phố Biên Hòa",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Thành phố Long Khánh",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Cẩm Mỹ",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Định Quán",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Long Thành",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Nhơn Trạch",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Tân Phú",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Thống Nhất",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Trảng Bom",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Vĩnh Cửu",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Xuân Lộc",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm các huyện Châu Thành và Lai Vung)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Huyện Châu Thành",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Huyện Lai Vung (xã Phong Hòa, xã Long Thắng, xã Tân Hòa, xã Định Hòa)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Huyện Lai Vung (các địa danh hành chính còn lại)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Thành phố Hà Giang",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Bắc Mê",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Bắc Quang",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Đồng Văn",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Hoàng Su Phì",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Mèo Vạc",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Quang Bình",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Quản Bạ",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Vị Xuyên",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Xín Mần",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Yên Minh",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Hà Nam",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm huyện Bình Lục)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Hà Nam",
+      "dia_danh": "Huyện Bình Lục",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 55,
+      "v10m_50_ms": 39
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Thành phố Hà Tĩnh",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 55,
+      "v10m_50_ms": 39
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Thị xã Hồng Lĩnh",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 55,
+      "v10m_50_ms": 39
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Thị xã Kỳ Anh",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Can Lộc",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 55,
+      "v10m_50_ms": 39
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Cẩm Xuyên (thị trấn Thiên Cầm, xã Cẩm Dương, xã Yên Hòa, xã Cẩm Lĩnh, xã Cẩm Lộc, xã Cẩm Nhượng, xã Cẩm Trung)",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Cẩm Xuyên (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Đức Thọ",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Hương Khê (xã Hương Lâm, xã Hương Liên, xã Hương Trà, xã Hương Vĩnh, xã Hương Xuân, xã Phú Gia, xã Phú Phong)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Hương Khê (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Hương Sơn (thị trấn Tây Sơn, xã Quang Diệm, xã Sơn Hàm, xã Sơn Hồng, xã Sơn Kim 1, xã Sơn Kim 2, xã Sơn Lĩnh, xã Sơn Tây)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Hương Sơn (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Kỳ Anh",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Nghi Xuân",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Thạch Hà",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Vũ Quang",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Lộc Hà",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm huyện Tứ Kỳ)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": "Huyện Tứ Kỳ",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Hậu Giang",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Tất cả các thành phố, huyện (không bao gồm các huyện Đà Bắc, Lạc Thủy, Mai Châu và Yên Thủy)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Đà Bắc (thị trấn Đà Bắc, xã Tân Minh, xã Vầy Nưa, xã Cao Sơn, xã Tú Lý, xã Hiền Lương, xã Toàn Sơn)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Đà Bắc (các địa danh hành chính còn lại)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Lạc Thuỷ (thị trấn Ba Hàng Đồi, xã Hưng Thi, xã Phú Thành, xã Thống Nhất, xã Phú Lão,)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Lạc Thuỷ (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Mai Châu (thị trấn Mai Châu, xã Mai Hạ, xã Mai Hịch, xã Nà Phòn, xã Sơn Thủy, xã Tân Thành, xã Đồng Tân, xã Thành Sơn, xã Vạn Mai)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Mai Châu (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Yên Thuỷ (xã Lạc Lương, xã Lạc Thịnh, xã Lạc Sĩ, xã Đa Phúc)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Yên Thuỷ (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm các huyện Văn Giang và Văn Lâm)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": "Huyện Văn Giang",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": "Huyện Văn Lâm",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Khánh Hòa",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm các huyện Khánh Sơn, Khánh Vĩnh và Trường Sa)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Khánh Hòa",
+      "dia_danh": "Huyện Khánh Sơn",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Khánh Hòa",
+      "dia_danh": "Huyện Khánh Vĩnh",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Khánh Hòa",
+      "dia_danh": "Huyện Trường Sa (tất cả các đảo thuộc quần đảo Trường Sa)",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm các huyện Kiên Hải và thành phố Phú Quốc)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Thành phố Phú Quốc (bao gồm đảo Phú Quốc và các đảo khác thuộc thành phố Phú Quốc), Huyện Kiên Hải",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Kon Tum",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Lai Châu",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Tất cả các thành phố, huyện (không bao gồm các huyện Đình Lập và Hữu Lũng)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Huyện Đình Lập (xã Bắc Lãng, xã Châu Sơn, xã Đồng Thắng, xã Lâm Ca)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Huyện Đình Lập (các địa danh hành chính còn lại)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Huyện Hữu Lũng (xã Đồng Tiến, xã Hoà Thắng, xã Minh Hòa, xã Minh Sơn, xã Thanh Sơn, xã Vân Nham)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Huyện Hữu Lũng (các địa danh hành chính còn lại)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Tất cả các thành phố, huyện (không bao gồm thị xã Sa Pa và các huyện Bát Xát và Văn Bàn)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Thị xã Sa Pa",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Huyện Bát Xát (Thị trấn Bát Xát, xã Quang Kim, xã Tòng Sành)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Huyện Bát Xát (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Huyện Văn Bàn (xã Dần Thàng, xã Dương Qùy, xã Hòa Mạc, xã Khánh Yên Hạ, xã Khánh Yên Trung, xã Minh Lương, xã Nậm Chầy, xã Nậm Mả, xã Nậm Xây, xã Nậm Xé, xã Thẩm Dương)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Huyện Văn Bàn (các địa danh hành chính còn lại)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Thành phố Tân An",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Bến Lức",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Cần Giuộc",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Cần Đước",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Châu Thành",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Đức Hoà",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Đức Huệ",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Mộc Hoá",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Tân Hưng",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Tân Thạnh",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Tân Trụ",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Thạnh Hoá",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Thủ Thừa",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Vĩnh Hưng",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Thị xã Kiến Tường",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Nam Định",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Thành phố Vinh",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Thị xã Cửa Lò",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Thị xã Hoàng Mai",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Thị xã Thái Hoà",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Con Cuông",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Diễn Châu",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Đô Lương",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Hưng Nguyên",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Kỳ Sơn",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Nam Đàn",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Nghi Lộc (xã Nghi Thiết, xã Khánh Hợp, xã Nghi Quang, xã Nghi Tiến)",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Nghi Lộc (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Nghĩa Đàn (xã Nghĩa An, xã Nghĩa Đức, xã Nghĩa Hiếu, xã Nghĩa Hồng, xã Nghĩa Hưng, xã Nghĩa Khánh, xã Nghĩa Thành, xã Nghĩa Mai, xã Nghĩa Minh, xã Nghĩa Thịnh, xã Nghĩa Yên)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Nghĩa Đàn (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Quế Phong",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Quỳ Châu (xã Châu Bính, xã Châu Hạnh, xã Châu Hội, xã Châu Nga)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Quỳ Châu (các địa danh hành chính còn lại)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Quỳ Hợp",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Quỳnh Lưu (xã An Hoà, xã Quỳnh Nghĩa, xã Quỳnh Bảng, xã Quỳnh Đôi, xã Quỳnh Long, xã Quỳnh Lương, xã Quỳnh Minh, xã Quỳnh Thanh, xã Quỳnh Thuận, xã Quỳnh Yên, xã Tiến Thuỷ)",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Quỳnh Lưu (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Tân Kỳ",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Thanh Chương",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Tương Dương",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Yên Thành (xã Đô Thành, xã Đức Thành, xã Hậu Thành, xã Hoa Thành, xã Hồng Thành, xã Hợp Thành, xã Lăng Thành, xã Mã Thành, xã Nhân Thành, xã Phú Thành, xã Phúc Thành, xã Sơn Thành, xã Tân Thành, xã Thọ Thành, xã Tiến Thành, xã Văn Thành, xã Viên Thành, xã Vĩnh Thành)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Yên Thành (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Thành phố Ninh Bình",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Thành phố Tam Điệp",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Huyện Gia Viễn",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Huyện Hoa Lư",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Huyện Kim Sơn",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Huyện Nho Quan",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Huyện Yên Khánh",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Huyện Yên Mô",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": "Thành phố Phan Rang - Tháp Chàm",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": "Huyện Bác Ái",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": "Huyện Ninh Hải",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": "Huyện Ninh Phước",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": "Huyện Ninh Sơn",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": "Huyện Thuận Bắc",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": "Huyện Thuận Nam",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm các huyện Đồng Xuân, Sông Hinh, Sơn Hoà và Tây Hòa)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Huyện Đồng Xuân (xã Phú Mỡ, xã Xuân Phước, xã Xuân Quang 1, xã Xuân Quang 2, xã Xuân Quang 3)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Huyện Đồng Xuân (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Huyện Sông Hinh",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Huyện Sơn Hoà",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Huyện Tây Hòa (xã Hòa Mỹ Đông, xã Hòa Mỹ Tây, xã Hoà Phong, xã Hòa Phú, xã Sơn Thành Đông, xã Sơn Thành Tây)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Huyện Tây Hòa (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Thành phố Đồng Hới",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Thị xã Ba Đồn",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Huyện Bố Trạch (xã Bắc Trạch, xã Đại Trạch, xã Đồng Trạch, xã Đức Trạch, xã Hải Phú, xã Lý Trạch, xã Nhân Trạch, xã Thanh Trạch, xã Trung Trạch)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Huyện Bố Trạch (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Huyện Lệ Thuỷ (xã Ngư Thủy Bắc, xã Ngư Thủy, xã Sen Thủy)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Huyện Lệ Thuỷ (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Huyện Minh Hoá",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Huyện Quảng Ninh",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Huyện Quảng Trạch",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Huyện Tuyên Hoá",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Thành phố Tam Kỳ",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Thành phố Hội An",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Thị xã Điện Bàn",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Bắc Trà My (xã Trà Bui, xã Trà Đốc, xã Trà Sơn, xã Trà Tân)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Bắc Trà My (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Duy Xuyên (xã Duy Sơn, xã Duy Phú, xã Duy Hòa, xã Duy Trinh, xã Duy Châu, xã Duy Thu, xã Duy Tân)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Duy Xuyên (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Đại Lộc",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Đông Giang",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Hiệp Đức",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Nam Giang",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Nam Trà My",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Nông Sơn",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Núi Thành",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Phước Sơn",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Quế Sơn (thị trấn Hương An, xã Quế Mỹ, xã Quế Phú, xã Quế Xuân 1, xã Quế Xuân 2)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Quế Sơn (các địa danh hành chính còn lại)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Tây Giang",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Thăng Bình",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Tiên Phước",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Phú Ninh (Thị trấn Phú Thịnh, xã Tam Lãnh, xã Tam Lộc, xã Tam Dân, xã Tam Vinh, xã Tam Phước, xã Tam Thái)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Phú Ninh (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Tất cả các thành phố, huyện (không bao gồm các huyện Ba Tơ, Minh Long, Sơn Hà, Sơn Tây và Trà Bồng)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Ba Tơ",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Minh Long",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Sơn Hà",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Sơn Tây (xã Sơn Lập, xã Sơn Tân, xã Sơn Màu, xã Sơn Tinh)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Sơn Tây (các địa danh hành chính còn lại)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Trà Bồng",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm thị xã Quảng Yên, các huyện Bình Liêu, Cô Tô và Vân Đồn)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Huyện Bình Liêu",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Huyện Cô Tô",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Thị xã Quảng Yên",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Huyện Vân Đồn",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm các huyện Gio Linh, Hướng Hóa, Triệu Phong, Vĩnh Linh và Cồn Cỏ)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Huyện Gio Linh",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Huyện Hướng Hoá",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Huyện Triệu Phong",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Huyện Vĩnh Linh",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Huyện Cồn Cỏ",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Sóc Trăng",
+      "dia_danh": "Tất cả thành phố, thị xã, huyện",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Sơn La",
+      "dia_danh": "Tất cả thành phố, thị xã, huyện",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Tây Ninh",
+      "dia_danh": "Tất cả thành phố, thị xã, huyện",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Thái Bình",
+      "dia_danh": "Tất cả thành phố, thị xã, huyện",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": "Tất cả các thành phố, thị xã, huyện (không bao gồm các huyện Đồng Hỷ, Phú Lương và Võ Nhai)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": "Huyện Đồng Hỷ (thị trấn Trại Cau, xã Hợp Tiến, xã Nam Hoà, xã Tân Lợi)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": "Huyện Đồng Hỷ (các địa danh hành chính còn lại)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": "Huyện Phú Lương",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": "Huyện Võ Nhai",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Thành phố Thanh Hóa",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Thành phố Sầm Sơn",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Thị xã Bỉm Sơn",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Thị xã Nghi Sơn",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Bá Thước",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Cẩm Thuỷ",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Đông Sơn",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Hà Trung (xã Hà Hải, xã Lĩnh Toại, xã Hà Vinh)",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Hà Trung (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Hậu Lộc",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Hoằng Hoá",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Lang Chánh",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Mường Lát",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Nga Sơn",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Ngọc Lặc",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Như Thanh",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Như Xuân",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Nông Cống",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Quảng Xương (thị trấn Tân Phong, xã Quảng Hòa, xã Quảng Hợp, xã Quảng Long, xã Quảng Ngọc, xã Quảng Phúc, xã Quảng Trạch, xã Quảng Văn, xã Quảng Yên)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Quảng Xương (các địa danh hành chính còn lại)",
+      "vung": "IV",
+      "w0_dan_m2": 155,
+      "v3s_50_ms": 56,
+      "v10m_50_ms": 40
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Quan Hoá",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Quan Sơn",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Thạch Thành",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Thọ Xuân (thị trấn Lam Sơn, Thị trấn Sao Vàng, xã Quảng Phú, xã Thọ Diên, xã Thọ Hải, xã Thọ Lâm, xã Thọ Lập, xã Thuận Minh, xã Thọ Xương, xã Xuân Bái, xã Xuân Hòa, xã Xuân Hưng, xã Xuân Phú, xã Xuân Thiên, xã Xuân Tín)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Thọ Xuân (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Thường Xuân",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Thiệu Hóa",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Triệu Sơn",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Vĩnh Lộc",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Yên Định",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thừa Thiên Huế",
+      "dia_danh": "Thành phố Huế",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thừa Thiên Huế",
+      "dia_danh": "Thị xã Hương Thủy",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thừa Thiên Huế",
+      "dia_danh": "Thị xã Hương Trà",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thừa Thiên Huế",
+      "dia_danh": "Huyện A Lưới",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Thừa Thiên Huế",
+      "dia_danh": "Huyện Nam Đông (xã Thượng Lộ, xã Hương Phú, xã Hương Lộc)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thừa Thiên Huế",
+      "dia_danh": "Huyện Nam Đông (các địa danh hành chính còn lại)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Thừa Thiên Huế",
+      "dia_danh": "Huyện Phú Lộc (thị trấn Phú Lộc, xã Lộc Điền, xã Lộc Trì, xã Xuân Lộc, xã Lộc Hoà, xã Lộc Bổn, xã Lộc An, xã Lộc Sơn, xã Vinh Hưng)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Thừa Thiên Huế",
+      "dia_danh": "Huyện Phú Lộc (các địa danh hành chính còn lại)",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thừa Thiên Huế",
+      "dia_danh": "Huyện Phú Vang",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thừa Thiên Huế",
+      "dia_danh": "Huyện Phong Điền",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Thừa Thiên Huế",
+      "dia_danh": "Huyện Quảng Điền",
+      "vung": "III",
+      "w0_dan_m2": 125,
+      "v3s_50_ms": 50,
+      "v10m_50_ms": 36
+    },
+    {
+      "tinh": "Tiền Giang",
+      "dia_danh": "Tất cả thành phố, thị xã, huyện",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Trà Vinh",
+      "dia_danh": "Tất cả thành phố, thị xã, quận, huyện",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": "Thành phố Tuyên Quang",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": "Huyện Chiêm Hoá",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": "Huyện Hàm Yên",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": "Huyện Na Hang",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": "Huyện Sơn Dương",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": "Huyện Yên Sơn",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": "Huyện Lâm Bình",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Vĩnh Long",
+      "dia_danh": "Tất cả thành phố, thị xã, huyện",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Vĩnh Phúc",
+      "dia_danh": "Tất cả thành phố, thị xã, huyện",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Thành phố Yên Bái",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Thị xã Nghĩa Lộ",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Lục Yên",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Mù Căng Chải",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Trạm Tấu",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Trấn Yên",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Văn Chấn (thị trấn Nông trường Liên Sơn, xã Cát Thịnh, xã Gia Hội, xã Nậm Búng, xã Nậm Lành, xã Nghĩa Sơn, xã Sơn Lương, xã Sơn Thịnh, xã Tú Lệ)",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Văn Chấn (các địa danh hành chính còn lại)",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Văn Yên",
+      "vung": "I",
+      "w0_dan_m2": 65,
+      "v3s_50_ms": 36,
+      "v10m_50_ms": 26
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Yên Bình",
+      "vung": "II",
+      "w0_dan_m2": 95,
+      "v3s_50_ms": 44,
+      "v10m_50_ms": 31
+    }
+  ]
+}

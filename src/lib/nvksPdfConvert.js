@@ -80,7 +80,17 @@ async function convertViaConvertApi(docxBuffer) {
 
 async function convertViaLibreOffice(docxBuffer) {
   const { promisify } = await import("util");
-  const libre = (await import("libreoffice-convert")).default;
+  // Dynamic package name avoids hard build failure when optional dep is absent (e.g. some CI).
+  const pkgName = "libreoffice-convert";
+  let libreMod;
+  try {
+    libreMod = await import(pkgName);
+  } catch (err) {
+    throw new Error(
+      `Thiếu package libreoffice-convert (hoặc máy chủ không hỗ trợ). ${err?.message || err}`
+    );
+  }
+  const libre = libreMod.default || libreMod;
   const convert = promisify(libre.convert);
   return convert(docxBuffer, ".pdf", undefined);
 }

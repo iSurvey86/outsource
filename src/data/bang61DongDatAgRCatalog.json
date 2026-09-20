@@ -1,0 +1,4244 @@
+{
+  "source": "Bảng 6.1 - Bảng phân vùng động đất theo đỉnh gia tốc nền tham chiếu theo địa danh hành chính (chu kỳ lặp 500 năm cho nền loại A), g = 9,81 m/s² (gia tốc trọng trường)",
+  "source_file": "Bảng 6.1.docx",
+  "reference_period_years": 500,
+  "soil_type": "A",
+  "g_ms2": 9.81,
+  "columns": {
+    "agR_x_g": "Đỉnh gia tốc nền tham chiếu agR, hệ số nhân g",
+    "agR_label": "Nhãn gốc trong bảng (vd. 0,10×g)"
+  },
+  "row_count": 705,
+  "rows": [
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Quận Ba Đình",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Đan Phượng",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Quận Cầu Giấy",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Đông Anh",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Quận Đống Đa",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Gia Lâm",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Quận Hà Đông",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Hoài Đức",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Quận Hai Bà Trưng",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Mê Linh",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Quận Hoàn Kiếm",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Mỹ Đức",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Quận Hoàng Mai",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Phúc Thọ",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Quận Long Biên",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Phú Xuyên",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Quận Tây Hồ",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Quốc Oai",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Quận Thanh Xuân",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Sóc Sơn",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Quận Bắc Từ Liêm",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Thạch Thất",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Quận Nam Từ Liêm",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Thanh Oai",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Thị xã Sơn Tây",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Thanh Trì",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Ba Vì",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Thường Tín",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Chương Mỹ",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hà Nội",
+      "dia_danh": "Huyện Ứng Hòa",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Thành phố Thủ Đức",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận 11",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận 1",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận 12",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận 3",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận Bình Thạnh",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận 4",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận Bình Tân",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận 5",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận Gò Vấp",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận 6",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận Phú Nhuận",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận 7",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận Tân Bình",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận 8",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận Tân Phú",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Quận 10",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Huyện Bình Chánh",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Huyện Cần Giờ",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Huyện Hóc Môn",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Huyện Củ Chi",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hồ Chí Minh",
+      "dia_danh": "Huyện Nhà Bè",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Quận Hồng Bàng",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Huyện An Lão",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Quận Dương Kinh",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Huyện Bạch Long Vĩ",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Quận Đồ Sơn",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Huyện Cát Hải",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Quận Hải An",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Huyện Kiến Thụy",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Quận Kiến An",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Huyện Thủy Nguyên",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Quận Lê Chân",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Huyện Tiên Lãng",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Quận Ngô Quyền",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Huyện Vĩnh Bảo",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thành phố Hải Phòng",
+      "dia_danh": "Huyện An Dương",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Thành phố Đà Nẵng",
+      "dia_danh": "Quận Cẩm Lệ",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Thành phố Đà Nẵng",
+      "dia_danh": "Quận Sơn Trà",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thành phố Đà Nẵng",
+      "dia_danh": "Quận Hải Châu",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thành phố Đà Nẵng",
+      "dia_danh": "Quận Thanh Khê",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thành phố Đà Nẵng",
+      "dia_danh": "Quận Liên Chiểu",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Đà Nẵng",
+      "dia_danh": "Huyện Hòa Vang",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Thành phố Đà Nẵng",
+      "dia_danh": "Quận Ngũ Hành Sơn",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thành phố Đà Nẵng",
+      "dia_danh": "Huyện Hoàng Sa (quần đảo Hoàng Sa)",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Thành phố Cần Thơ",
+      "dia_danh": "Quận Bình Thủy",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Thành phố Cần Thơ",
+      "dia_danh": "Huyện Cờ Đỏ",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Thành phố Cần Thơ",
+      "dia_danh": "Quận Cái Răng",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Thành phố Cần Thơ",
+      "dia_danh": "Huyện Phong Điền",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Thành phố Cần Thơ",
+      "dia_danh": "Quận Ninh Kiều",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Thành phố Cần Thơ",
+      "dia_danh": "Huyện Thới Lai",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Thành phố Cần Thơ",
+      "dia_danh": "Quận Ô Môn",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Thành phố Cần Thơ",
+      "dia_danh": "Huyện Vĩnh Thạnh",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Thành phố Cần Thơ",
+      "dia_danh": "Quận Thốt Nốt",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Thành phố Long Xuyên",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Huyện An Phú",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Thành phố Châu Đốc",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Huyện Châu Phú",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Thị xã Tân Châu",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Huyện Châu Thành",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Huyện Chợ Mới",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Huyện Tri Tôn",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Huyện Phú Tân",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Huyện Tịnh Biên",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "An Giang",
+      "dia_danh": "Huyện Thoại Sơn",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bà Rịa - Vũng Tàu",
+      "dia_danh": "Thành phố Vũng Tàu",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bà Rịa - Vũng Tàu",
+      "dia_danh": "Huyện Đất Đỏ",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bà Rịa - Vũng Tàu",
+      "dia_danh": "Thành phố Bà Rịa",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bà Rịa - Vũng Tàu",
+      "dia_danh": "Huyện Long Điền",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bà Rịa - Vũng Tàu",
+      "dia_danh": "Huyện Châu Đức",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bà Rịa - Vũng Tàu",
+      "dia_danh": "Huyện Tân Thành",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bà Rịa - Vũng Tàu",
+      "dia_danh": "Huyện Côn Đảo",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bà Rịa - Vũng Tàu",
+      "dia_danh": "Huyện Xuyên Mộc",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bạc Liêu",
+      "dia_danh": "Thành phố Bạc Liêu",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bạc Liêu",
+      "dia_danh": "Huyện Hồng Dân",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bạc Liêu",
+      "dia_danh": "Huyện Đông Hải",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bạc Liêu",
+      "dia_danh": "Huyện Phước Long",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bạc Liêu",
+      "dia_danh": "Huyện Giá Rai",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bạc Liêu",
+      "dia_danh": "Huyện Vĩnh Lợi",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bạc Liêu",
+      "dia_danh": "Huyện Hòa Bình",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bắc Giang",
+      "dia_danh": "Thành phố Bắc Giang",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bắc Giang",
+      "dia_danh": "Huyện Sơn Động",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bắc Giang",
+      "dia_danh": "Huyện Hiệp Hòa",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Bắc Giang",
+      "dia_danh": "Huyện Tân Yên",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Bắc Giang",
+      "dia_danh": "Huyện Lạng Giang",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Bắc Giang",
+      "dia_danh": "Huyện Việt Yên",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Bắc Giang",
+      "dia_danh": "Huyện Lục Nam",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bắc Giang",
+      "dia_danh": "Huyện Yên Dũng",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bắc Giang",
+      "dia_danh": "Huyện Lục Ngạn",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Bắc Giang",
+      "dia_danh": "Huyện Yên Thế",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Bắc Kạn",
+      "dia_danh": "Thành phố Bắc Kạn",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Bắc Kạn",
+      "dia_danh": "Huyện Chợ Mới",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Bắc Kạn",
+      "dia_danh": "Huyện Ba Bể",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Bắc Kạn",
+      "dia_danh": "Huyện Na Rì",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bắc Kạn",
+      "dia_danh": "Huyện Bạch Thông",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Bắc Kạn",
+      "dia_danh": "Huyện Ngân Sơn",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bắc Kạn",
+      "dia_danh": "Huyện Chợ Đồn",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bắc Kạn",
+      "dia_danh": "Huyện Pác Nặm",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Bắc Ninh",
+      "dia_danh": "Thành phố Bắc Ninh",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Bắc Ninh",
+      "dia_danh": "Thành phố Từ Sơn",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Bắc Ninh",
+      "dia_danh": "Huyện Gia Bình",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Bắc Ninh",
+      "dia_danh": "Huyện Thuận Thành",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bắc Ninh",
+      "dia_danh": "Huyện Lương Tài",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Bắc Ninh",
+      "dia_danh": "Huyện Tiên Du",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bắc Ninh",
+      "dia_danh": "Huyện Quế Võ",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Bắc Ninh",
+      "dia_danh": "Huyện Yên Phong",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bến Tre",
+      "dia_danh": "Thành phố Bến Tre",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bến Tre",
+      "dia_danh": "Huyện Giồng Trôm",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bến Tre",
+      "dia_danh": "Huyện Ba Tri",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bến Tre",
+      "dia_danh": "Huyện Mỏ Cày Bắc",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bến Tre",
+      "dia_danh": "Huyện Bình Đại",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bến Tre",
+      "dia_danh": "Huyện Mỏ Cày Nam",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bến Tre",
+      "dia_danh": "Huyện Châu Thành",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bến Tre",
+      "dia_danh": "Huyện Thạnh Phú",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bến Tre",
+      "dia_danh": "Huyện Chợ Lách",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Dương",
+      "dia_danh": "Thành phố Thủ Dầu Một",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bình Dương",
+      "dia_danh": "Huyện Bàu Bàng",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bình Dương",
+      "dia_danh": "Thị xã Bến Cát",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bình Dương",
+      "dia_danh": "Huyện Bắc Tân Uyên",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Dương",
+      "dia_danh": "Thị xã Dĩ An",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bình Dương",
+      "dia_danh": "Huyện Dầu Tiếng",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bình Dương",
+      "dia_danh": "Thị xã Tân Uyên",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Dương",
+      "dia_danh": "Huyện Phú Giáo",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bình Dương",
+      "dia_danh": "Thị xã Thuận An",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Thành phố Quy Nhơn",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Phù Mỹ",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Thị xã An Nhơn",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Tây Sơn",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện An Lão",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Tuy Phước",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Hoài Ân",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Vân Canh",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Hoài Nhơn",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Vĩnh Thạnh",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bình Định",
+      "dia_danh": "Huyện Phù Cát",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Bình Phước",
+      "dia_danh": "Thành phố Đồng Xoài",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Phước",
+      "dia_danh": "Huyện Bù Đăng",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Phước",
+      "dia_danh": "Thị xã Bình Long",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Phước",
+      "dia_danh": "Huyện Bù Đốp",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Phước",
+      "dia_danh": "Thị xã Phước Long",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Phước",
+      "dia_danh": "Huyện Bù Gia Mập",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Phước",
+      "dia_danh": "Huyện Chơn Thành",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Phước",
+      "dia_danh": "Huyện Hớn Quản",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Phước",
+      "dia_danh": "Huyện Đồng Phú",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bình Phước",
+      "dia_danh": "Huyện Lộc Ninh",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Thành phố Phan Thiết",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Hàm Thuận Nam",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Thị xã La Gi",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Hàm Thuận Bắc",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Bắc Bình",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Phú Quý",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Đức Linh",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Tánh Linh",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Hàm Tân",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Bình Thuận",
+      "dia_danh": "Huyện Tuy Phong",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Cà Mau",
+      "dia_danh": "Thành phố Cà Mau",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Cà Mau",
+      "dia_danh": "Huyện Phú Tân",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Cà Mau",
+      "dia_danh": "Huyện Cái Nước",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Cà Mau",
+      "dia_danh": "Huyện U Minh",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Cà Mau",
+      "dia_danh": "Huyện Đầm Dơi",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Cà Mau",
+      "dia_danh": "Huyện Trần Văn Thời",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Cà Mau",
+      "dia_danh": "Huyện Năm Căn",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Cà Mau",
+      "dia_danh": "Huyện Thới Bình",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Cà Mau",
+      "dia_danh": "Huyện Ngọc Hiển",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": "Thành phố Cao Bằng",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": "Huyện Phục Hòa",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": "Huyện Bảo Lạc",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": "Huyện Quảng Uyên",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": "Huyện Bảo Lâm",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": "Huyện Thạch An",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": "Huyện Hạ Lang",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": "Huyện Thông Nông",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": "Huyện Hà Quảng",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": "Huyện Trà Lĩnh",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": "Huyện Hòa An",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": "Huyện Trùng Khánh",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Cao Bằng",
+      "dia_danh": "Huyện Nguyên Bình",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Thành phố Buôn Ma Thuột",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Huyện Cư Kuin",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Thị xã Buôn Hồ",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Huyện Cư M'gar",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Huyện Buôn Đôn",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Huyện Ea H'leo",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Huyện Ea Kar",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Huyện Krông Năng",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Huyện Ea Súp",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Huyện Krông Pắc",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Huyện Krông A Na",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Huyện Lắk",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Huyện Krông Bông",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Huyện M'Đrắk",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Đăk Lăk",
+      "dia_danh": "Huyện Krông Búk",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Nông",
+      "dia_danh": "Thành phố Gia Nghĩa",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Nông",
+      "dia_danh": "Huyện Đắk Song",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đăk Nông",
+      "dia_danh": "Huyện Cư Jút",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đăk Nông",
+      "dia_danh": "Huyện Đắk Glong",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đăk Nông",
+      "dia_danh": "Huyện Đắk Mil",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đăk Nông",
+      "dia_danh": "Huyện Krông Nô",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đăk Nông",
+      "dia_danh": "Huyện Đắk R'Lấp",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đăk Nông",
+      "dia_danh": "Huyện Tuy Đức",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Điện Biên",
+      "dia_danh": "Thành phố Điện Biên Phủ",
+      "agR_x_g": 0.18,
+      "agR_label": "0,18×g"
+    },
+    {
+      "tinh": "Điện Biên",
+      "dia_danh": "Huyện Mường Chà",
+      "agR_x_g": 0.2,
+      "agR_label": "0,20×g"
+    },
+    {
+      "tinh": "Điện Biên",
+      "dia_danh": "Thị xã Mường Lay",
+      "agR_x_g": 0.2,
+      "agR_label": "0,20×g"
+    },
+    {
+      "tinh": "Điện Biên",
+      "dia_danh": "Huyện Mường Nhé",
+      "agR_x_g": 0.16,
+      "agR_label": "0,16×g"
+    },
+    {
+      "tinh": "Điện Biên",
+      "dia_danh": "Huyện Điện Biên",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Điện Biên",
+      "dia_danh": "Huyện Nậm Pồ",
+      "agR_x_g": 0.16,
+      "agR_label": "0,16×g"
+    },
+    {
+      "tinh": "Điện Biên",
+      "dia_danh": "Huyện Điện Biên Đông",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Điện Biên",
+      "dia_danh": "Huyện Tuần Giáo",
+      "agR_x_g": 0.2,
+      "agR_label": "0,20×g"
+    },
+    {
+      "tinh": "Điện Biên",
+      "dia_danh": "Huyện Mường Ảng",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Điện Biên",
+      "dia_danh": "Huyện Tủa Chùa",
+      "agR_x_g": 0.2,
+      "agR_label": "0,20×g"
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Thành phố Biên Hòa",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Tân Phú",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Thị xã Long Khánh",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Thống Nhất",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Cẩm Mỹ",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Trảng Bom",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Định Quán",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Vĩnh Cửu",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Long Thành",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Xuân Lộc",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Nai",
+      "dia_danh": "Huyện Nhơn Trạch",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Thành phố Cao Lãnh",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Thị xã Hồng Ngự",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Thành phố Sa Đéc",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Huyện Cao Lãnh",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Huyện Châu Thành",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Huyện Tam Nông",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Huyện Hồng Ngự",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Huyện Tân Hồng",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Huyện Lai Vung",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Huyện Thanh Bình",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Huyện Lấp Vò",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Đồng Tháp",
+      "dia_danh": "Huyện Tháp Mười",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Thành phố Pleiku",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Huyện Đắk Đoa",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Thị xã An Khê",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Huyện Krông Pa",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Thị xã Ayun Pa",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Huyện Kông Chro",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Huyện Chư Sê",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Huyện KBang",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Huyện Chư Pưh",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Huyện Ia Grai",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Huyện Chư Prông",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Huyện Ia Pa",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Huyện Chư Păh",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Huyện Mang Yang",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Huyện Đắk Pơ",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Huyện Phú Thiện",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Gia Lai",
+      "dia_danh": "Huyện Đức Cơ",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Thành phố Hà Giang",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Quang Bình",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Bắc Mê",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Quản Bạ",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Bắc Quang",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Vị Xuyên",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Đồng Văn",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Xín Mần",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Hoàng Su Phì",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Yên Minh",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Hà Giang",
+      "dia_danh": "Huyện Mèo Vạc",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Hà Nam",
+      "dia_danh": "Thành phố Phủ Lý",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Hà Nam",
+      "dia_danh": "Huyện Kim Bảng",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Hà Nam",
+      "dia_danh": "Thị xã Duy Tiên",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Hà Nam",
+      "dia_danh": "Huyện Lý Nhân",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Hà Nam",
+      "dia_danh": "Huyện Bình Lục",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Hà Nam",
+      "dia_danh": "Huyện Thanh Liêm",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Thành phố Hà Tĩnh",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Hương Sơn",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Thị xã Hồng Lĩnh",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Hương Khê",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Thị xã Kỳ Anh",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Lộc Hà",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Can Lộc",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Nghi Xuân",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Cẩm Xuyên",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Thạch Hà",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Đức Thọ",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hà Tĩnh",
+      "dia_danh": "Huyện Vũ Quang",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": "Thành phố Hải Dương",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": "Huyện Kim Thành",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": "Thành phố Chí Linh",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": "Huyện Ninh Giang",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": "Thị xã Kinh Môn",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": "Huyện Nam Sách",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": "Huyện Bình Giang",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": "Huyện Thanh Hà",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": "Huyện Cẩm Giàng",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": "Huyện Thanh Miện",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": "Huyện Gia Lộc",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Hải Dương",
+      "dia_danh": "Huyện Tứ Kỳ",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hậu Giang",
+      "dia_danh": "Thành phố Vị Thanh",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Hậu Giang",
+      "dia_danh": "Huyện Long Mỹ",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Hậu Giang",
+      "dia_danh": "Thị xã Ngã Bảy",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Hậu Giang",
+      "dia_danh": "Huyện Phụng Hiệp",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Hậu Giang",
+      "dia_danh": "Huyện Châu Thành",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Hậu Giang",
+      "dia_danh": "Huyện Vị Thủy",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Hậu Giang",
+      "dia_danh": "Huyện Châu Thành A",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Thành phố Hòa Bình",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Lạc Thủy",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Cao Phong",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Lương Sơn",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Đà Bắc",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Mai Châu",
+      "agR_x_g": 0.16,
+      "agR_label": "0,16×g"
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Kim Bôi",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Tân Lạc",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Lạc Sơn",
+      "agR_x_g": 0.16,
+      "agR_label": "0,16×g"
+    },
+    {
+      "tinh": "Hòa Bình",
+      "dia_danh": "Huyện Yên Thủy",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": "Thành phố Hưng Yên",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": "Huyện Phù Cừ",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": "Huyện Ân Thi",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": "Huyện Tiên Lữ",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": "Huyện Kim Động",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": "Huyện Văn Giang",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": "Huyện Khoái Châu",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": "Huyện Văn Lâm",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": "Huyện Mỹ Hào",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Hưng Yên",
+      "dia_danh": "Huyện Yên Mỹ",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Khánh Hòa",
+      "dia_danh": "Thành phố Nha Trang",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Khánh Hòa",
+      "dia_danh": "Huyện Khánh Sơn",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Khánh Hòa",
+      "dia_danh": "Thành phố Cam Ranh",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Khánh Hòa",
+      "dia_danh": "Huyện Khánh Vĩnh",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Khánh Hòa",
+      "dia_danh": "Thị xã Ninh Hòa",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Khánh Hòa",
+      "dia_danh": "Huyện Trường Sa (quần đảo Trường Sa)",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Khánh Hòa",
+      "dia_danh": "Huyện Cam Lâm",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Khánh Hòa",
+      "dia_danh": "Huyện Vạn Ninh",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Khánh Hòa",
+      "dia_danh": "Huyện Diên Khánh",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Thành phố Rạch Giá",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Huyện Giang Thành",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Thành phố Phú Quốc",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Huyện Gò Quao",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Thị xã Hà Tiên",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Huyện Hòn Đất",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Huyện An Biên",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Huyện Kiên Hải",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Huyện An Minh",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Huyện Kiên Lương",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Huyện Châu Thành",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Huyện Tân Hiệp",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Huyện Giồng Riềng",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Kiên Giang",
+      "dia_danh": "Huyện Vĩnh Thuận",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Kon Tum",
+      "dia_danh": "Thành phố Kon Tum",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Kon Tum",
+      "dia_danh": "Huyện Kon Plông",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Kon Tum",
+      "dia_danh": "Huyện Đắk Hà",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Kon Tum",
+      "dia_danh": "Huyện Ngọc Hồi",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Kon Tum",
+      "dia_danh": "Huyện Đắk Tô",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Kon Tum",
+      "dia_danh": "Huyện Sa Thầy",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Kon Tum",
+      "dia_danh": "Huyện Đắk Glei",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Kon Tum",
+      "dia_danh": "Huyện Tu Mơ Rông",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Kon Tum",
+      "dia_danh": "Huyện Kon Rẫy",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Kon Tum",
+      "dia_danh": "Huyện Ia H’Drai",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Lai Châu",
+      "dia_danh": "Thành phố Lai Châu",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Lai Châu",
+      "dia_danh": "Huyện Sìn Hồ",
+      "agR_x_g": 0.18,
+      "agR_label": "0,18×g"
+    },
+    {
+      "tinh": "Lai Châu",
+      "dia_danh": "Huyện Mường Tè",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Lai Châu",
+      "dia_danh": "Huyện Tân Uyên",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Lai Châu",
+      "dia_danh": "Huyện Nậm Nhùn",
+      "agR_x_g": 0.16,
+      "agR_label": "0,16×g"
+    },
+    {
+      "tinh": "Lai Châu",
+      "dia_danh": "Huyện Tam Đường",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Lai Châu",
+      "dia_danh": "Huyện Phong Thổ",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Lai Châu",
+      "dia_danh": "Huyện Than Uyên",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Thành phố Lạng Sơn",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Huyện Hữu Lũng",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Huyện Bình Gia",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Huyện Lộc Bình",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Huyện Bắc Sơn",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Huyện Tràng Định",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Huyện Cao Lộc",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Huyện Văn Lãng",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Huyện Chi Lăng",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Huyện Văn Quan",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Lạng Sơn",
+      "dia_danh": "Huyện Đình Lập",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Thành phố Lào Cai",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Huyện Bát Xát",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Thị xã Sa Pa",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Huyện Mường Khương",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Huyện Bắc Hà",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Huyện Si Ma Cai",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Huyện Bảo Yên",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Huyện Văn Bàn",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Lào Cai",
+      "dia_danh": "Huyện Bảo Thắng",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": "Thành phố Đà Lạt",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": "Huyện Đơn Dương",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": "Thành phố Bảo Lộc",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": "Huyện Đức Trọng",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": "Huyện Bảo Lâm",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": "Huyện Đạ Huoai",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": "Huyện Cát Tiên",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": "Huyện Đạ Tẻh",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": "Huyện Di Linh",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": "Huyện Lâm Hà",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": "Huyện Đam Rông",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Lâm Đồng",
+      "dia_danh": "Huyện Lạc Dương",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Thành phố Tân An",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Mộc Hóa",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Thị xã Kiến Tường",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Tân Hưng",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Bến Lức",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Tân Thạnh",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Cần Đước",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Tân Trụ",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Cần Giuộc",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Thạnh Hóa",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Châu Thành",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Thủ Thừa",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Đức Hòa",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Vĩnh Hưng",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Long An",
+      "dia_danh": "Huyện Đức Huệ",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Nam Định",
+      "dia_danh": "Thành phố Nam Định",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Nam Định",
+      "dia_danh": "Huyện Nghĩa Hưng",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Nam Định",
+      "dia_danh": "Huyện Giao Thủy",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Nam Định",
+      "dia_danh": "Huyện Trực Ninh",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Nam Định",
+      "dia_danh": "Huyện Hải Hậu",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Nam Định",
+      "dia_danh": "Huyện Vụ Bản",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Nam Định",
+      "dia_danh": "Huyện Mỹ Lộc",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Nam Định",
+      "dia_danh": "Huyện Xuân Trường",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Nam Định",
+      "dia_danh": "Huyện Nam Trực",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Nam Định",
+      "dia_danh": "Huyện Ý Yên",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Thành phố Vinh",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Nam Đàn",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Thị xã Cửa Lò",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Nghĩa Đàn",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Thị xã Hoàng Mai",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Quế Phong",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Thị xã Thái Hòa",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Quỳ Hợp",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Anh Sơn",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Quỳnh Lưu",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Con Cuông",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Quỳ Châu",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Diễn Châu",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Tân Kỳ",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Đô Lương",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Thanh Chương",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Hưng Nguyên",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Tương Dương",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Kỳ Sơn",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Yên Thành",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Nghệ An",
+      "dia_danh": "Huyện Nghi Lộc",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Thành phố Ninh Bình",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Huyện Kim Sơn",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Thị xã Tam Điệp",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Huyện Nho Quan",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Huyện Gia Viễn",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Huyện Yên Khánh",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Huyện Hoa Lư",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Ninh Bình",
+      "dia_danh": "Huyện Yên Mô",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": "Thành phố Phan Rang-Tháp Chàm",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": "Huyện Ninh Sơn",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": "Huyện Bác Ái",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": "Huyện Thuận Bắc",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": "Huyện Ninh Hải",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": "Huyện Thuận Nam",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Ninh Thuận",
+      "dia_danh": "Huyện Ninh Phước",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": "Thành phố Việt Trì",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": "Huyện Tam Nông",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": "Thị xã Phú Thọ",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": "Huyện Tân Sơn",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": "Huyện Cẩm Khê",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": "Huyện Thanh Ba",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": "Huyện Đoan Hùng",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": "Huyện Thanh Sơn",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": "Huyện Hạ Hòa",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": "Huyện Thanh Thủy",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": "Huyện Lâm Thao",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": "Huyện Yên Lập",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Phú Thọ",
+      "dia_danh": "Huyện Phù Ninh",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Thành phố Tuy Hòa",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Huyện Sông Hinh",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Thị xã Sông Cầu",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Huyện Sơn Hòa",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Huyện Đông Hòa",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Huyện Tây Hòa",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Huyện Đồng Xuân",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Huyện Tuy An",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Phú Yên",
+      "dia_danh": "Huyện Phú Hòa",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Thành phố Đồng Hới",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Huyện Minh Hóa",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Thị xã Ba Đồn",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Huyện Quảng Ninh",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Huyện Bố Trạch",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Huyện Quảng Trạch",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Huyện Lệ Thủy",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Bình",
+      "dia_danh": "Huyện Tuyên Hóa",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Thành phố Tam Kỳ",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Nam Giang",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Thành phố Hội An",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Nông Sơn",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Thị xã Điện Bàn",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Núi Thành",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Bắc Trà My",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Phú Ninh",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Duy Xuyên",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Phước Sơn",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Đại Lộc",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Quế Sơn",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Đông Giang",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Tây Giang",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Hiệp Đức",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Thăng Bình",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Nam Trà My",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Nam",
+      "dia_danh": "Huyện Tiên Phước",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Thành phố Quảng Ngãi",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Nghĩa Hành",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Ba Tơ",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Sơn Hà",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Bình Sơn",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Sơn Tây",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Đức Phổ",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Sơn Tịnh",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Lý Sơn",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Tây Trà",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Minh Long",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Trà Bồng",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Mộ Đức",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Ngãi",
+      "dia_danh": "Huyện Tư Nghĩa",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Thành phố Hạ Long",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Thành phố Móng Cái",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Thành phố Cẩm Phả",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Thành phố Uông Bí",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Thị xã Quảng Yên",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Huyện Đông Triều",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Huyện Ba Chẽ",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Huyện Hải Hà",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Huyện Bình Liêu",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Huyện Tiên Yên",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Huyện Cô Tô",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Huyện Vân Đồn",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Ninh",
+      "dia_danh": "Huyện Đầm Hà",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Thành phố Đông Hà",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Huyện Gio Linh",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Thị xã Quảng Trị",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Huyện Hướng Hóa",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Huyện Cam Lộ",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Huyện Hải Lăng",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Huyện Cồn Cỏ",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Huyện Triệu Phong",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Huyện Đa Krông",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Quảng Trị",
+      "dia_danh": "Huyện Vĩnh Linh",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Sóc Trăng",
+      "dia_danh": "Thành phố Sóc Trăng",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Sóc Trăng",
+      "dia_danh": "Huyện Long Phú",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Sóc Trăng",
+      "dia_danh": "Thị xã Vĩnh Châu",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Sóc Trăng",
+      "dia_danh": "Huyện Mỹ Tú",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Sóc Trăng",
+      "dia_danh": "Thị xã Ngã Năm",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Sóc Trăng",
+      "dia_danh": "Huyện Mỹ Xuyên",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Sóc Trăng",
+      "dia_danh": "Huyện Châu Thành",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Sóc Trăng",
+      "dia_danh": "Huyện Thạnh Trị",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Sóc Trăng",
+      "dia_danh": "Huyện Cù Lao Dung",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Sóc Trăng",
+      "dia_danh": "Huyện Trần Đề",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Sóc Trăng",
+      "dia_danh": "Huyện Kế Sách",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Sơn La",
+      "dia_danh": "Thành phố Sơn La",
+      "agR_x_g": 0.18,
+      "agR_label": "0,18×g"
+    },
+    {
+      "tinh": "Sơn La",
+      "dia_danh": "Huyện Quỳnh Nhai",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Sơn La",
+      "dia_danh": "Huyện Bắc Yên",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Sơn La",
+      "dia_danh": "Huyện Sông Mã",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Sơn La",
+      "dia_danh": "Huyện Mai Sơn",
+      "agR_x_g": 0.18,
+      "agR_label": "0,18×g"
+    },
+    {
+      "tinh": "Sơn La",
+      "dia_danh": "Huyện Sốp Cộp",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Sơn La",
+      "dia_danh": "Huyện Mộc Châu",
+      "agR_x_g": 0.22,
+      "agR_label": "0,22×g"
+    },
+    {
+      "tinh": "Sơn La",
+      "dia_danh": "Huyện Thuận Châu",
+      "agR_x_g": 0.22,
+      "agR_label": "0,22×g"
+    },
+    {
+      "tinh": "Sơn La",
+      "dia_danh": "Huyện Mường La",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Sơn La",
+      "dia_danh": "Huyện Vân Hồ",
+      "agR_x_g": 0.2,
+      "agR_label": "0,20×g"
+    },
+    {
+      "tinh": "Sơn La",
+      "dia_danh": "Huyện Phù Yên",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Sơn La",
+      "dia_danh": "Huyện Yên Châu",
+      "agR_x_g": 0.2,
+      "agR_label": "0,20×g"
+    },
+    {
+      "tinh": "Tây Ninh",
+      "dia_danh": "Thành phố Tây Ninh",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Tây Ninh",
+      "dia_danh": "Huyện Hòa Thành",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Tây Ninh",
+      "dia_danh": "Huyện Bến Cầu",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Tây Ninh",
+      "dia_danh": "Huyện Tân Biên",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Tây Ninh",
+      "dia_danh": "Huyện Châu Thành",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Tây Ninh",
+      "dia_danh": "Huyện Tân Châu",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Tây Ninh",
+      "dia_danh": "Huyện Dương Minh Châu",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Tây Ninh",
+      "dia_danh": "Huyện Trảng Bàng",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Tây Ninh",
+      "dia_danh": "Huyện Gò Dầu",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Thái Bình",
+      "dia_danh": "Thành phố Thái Bình",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thái Bình",
+      "dia_danh": "Huyện Quỳnh Phụ",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thái Bình",
+      "dia_danh": "Huyện Đông Hưng",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thái Bình",
+      "dia_danh": "Huyện Thái Thụy",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thái Bình",
+      "dia_danh": "Huyện Hưng Hà",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thái Bình",
+      "dia_danh": "Huyện Tiền Hải",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thái Bình",
+      "dia_danh": "Huyện Kiến Xương",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thái Bình",
+      "dia_danh": "Huyện Vũ Thư",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": "Thành phố Thái Nguyên",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": "Huyện Đồng Hỷ",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": "Thành phố Phổ Yên",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": "Huyện Phú Bình",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": "Thị xã Sông Công",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": "Huyện Phú Lương",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": "Huyện Đại Từ",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": "Huyện Võ Nhai",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Thái Nguyên",
+      "dia_danh": "Huyện Định Hóa",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Thành phố Thanh Hóa",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Hậu Lộc",
+      "agR_x_g": 0.2,
+      "agR_label": "0,20×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Thành phố Sầm Sơn",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Hoằng Hóa",
+      "agR_x_g": 0.2,
+      "agR_label": "0,20×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Thị xã Bỉm Sơn",
+      "agR_x_g": 0.18,
+      "agR_label": "0,18×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Lang Chánh",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Thị xã Nghi Sơn",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Mường Lát",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Bá Thước",
+      "agR_x_g": 0.18,
+      "agR_label": "0,18×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Nga Sơn",
+      "agR_x_g": 0.16,
+      "agR_label": "0,16×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Cẩm Thủy",
+      "agR_x_g": 0.2,
+      "agR_label": "0,20×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Ngọc Lặc",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Đông Sơn",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Như Thanh",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Hà Trung",
+      "agR_x_g": 0.22,
+      "agR_label": "0,22×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Như Xuân",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Nông Cống",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Triệu Sơn",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Quan Hóa",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Thường Xuân",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Quan Sơn",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Thọ Xuân",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Quảng Xương",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Vĩnh Lộc",
+      "agR_x_g": 0.22,
+      "agR_label": "0,22×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Thạch Thành",
+      "agR_x_g": 0.2,
+      "agR_label": "0,20×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Yên Định",
+      "agR_x_g": 0.18,
+      "agR_label": "0,18×g"
+    },
+    {
+      "tinh": "Thanh Hóa",
+      "dia_danh": "Huyện Thiệu Hóa",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Thừa Thiên - Huế",
+      "dia_danh": "Thành phố Huế",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thừa Thiên - Huế",
+      "dia_danh": "Huyện Phong Điền",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thừa Thiên - Huế",
+      "dia_danh": "Thị xã Hương Thủy",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thừa Thiên - Huế",
+      "dia_danh": "Huyện Phú Lộc",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Thừa Thiên - Huế",
+      "dia_danh": "Thị xã Hương Trà",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thừa Thiên - Huế",
+      "dia_danh": "Huyện Phú Vang",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Thừa Thiên - Huế",
+      "dia_danh": "Huyện A Lưới",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Thừa Thiên - Huế",
+      "dia_danh": "Huyện Quảng Điền",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Thừa Thiên - Huế",
+      "dia_danh": "Huyện Nam Đông",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Tiền Giang",
+      "dia_danh": "Thành phố Mỹ Tho",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Tiền Giang",
+      "dia_danh": "Huyện Chợ Gạo",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Tiền Giang",
+      "dia_danh": "Thị xã Cai Lậy",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Tiền Giang",
+      "dia_danh": "Huyện Gò Công Tây",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Tiền Giang",
+      "dia_danh": "Thị xã Gò Công",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Tiền Giang",
+      "dia_danh": "Huyện Gò Công Đông",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Tiền Giang",
+      "dia_danh": "Huyện Cái Bè",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Tiền Giang",
+      "dia_danh": "Huyện Tân Phước",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Tiền Giang",
+      "dia_danh": "Huyện Cai Lậy",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Tiền Giang",
+      "dia_danh": "Huyện Tân Phú Đông",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Tiền Giang",
+      "dia_danh": "Huyện Châu Thành",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Trà Vinh",
+      "dia_danh": "Thành phố Trà Vinh",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Trà Vinh",
+      "dia_danh": "Huyện Châu Thành",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Trà Vinh",
+      "dia_danh": "Thị xã Duyên Hải",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Trà Vinh",
+      "dia_danh": "Huyện Duyên Hải",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Trà Vinh",
+      "dia_danh": "Huyện Càng Long",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Trà Vinh",
+      "dia_danh": "Huyện Trà Cú",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Trà Vinh",
+      "dia_danh": "Huyện Cầu Kè",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Trà Vinh",
+      "dia_danh": "Huyện Tiểu Cần",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Trà Vinh",
+      "dia_danh": "Huyện Cầu Ngang",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": "Thành phố Tuyên Quang",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": "Huyện Na Hang",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": "Huyện Chiêm Hóa",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": "Huyện Sơn Dương",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": "Huyện Hàm Yên",
+      "agR_x_g": 0.06,
+      "agR_label": "0,06×g"
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": "Huyện Yên Sơn",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Tuyên Quang",
+      "dia_danh": "Huyện Lâm Bình",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Vĩnh Long",
+      "dia_danh": "Thành phố Vĩnh Long",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Vĩnh Long",
+      "dia_danh": "Huyện Tam Bình",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Vĩnh Long",
+      "dia_danh": "Thị xã Bình Minh",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Vĩnh Long",
+      "dia_danh": "Huyện Trà Ôn",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Vĩnh Long",
+      "dia_danh": "Huyện Long Hồ",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Vĩnh Long",
+      "dia_danh": "Huyện Vũng Liêm",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Vĩnh Long",
+      "dia_danh": "Huyện Mang Thít",
+      "agR_x_g": 0.02,
+      "agR_label": "0,02×g"
+    },
+    {
+      "tinh": "Vĩnh Long",
+      "dia_danh": "Huyện Bình Tân",
+      "agR_x_g": 0.04,
+      "agR_label": "0,04×g"
+    },
+    {
+      "tinh": "Vĩnh Phúc",
+      "dia_danh": "Thành phố Vĩnh Yên",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Vĩnh Phúc",
+      "dia_danh": "Huyện Tam Dương",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Vĩnh Phúc",
+      "dia_danh": "Thành phố Phúc Yên",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Vĩnh Phúc",
+      "dia_danh": "Huyện Tam Đảo",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Vĩnh Phúc",
+      "dia_danh": "Huyện Bình Xuyên",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Vĩnh Phúc",
+      "dia_danh": "Huyện Vĩnh Tường",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Vĩnh Phúc",
+      "dia_danh": "Huyện Lập Thạch",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Vĩnh Phúc",
+      "dia_danh": "Huyện Yên Lạc",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Vĩnh Phúc",
+      "dia_danh": "Huyện Sông Lô",
+      "agR_x_g": 0.12,
+      "agR_label": "0,12×g"
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Thành phố Yên Bái",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Trấn Yên",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Thị xã Nghĩa Lộ",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Văn Chấn",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Lục Yên",
+      "agR_x_g": 0.1,
+      "agR_label": "0,10×g"
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Văn Yên",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Mù Cang Chải",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Yên Bình",
+      "agR_x_g": 0.14,
+      "agR_label": "0,14×g"
+    },
+    {
+      "tinh": "Yên Bái",
+      "dia_danh": "Huyện Trạm Tấu",
+      "agR_x_g": 0.08,
+      "agR_label": "0,08×g"
+    }
+  ]
+}
