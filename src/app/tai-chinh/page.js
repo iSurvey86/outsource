@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { loadAuthSession } from "../../lib/authSession";
 import {
@@ -388,7 +388,7 @@ export default function TaiChinhPage() {
                       openStoredFile(link).catch((e) => showAlert(e.message))
                     }
                   />
-                  <td className="border border-slate-200 p-1 align-middle">
+                  <td className="border border-slate-200 p-1 align-top">
                     <NoteCell
                       value={d.ghi_chu_tai_chinh || ""}
                       disabled={!canEdit || busy}
@@ -695,25 +695,30 @@ function MoneyCell({ value, disabled, onCommit, placeholder = "" }) {
 
 function NoteCell({ value, disabled, onCommit }) {
   const [text, setText] = useState(value || "");
+  const ref = useRef(null);
+
   useEffect(() => {
     setText(value || "");
   }, [value]);
 
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.height = "0px";
+    el.style.height = `${Math.max(el.scrollHeight, 44)}px`;
+  }, [text]);
+
   return (
-    <div className="flex min-h-[2.75rem] items-center">
-      <input
-        type="text"
-        disabled={disabled}
-        className="w-full rounded border border-sky-200/80 bg-white/80 px-1.5 py-1 text-xs text-slate-800 outline-none hover:border-sky-300 focus:border-sky-400 focus:bg-white focus:ring-1 focus:ring-sky-200 disabled:cursor-default disabled:border-transparent disabled:bg-transparent"
-        value={text}
-        onChange={(e) => setText(e.target.value)}
-        onBlur={() => {
-          if ((text || "") !== (value || "")) onCommit(text.trim());
-        }}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") e.currentTarget.blur();
-        }}
-      />
-    </div>
+    <textarea
+      ref={ref}
+      rows={2}
+      disabled={disabled}
+      className="w-full min-h-[2.75rem] resize-none overflow-hidden rounded border border-sky-200/80 bg-white/80 px-1.5 py-1.5 text-xs leading-snug text-slate-800 outline-none whitespace-pre-wrap break-words hover:border-sky-300 focus:border-sky-400 focus:bg-white focus:ring-1 focus:ring-sky-200 disabled:cursor-default disabled:border-transparent disabled:bg-transparent"
+      value={text}
+      onChange={(e) => setText(e.target.value)}
+      onBlur={() => {
+        if ((text || "") !== (value || "")) onCommit(text.trim());
+      }}
+    />
   );
 }
