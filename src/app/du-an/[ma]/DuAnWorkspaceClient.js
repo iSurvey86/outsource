@@ -787,11 +787,11 @@ export default function DuAnWorkspaceClient() {
               );
             })}
           </div>
-          <p className="mt-3 text-xs font-medium text-amber-900/80">
-            {benAUser && !canWorkKs
-              ? "Bên A chỉ xem trạng thái / hồ sơ đã có — không lập mới hay xuất bản."
-              : "Form NVKS / PAKTKS / NKKS / BCKS / NT đã nối từ ksnpsc. Cần Supabase + SQL HO_SO_* (scripts/sql). Xuất Word cần template trong public/templates/."}
-          </p>
+          {benAUser && !canWorkKs ? (
+            <p className="mt-3 text-xs font-medium text-amber-900/80">
+              Bên A chỉ xem trạng thái / hồ sơ đã có — không lập mới hay xuất bản.
+            </p>
+          ) : null}
         </section>
       ) : null}
 
