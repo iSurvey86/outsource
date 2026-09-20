@@ -1,5 +1,15 @@
 # Changelog OUTSRC
 
+## 0.5.2 — 2026-09-20
+
+**Supabase KS sẵn sàng + tiêu đề sổ nội bộ**
+
+### Cải thiện
+- Tài chính nội bộ: tiêu đề cột bảng căn giữa
+
+### Sửa lỗi
+- Bổ sung SQL tạo HO_SO_NVKS / DM_CONG_VIEC / alters / bucket xuất file — môi trường form KS dùng được
+
 ## 0.5.1 — 2026-09-20
 
 **Sửa build Vercel sau port KS**

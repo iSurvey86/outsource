@@ -16,6 +16,19 @@
 /** @type {ChangelogRelease[]} — mới nhất ở đầu */
 export const APP_CHANGELOG = [
   {
+    version: "0.5.2",
+    date: "2026-09-20",
+    title: "Supabase KS sẵn sàng + tiêu đề sổ nội bộ",
+    sections: {
+      improved: [
+        "Tài chính nội bộ: tiêu đề cột bảng căn giữa",
+      ],
+      fixed: [
+        "Bổ sung SQL tạo HO_SO_NVKS / DM_CONG_VIEC / alters / bucket xuất file — môi trường form KS dùng được",
+      ],
+    },
+  },
+  {
     version: "0.5.1",
     date: "2026-09-20",
     title: "Sửa build Vercel sau port KS",

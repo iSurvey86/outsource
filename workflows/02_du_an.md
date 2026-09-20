@@ -19,7 +19,7 @@ Các khối chính:
 
 1. **Header thông tin chung** — CĐT, địa điểm, Hợp đồng (mở sổ), Giao A / quy mô, TMĐT, Giá trị tư vấn; hiện tên Bên A nếu đã gán.
 2. **Sổ hợp đồng** (overlay) — `?action=hop_dong` hoặc bấm mục Hợp đồng; cần Supabase + SQL `008`–`018`.
-3. **Khảo sát** — Bên B: mở form **NVKS → PAKTKS → NKKS → BCKS → NT** (port ksnpsc; `?action=nvks|…`). Cần Supabase bảng `HO_SO_*` + template Word. **Bên A:** cùng khối, chỉ xem / mở hồ sơ đã có (`canLapKs` = false). Chi tiết: `docs/ks-port-README.md`.
+3. **Khảo sát** — Bên B: mở form **NVKS → PAKTKS → NKKS → BCKS → NT** (port ksnpsc; `?action=nvks|…`). Cần Supabase: bảng `HO_SO_*`, `DM_CONG_VIEC` (seed), bucket `exports_nvks` / `ho_so`. Checklist: `docs/ks-port-README.md`. **Bên A:** cùng khối, chỉ xem / mở hồ sơ đã có (`canLapKs` = false).
 4. **Hồ sơ khảo sát / thiết kế** — folder chuẩn + tùy chọn (Bên B: `+` / đổi tên / xóa); View lưới·danh sách·chi tiết.
    - **Upload:** kéo-thả hoặc chọn nhiều file → Supabase bucket `ho_so` (SQL `024`); dev không env → IndexedDB.
    - **Mở file:** bấm tên file (gạch chân).

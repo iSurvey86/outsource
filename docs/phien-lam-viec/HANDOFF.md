@@ -5,6 +5,42 @@
 
 ---
 
+## 2026-09-20 — Supabase KS sẵn sàng + tiêu đề TC nội bộ (0.5.2)
+
+**Máy / ngữ cảnh:** Cursor — sau 0.5.1; App **0.5.2**.
+
+### Đã chốt / đã làm
+
+- **Supabase outsource — schema KS:** `create-ho-so-nvks` + RLS; `create-dm-cong-viec`; `028` alters PAKTKS/NKKS; buckets `029` (`exports_nvks`, `pdfs_phe_duyet_nvks`) + `024` (`ho_so`); `030`/`031` cột DM (`loai_dong`, `apdung_*`, `tt` text).
+- **Seed `DM_CONG_VIEC`:** đồng bộ API từ ksnpsc → outsource (**103** dòng, đủ lọc giai đoạn).
+- **Kiểm tra live:** `HO_SO_*` + cột quan trọng OK; upload bucket OK.
+- **UX:** Tài chính nội bộ — tiêu đề cột bảng `text-center`.
+- **Docs:** `docs/ks-port-README.md` checklist SQL đầy đủ; workflow `02_du_an` / HDSD dự án ghi môi trường KS.
+
+### File chính
+
+| Khu vực | File |
+|---------|------|
+| SQL | `create-ho-so-nvks.sql`, `rls-ho-so-nvks.sql`, `create-dm-cong-viec.sql`, `028`–`031_*.sql`, `029_storage_exports_nvks.sql` |
+| UI | `src/app/tai-chinh-noi-bo/page.js` |
+| Docs | `docs/ks-port-README.md`, `workflows/02_du_an.md`, `docs/hdsd/01-du-an.md` |
+
+### Việc tiếp
+
+- [ ] QA Lập / Lưu / Xuất Word: NVKS → PAKTKS → NKKS → BCKS → NT trên DA thật.
+- [ ] Trình ký OTP (`TRINH_KY*`) nếu cần — chưa tạo trên outsource.
+- [ ] SQL **025**–**027** góp vốn nếu chưa chạy.
+
+### Câu mở phiên sau
+
+```text
+Đọc HANDOFF (0.5.2). Supabase KS đã sẵn (HO_SO_*, DM 103 dòng, bucket exports_nvks). Tiếp: QA + Lập NVKS trên workspace.
+```
+
+**Lưu trữ ngày:** [2026-09-20-supabase-ks-ready.md](./2026-09-20-supabase-ks-ready.md)
+
+---
+
 ## 2026-09-20 — Hotfix build Vercel sau port KS (0.5.1)
 
 **Máy / ngữ cảnh:** Cursor — sau release 0.5.0; App **0.5.1**.

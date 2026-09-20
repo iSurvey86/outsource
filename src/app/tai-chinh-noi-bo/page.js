@@ -157,11 +157,11 @@ export default function TaiChinhNoiBoListPage() {
             <thead className="bg-indigo-800 text-xs font-black uppercase tracking-wide text-white">
               <tr>
                 <th className="px-3 py-3 text-center">STT</th>
-                <th className="px-3 py-3 text-left">Dự án</th>
+                <th className="px-3 py-3 text-center">Dự án</th>
                 <th className="px-3 py-3 text-center">Giai đoạn</th>
-                <th className="px-3 py-3 text-right">Đã nhận A</th>
-                <th className="px-3 py-3 text-right">Góp nội bộ</th>
-                <th className="px-3 py-3 text-right">Phần B GTV</th>
+                <th className="px-3 py-3 text-center">Đã nhận A</th>
+                <th className="px-3 py-3 text-center">Góp nội bộ</th>
+                <th className="px-3 py-3 text-center">Phần B GTV</th>
                 <th className="px-3 py-3 text-center">Chia nội bộ</th>
                 <th className="px-3 py-3 text-center">Ghi chú</th>
               </tr>

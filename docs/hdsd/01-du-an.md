@@ -12,7 +12,7 @@ Vào **Dự án** để xem danh sách.
 ## Trong một dự án
 1. **Thông tin chung (header)** — chủ đầu tư, địa điểm, hợp đồng, Giao A / quy mô, TMĐT, **Giá trị tư vấn**; tên Bên A đã gán (nếu có).
 2. **Hợp đồng** — bấm số HĐ hoặc «Nhấn để mở sổ hợp đồng» để mở **Sổ hợp đồng**. Cần Supabase.
-3. **Khảo sát** — Bên B: bấm **+ Lập** / **Xem** mở form NVKS, PAKTKS, NKKS, BCKS, NT (cần Supabase `HO_SO_*`). **Bên A:** chỉ xem / mở hồ sơ đã có, không lập mới.
+3. **Khảo sát** — Bên B: bấm **+ Lập** / **Xem** mở form NVKS, PAKTKS, NKKS, BCKS, NT (cần Supabase `HO_SO_*` + danh mục công việc đã seed). **Bên A:** chỉ xem / mở hồ sơ đã có, không lập mới.
 4. **Hồ sơ khảo sát / thiết kế** — thư mục chuẩn + tùy chọn; View Lưới / Danh sách / Chi tiết.
    - Mở thư mục → **kéo thả** hoặc **chọn nhiều file** (pdf, doc, xls, dwg, zip, ảnh…).
    - Bấm **tên file** (gạch chân) để mở.
