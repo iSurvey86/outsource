@@ -16,6 +16,16 @@
 /** @type {ChangelogRelease[]} — mới nhất ở đầu */
 export const APP_CHANGELOG = [
   {
+    version: "0.5.1",
+    date: "2026-09-20",
+    title: "Sửa build Vercel sau port KS",
+    sections: {
+      fixed: [
+        "Bổ sung module/deps thiếu khi port KS (doDts, QCVN catalog, ResizableTableFrame, recharts) — deploy production chạy lại",
+      ],
+    },
+  },
+  {
     version: "0.5.0",
     date: "2026-09-20",
     title: "Form KS từ ksnpsc + sổ tài chính",

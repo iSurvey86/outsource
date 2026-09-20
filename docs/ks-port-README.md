@@ -27,5 +27,6 @@ Deep link: `/du-an/{ma}?action=nvks` (tương tự `paktks`, `nkks`, `bcks`, `ng
 
 ## Lưu ý
 
+- Khi port thêm từ ksnpsc: copy đủ **lib phụ** (`doDts*`, `qcvnCatalogLookup` + `src/data/bang*.json`), `components/table/ResizableTableFrame`, deps `recharts` / `libreoffice-convert` — thiếu sẽ fail `next build` trên Vercel.
 - Trình ký OTP / một số API phụ trợ ksnpsc có thể chưa đủ trên OUTSRC — form lập/lưu/xuất Word là trọng tâm.
 - Convert PDF qua `/api/export-nvks-pdf` (LibreOffice/ConvertAPI) — cấu hình giống ksnpsc nếu dùng xuất PDF.

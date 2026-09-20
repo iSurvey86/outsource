@@ -1,5 +1,12 @@
 # Changelog OUTSRC
 
+## 0.5.1 — 2026-09-20
+
+**Sửa build Vercel sau port KS**
+
+### Sửa lỗi
+- Bổ sung module/deps thiếu khi port KS (doDts, QCVN catalog, ResizableTableFrame, recharts) — deploy production chạy lại
+
 ## 0.5.0 — 2026-09-20
 
 **Form KS từ ksnpsc + sổ tài chính**
