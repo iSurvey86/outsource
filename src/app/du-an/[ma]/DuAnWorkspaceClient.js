@@ -18,11 +18,22 @@ import {
 } from "../../../lib/duAnWorkspace";
 import { fetchDb, deleteRow, insertRow, logActivity, uid, updateRow } from "../../../lib/store";
 import { hasSupabase, supabase } from "../../../lib/supabase";
+import { fetchNvksByMaDuAn } from "../../../lib/hoSoKhaoSat";
+import { fetchPaktkForNvks, fetchActivePaktkByMaDuAn } from "../../../lib/paktksPhienBan";
+import { fetchNkksByMaDuAn } from "../../../lib/nkksHoSo";
+import { fetchNtksByMaDuAn } from "../../../lib/ntksHoSo";
+import { fetchBcksByMaDuAn } from "../../../lib/bcksHoSo";
+import { toKsProject } from "../../../lib/ksProjectAdapter";
 import { KsStatusChip } from "../../../components/StatusChip";
 import { useAppDialog } from "../../../components/AppDialog";
 import DuAnWorkspaceHeader from "../../../components/duAn/DuAnWorkspaceHeader";
 import HoSoKhoPanel from "../../../components/duAn/HoSoKhoPanel";
 import UpdateHopDongModal, { HopDongSoPanel } from "../../../components/duAn/UpdateHopDongModal";
+import FormNVKS from "../../../components/FormNVKS";
+import FormPAKTKS from "../../../components/FormPAKTKS";
+import FormNKKS from "../../../components/FormNKKS";
+import FormNTKS from "../../../components/FormNTKS";
+import FormBCKS from "../../../components/FormBCKS";
 import {
   parseHosoFolders,
   slugCustomFolderKey,
@@ -56,6 +67,44 @@ export default function DuAnWorkspaceClient() {
   const [hopDongRefreshKey, setHopDongRefreshKey] = useState(0);
   const actionHandledRef = useRef(false);
 
+  const [nvksRecord, setNvksRecord] = useState(null);
+  const [paktksRecord, setPaktksRecord] = useState(null);
+  const [nkksRecord, setNkksRecord] = useState(null);
+  const [ntksRecord, setNtksRecord] = useState(null);
+  const [bcksRecord, setBcksRecord] = useState(null);
+  const [showNvksForm, setShowNvksForm] = useState(false);
+  const [showPaktksForm, setShowPaktksForm] = useState(false);
+  const [showNkksForm, setShowNkksForm] = useState(false);
+  const [showNtksForm, setShowNtksForm] = useState(false);
+  const [showBcksForm, setShowBcksForm] = useState(false);
+
+  const refreshHoSoKs = useCallback(async (maDuAn) => {
+    if (!hasSupabase || !supabase || !maDuAn) {
+      setNvksRecord(null);
+      setPaktksRecord(null);
+      setNkksRecord(null);
+      setNtksRecord(null);
+      setBcksRecord(null);
+      return;
+    }
+    try {
+      const nvks = await fetchNvksByMaDuAn(supabase, maDuAn);
+      setNvksRecord(nvks || null);
+      const paktks = nvks
+        ? await fetchPaktkForNvks(supabase, maDuAn, nvks.id)
+        : await fetchActivePaktkByMaDuAn(supabase, maDuAn).catch(() => null);
+      setPaktksRecord(paktks || null);
+      const nkks = await fetchNkksByMaDuAn(supabase, maDuAn).catch(() => null);
+      setNkksRecord(nkks || null);
+      const ntks = await fetchNtksByMaDuAn(supabase, maDuAn).catch(() => null);
+      setNtksRecord(ntks || null);
+      const bcks = await fetchBcksByMaDuAn(supabase, maDuAn).catch(() => null);
+      setBcksRecord(bcks || null);
+    } catch (err) {
+      console.warn("Không tải được hồ sơ KS:", err?.message || err);
+    }
+  }, []);
+
   useEffect(() => {
     const sync = () => {
       const { user: u, perms: p } = loadAuthSession();
@@ -70,7 +119,7 @@ export default function DuAnWorkspaceClient() {
   useEffect(() => {
     let cancelled = false;
     fetchDb()
-      .then((db) => {
+      .then(async (db) => {
         if (cancelled) return;
         const { user: u } = loadAuthSession();
         const duAn = db.duAn.find((d) => d.ma_du_an === ma);
@@ -89,12 +138,13 @@ export default function DuAnWorkspaceClient() {
           ks: db.ksModules.filter((k) => k.du_an_id === duAn.id),
           tl: db.taiLieu.filter((t) => t.du_an_id === duAn.id),
         });
+        await refreshHoSoKs(duAn.ma_du_an);
       })
       .catch(console.error);
     return () => {
       cancelled = true;
     };
-  }, [ma, tick]);
+  }, [ma, tick, refreshHoSoKs]);
 
   function refresh() {
     setTick((t) => t + 1);
@@ -157,6 +207,25 @@ export default function DuAnWorkspaceClient() {
         queueMicrotask(() => setShowHopDongPanel(true));
       }
       clearActionParam();
+      return;
+    }
+    const key = action === "ntks" ? "nghiem_thu" : action;
+    const openers = {
+      nvks: () => setShowNvksForm(true),
+      paktks: () => setShowPaktksForm(true),
+      nkks: () => setShowNkksForm(true),
+      bcks: () => setShowBcksForm(true),
+      nghiem_thu: () => setShowNtksForm(true),
+    };
+    if (openers[key]) {
+      if (!hasSupabase) {
+        showAlert(
+          "Cần cấu hình Supabase (HO_SO_*) để mở form KS.\nChạy scripts/sql/create-ho-so-*.sql rồi .env.local."
+        );
+      } else {
+        queueMicrotask(openers[key]);
+      }
+      clearActionParam();
     }
   }, [bundle, searchParams, clearActionParam, showAlert]);
 
@@ -196,10 +265,37 @@ export default function DuAnWorkspaceClient() {
   const canEditHopDong = canSuaDuAn(perms);
   const canImportHopDongExcel = Boolean(perms?.q_admin);
   const canUploadHoSo = canUploadHoSoFn(user);
-  const statusMap = getKsStatusMap(ks);
+  const statusMapRaw = getKsStatusMap(ks);
+  const statusMap = { ...statusMapRaw };
+  const bumpStatus = (key, rec) => {
+    if (!rec || !statusMap[key]) return;
+    if (statusMap[key].trang_thai === "chua_lam") {
+      statusMap[key] = { ...statusMap[key], trang_thai: "dang_lam" };
+    }
+  };
+  bumpStatus("nvks", nvksRecord);
+  bumpStatus("paktks", paktksRecord);
+  bumpStatus("nkks", nkksRecord);
+  bumpStatus("bcks", bcksRecord);
+  bumpStatus("nghiem_thu", ntksRecord);
+  // Mở khóa phụ thuộc theo hồ sơ thật
+  if (nvksRecord) {
+    ["paktks", "nkks", "bcks"].forEach((k) => {
+      if (statusMap[k] && statusMap.nvks) {
+        /* isModuleUnlocked đọc nvks dang_lam — đã bump */
+      }
+    });
+  }
   const tlKs = tl.filter((t) => t.loai_kho === "khao_sat");
   const tlTk = tl.filter((t) => t.loai_kho === "thiet_ke");
   const hosoFolders = parseHosoFolders(duAn);
+  const ksProject = toKsProject(duAn);
+
+  async function closeKsForm(setter) {
+    setter(false);
+    await refreshHoSoKs(duAn.ma_du_an);
+    refresh();
+  }
 
   async function setKsStatus(loai, trang_thai) {
     if (!canWorkKs) return;
@@ -237,30 +333,66 @@ export default function DuAnWorkspaceClient() {
   async function handleModuleClick(mod) {
     const unlocked = isModuleUnlocked(mod, statusMap);
     const row = statusMap[mod.key];
-    if (!unlocked) {
+    const hasNvks = Boolean(nvksRecord);
+    const hasNkks = Boolean(nkksRecord);
+
+    if (!unlocked && mod.key !== "nvks" && !hasNvks) {
       showAlert(workflowButtonLabel(mod, row, false, canWorkKs));
       return;
     }
+    if (mod.key !== "nvks" && !hasNvks && unlocked) {
+      // stub unlock by ks_module but no real NVKS yet
+      showAlert("Cần lập NVKS (form) trước khi thực hiện bước này.");
+      return;
+    }
+    if (mod.key === "nghiem_thu" && !hasNkks) {
+      showAlert("Cần lập NKKS trước khi lập nghiệm thu khảo sát.");
+      return;
+    }
     if (!canWorkKs) {
-      if (row?.trang_thai === "da_xuat_ban" || row?.trang_thai === "dang_lam") {
-        showAlert(
-          `${mod.shortLabel}: ${row.trang_thai === "da_xuat_ban" ? "đã xuất bản" : "đang làm"}.\nBên A chỉ xem — form chi tiết sẽ bổ sung sau.`
-        );
+      const hasRec =
+        (mod.key === "nvks" && nvksRecord) ||
+        (mod.key === "paktks" && paktksRecord) ||
+        (mod.key === "nkks" && nkksRecord) ||
+        (mod.key === "bcks" && bcksRecord) ||
+        (mod.key === "nghiem_thu" && ntksRecord);
+      if (!hasRec) {
+        showAlert("Bước này chưa có hồ sơ — Bên A chỉ xem, không lập mới.");
         return;
       }
-      showAlert("Bước này chưa có hồ sơ — Bên A chỉ xem, không lập mới.");
+    }
+    if (!hasSupabase || !supabase) {
+      showAlert(
+        "Cần cấu hình Supabase (HO_SO_NVKS / PAKTKS / …) để lập hồ sơ KS.\nChạy SQL create-ho-so-*.sql từ scripts/sql rồi cấu hình .env.local."
+      );
       return;
     }
-    if (!row || row.trang_thai === "chua_lam") {
-      await setKsStatus(mod.key, "dang_lam");
-      showAlert(`Đã mở bước ${mod.shortLabel}. Form chi tiết sẽ bổ sung ở bước sau.`);
-      return;
+    if (canWorkKs && row && row.trang_thai === "chua_lam") {
+      try {
+        await setKsStatus(mod.key, "dang_lam");
+      } catch {
+        /* ignore */
+      }
     }
-    if (row.trang_thai === "dang_lam") {
-      await setKsStatus(mod.key, "da_xuat_ban");
-      return;
+    switch (mod.key) {
+      case "nvks":
+        setShowNvksForm(true);
+        break;
+      case "paktks":
+        setShowPaktksForm(true);
+        break;
+      case "nkks":
+        setShowNkksForm(true);
+        break;
+      case "bcks":
+        setShowBcksForm(true);
+        break;
+      case "nghiem_thu":
+        setShowNtksForm(true);
+        break;
+      default:
+        showAlert("Module chưa hỗ trợ.");
     }
-    showAlert(`${mod.shortLabel} đã xuất bản. Form / tra cứu hồ sơ sẽ bổ sung sau.`);
   }
 
   async function handleFolderUpload({ loaiKho, moduleLoai, files }) {
@@ -499,6 +631,62 @@ export default function DuAnWorkspaceClient() {
     );
   }
 
+  const anyKsForm =
+    showNvksForm || showPaktksForm || showNkksForm || showNtksForm || showBcksForm;
+  if (anyKsForm && ksProject) {
+    return (
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden bg-white">
+        {showNvksForm ? (
+          <FormNVKS
+            project={ksProject}
+            existingId={nvksRecord?.id || null}
+            onClose={() => closeKsForm(setShowNvksForm)}
+            onSaved={() => refreshHoSoKs(duAn.ma_du_an)}
+          />
+        ) : null}
+        {showPaktksForm && nvksRecord ? (
+          <FormPAKTKS
+            project={ksProject}
+            nvksRecord={nvksRecord}
+            paktksRecord={paktksRecord}
+            onClose={() => closeKsForm(setShowPaktksForm)}
+            onSaved={() => refreshHoSoKs(duAn.ma_du_an)}
+          />
+        ) : null}
+        {showNkksForm && nvksRecord ? (
+          <FormNKKS
+            project={ksProject}
+            nvksRecord={nvksRecord}
+            nkksRecord={nkksRecord}
+            onClose={() => closeKsForm(setShowNkksForm)}
+            onSaved={() => refreshHoSoKs(duAn.ma_du_an)}
+          />
+        ) : null}
+        {showNtksForm && nvksRecord && nkksRecord ? (
+          <FormNTKS
+            project={ksProject}
+            nvksRecord={nvksRecord}
+            nkksRecord={nkksRecord}
+            paktksRecord={paktksRecord}
+            ntksRecord={ntksRecord}
+            onClose={() => closeKsForm(setShowNtksForm)}
+            onSaved={() => refreshHoSoKs(duAn.ma_du_an)}
+          />
+        ) : null}
+        {showBcksForm && nvksRecord ? (
+          <FormBCKS
+            project={ksProject}
+            nvksRecord={nvksRecord}
+            paktksRecord={paktksRecord}
+            bcksRecord={bcksRecord}
+            onClose={() => closeKsForm(setShowBcksForm)}
+            onSaved={() => refreshHoSoKs(duAn.ma_du_an)}
+          />
+        ) : null}
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6">
       <DuAnWorkspaceHeader
@@ -602,7 +790,7 @@ export default function DuAnWorkspaceClient() {
           <p className="mt-3 text-xs font-medium text-amber-900/80">
             {benAUser && !canWorkKs
               ? "Bên A chỉ xem trạng thái / hồ sơ đã có — không lập mới hay xuất bản."
-              : "Form NVKS / PAKTKS / NKKS / BCKS / NT chi tiết sẽ làm ở các bước tiếp theo. Hiện cập nhật trạng thái stub (Lập → Đang làm → Xuất bản)."}
+              : "Form NVKS / PAKTKS / NKKS / BCKS / NT đã nối từ ksnpsc. Cần Supabase + SQL HO_SO_* (scripts/sql). Xuất Word cần template trong public/templates/."}
           </p>
         </section>
       ) : null}

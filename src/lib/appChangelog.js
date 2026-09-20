@@ -16,6 +16,23 @@
 /** @type {ChangelogRelease[]} — mới nhất ở đầu */
 export const APP_CHANGELOG = [
   {
+    version: "0.5.0",
+    date: "2026-09-20",
+    title: "Form KS từ ksnpsc + sổ tài chính",
+    sections: {
+      added: [
+        "Form NVKS / PAKTKS / NKKS / BCKS / NT (port ksnpsc) — mở từ workspace",
+        "Template Word + SQL HO_SO_*; API convert PDF NVKS",
+        "Sổ A↔B: nút Xóa trên modal sửa tạm ứng / thanh toán",
+        "Tài chính nội bộ: cột Ghi chú",
+      ],
+      improved: [
+        "Ghi chú tài chính: wrap, justify, căn giữa ô",
+        "STT / thứ tự DA đồng bộ giữa A↔B và nội bộ",
+      ],
+    },
+  },
+  {
     version: "0.4.6",
     date: "2026-08-27",
     title: "Nhập DA UX + Bên A chỉ xem KS",

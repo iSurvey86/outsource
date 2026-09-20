@@ -11,6 +11,15 @@ export function loadAuthSession() {
   }
 }
 
+/** Alias cho form KS port từ ksnpsc. */
+export function getAuthUser() {
+  return loadAuthSession().user;
+}
+
+export function getAuthPerms() {
+  return loadAuthSession().perms;
+}
+
 export function setAuthSession(user, perms) {
   sessionStorage.setItem(SESSION_USER_KEY, JSON.stringify(user));
   sessionStorage.setItem(SESSION_PERMS_KEY, JSON.stringify(perms));

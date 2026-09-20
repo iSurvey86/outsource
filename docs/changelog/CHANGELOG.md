@@ -1,5 +1,19 @@
 # Changelog OUTSRC
 
+## 0.5.0 — 2026-09-20
+
+**Form KS từ ksnpsc + sổ tài chính**
+
+### Mới
+- Form NVKS / PAKTKS / NKKS / BCKS / NT (port ksnpsc) — mở từ workspace
+- Template Word + SQL HO_SO_*; API convert PDF NVKS
+- Sổ A↔B: nút Xóa trên modal sửa tạm ứng / thanh toán
+- Tài chính nội bộ: cột Ghi chú
+
+### Cải thiện
+- Ghi chú tài chính: wrap, justify, căn giữa ô
+- STT / thứ tự DA đồng bộ giữa A↔B và nội bộ
+
 ## 0.4.6 — 2026-08-27
 
 **Nhập DA UX + Bên A chỉ xem KS**

@@ -5,6 +5,43 @@
 
 ---
 
+## 2026-09-20 — Port form KS từ ksnpsc + sổ TC (0.5.0)
+
+**Máy / ngữ cảnh:** Cursor — tiếp 0.4.6; App **0.5.0**.
+
+### Đã chốt / đã làm
+
+- **Port KS (ksnpsc → OUTSRC):** Form NVKS / PAKTKS / NKKS / BCKS / NTKS + lib xuất Word/PDF + template `public/templates/templates_*` + SQL `scripts/sql/*ho-so*`.
+- **Workspace:** `+ Lập` / `Xem` mở form thật (`?action=nvks|…`); `toKsProject` map `du_an`; fetch `HO_SO_*` qua Supabase.
+- **Tài chính (trước đó cùng nhánh):** Ghi chú wrap/justify/middle; cột Ghi chú nội bộ; xóa tạm ứng trên modal Sửa; đồng bộ STT A↔B ↔ nội bộ (`sortDuAnTaiChinh`).
+- **Deps:** docxtemplater, pizzip, file-saver, pdf-lib, …
+
+### File chính
+
+| Khu vực | File |
+|---------|------|
+| Form | `FormNVKS.js`, `FormPAKTKS.js`, `FormNKKS.js`, `FormBCKS.js`, `FormNTKS.js` |
+| Wire | `DuAnWorkspaceClient.js`, `ksProjectAdapter.js`, `hoSoKhaoSat.js` |
+| Template / SQL | `public/templates/templates_*`, `scripts/sql/create-ho-so-*.sql` |
+| Hướng dẫn port | `docs/ks-port-README.md` |
+| Tài chính | `tai-chinh/page.js`, `tai-chinh-noi-bo/page.js`, `NoteCell.js`, `finance.js` |
+
+### Việc tiếp
+
+- [ ] Chạy SQL **HO_SO_*** (+ DM_CONG_VIEC nếu thiếu) trên Supabase; bucket `exports_nvks`.
+- [ ] QA lập/lưu/xuất Word từng module; trình ký OTP (nếu cần) còn thiếu API phụ.
+- [ ] SQL **025**–**027** góp vốn nếu chưa chạy.
+
+### Câu mở phiên sau
+
+```text
+Đọc HANDOFF (0.5.0). Form KS đã port từ ksnpsc — chạy SQL HO_SO_* rồi QA + Lập NVKS. Sổ TC: ghi chú wrap, xóa tạm ứng, STT đồng bộ. Tiếp: QA KS / trình ký nếu cần.
+```
+
+**Lưu trữ ngày:** [2026-09-20-port-ks-ksnpsc.md](./2026-09-20-port-ks-ksnpsc.md)
+
+---
+
 ## 2026-08-27 — Nhập DA UX + Bên A chỉ xem KS (0.4.6)
 
 **Máy / ngữ cảnh:** Cursor — tiếp 0.4.5; App **0.4.6**.
