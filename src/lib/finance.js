@@ -3,6 +3,15 @@
 export const DEFAULT_TY_LE_BEN_B = 0.25;
 export const DEFAULT_TY_LE_TAM_UNG = 0.3;
 
+/** Thứ tự DA thống nhất trên sổ A↔B và Tài chính nội bộ (STT giống nhau). */
+export function sortDuAnTaiChinh(list = []) {
+  return [...(list || [])].sort((a, b) => {
+    const byTen = String(a?.ten || "").localeCompare(String(b?.ten || ""), "vi");
+    if (byTen) return byTen;
+    return String(a?.ma_du_an || "").localeCompare(String(b?.ma_du_an || ""), "vi");
+  });
+}
+
 /** PAĐT / PADDT (tạm tính) — ưu tiên cột riêng, fallback gia_tri_tu_van cũ */
 export function giaTriPadt(duAn) {
   const padt = Number(duAn?.gia_tri_padt);

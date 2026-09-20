@@ -15,6 +15,7 @@ import {
   formatPct,
   formatVndShort,
   giaTriBenB,
+  sortDuAnTaiChinh,
   tongGopVonNoiBo,
   tongNhanTuA,
 } from "../../lib/finance";
@@ -66,35 +67,33 @@ export default function TaiChinhNoiBoListPage() {
 
   const rows = useMemo(() => {
     if (!db || !user) return [];
-    const list = filterDuAnForUser(db.duAn || [], user);
     const needle = q.trim().toLowerCase();
-    return list
-      .filter((d) => {
-        if (!needle) return true;
-        return (
-          String(d.ten || "")
-            .toLowerCase()
-            .includes(needle) ||
-          String(d.ma_du_an || "")
-            .toLowerCase()
-            .includes(needle)
-        );
-      })
-      .map((d) => {
-        const gd = (db.giaoDich || []).filter((g) => g.du_an_id === d.id);
-        const uiIds = new Set(filterBenBNoiBoUi(db.users).map((u) => u.id));
-        const chia = (db.chiaNoiBo || []).filter(
-          (c) => c.du_an_id === d.id && uiIds.has(c.nguoi_dung_id)
-        );
-        const tongGop = tongGopVonNoiBo(db.gopVonNoiBo || [], d.id);
-        return {
-          duAn: d,
-          tongNhan: tongNhanTuA(gd),
-          tongGop,
-          phanB: giaTriBenB(d),
-          status: trangThaiChia(chia),
-        };
-      });
+    const list = sortDuAnTaiChinh(filterDuAnForUser(db.duAn || [], user)).filter((d) => {
+      if (!needle) return true;
+      return (
+        String(d.ten || "")
+          .toLowerCase()
+          .includes(needle) ||
+        String(d.ma_du_an || "")
+          .toLowerCase()
+          .includes(needle)
+      );
+    });
+    return list.map((d) => {
+      const gd = (db.giaoDich || []).filter((g) => g.du_an_id === d.id);
+      const uiIds = new Set(filterBenBNoiBoUi(db.users).map((u) => u.id));
+      const chia = (db.chiaNoiBo || []).filter(
+        (c) => c.du_an_id === d.id && uiIds.has(c.nguoi_dung_id)
+      );
+      const tongGop = tongGopVonNoiBo(db.gopVonNoiBo || [], d.id);
+      return {
+        duAn: d,
+        tongNhan: tongNhanTuA(gd),
+        tongGop,
+        phanB: giaTriBenB(d),
+        status: trangThaiChia(chia),
+      };
+    });
   }, [db, user, q]);
 
   const canEditNote = canSuaTaiChinhAb(perms);

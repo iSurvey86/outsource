@@ -23,6 +23,7 @@ import {
   applyVndLiveInput,
   syncGiaTriTuVanFields,
   tamUngLan1KyVong,
+  sortDuAnTaiChinh,
 } from "../../lib/finance";
 import { openStoredFile, uploadTamUngBill } from "../../lib/pdfGiaoAStorage";
 import { formatNgayVi } from "../../lib/formatNgay";
@@ -59,9 +60,7 @@ export default function TaiChinhPage() {
 
   const rows = useMemo(() => {
     if (!db) return [];
-    return filterDuAnForUser(db.duAn, user).sort((a, b) =>
-      String(a.ten || "").localeCompare(String(b.ten || ""), "vi")
-    );
+    return sortDuAnTaiChinh(filterDuAnForUser(db.duAn, user));
   }, [db, user]);
 
   const canView = canSeeTaiChinhAb(user, perms);
