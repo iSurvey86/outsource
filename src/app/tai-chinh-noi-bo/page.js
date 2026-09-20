@@ -5,7 +5,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Search } from "lucide-react";
 import { loadAuthSession } from "../../lib/authSession";
-import { canSeeChiaNoiBo, filterDuAnForUser, filterBenBNoiBoUi } from "../../lib/menuAccess";
+import {
+  canSeeChiaNoiBo,
+  canSuaTaiChinhAb,
+  filterDuAnForUser,
+  filterBenBNoiBoUi,
+} from "../../lib/menuAccess";
 import {
   formatPct,
   formatVndShort,
@@ -13,8 +18,10 @@ import {
   tongGopVonNoiBo,
   tongNhanTuA,
 } from "../../lib/finance";
-import { fetchDb } from "../../lib/store";
+import { fetchDb, logActivity, updateRow } from "../../lib/store";
 import { giaiDoanBadgeClass } from "../../lib/duAnMeta";
+import { useAppDialog } from "../../components/AppDialog";
+import NoteCell from "../../components/taiChinh/NoteCell";
 
 function trangThaiChia(chiaRows) {
   const sum = (chiaRows || []).reduce((s, r) => s + (Number(r.ty_le) || 0), 0);
@@ -29,18 +36,32 @@ function trangThaiChia(chiaRows) {
 
 export default function TaiChinhNoiBoListPage() {
   const router = useRouter();
+  const { showAlert } = useAppDialog();
   const [db, setDb] = useState(null);
   const [user, setUser] = useState(null);
+  const [perms, setPerms] = useState(null);
   const [q, setQ] = useState("");
+  const [savingId, setSavingId] = useState(null);
+
+  async function reload() {
+    setDb(await fetchDb());
+  }
 
   useEffect(() => {
-    const { user: u, perms: p } = loadAuthSession();
-    setUser(u);
-    if (!canSeeChiaNoiBo(u, p)) {
-      router.replace("/");
-      return;
+    function syncAuth() {
+      const { user: u, perms: p } = loadAuthSession();
+      setUser(u);
+      setPerms(p);
+      if (!canSeeChiaNoiBo(u, p)) {
+        router.replace("/");
+      }
     }
-    fetchDb().then(setDb).catch(() => setDb({ duAn: [], giaoDich: [], chiaNoiBo: [], gopVonNoiBo: [] }));
+    syncAuth();
+    reload().catch(() =>
+      setDb({ duAn: [], giaoDich: [], chiaNoiBo: [], gopVonNoiBo: [] })
+    );
+    window.addEventListener("outsrc-auth-session-changed", syncAuth);
+    return () => window.removeEventListener("outsrc-auth-session-changed", syncAuth);
   }, [router]);
 
   const rows = useMemo(() => {
@@ -76,6 +97,31 @@ export default function TaiChinhNoiBoListPage() {
       });
   }, [db, user, q]);
 
+  const canEditNote = canSuaTaiChinhAb(perms);
+
+  async function patchGhiChu(duAn, text) {
+    if (!canEditNote) {
+      showAlert("Chỉ Admin được sửa ghi chú tài chính.");
+      return;
+    }
+    setSavingId(duAn.id);
+    try {
+      await updateRow("du_an", duAn.id, { ghi_chu_tai_chinh: text });
+      await logActivity({
+        username: user.username,
+        ho_ten: user.ho_ten,
+        phan_he: "tai_chinh_noi_bo",
+        hanh_dong: "SUA_GHI_CHU",
+        chi_tiet: duAn.ma_du_an,
+      });
+      await reload();
+    } catch (err) {
+      showAlert(err.message || "Lỗi lưu ghi chú");
+    } finally {
+      setSavingId(null);
+    }
+  }
+
   if (!db || !user) {
     return <p className="text-sm font-bold text-teal-800">Đang tải…</p>;
   }
@@ -98,37 +144,51 @@ export default function TaiChinhNoiBoListPage() {
 
       <div className="overflow-hidden rounded-2xl border border-indigo-200 bg-white shadow-sm">
         <div className="-mx-3 overflow-x-auto px-3 sm:mx-0 sm:px-0">
-          <table className="w-full min-w-[720px] border-collapse text-sm">
+          <table className="w-full min-w-[900px] table-fixed border-collapse text-sm">
+            <colgroup>
+              <col className="w-12" />
+              <col />
+              <col className="w-28" />
+              <col className="w-32" />
+              <col className="w-28" />
+              <col className="w-32" />
+              <col className="w-32" />
+              <col className="w-[18%]" />
+            </colgroup>
             <thead className="bg-indigo-800 text-xs font-black uppercase tracking-wide text-white">
               <tr>
-                <th className="w-12 px-3 py-3 text-center">STT</th>
+                <th className="px-3 py-3 text-center">STT</th>
                 <th className="px-3 py-3 text-left">Dự án</th>
-                <th className="w-28 px-3 py-3 text-center">Giai đoạn</th>
-                <th className="w-36 px-3 py-3 text-right">Đã nhận A</th>
-                <th className="w-32 px-3 py-3 text-right">Góp nội bộ</th>
-                <th className="w-36 px-3 py-3 text-right">Phần B GTV</th>
-                <th className="w-36 px-3 py-3 text-center">Chia nội bộ</th>
+                <th className="px-3 py-3 text-center">Giai đoạn</th>
+                <th className="px-3 py-3 text-right">Đã nhận A</th>
+                <th className="px-3 py-3 text-right">Góp nội bộ</th>
+                <th className="px-3 py-3 text-right">Phần B GTV</th>
+                <th className="px-3 py-3 text-center">Chia nội bộ</th>
+                <th className="px-3 py-3 text-center">Ghi chú</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row, idx) => {
                 const d = row.duAn;
                 const href = `/tai-chinh-noi-bo/${encodeURIComponent(d.ma_du_an)}`;
+                const busy = savingId === d.id;
                 return (
                   <tr
                     key={d.id}
                     className="border-t border-indigo-100 odd:bg-white even:bg-indigo-50/50 hover:bg-teal-50/80"
                   >
-                    <td className="px-3 py-3 text-center font-bold tabular-nums text-indigo-900">
+                    <td className="px-3 py-3 text-center align-middle font-bold tabular-nums text-indigo-900">
                       {idx + 1}
                     </td>
-                    <td className="px-3 py-3">
+                    <td className="px-3 py-3 align-middle">
                       <Link href={href} className="font-bold text-blue-700 hover:text-teal-700">
                         {d.ten}
                       </Link>
-                      <p className="mt-0.5 text-xs font-semibold text-indigo-600/80">{d.ma_du_an}</p>
+                      <p className="mt-0.5 break-all text-xs font-semibold text-indigo-600/80">
+                        {d.ma_du_an}
+                      </p>
                     </td>
-                    <td className="px-3 py-3 text-center">
+                    <td className="px-3 py-3 text-center align-middle">
                       <span
                         className={`inline-flex rounded-full px-2.5 py-0.5 text-xs font-black ring-1 ${giaiDoanBadgeClass(
                           d.giai_doan
@@ -137,20 +197,20 @@ export default function TaiChinhNoiBoListPage() {
                         {d.giai_doan || "—"}
                       </span>
                     </td>
-                    <td className="px-3 py-3 text-right font-bold tabular-nums text-indigo-950">
+                    <td className="px-3 py-3 text-right align-middle font-bold tabular-nums text-indigo-950">
                       <Link href={href} className="hover:text-teal-700">
                         {row.tongNhan > 0 ? formatVndShort(row.tongNhan) : "—"}
                       </Link>
                     </td>
-                    <td className="px-3 py-3 text-right font-bold tabular-nums text-violet-900">
+                    <td className="px-3 py-3 text-right align-middle font-bold tabular-nums text-violet-900">
                       <Link href={href} className="hover:text-violet-700">
                         {row.tongGop > 0 ? formatVndShort(row.tongGop) : "—"}
                       </Link>
                     </td>
-                    <td className="px-3 py-3 text-right font-semibold tabular-nums text-indigo-800">
+                    <td className="px-3 py-3 text-right align-middle font-semibold tabular-nums text-indigo-800">
                       {row.phanB > 0 ? formatVndShort(row.phanB) : "—"}
                     </td>
-                    <td className="px-3 py-3 text-center">
+                    <td className="px-3 py-3 text-center align-middle">
                       <Link
                         href={href}
                         className={`inline-flex rounded-full px-2.5 py-0.5 text-[11px] font-bold ring-1 ${
@@ -164,12 +224,22 @@ export default function TaiChinhNoiBoListPage() {
                         {row.status.label}
                       </Link>
                     </td>
+                    <td className="px-2 py-2 align-middle">
+                      <NoteCell
+                        value={d.ghi_chu_tai_chinh || ""}
+                        disabled={!canEditNote || busy}
+                        onCommit={(text) => patchGhiChu(d, text)}
+                      />
+                    </td>
                   </tr>
                 );
               })}
               {!rows.length ? (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-sm font-medium text-teal-700">
+                  <td
+                    colSpan={8}
+                    className="px-4 py-8 text-center text-sm font-medium text-teal-700"
+                  >
                     Không có dự án khớp.
                   </td>
                 </tr>

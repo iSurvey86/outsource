@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { loadAuthSession } from "../../lib/authSession";
 import {
@@ -26,11 +26,12 @@ import {
 } from "../../lib/finance";
 import { openStoredFile, uploadTamUngBill } from "../../lib/pdfGiaoAStorage";
 import { formatNgayVi } from "../../lib/formatNgay";
-import { fetchDb, insertRow, logActivity, uid, updateRow } from "../../lib/store";
+import { fetchDb, insertRow, logActivity, uid, updateRow, deleteRow } from "../../lib/store";
 import { useAppDialog } from "../../components/AppDialog";
+import NoteCell from "../../components/taiChinh/NoteCell";
 
 export default function TaiChinhPage() {
-  const { showAlert } = useAppDialog();
+  const { showAlert, showConfirm } = useAppDialog();
   const [db, setDb] = useState(null);
   const [user, setUser] = useState(null);
   const [perms, setPerms] = useState(null);
@@ -216,6 +217,58 @@ export default function TaiChinhPage() {
     }
   }
 
+  async function deleteNhanDot() {
+    if (!nhanModal || !user || !nhanModal.isEdit) return;
+    if (!canSuaTaiChinhAb(perms)) {
+      await showAlert("Chỉ Admin được xóa tạm ứng / thanh toán trên sổ A↔B.");
+      return;
+    }
+
+    const { duAn, dot, meta, gdId, existingLink } = nhanModal;
+    const gdList = (db?.giaoDich || []).filter((g) => g.du_an_id === duAn.id);
+    const existing =
+      (gdId && gdList.find((g) => g.id === gdId)) || findGiaoDichByDot(gdList, dot);
+    if (!existing) {
+      await showAlert("Không tìm thấy bản ghi để xóa.");
+      return;
+    }
+
+    const soTien = Math.round(Number(existing.so_tien) || 0);
+    const ok = await showConfirm(
+      `Xóa ${meta.title} của ${duAn.ma_du_an}?\nSố tiền: ${formatVnd(soTien)}\nNgày: ${formatNgayVi(existing.ngay) || "—"}\n\nÔ tạm ứng sẽ trống để ghi lại.`
+    );
+    if (!ok) return;
+
+    setNhanSaving(true);
+    try {
+      await deleteRow("giao_dich", existing.id);
+
+      const duAnPatch = {};
+      if (dot === "lan1") {
+        duAnPatch.tam_ung_lan1_khoa = false;
+      }
+      if (Object.keys(duAnPatch).length) {
+        await updateRow("du_an", duAn.id, duAnPatch);
+      }
+
+      await logActivity({
+        username: user.username,
+        ho_ten: user.ho_ten,
+        phan_he: "tai_chinh",
+        hanh_dong: `XOA_${dot.toUpperCase()}`,
+        chi_tiet: `${duAn.ma_du_an} · ${formatVnd(soTien)}${existingLink ? " · có bill" : ""}`,
+      });
+
+      setNhanModal(null);
+      setNhanFile(null);
+      await reload();
+    } catch (err) {
+      showAlert(err.message || "Lỗi xóa");
+    } finally {
+      setNhanSaving(false);
+    }
+  }
+
   if (!db) {
     return <p className="text-sm font-semibold text-slate-600">Đang tải…</p>;
   }
@@ -294,10 +347,10 @@ export default function TaiChinhPage() {
               const busy = savingId === d.id;
               return (
                 <tr key={d.id} className="odd:bg-white even:bg-slate-50/60 hover:bg-sky-50/50">
-                  <td className="border border-slate-200 px-2 py-2 text-center tabular-nums text-slate-600">
+                  <td className="border border-slate-200 px-2 py-2 text-center align-middle tabular-nums text-slate-600">
                     {idx + 1}
                   </td>
-                  <td className="border border-slate-200 px-3 py-2 text-left align-top">
+                  <td className="border border-slate-200 px-3 py-2 text-left align-middle">
                     <Link
                       href={`/du-an/${encodeURIComponent(d.ma_du_an)}`}
                       className="font-semibold leading-snug text-blue-700 hover:underline"
@@ -308,7 +361,7 @@ export default function TaiChinhPage() {
                       {d.ma_du_an}
                     </p>
                   </td>
-                  <td className="border border-slate-200 px-2 py-2 text-right text-xs font-medium tabular-nums text-slate-800">
+                  <td className="border border-slate-200 px-2 py-2 text-right align-middle text-xs font-medium tabular-nums text-slate-800">
                     {formatTmdtTrieuSo(d.tmdt)}
                   </td>
                   <td className="border border-slate-200 p-1 align-middle">
@@ -388,7 +441,7 @@ export default function TaiChinhPage() {
                       openStoredFile(link).catch((e) => showAlert(e.message))
                     }
                   />
-                  <td className="border border-slate-200 p-1 align-top">
+                  <td className="border border-slate-200 p-1 align-middle">
                     <NoteCell
                       value={d.ghi_chu_tai_chinh || ""}
                       disabled={!canEdit || busy}
@@ -479,23 +532,37 @@ export default function TaiChinhPage() {
                 ) : null}
               </div>
             </div>
-            <div className="flex justify-end gap-2 border-t border-slate-100 bg-slate-50 px-4 py-3">
-              <button
-                type="button"
-                disabled={nhanSaving}
-                onClick={() => setNhanModal(null)}
-                className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-bold text-slate-600 hover:bg-white"
-              >
-                Hủy
-              </button>
-              <button
-                type="button"
-                disabled={nhanSaving}
-                onClick={saveNhanDot}
-                className="rounded-lg bg-teal-700 px-4 py-2 text-sm font-bold text-white hover:bg-teal-800 disabled:opacity-60"
-              >
-                {nhanSaving ? "Đang lưu…" : nhanModal.isEdit ? "Cập nhật" : "Nhận"}
-              </button>
+            <div className="flex items-center justify-between gap-2 border-t border-slate-100 bg-slate-50 px-4 py-3">
+              {nhanModal.isEdit ? (
+                <button
+                  type="button"
+                  disabled={nhanSaving}
+                  onClick={deleteNhanDot}
+                  className="rounded-lg border border-rose-200 bg-rose-50 px-4 py-2 text-sm font-bold text-rose-700 hover:bg-rose-100 disabled:opacity-60"
+                >
+                  Xóa
+                </button>
+              ) : (
+                <span />
+              )}
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  disabled={nhanSaving}
+                  onClick={() => setNhanModal(null)}
+                  className="rounded-lg border border-slate-300 px-4 py-2 text-sm font-bold text-slate-600 hover:bg-white"
+                >
+                  Hủy
+                </button>
+                <button
+                  type="button"
+                  disabled={nhanSaving}
+                  onClick={saveNhanDot}
+                  className="rounded-lg bg-teal-700 px-4 py-2 text-sm font-bold text-white hover:bg-teal-800 disabled:opacity-60"
+                >
+                  {nhanSaving ? "Đang lưu…" : nhanModal.isEdit ? "Cập nhật" : "Nhận"}
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -534,7 +601,7 @@ function DotCell({
     const canOpenEdit = canEdit && onEdit && !busy;
 
     return (
-      <td className="border border-slate-200 bg-amber-50/80 px-2 py-2 text-center text-xs tabular-nums text-amber-950">
+      <td className="border border-slate-200 bg-amber-50/80 px-2 py-2 text-center align-middle text-xs tabular-nums text-amber-950">
         <div>
           {hasBill ? (
             <button
@@ -585,14 +652,8 @@ function DotCell({
     const expanded = hasTyped || focused;
     const soNhan = draft > 0 ? draft : placeholderGoiY > 0 ? placeholderGoiY : 0;
     return (
-      <td
-        className={`border border-slate-200 p-1 ${expanded ? "align-top" : "align-middle"}`}
-      >
-        <div
-          className={`flex min-h-[2.75rem] flex-col ${
-            expanded ? "justify-start gap-0.5 pt-0.5" : "justify-center"
-          }`}
-        >
+      <td className="border border-slate-200 p-1 align-middle">
+        <div className="flex min-h-[2.75rem] flex-col justify-center gap-0.5">
           <input
             type="text"
             inputMode="numeric"
@@ -638,7 +699,7 @@ function DotCell({
   }
 
   return (
-    <td className="border border-slate-200 px-2 py-2 text-center text-xs font-bold tabular-nums text-slate-900">
+    <td className="border border-slate-200 px-2 py-2 text-center align-middle text-xs font-bold tabular-nums text-slate-900">
       <div>{hien.soTien > 0 ? formatVndShort(hien.soTien) : "—"}</div>
       {canEdit && hien.soTien > 0 ? (
         <button
@@ -690,35 +751,5 @@ function MoneyCell({ value, disabled, onCommit, placeholder = "" }) {
         }}
       />
     </div>
-  );
-}
-
-function NoteCell({ value, disabled, onCommit }) {
-  const [text, setText] = useState(value || "");
-  const ref = useRef(null);
-
-  useEffect(() => {
-    setText(value || "");
-  }, [value]);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    el.style.height = "0px";
-    el.style.height = `${Math.max(el.scrollHeight, 44)}px`;
-  }, [text]);
-
-  return (
-    <textarea
-      ref={ref}
-      rows={2}
-      disabled={disabled}
-      className="w-full min-h-[2.75rem] resize-none overflow-hidden rounded border border-sky-200/80 bg-white/80 px-1.5 py-1.5 text-xs leading-snug text-slate-800 outline-none whitespace-pre-wrap break-words hover:border-sky-300 focus:border-sky-400 focus:bg-white focus:ring-1 focus:ring-sky-200 disabled:cursor-default disabled:border-transparent disabled:bg-transparent"
-      value={text}
-      onChange={(e) => setText(e.target.value)}
-      onBlur={() => {
-        if ((text || "") !== (value || "")) onCommit(text.trim());
-      }}
-    />
   );
 }
