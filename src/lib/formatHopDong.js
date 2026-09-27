@@ -2,8 +2,99 @@
  *  Ví dụ tiêu đề workspace (2 dòng):
  *    Hợp đồng số 308/2020/HĐTV-BDAĐL-KHVT
  *    ngày 07/12/2020
- *  Ví dụ chi tiết: Hợp đồng số … ngày … gói thầu: … dự án “…” giữa … và …
+ *  Ví dụ chi tiết: Hợp đồng số … ngày … Gói thầu: … Dự án: … Giữa … và …
+ *  (không kèm "(theo Quyết định…)", tên bên viết hoa bình thường, nối bằng «và»)
  */
+
+/** Từ chức danh tổ chức — viết thường khi không đứng đầu đoạn / sau dấu -. */
+const ORG_FORCE_LOWER = new Set([
+  "ty",
+  "lực",
+  "nhánh",
+  "miền",
+  "phần",
+  "xây",
+  "dựng",
+  "và",
+  "của",
+  "tại",
+  "cho",
+  "với",
+]);
+
+function isMostlyUpperCaseVn(text) {
+  const letters = [...String(text || "")].filter((c) => /\p{L}/u.test(c));
+  if (letters.length < 4) return false;
+  let upper = 0;
+  for (const c of letters) {
+    const u = c.toLocaleUpperCase("vi");
+    const l = c.toLocaleLowerCase("vi");
+    if (u !== l && c === u) upper += 1;
+  }
+  return upper / letters.length >= 0.75;
+}
+
+/**
+ * FULL CAPS / gần FULL CAPS → viết hoa kiểu tên tổ chức VN
+ * (Công ty Điện lực … - Chi nhánh … và Công ty Cổ phần xây dựng điện …).
+ */
+export function normalizeBenHopDongTitleCase(name) {
+  const raw = String(name || "").replace(/\s+/g, " ").trim();
+  if (!raw || !isMostlyUpperCaseVn(raw)) return raw;
+
+  const tokens = raw.toLocaleLowerCase("vi").split(/(\s+|[-–])/);
+  let prevWord = "";
+  let out = "";
+  for (const tok of tokens) {
+    if (!tok || /^[\s\-–]+$/.test(tok)) {
+      out += tok;
+      continue;
+    }
+    const word = tok;
+    const startSegment = !prevWord || /[-–]/.test(out.slice(-1));
+    let piece;
+    if (word === "điện" && prevWord === "dựng") {
+      piece = word;
+    } else if (!startSegment && ORG_FORCE_LOWER.has(word)) {
+      piece = word;
+    } else {
+      piece = word.charAt(0).toLocaleUpperCase("vi") + word.slice(1);
+    }
+    out += piece;
+    prevWord = word;
+  }
+  return out;
+}
+
+/**
+ * Chuẩn hoá hop_dong_day_du sau quét AI:
+ * - «dự án "…"» → «dự án: …»
+ * - bỏ "(theo Quyết định số …)" (khóa Giao A nằm ở qd_giao_a_tham_chieu)
+ * - sau «Giữa»: «&» → «và»; tên bên FULL CAPS → viết hoa bình thường
+ */
+export function normalizeHopDongDayDu(text) {
+  let s = String(text || "").trim();
+  if (!s) return "";
+
+  s = s.replace(/dự\s*án\s*[“"«]([^”"»]+)[”"»]/gi, "dự án: $1");
+  s = s.replace(/dự\s*án:\s*[“"«]([^”"»]+)[”"»]/gi, "dự án: $1");
+  s = s.replace(/\s*\(\s*theo\s+Quyết\s+định\s+số[^)]*\)/gi, "");
+
+  const giua = s.match(/^(.*?\bGiữa\s+)(.+)$/i);
+  if (giua) {
+    const parties = giua[2]
+      .replace(/\s*&\s*/g, " và ")
+      .split(/\s+và\s+/i)
+      .map((p) => normalizeBenHopDongTitleCase(p.trim()))
+      .filter(Boolean)
+      .join(" và ");
+    s = `${giua[1]}${parties}`;
+  } else {
+    s = s.replace(/\s*&\s*/g, " và ");
+  }
+
+  return s.replace(/\s{2,}/g, " ").trim();
+}
 
 function padYear(y) {
   const s = String(y || "");

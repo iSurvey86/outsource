@@ -206,6 +206,38 @@ export function syncGiaTriTuVanFields(patch) {
   return next;
 }
 
+/**
+ * Đẩy GTHĐ (trước VAT, sau chiết giảm) từ sổ HĐ → cột Hợp đồng trên Tài chính A↔B.
+ * Theo từng ma_du_an (HĐ khung nhiều CT: mỗi CT nhận phân bổ riêng).
+ * Không đụng tạm ứng / thanh toán đã ghi.
+ *
+ * @returns {{ ma_du_an: string, gia_tri_hop_dong: number } | null}
+ */
+export async function syncDuAnGiaTriHopDongFromGthd(supabase, maDuAn, giaTriHd) {
+  const ma = String(maDuAn || "").trim();
+  if (!supabase || !ma) return null;
+  const n = Number(giaTriHd);
+  if (!Number.isFinite(n) || n < 0) return null;
+
+  const synced = syncGiaTriTuVanFields({
+    gia_tri_hop_dong: Math.round(n),
+  });
+  const patch = {
+    gia_tri_hop_dong: synced.gia_tri_hop_dong,
+    gia_tri_tu_van: synced.gia_tri_tu_van,
+    nguon_gia_tri: synced.nguon_gia_tri,
+  };
+
+  const { data, error } = await supabase
+    .from("du_an")
+    .update(patch)
+    .eq("ma_du_an", ma)
+    .select("ma_du_an, gia_tri_hop_dong")
+    .maybeSingle();
+  if (error) throw new Error(error.message || "Không đồng bộ GTV sang Tài chính A↔B.");
+  return data || { ma_du_an: ma, gia_tri_hop_dong: patch.gia_tri_hop_dong };
+}
+
 export function formatVnd(n) {
   const v = Math.round(Number(n) || 0);
   return new Intl.NumberFormat("vi-VN").format(v) + " ₫";

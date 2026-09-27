@@ -9,6 +9,10 @@ import {
 } from "../../../lib/hopDongBangGia";
 import { postProcessTnctttAfterParse } from "../../../lib/hopDongTncttt";
 import { assessGiaiDoanValuesCoverage } from "../../../lib/hopDongScanMatch";
+import {
+  normalizeBenHopDongTitleCase,
+  normalizeHopDongDayDu,
+} from "../../../lib/formatHopDong";
 
 /** PDF HĐ khung BESS thường lớn — tránh inline base64 (x3 RAM → OOM). */
 const MAX_PDF_BYTES = 80 * 1024 * 1024;
@@ -38,14 +42,6 @@ function getFieldValue(field) {
   if (field == null) return "";
   if (typeof field === "object" && "value" in field) return String(field.value ?? "").trim();
   return String(field).trim();
-}
-
-/** Chuẩn hoá «dự án "…"» → «dự án: …» */
-function normalizeHopDongDayDu(text) {
-  let s = String(text || "").trim();
-  s = s.replace(/dự\s*án\s*[“"«]([^”"»]+)[”"»]/gi, "dự án: $1");
-  s = s.replace(/dự\s*án:\s*[“"«]([^”"»]+)[”"»]/gi, "dự án: $1");
-  return s.replace(/\s{2,}/g, " ").trim();
 }
 
 /** Chuỗi tiền → số thuần (bỏ 1.234.567 / 1,234,567 → 1234567). */
@@ -154,12 +150,14 @@ Mẫu hợp đồng giống nhau nhưng số trang thay đổi theo từng file.
 Viết tắt (so_hop_dong) — MỘT DÒNG: [Số/ký hiệu HĐ] ngày [dd/mm/yyyy]
 Ví dụ: 308/2020/HĐTV-BDAĐL-KHVT ngày 07/12/2020 (không thêm chữ "Hợp đồng số").
 
-Chi tiết (hop_dong_day_du) — MỘT CÂU liền mạch, ĐỦ nội dung trang bìa:
-Hợp đồng số [Số/ký hiệu] ngày [dd tháng mm năm yyyy] Gói thầu [mã gói]: [nội dung gói] Thuộc các dự án: [tên cụm dự án] (theo Quyết định số [số QĐ]/[ký hiệu] ngày [dd/mm/yyyy] của [Cơ quan]) Giữa [Bên A] & [Bên B]
-- PHẢI giữ nguyên cụm "(theo Quyết định số … của …)" nếu có trên trang bìa — đây là khóa để gắn dự án Giao A.
-- Dùng "dự án: " hoặc "Thuộc các dự án: " (hai chấm), KHÔNG bọc tên dự án trong ngoặc kép.
+Chi tiết (hop_dong_day_du) — MỘT CÂU liền mạch trang bìa (KHÔNG kèm Quyết định Giao A):
+Hợp đồng số [Số/ký hiệu] ngày [dd tháng mm năm yyyy] Gói thầu [mã gói nếu có]: [nội dung gói] Dự án: [tên dự án/cụm] Giữa [Bên A] và [Bên B]
+- BỎ hẳn cụm "(theo Quyết định số … của …)" khỏi hop_dong_day_du — đưa số QĐ vào qd_giao_a_tham_chieu.
+- Sau «Giữa»: nối hai bên bằng chữ «và» (KHÔNG dùng «&»); tên tổ chức viết hoa bình thường (Công ty …), KHÔNG FULL CAPS.
+- Dùng "Dự án: " hoặc "Thuộc các dự án: " (hai chấm), KHÔNG bọc tên dự án trong ngoặc kép.
 - Bỏ chức danh cá nhân.
-- Ví dụ ĐÚNG: Hợp đồng số 05/2026/HĐTV/BDAXD-KHVT ngày 17 tháng 01 năm 2026 Gói thầu BESS.G01: Tư vấn khảo sát, lập BCNCKT DTXD, TKBVTC-DTXD các dự án Lắp đặt hệ thống Pin lưu trữ năng lượng (BESS) tại các TBA 110kV của EVNNPC Thuộc các dự án: Lắp đặt hệ thống Pin lưu trữ năng lượng (BESS) tại các TBA 110kV của EVNNPC (theo Quyết định số 67/QĐ-EVNNPC ngày 16/01/2026 của Tổng Công ty Điện lực miền Bắc) Giữa Ban Quản lý Dự án Xây dựng điện miền Bắc – Chi nhánh Tổng công ty Điện lực miền Bắc & Công ty Dịch vụ Điện lực miền Bắc – Chi nhánh Tổng công ty Điện lực miền Bắc
+- Ví dụ ĐÚNG: Hợp đồng số 03/9/26/TVTK1406/PCTH-TV ngày 09 tháng 09 năm 2026 Gói thầu: Khảo sát, tư vấn thiết kế Dự án: Nâng cao năng lực cấp điện lộ 373 trạm 110kV Bá Thước Giữa Công ty Điện lực Thanh Hóa - Chi nhánh Tổng Công ty Điện lực miền Bắc và Công ty Cổ phần xây dựng điện Thành Vinh
+- qd_giao_a_tham_chieu (bắt buộc nếu trang bìa có QĐ): ví dụ "1406/QĐ-EVNNPC ngày 24/07/2026"
 
 === PHỤ LỤC PHÂN BỔ GIÁ TRỊ TỪNG CÔNG TRÌNH / TBA (QUAN TRỌNG VỚI HĐ KHUNG) ===
 Hai dạng phụ lục (đều điền "phu_luc_cong_trinh", mỗi công trình / TBA = 1 object):
@@ -248,8 +246,8 @@ CẤU TRÚC JSON:
   "hop_dong_day_du": { "value": "", "confidence": 90, "warning": "" },
   "qd_giao_a_tham_chieu": { "value": "Số QĐ Giao A rút gọn nếu HĐ ghi «theo Quyết định số …», ví dụ: 67/QĐ-EVNNPC ngày 16/01/2026", "confidence": 85, "warning": "" },
   "ngay_hop_dong": { "value": "yyyy-mm-dd nếu suy được, không thì \\"\\"", "confidence": 90, "warning": "" },
-  "ben_a": { "value": "Tên bên A (thường chủ đầu tư)", "confidence": 85, "warning": "" },
-  "ben_b": { "value": "Tên bên B (thường nhà thầu / tư vấn)", "confidence": 85, "warning": "" },
+  "ben_a": { "value": "Tên bên A — viết hoa bình thường, không FULL CAPS", "confidence": 85, "warning": "" },
+  "ben_b": { "value": "Tên bên B — viết hoa bình thường, không FULL CAPS", "confidence": 85, "warning": "" },
   "goi_thau": { "value": "Nội dung gói thầu", "confidence": 80, "warning": "" },
   "ten_du_an": { "value": "Tên dự án / công trình", "confidence": 90, "warning": "" },
 
@@ -585,8 +583,8 @@ CẤU TRÚC JSON:
         confidence: jsonData.ngay_hop_dong?.confidence ?? 80,
         warning: jsonData.ngay_hop_dong?.warning || "",
       },
-      ben_a: getFieldValue(jsonData.ben_a),
-      ben_b: getFieldValue(jsonData.ben_b),
+      ben_a: normalizeBenHopDongTitleCase(getFieldValue(jsonData.ben_a)),
+      ben_b: normalizeBenHopDongTitleCase(getFieldValue(jsonData.ben_b)),
       goi_thau: getFieldValue(jsonData.goi_thau),
       ten_du_an: getFieldValue(jsonData.ten_du_an),
 

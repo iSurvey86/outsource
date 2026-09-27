@@ -3,6 +3,7 @@
  */
 
 import { formatGiaTriHopDong, parseGiaTriHopDong } from "./hopDong";
+import { syncDuAnGiaTriHopDongFromGthd } from "./finance";
 
 export const HOP_DONG_THUC_HIEN_COLUMNS =
   "id, hop_dong_id, ma_du_an, hien_trang, thang_pd_du_kien, thang_pd_thuc_te, thang_nt_du_kien, thang_nt_thuc_te, nam_nt, gia_tri_hd, gia_tri_ks, gia_tri_ks_dia_hinh, gia_tri_ks_dia_chat, gia_tri_ks_khac, gia_tri_lap_hs, gia_tri_ctdt, gia_tri_tong_phan_ra, san_luong_du_kien, da_xuat_hd, con_lai, tinh_hinh_xuat_hd, hsnt_trang_thai, bb_ks_ht, bb_nt, ton_tai_nt, ton_tai_kt, ghi_chu, created_at, updated_at";
@@ -135,6 +136,13 @@ export async function syncDaXuatCache(supabase, hopDongId, maDuAn, giaTriHdHint 
       .select(HOP_DONG_THUC_HIEN_COLUMNS)
       .single();
     if (error) throw error;
+    if (payload.gia_tri_hd != null) {
+      try {
+        await syncDuAnGiaTriHopDongFromGthd(supabase, maDuAn, payload.gia_tri_hd);
+      } catch (err) {
+        console.error("sync GTV → Tài chính A↔B:", err);
+      }
+    }
     return data;
   }
 
@@ -144,6 +152,13 @@ export async function syncDaXuatCache(supabase, hopDongId, maDuAn, giaTriHdHint 
     .select(HOP_DONG_THUC_HIEN_COLUMNS)
     .single();
   if (error) throw error;
+  if (payload.gia_tri_hd != null) {
+    try {
+      await syncDuAnGiaTriHopDongFromGthd(supabase, maDuAn, payload.gia_tri_hd);
+    } catch (err) {
+      console.error("sync GTV → Tài chính A↔B:", err);
+    }
+  }
   return data;
 }
 
@@ -226,6 +241,13 @@ export async function upsertThucHien(supabase, input) {
       .select(HOP_DONG_THUC_HIEN_COLUMNS)
       .single();
     if (error) throw error;
+    if (Object.prototype.hasOwnProperty.call(input, "gia_tri_hd") && giaTriHd != null) {
+      try {
+        await syncDuAnGiaTriHopDongFromGthd(supabase, maDuAn, giaTriHd);
+      } catch (err) {
+        console.error("sync GTV → Tài chính A↔B:", err);
+      }
+    }
     return data;
   }
 
@@ -235,6 +257,13 @@ export async function upsertThucHien(supabase, input) {
     .select(HOP_DONG_THUC_HIEN_COLUMNS)
     .single();
   if (error) throw error;
+  if (Object.prototype.hasOwnProperty.call(input, "gia_tri_hd") && giaTriHd != null) {
+    try {
+      await syncDuAnGiaTriHopDongFromGthd(supabase, maDuAn, giaTriHd);
+    } catch (err) {
+      console.error("sync GTV → Tài chính A↔B:", err);
+    }
+  }
   return data;
 }
 

@@ -1,5 +1,5 @@
 /** Ngày cập nhật HDSD — đặt = ngày phiên khi sửa docs/hdsd/ */
-export const HDSD_VERSION = "2026-09-20";
+export const HDSD_VERSION = "2026-09-27";
 
 export const HDSD_STATUS = {
   published: {

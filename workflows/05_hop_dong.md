@@ -10,8 +10,10 @@ Quản lý HĐ tư vấn CĐT (và thầu phụ) gắn mã dự án / giai đo�
 ## Thao tác chính
 1. **+ HĐ chính** / **+ HĐ thầu phụ** / phụ lục·điều chỉnh / ký lại.
 2. Upload PDF + **Quét AI** (cần `GEMINI_API_KEY`) → rà soát bảng giá trị → Lưu.
-3. Gắn phạm vi giai đoạn (mã DA).
+   - `hop_dong_day_du`: không kèm `(theo Quyết định…)`; QĐ → `qd_giao_a_tham_chieu`; bên A/B viết hoa bình thường, nối bằng «và».
+3. Gắn phạm vi giai đoạn (mã DA) — HĐ khung nhiều CT: khối **Công trình khác** / tick theo QĐ Giao A.
 4. Số liệu thực hiện / xuất HĐ (trên sổ); Import Excel (Admin).
+5. **GTHĐ trước VAT** (theo mã DA) đồng bộ sang cột **Hợp đồng** trên sổ Tài chính A↔B khi lưu số liệu / lưu HĐ CĐT.
 
 ## Tiền đề kỹ thuật
 - Supabase: chạy `scripts/sql/008` … `018` (gộp thiếu: `018_missing_hop_dong_bundle.sql`).

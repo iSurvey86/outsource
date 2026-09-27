@@ -2,6 +2,8 @@
 
 ## Công thức A → B
 1. **Căn cứ GTV** = cột Hợp đồng nếu > 0; không thì PAĐT (có thể điền **sau** khi đã tạm ứng).
+   - Cột Hợp đồng **đồng bộ từ sổ HĐ**: GTHĐ sau chiết giảm (trước VAT) theo từng `ma_du_an` khi lưu số liệu thực hiện / lưu HĐ chính·PL (không áp dụng HĐ thầu phụ).
+   - **Khóa UI khi đã có HĐ (Gtv > 0):** PAĐT khóa; Hợp đồng khóa trên A↔B (hover «đồng bộ từ HĐ»). Đổi Gtv chỉ trên sổ HĐ / PL.
 2. Phần B = **25%** × căn cứ.
 3. **Tạm ứng L1:** nhập tay được ngay cả khi chưa có GTV; đã có GTV → **gợi ý 30%** phần B (vẫn sửa). Nhập xong → popup nhận (ngày + bill).
 4. L2 / L3 / thanh toán: nhập tay; TT gợi ý = phần B − đã thu (**cấn trừ dần** cho đủ 25%).

@@ -79,6 +79,13 @@ export default function TaiChinhPage() {
       showAlert("Chỉ Admin được sửa sổ tài chính A↔B.");
       return;
     }
+    const hasHd = giaTriHopDongTv(duAn) > 0;
+    if (hasHd && ("gia_tri_padt" in patch || "gia_tri_hop_dong" in patch)) {
+      showAlert(
+        "Đã có giá trị Hợp đồng — PAĐT và cột Hợp đồng (Gtv) bị khóa trên sổ A↔B.\nSửa GTHĐ trên sổ hợp đồng (hoặc phụ lục / điều chỉnh); hệ thống sẽ đồng bộ lại."
+      );
+      return;
+    }
     setSavingId(duAn.id);
     try {
       const synced = syncGiaTriTuVanFields(patch);
@@ -344,6 +351,7 @@ export default function TaiChinhPage() {
               const lan3 = dotHienThi(d, gd, "lan3");
               const tt = dotHienThi(d, gd, "thanh_toan");
               const busy = savingId === d.id;
+              const hasHdGtv = giaTriHopDongTv(d) > 0;
               return (
                 <tr key={d.id} className="odd:bg-white even:bg-slate-50/60 hover:bg-sky-50/50">
                   <td className="border border-slate-200 px-2 py-2 text-center align-middle tabular-nums text-slate-600">
@@ -366,7 +374,13 @@ export default function TaiChinhPage() {
                   <td className="border border-slate-200 p-1 align-middle">
                     <MoneyCell
                       value={giaTriPadt(d)}
-                      disabled={!canEdit || busy}
+                      disabled={!canEdit || busy || hasHdGtv}
+                      locked={hasHdGtv}
+                      title={
+                        hasHdGtv
+                          ? "Đã có HĐ — PAĐT khóa. Căn cứ Gtv lấy từ cột Hợp đồng (đồng bộ từ HĐ)."
+                          : undefined
+                      }
                       onCommit={(n) =>
                         patchDuAn(d, {
                           gia_tri_padt: n,
@@ -378,7 +392,9 @@ export default function TaiChinhPage() {
                   <td className="border border-slate-200 p-1 align-middle">
                     <MoneyCell
                       value={giaTriHopDongTv(d)}
-                      disabled={!canEdit || busy}
+                      disabled={!canEdit || busy || hasHdGtv}
+                      locked={hasHdGtv}
+                      title={hasHdGtv ? "Đồng bộ từ HĐ — sửa trên sổ hợp đồng." : undefined}
                       onCommit={(n) =>
                         patchDuAn(d, {
                           gia_tri_hop_dong: n,
@@ -714,22 +730,36 @@ function DotCell({
   );
 }
 
-function MoneyCell({ value, disabled, onCommit, placeholder = "" }) {
+function MoneyCell({
+  value,
+  disabled,
+  onCommit,
+  placeholder = "",
+  locked = false,
+  title,
+}) {
   const [text, setText] = useState(value > 0 ? formatVndShort(value) : "");
   useEffect(() => {
     setText(value > 0 ? formatVndShort(value) : "");
   }, [value]);
 
   return (
-    <div className="flex min-h-[2.75rem] items-center">
+    <div className="flex min-h-[2.75rem] items-center" title={title}>
       <input
         type="text"
         inputMode="numeric"
         disabled={disabled}
+        readOnly={locked && disabled}
         placeholder={placeholder}
-        className="w-full rounded border border-sky-200/80 bg-white/80 px-1.5 py-1 text-right text-xs font-semibold tabular-nums text-slate-900 outline-none placeholder:font-normal placeholder:text-slate-300 hover:border-sky-300 focus:border-sky-400 focus:bg-white focus:ring-1 focus:ring-sky-200 disabled:cursor-default disabled:border-transparent disabled:bg-transparent"
+        aria-readonly={locked || undefined}
+        className={`w-full rounded border px-1.5 py-1 text-right text-xs font-semibold tabular-nums outline-none ${
+          locked
+            ? "cursor-default border-slate-200/80 bg-slate-100/90 text-slate-800"
+            : "border-sky-200/80 bg-white/80 text-slate-900 hover:border-sky-300 focus:border-sky-400 focus:bg-white focus:ring-1 focus:ring-sky-200 disabled:cursor-default disabled:border-transparent disabled:bg-transparent"
+        } placeholder:font-normal placeholder:text-slate-300`}
         value={text}
         onChange={(e) => {
+          if (disabled) return;
           const el = e.target;
           const { text: next, caret } = applyVndLiveInput(el.value, el.selectionStart);
           setText(next);
@@ -742,6 +772,7 @@ function MoneyCell({ value, disabled, onCommit, placeholder = "" }) {
           });
         }}
         onBlur={() => {
+          if (disabled) return;
           const n = parseVndInput(text);
           if (n !== Math.round(Number(value) || 0)) onCommit(n);
         }}

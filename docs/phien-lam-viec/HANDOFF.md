@@ -5,6 +5,41 @@
 
 ---
 
+## 2026-09-27 — Quét HĐ ổn định + Gtv đồng bộ Tài chính (0.5.3)
+
+**Máy / ngữ cảnh:** Cursor — tiếp 0.5.2; App **0.5.3**.
+
+### Đã chốt / đã làm
+
+- **Bug form HĐ trống sau «Đóng» alert quét AI:** init effect phụ thuộc object `project` mới mỗi lần `showAlert` → reset form; đổi deps → `project?.ma_du_an`.
+- **HĐ khung nhiều CT:** đã có từ ksnpsc port — gắn phạm vi khi nhập/quét; không gom mã DA.
+- **`hop_dong_day_du`:** bỏ `(theo Quyết định…)`; QĐ riêng; «Giữa … và …» viết hoa bình thường.
+- **Tài chính A↔B:** sync GTHĐ → cột Hợp đồng; khóa PAĐT + Hợp đồng khi đã có Gtv (hover đồng bộ từ HĐ).
+
+### File chính
+
+| Khu vực | File |
+|---------|------|
+| Quét / chuẩn hoá | `parse-hop-dong/route.js`, `formatHopDong.js`, `UpdateHopDongModal.js` |
+| Sync + khóa Gtv | `finance.js`, `hopDongThucHien.js`, `tai-chinh/page.js` |
+| Docs | `hdsd/02`·`04`, `workflows/03`·`05`, HANDOFF |
+
+### Việc tiếp
+
+- [ ] QA Lập / Lưu / Xuất Word KS trên DA thật.
+- [ ] QA HĐ khung 3 CT + sync Gtv từng mã.
+- [ ] Trình ký OTP nếu cần; SQL **025**–**027** góp vốn nếu chưa chạy.
+
+### Câu mở phiên sau
+
+```text
+Đọc HANDOFF (0.5.3). Quét HĐ + Gtv A↔B đã ổn. Tiếp: QA KS / HĐ khung nhiều CT hoặc trình ký.
+```
+
+**Lưu trữ ngày:** [2026-09-27-hop-dong-tai-chinh.md](./2026-09-27-hop-dong-tai-chinh.md)
+
+---
+
 ## 2026-09-20 — Supabase KS sẵn sàng + tiêu đề TC nội bộ (0.5.2)
 
 **Máy / ngữ cảnh:** Cursor — sau 0.5.1; App **0.5.2**.

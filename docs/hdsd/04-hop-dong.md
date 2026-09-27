@@ -13,8 +13,10 @@ Khi cần ghi nhận / sửa **hợp đồng tư vấn** (và thầu phụ) gắ
 - Thêm **phụ lục / điều chỉnh**, **ký lại**, hoặc **HĐ thầu phụ** khi cần.
 - Gắn hợp đồng với **giai đoạn / mã dự án** đúng phạm vi.
 - Xem / cập nhật **số liệu thực hiện**; Admin có thể **Import Excel** theo mẫu hệ thống.
+- Khi lưu HĐ / số liệu có **GTHĐ trước VAT**, hệ thống gán sang cột **Hợp đồng** trên sổ **Tài chính A↔B** (theo từng mã DA) để tính phần B và tạm ứng.
 
 ## Lưu ý
 - Cần cấu hình Supabase và đã chạy script SQL sổ hợp đồng trên database.
 - Quét AI cần khóa Gemini do quản trị cấu hình.
 - Số HĐ hiện trên danh mục / header được đồng bộ từ HĐ CĐT đang hiệu lực trên sổ.
+- HĐ thầu phụ **không** đẩy GTV sang Tài chính A↔B.

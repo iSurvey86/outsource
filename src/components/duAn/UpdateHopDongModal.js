@@ -1,7 +1,12 @@
 "use client";
 
 import React from "react";
-import { formatHopDongShort, formatHopDongTitleLabel } from "../../lib/formatHopDong";
+import {
+  formatHopDongShort,
+  formatHopDongTitleLabel,
+  normalizeBenHopDongTitleCase,
+  normalizeHopDongDayDu,
+} from "../../lib/formatHopDong";
 import { formatNgayVi } from "../../lib/formatNgay";
 import {
   formatGiaiDoanBadge,
@@ -771,7 +776,10 @@ export default function UpdateHopDongModal({
     return () => {
       cancelled = true;
     };
-  }, [open, project, hopDongId, hopDongGocId, isPhuLuc, isThauPhu, isKyLai, supabase]);
+    // Chỉ phụ thuộc ma_du_an (ổn định), KHÔNG phụ thuộc object `project`:
+    // parent tạo object mới mỗi lần re-render (vd. khi showAlert mở/đóng) — nếu phụ thuộc
+    // reference thì effect chạy lại và xóa sạch form vừa quét AI.
+  }, [open, project?.ma_du_an, hopDongId, hopDongGocId, isPhuLuc, isThauPhu, isKyLai, supabase]);
 
   React.useLayoutEffect(() => {
     if (!open || loadingInit) return;
@@ -863,10 +871,13 @@ export default function UpdateHopDongModal({
       if (!res.ok) {
         const entityTooLarge =
           res.status === 413 ||
-          /request entity too large|payload too large|entity too large/i.test(rawText || "");
+          /^\s*Request Entity Too Large/i.test(rawText || "") ||
+          /^\s*Payload Too Large/i.test(rawText || "");
         if (entityTooLarge) {
           throw new Error(
-            `File quá lớn để gửi lên server${sizeMb ? ` (~${sizeMb.toFixed(1)} MB)` : ""}. Nén PDF / tách phần bảng giá rồi quét lại (khuyến nghị dưới ~10–20 MB nếu vẫn lỗi).`
+            `Server từ chối vì dung lượng request quá lớn (HTTP ${res.status || "—"}${
+              sizeMb ? `, file ~${sizeMb.toFixed(1)} MB` : ""
+            }). Kiểm tra đã restart dev sau khi sửa next.config; nếu chạy Vercel có thể bị giới hạn platform. Nén PDF rồi thử lại.`
           );
         }
         throw new Error(
@@ -880,13 +891,11 @@ export default function UpdateHopDongModal({
       }
       const scanConfidence = getScanConfidence(data);
       const short = scanFieldText(data.so_hop_dong);
-      const full = scanFieldText(data.hop_dong_day_du)
-        .replace(/dự\s*án\s*[“"«]([^”"»]+)[”"»]/gi, "dự án: $1")
-        .replace(/dự\s*án:\s*[“"«]([^”"»]+)[”"»]/gi, "dự án: $1");
+      const full = normalizeHopDongDayDu(scanFieldText(data.hop_dong_day_du));
       const goiThau = scanFieldText(data.goi_thau);
       const ngayKy = scanFieldText(data.ngay_hop_dong);
-      const benA = scanFieldText(data.ben_a);
-      const benB = scanFieldText(data.ben_b);
+      const benA = normalizeBenHopDongTitleCase(scanFieldText(data.ben_a));
+      const benB = normalizeBenHopDongTitleCase(scanFieldText(data.ben_b));
       const thoiHanNgay = scanFieldText(data.thoi_han_ngay);
       const mocBatDau = scanFieldText(data.moc_bat_dau);
       const nguonTrangTienDo =

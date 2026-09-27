@@ -6,7 +6,7 @@ Menu **Tài chính** (ẩn với **Member Bên B**; Admin, PM và Bên A vẫn x
 | Cột | Ý nghĩa |
 |-----|---------|
 | TMĐT | Tổng mức đầu tư |
-| PAĐT / Hợp đồng | **Giá trị Tư vấn (Gtv)** — PAĐT tạm tính; HĐ ưu tiên khi đã có |
+| PAĐT / Hợp đồng | **Giá trị Tư vấn (Gtv)** — PAĐT tạm tính; HĐ ưu tiên khi đã có. Cột **Hợp đồng** tự lấy từ **GTHĐ sau chiết giảm (trước VAT)** trên sổ HĐ khi lưu số liệu / lưu HĐ (theo từng mã DA). **Khi đã có HĐ:** khóa PAĐT và khóa Hợp đồng trên sổ A↔B (hover: đồng bộ từ HĐ); đổi Gtv chỉ trên sổ HĐ / PL. |
 | Tổng phần B | **(25%Gtv)** |
 | Tạm ứng lần 1…3 / Thanh toán | Nhập số → **Nhận** → popup **ngày + bill** (không nhập lại số; không quét AI) |
 | Ghi chú | Wrap text, căn đều (justify), giữa ô; Admin sửa |
@@ -14,7 +14,7 @@ Menu **Tài chính** (ẩn với **Member Bên B**; Admin, PM và Bên A vẫn x
 **Luồng nhận tiền**
 1. Nhập số tiền trên ô → bấm **Nhận** → chọn **ngày nhận** + đính kèm bill → lưu (khóa).
 2. Sau khi khóa: số tiền có **link bill** (bấm mở xem); bấm **ngày** / số để **Sửa** (đổi số, ngày, bill) hoặc **Xóa** bản ghi tạm ứng / thanh toán.
-3. Có thể nhận L1 trước khi có GTV; sau điền PAĐT/HĐ, phần B = 25% Gtv, các đợt **cấn trừ dần**.
+3. Có thể nhận L1 trước khi có GTV; sau khi sổ HĐ có GTHĐ (hoặc điền PAĐT/HĐ tay), phần B = 25% Gtv, các đợt **cấn trừ dần** (số đã nhận giữ nguyên).
 4. Có GTV: ô L1 gợi ý 30% phần B (vẫn sửa trước khi Nhận).
 5. **Một gói nhiều CT, một lần tạm ứng:** chỉ ghi số tiền trên **một** CT đại diện; CT còn lại để trống + ghi chú trỏ về CT đó (tránh cộng trùng sổ).
 

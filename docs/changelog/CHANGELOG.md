@@ -1,5 +1,19 @@
 # Changelog OUTSRC
 
+## 0.5.3 — 2026-09-27
+
+**Quét HĐ ổn định + Gtv đồng bộ Tài chính**
+
+### Mới
+- GTHĐ trước VAT trên sổ HĐ đồng bộ sang cột Hợp đồng (Gtv) sổ Tài chính A↔B
+
+### Cải thiện
+- Chi tiết HĐ sau quét: bỏ ngoặc Quyết định; tên bên viết hoa bình thường, nối bằng «và»
+- Khi đã có Gtv HĐ: khóa PAĐT và cột Hợp đồng trên A↔B (hover: đồng bộ từ HĐ)
+
+### Sửa lỗi
+- Form thêm HĐ không còn trống sau khi đóng hộp thoại kết quả quét AI
+
 ## 0.5.2 — 2026-09-20
 
 **Supabase KS sẵn sàng + tiêu đề sổ nội bộ**

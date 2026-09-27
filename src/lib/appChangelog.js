@@ -16,6 +16,23 @@
 /** @type {ChangelogRelease[]} — mới nhất ở đầu */
 export const APP_CHANGELOG = [
   {
+    version: "0.5.3",
+    date: "2026-09-27",
+    title: "Quét HĐ ổn định + Gtv đồng bộ Tài chính",
+    sections: {
+      added: [
+        "GTHĐ trước VAT trên sổ HĐ đồng bộ sang cột Hợp đồng (Gtv) sổ Tài chính A↔B",
+      ],
+      improved: [
+        "Chi tiết HĐ sau quét: bỏ ngoặc Quyết định; tên bên viết hoa bình thường, nối bằng «và»",
+        "Khi đã có Gtv HĐ: khóa PAĐT và cột Hợp đồng trên A↔B (hover: đồng bộ từ HĐ)",
+      ],
+      fixed: [
+        "Form thêm HĐ không còn trống sau khi đóng hộp thoại kết quả quét AI",
+      ],
+    },
+  },
+  {
     version: "0.5.2",
     date: "2026-09-20",
     title: "Supabase KS sẵn sàng + tiêu đề sổ nội bộ",
