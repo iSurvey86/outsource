@@ -844,11 +844,40 @@ export default function UpdateHopDongModal({
     }
     setScanning(true);
     try {
+      const sizeMb = Number(file.size || 0) / (1024 * 1024);
+      if (sizeMb > 80) {
+        throw new Error(
+          `PDF quá lớn (${sizeMb.toFixed(1)} MB). Nén hoặc tách file dưới 80 MB rồi quét lại.`
+        );
+      }
       const fd = new FormData();
       fd.append("file", file);
       const res = await fetch("/api/parse-hop-dong", { method: "POST", body: fd });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Không quét được hợp đồng.");
+      const rawText = await res.text();
+      let data = null;
+      try {
+        data = rawText ? JSON.parse(rawText) : null;
+      } catch {
+        data = null;
+      }
+      if (!res.ok) {
+        const entityTooLarge =
+          res.status === 413 ||
+          /request entity too large|payload too large|entity too large/i.test(rawText || "");
+        if (entityTooLarge) {
+          throw new Error(
+            `File quá lớn để gửi lên server${sizeMb ? ` (~${sizeMb.toFixed(1)} MB)` : ""}. Nén PDF / tách phần bảng giá rồi quét lại (khuyến nghị dưới ~10–20 MB nếu vẫn lỗi).`
+          );
+        }
+        throw new Error(
+          (data && data.error) ||
+            (rawText && rawText.slice(0, 180)) ||
+            "Không quét được hợp đồng."
+        );
+      }
+      if (!data || typeof data !== "object") {
+        throw new Error("Máy chủ trả về dữ liệu không đúng định dạng. Thử quét lại.");
+      }
       const scanConfidence = getScanConfidence(data);
       const short = scanFieldText(data.so_hop_dong);
       const full = scanFieldText(data.hop_dong_day_du)
